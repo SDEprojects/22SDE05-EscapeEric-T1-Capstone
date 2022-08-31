@@ -6,6 +6,7 @@ import com.ericsHouse.rooms.Rooms;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class EricHouseClient {
     // AB#144 might make a userInputValidation method
@@ -33,6 +34,14 @@ public class EricHouseClient {
             // AB#141 player should be able to see where they currently are, display the challenge
 
             // AB#135-136 when the game is over, ask if the player wants to play again or quit
+            System.out.println("Game Over! Do you want to play again? Press y/n ");
+            Scanner scanner = new Scanner(System.in);
+            if (scanner.next().toLowerCase().equals("n") ||
+                scanner.next().toLowerCase().equals("no")){
+                break;
+            }
+
         }
+
     }
 }
