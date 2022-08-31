@@ -1,4 +1,28 @@
 package com.ericsHouse.rooms;
 
-public class Room0 {
+public class Room0 implements Rooms{
+    @Override
+    public void inspectLeft() {
+
+    }
+
+    @Override
+    public void inspectRight() {
+
+    }
+
+    @Override
+    public void inspectFloor() {
+
+    }
+
+    @Override
+    public void askShaq() {
+
+    }
+
+    @Override
+    public void moveToNextRoom() {
+
+    }
 }
