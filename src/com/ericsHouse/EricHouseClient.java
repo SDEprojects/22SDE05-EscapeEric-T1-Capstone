@@ -1,4 +1,4 @@
-package com.EricsHouse;
+package com.ericsHouse;
 
 public class EricHouseClient {
     public static void main(String[] args) {
