@@ -2,7 +2,11 @@ package com.ericsHouse;
 
 import com.ericsHouse.prompts.ActionsPrompt;
 import com.ericsHouse.rooms.Rooms;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +16,7 @@ public class EricHouseClient {
     // AB#144 might make a userInputValidation method
 
     // ask questions about AB145-148
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws NoSuchMethodException, IOException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
         Map<Character, Method> actions = new HashMap<>();
         actions.put('0', Rooms.class.getMethod("quit"));
@@ -41,7 +45,6 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             }
-
         }
 
     }
