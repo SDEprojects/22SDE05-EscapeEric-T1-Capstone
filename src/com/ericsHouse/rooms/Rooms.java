@@ -8,11 +8,12 @@ public interface Rooms {
 
 
     // methods
+    void quit();
     void inspectLeft();
     void inspectRight();
     void inspectFloor();
-    void askShaq();
     void moveToNextRoom();
+    void askShaq();
 
 
 }

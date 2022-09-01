@@ -2,6 +2,11 @@ package com.ericsHouse.rooms;
 
 public class Room1 implements Rooms{
     @Override
+    public void quit() {
+
+    }
+
+    @Override
     public void inspectLeft() {
 
     }

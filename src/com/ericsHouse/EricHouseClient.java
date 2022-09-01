@@ -15,6 +15,7 @@ public class EricHouseClient {
     public static void main(String[] args) throws NoSuchMethodException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
         Map<Character, Method> actions = new HashMap<>();
+        actions.put('0', Rooms.class.getMethod("quit"));
         actions.put('1', Rooms.class.getMethod("inspectLeft"));
         actions.put('2', Rooms.class.getMethod("inspectRight"));
         actions.put('3', Rooms.class.getMethod("inspectFloor"));
@@ -36,8 +37,8 @@ public class EricHouseClient {
             // AB#135-136 when the game is over, ask if the player wants to play again or quit
             System.out.println("Game Over! Do you want to play again? Press y/n ");
             Scanner scanner = new Scanner(System.in);
-            if (scanner.next().toLowerCase().equals("n") ||
-                scanner.next().toLowerCase().equals("no")){
+            String answer = scanner.next();
+            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             }
 
