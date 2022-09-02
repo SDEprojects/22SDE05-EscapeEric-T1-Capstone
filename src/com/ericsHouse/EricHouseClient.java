@@ -1,6 +1,6 @@
 package com.ericsHouse;
 
-import com.ericsHouse.prompts.ActionsPrompt;
+import com.ericsHouse.prompts.*;
 import com.ericsHouse.rooms.Rooms;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +35,32 @@ public class EricHouseClient {
 
 
             ActionsPrompt.actionsPrompt();
+
+            RoomZeroPrompts.roomZeroPrompt("gameStart");
+            RoomZeroPrompts.roomZeroPrompt("readNote");
+            RoomZeroPrompts.roomZeroPrompt("openDoorLocked");
+            RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
+            RoomZeroPrompts.roomZeroPrompt("askShaq");
+
+            RoomOnePrompts.roomOnePrompt("enterRoom");
+            RoomOnePrompts.roomOnePrompt("inspectLeft");
+            RoomOnePrompts.roomOnePrompt("inspectRight");
+            RoomOnePrompts.roomOnePrompt("inspectFloor");
+            RoomOnePrompts.roomOnePrompt("openDoorLocked");
+            RoomOnePrompts.roomOnePrompt("openDoorUnlocked");
+            RoomOnePrompts.roomOnePrompt("askShaq");
+
+            RoomTwoPrompts.roomTwoPrompt("enterRoom");
+            RoomTwoPrompts.roomTwoPrompt("inspectLeft");
+            RoomTwoPrompts.roomTwoPrompt("inspectRight");
+            RoomTwoPrompts.roomTwoPrompt("inspectFloor");
+            RoomTwoPrompts.roomTwoPrompt("openDoorLocked");
+            RoomTwoPrompts.roomTwoPrompt("openDoorUnlocked");
+            RoomTwoPrompts.roomTwoPrompt("askShaq");
+
+
+
+
 
             // AB#141 player should be able to see where they currently are, display the challenge
 

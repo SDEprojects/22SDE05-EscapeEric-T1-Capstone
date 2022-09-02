@@ -1,0 +1,9 @@
+{
+  "enterRoom": "\nWelcome to Room 2:\n\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
+  "inspectLeft": "\nYou inspect the table to your left.\nYou find an Onion and put it in your backpack.\nMight come in handy or make a good snack later.",
+  "inspectRight": "\nYou inspect the desk on the right.\nYou find a Pencil sitting on top and an Emerald in the top drawer.\nYou put them both in your backpack.",
+  "inspectFloor": "\nYou inspect the floor.\nYou find a Needle on the ground and put it in your backpack.\nThat would've been uncomfortable to step on.",
+  "openDoorLocked": "\nAn offering of four objects in the correct order is required to OPEN this door.",
+  "openDoorUnlocked": "\nYou have successfully entered the four object in the correct order.\nThe door opens and you proceed to the next room...",
+  "askShaq": "\nThose are some random objects in this room.\nPerhaps the order of the objects doesn't have anything to do with the items themselves..."
+}
