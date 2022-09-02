@@ -1,6 +1,21 @@
 package com.ericsHouse.prompts;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+
 public class RoomZeroPrompts {
+
+
+    public static void roomZeroPrompt(String prompt) throws IOException {
+        File jsonActionsPromptTest = new File("../22SDE05-EscapeEric/resources/roomZeroPrompts.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(jsonActionsPromptTest);
+
+        System.out.println(jsonNode.findValue(prompt).asText());
+    }
 
     public static void gameStartPrompt() {
         System.out.println("\nYou awaken to find yourself in a strange room..."
