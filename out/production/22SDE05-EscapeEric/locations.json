@@ -1,0 +1,22 @@
+{
+  "RoomZero": {
+    "name": "starterRoom",
+    "items": []
+  },
+  "RoomOne": {
+    "name": "knifeRoom",
+    "items": ["knife"]
+  },
+  "RoomTwo": {
+    "name": "wordOrderRoom",
+    "items": ["Onion", "Pencil", "Emerald", "Needle"]
+  },
+  "RoomThree": {
+    "name": "riddleRoom",
+    "items": []
+  },
+  "RoomFour": {
+    "name": "helloWorldRoom",
+    "items": []
+  }
+}
