@@ -30,6 +30,16 @@ public class EricHouseClient {
             // AB#133 On game start, display title screen prompt
             TitleScreen.titleScreen();
 
+            // AB#135-136 players choose to play a new game or quit
+            System.out.println("\nWould you like to play a new game? Press y/n ");
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.next();
+            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+                break;
+            } else {
+                System.out.println("congrats you are now playing the game.");
+            }
+
             // AB#134 introduce the game to the players
 
             // AB#137-140  player can get help by typing "help" or "h" / this will display the commands
