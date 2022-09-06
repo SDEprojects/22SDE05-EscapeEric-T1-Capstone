@@ -1,7 +1,7 @@
 package com.ericsHouse.rooms;
 
-import com.ericsHouse.prompts.ActionsPrompt;
-import com.ericsHouse.prompts.RoomZeroPrompts;
+import com.ericsHouse.jsonParser.ActionsPrompt;
+import com.ericsHouse.jsonParser.RoomZeroPrompts;
 
 import java.io.IOException;
 import java.util.Scanner;

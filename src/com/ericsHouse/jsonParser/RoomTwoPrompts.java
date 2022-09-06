@@ -1,4 +1,4 @@
-package com.ericsHouse.prompts;
+package com.ericsHouse.jsonParser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
