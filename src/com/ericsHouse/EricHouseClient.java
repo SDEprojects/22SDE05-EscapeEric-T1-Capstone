@@ -29,74 +29,20 @@ public class EricHouseClient {
                 break;
             } else {
                 Room0.gameLogic();
-
-//                currentRoom = "Room Zero";
-//                RoomZeroPrompts.roomZeroPrompt("gameStart");
-//                System.out.println("\nA small floating figure appears in front of you.\n");
-//                RoomZeroPrompts.roomZeroPrompt("askShaq");
-//                System.out.println("\nWhat would you like to do?");
-//                ActionsPrompt.actionsPrompt();
-//
-//                Scanner scanner2 = new Scanner(System.in);
-//                String nextAction = scanner2.next();
-//                if (nextAction.equalsIgnoreCase("0")) {
-//                    break;
-//                } else if (nextAction.equalsIgnoreCase("1")) {
-//                    RoomZeroPrompts.roomZeroPrompt("inspectLeft");
-//                } else if (nextAction.equalsIgnoreCase("2")) {
-//                    RoomZeroPrompts.roomZeroPrompt("inspectRight");
-//                } else if (nextAction.equalsIgnoreCase("3")) {
-//                    RoomZeroPrompts.roomZeroPrompt("inspectFloor");
-//                } else if (nextAction.equalsIgnoreCase("4")) {
-//                    RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
-//                } else if (nextAction.equalsIgnoreCase("5")) {
-//                    RoomZeroPrompts.roomZeroPrompt("askShaq");
-//                }
             }
 
             // AB#134 introduce the game to the players
 
             // AB#137-140  player can get help by typing "help" or "h" / this will display the commands
 
-
-//            ActionsPrompt.actionsPrompt();
-//
-//            RoomZeroPrompts.roomZeroPrompt("gameStart");
-//            RoomZeroPrompts.roomZeroPrompt("readNote");
-//            RoomZeroPrompts.roomZeroPrompt("openDoorLocked");
-//            RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
-//            RoomZeroPrompts.roomZeroPrompt("askShaq");
-//
-//            RoomOnePrompts.roomOnePrompt("enterRoom");
-//            RoomOnePrompts.roomOnePrompt("inspectLeft");
-//            RoomOnePrompts.roomOnePrompt("inspectRight");
-//            RoomOnePrompts.roomOnePrompt("inspectFloor");
-//            RoomOnePrompts.roomOnePrompt("openDoorLocked");
-//            RoomOnePrompts.roomOnePrompt("openDoorUnlocked");
-//            RoomOnePrompts.roomOnePrompt("askShaq");
-//
-//            RoomTwoPrompts.roomTwoPrompt("enterRoom");
-//            RoomTwoPrompts.roomTwoPrompt("inspectLeft");
-//            RoomTwoPrompts.roomTwoPrompt("inspectRight");
-//            RoomTwoPrompts.roomTwoPrompt("inspectFloor");
-//            RoomTwoPrompts.roomTwoPrompt("openDoorLocked");
-//            RoomTwoPrompts.roomTwoPrompt("openDoorUnlocked");
-//            RoomTwoPrompts.roomTwoPrompt("askShaq");
-
-
-
-
-
             // AB#141 player should be able to see where they currently are, display the challenge
 
             // AB#135-136 when the game is over, ask if the player wants to play again or quit
 //            System.out.println("Game Over! Do you want to play again? Press y/n ");
-//            Scanner scanner = new Scanner(System.in);
-//            String answer = scanner.next();
-//            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
-//                break;
-//            }
-            break;
+            answer = scanner.next();
+            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+                break;
+            }
         }
 
     }
