@@ -1,4 +1,4 @@
-package com.ericsHouse.prompts;
+package com.ericsHouse.jsonParser;
 
 public class TitleScreen {
 

@@ -1,15 +1,9 @@
 package com.ericsHouse;
 
-import com.ericsHouse.prompts.*;
-import com.ericsHouse.rooms.Rooms;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ericsHouse.jsonParser.*;
+import com.ericsHouse.rooms.Room0;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 
@@ -20,15 +14,8 @@ public class EricHouseClient {
     // AB#144 might make a userInputValidation method
 
     // ask questions about AB145-148
-    public static void main(String[] args) throws NoSuchMethodException, IOException {
+    public static void main(String[] args) throws IOException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
-        Map<Character, Method> actions = new HashMap<>();
-        actions.put('0', Rooms.class.getMethod("quit"));
-        actions.put('1', Rooms.class.getMethod("inspectLeft"));
-        actions.put('2', Rooms.class.getMethod("inspectRight"));
-        actions.put('3', Rooms.class.getMethod("inspectFloor"));
-        actions.put('4', Rooms.class.getMethod("moveToNextRoom"));
-        actions.put('5', Rooms.class.getMethod("askShaq"));
 
         while (true) {
             // AB#133 On game start, display title screen prompt
@@ -41,73 +28,21 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                currentRoom = "Room Zero";
-                RoomZeroPrompts.roomZeroPrompt("gameStart");
-                System.out.println("\nA small floating figure appears in front of you.\n");
-                RoomZeroPrompts.roomZeroPrompt("askShaq");
-                System.out.println("\nWhat would you like to do?");
-                ActionsPrompt.actionsPrompt();
-
-                Scanner scanner2 = new Scanner(System.in);
-                String nextAction = scanner2.next();
-                if (nextAction.equalsIgnoreCase("0")) {
-                    break;
-                } else if (nextAction.equalsIgnoreCase("1")) {
-                    RoomZeroPrompts.roomZeroPrompt("inspectLeft");
-                } else if (nextAction.equalsIgnoreCase("2")) {
-                    RoomZeroPrompts.roomZeroPrompt("inspectRight");
-                } else if (nextAction.equalsIgnoreCase("3")) {
-                    RoomZeroPrompts.roomZeroPrompt("inspectFloor");
-                } else if (nextAction.equalsIgnoreCase("4")) {
-                    RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
-                } else if (nextAction.equalsIgnoreCase("5")) {
-                    RoomZeroPrompts.roomZeroPrompt("askShaq");
-                }
+                Room0.gameLogic();
             }
 
             // AB#134 introduce the game to the players
 
             // AB#137-140  player can get help by typing "help" or "h" / this will display the commands
 
-
-//            ActionsPrompt.actionsPrompt();
-//
-//            RoomZeroPrompts.roomZeroPrompt("gameStart");
-//            RoomZeroPrompts.roomZeroPrompt("readNote");
-//            RoomZeroPrompts.roomZeroPrompt("openDoorLocked");
-//            RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
-//            RoomZeroPrompts.roomZeroPrompt("askShaq");
-//
-//            RoomOnePrompts.roomOnePrompt("enterRoom");
-//            RoomOnePrompts.roomOnePrompt("inspectLeft");
-//            RoomOnePrompts.roomOnePrompt("inspectRight");
-//            RoomOnePrompts.roomOnePrompt("inspectFloor");
-//            RoomOnePrompts.roomOnePrompt("openDoorLocked");
-//            RoomOnePrompts.roomOnePrompt("openDoorUnlocked");
-//            RoomOnePrompts.roomOnePrompt("askShaq");
-//
-//            RoomTwoPrompts.roomTwoPrompt("enterRoom");
-//            RoomTwoPrompts.roomTwoPrompt("inspectLeft");
-//            RoomTwoPrompts.roomTwoPrompt("inspectRight");
-//            RoomTwoPrompts.roomTwoPrompt("inspectFloor");
-//            RoomTwoPrompts.roomTwoPrompt("openDoorLocked");
-//            RoomTwoPrompts.roomTwoPrompt("openDoorUnlocked");
-//            RoomTwoPrompts.roomTwoPrompt("askShaq");
-
-
-
-
-
             // AB#141 player should be able to see where they currently are, display the challenge
 
             // AB#135-136 when the game is over, ask if the player wants to play again or quit
 //            System.out.println("Game Over! Do you want to play again? Press y/n ");
-//            Scanner scanner = new Scanner(System.in);
-//            String answer = scanner.next();
-//            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
-//                break;
-//            }
-            break;
+            answer = scanner.next();
+            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+                break;
+            }
         }
 
     }
