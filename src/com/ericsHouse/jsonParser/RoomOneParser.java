@@ -6,10 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class RoomTwoPrompts {
+public class RoomOneParser {
 
-    public static void roomTwoPrompt(String prompt) throws IOException {
-        File jsonActionsPromptTest = new File("../22SDE05-EscapeEric/resources/roomTwoPrompts.json");
+    public static void roomOnePrompt(String prompt) throws IOException {
+        File jsonActionsPromptTest = new File("../22SDE05-EscapeEric/resources/roomOnePrompts.json");
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(jsonActionsPromptTest);
 
@@ -17,10 +17,9 @@ public class RoomTwoPrompts {
     }
 
     public static void enterRoom() {
-        System.out.println("\nWelcome to Room 2:\n"
-                + "\nTo your left you see a table."
-                + "\nTo your right you see a Desk."
-                + "\nYou also see something shiny on the floor in front of you."
+        System.out.println("\nWelcome to Room 1:\n"
+                + "\nTo your left you see a bookshelf."
+                + "\nTo your right you see a table."
                 + "\nStraight ahead is the locked door to the next room."
         );
     }

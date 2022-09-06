@@ -1,4 +1,4 @@
 package com.ericsHouse.jsonParser;
 
-public class RoomFourPrompts {
+public class RoomFourParser {
 }

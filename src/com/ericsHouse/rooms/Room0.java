@@ -1,7 +1,8 @@
 package com.ericsHouse.rooms;
 
 import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomZeroPrompts;
+import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,12 +10,18 @@ import java.util.Scanner;
 
 public class Room0 {
 
-    public static String room = "Room0";
+    public static String room = "RoomTwo";
 
     public static void gameLogic() throws IOException {
-        RoomZeroPrompts.roomZeroPrompt("gameStart");
+        RoomZeroParser.getPrompt("gameStart");
         System.out.println("\nA small floating figure appears in front of you.\n");
-        RoomZeroPrompts.roomZeroPrompt("askShaq");
+        RoomZeroParser.getPrompt("askShaq");
+
+        String roomName = RoomZeroParser.getName(room);
+        ArrayNode items = RoomZeroParser.getItems(room);
+        System.out.println(roomName);
+        System.out.println(items);
+
 
         playerAction();
 
@@ -44,35 +51,37 @@ public class Room0 {
         }
     }
 
+
+
     public static void quit() {
         System.exit(0);
     }
 
     public static void inspectLeft() throws IOException {
-        RoomZeroPrompts.roomZeroPrompt("inspectLeft");
+        RoomZeroParser.getPrompt("inspectLeft");
         // add item found to player inventory.
         playerAction();
     }
 
     public static void inspectRight() throws IOException {
-        RoomZeroPrompts.roomZeroPrompt("inspectRight");
+        RoomZeroParser.getPrompt("inspectRight");
         playerAction();
     }
 
     public static void inspectFloor() throws IOException {
-        RoomZeroPrompts.roomZeroPrompt("inspectFloor");
+        RoomZeroParser.getPrompt("inspectFloor");
         playerAction();
     }
 
     public static void moveToNextRoom() throws IOException {
         //make conditional to handle challenge for room and lock/unlock door;
-        RoomZeroPrompts.roomZeroPrompt("openDoorLocked");
+        RoomZeroParser.getPrompt("openDoorLocked");
         playerAction();
     }
 
 
     public static void askShaq() throws IOException {
-        RoomZeroPrompts.roomZeroPrompt("askShaq");
+        RoomZeroParser.getPrompt("askShaq");
         playerAction();
     }
 
