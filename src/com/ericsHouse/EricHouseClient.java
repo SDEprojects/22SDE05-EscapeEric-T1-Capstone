@@ -1,11 +1,8 @@
 package com.ericsHouse;
 
 import com.ericsHouse.prompts.*;
-import com.ericsHouse.rooms.Rooms;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ericsHouse.rooms.Room0;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -22,13 +19,13 @@ public class EricHouseClient {
     // ask questions about AB145-148
     public static void main(String[] args) throws NoSuchMethodException, IOException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
-        Map<Character, Method> actions = new HashMap<>();
-        actions.put('0', Rooms.class.getMethod("quit"));
-        actions.put('1', Rooms.class.getMethod("inspectLeft"));
-        actions.put('2', Rooms.class.getMethod("inspectRight"));
-        actions.put('3', Rooms.class.getMethod("inspectFloor"));
-        actions.put('4', Rooms.class.getMethod("moveToNextRoom"));
-        actions.put('5', Rooms.class.getMethod("askShaq"));
+//        Map<Character, Method> actions = new HashMap<>();
+//        actions.put('0', Rooms.class.getMethod("quit"));
+//        actions.put('1', Rooms.class.getMethod("inspectLeft"));
+//        actions.put('2', Rooms.class.getMethod("inspectRight"));
+//        actions.put('3', Rooms.class.getMethod("inspectFloor"));
+//        actions.put('4', Rooms.class.getMethod("moveToNextRoom"));
+//        actions.put('5', Rooms.class.getMethod("askShaq"));
 
         while (true) {
             // AB#133 On game start, display title screen prompt
@@ -41,28 +38,30 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                currentRoom = "Room Zero";
-                RoomZeroPrompts.roomZeroPrompt("gameStart");
-                System.out.println("\nA small floating figure appears in front of you.\n");
-                RoomZeroPrompts.roomZeroPrompt("askShaq");
-                System.out.println("\nWhat would you like to do?");
-                ActionsPrompt.actionsPrompt();
+                Room0.gameLogic();
 
-                Scanner scanner2 = new Scanner(System.in);
-                String nextAction = scanner2.next();
-                if (nextAction.equalsIgnoreCase("0")) {
-                    break;
-                } else if (nextAction.equalsIgnoreCase("1")) {
-                    RoomZeroPrompts.roomZeroPrompt("inspectLeft");
-                } else if (nextAction.equalsIgnoreCase("2")) {
-                    RoomZeroPrompts.roomZeroPrompt("inspectRight");
-                } else if (nextAction.equalsIgnoreCase("3")) {
-                    RoomZeroPrompts.roomZeroPrompt("inspectFloor");
-                } else if (nextAction.equalsIgnoreCase("4")) {
-                    RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
-                } else if (nextAction.equalsIgnoreCase("5")) {
-                    RoomZeroPrompts.roomZeroPrompt("askShaq");
-                }
+//                currentRoom = "Room Zero";
+//                RoomZeroPrompts.roomZeroPrompt("gameStart");
+//                System.out.println("\nA small floating figure appears in front of you.\n");
+//                RoomZeroPrompts.roomZeroPrompt("askShaq");
+//                System.out.println("\nWhat would you like to do?");
+//                ActionsPrompt.actionsPrompt();
+//
+//                Scanner scanner2 = new Scanner(System.in);
+//                String nextAction = scanner2.next();
+//                if (nextAction.equalsIgnoreCase("0")) {
+//                    break;
+//                } else if (nextAction.equalsIgnoreCase("1")) {
+//                    RoomZeroPrompts.roomZeroPrompt("inspectLeft");
+//                } else if (nextAction.equalsIgnoreCase("2")) {
+//                    RoomZeroPrompts.roomZeroPrompt("inspectRight");
+//                } else if (nextAction.equalsIgnoreCase("3")) {
+//                    RoomZeroPrompts.roomZeroPrompt("inspectFloor");
+//                } else if (nextAction.equalsIgnoreCase("4")) {
+//                    RoomZeroPrompts.roomZeroPrompt("openDoorUnlocked");
+//                } else if (nextAction.equalsIgnoreCase("5")) {
+//                    RoomZeroPrompts.roomZeroPrompt("askShaq");
+//                }
             }
 
             // AB#134 introduce the game to the players
