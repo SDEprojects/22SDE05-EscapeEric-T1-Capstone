@@ -1,7 +1,9 @@
 package com.ericsHouse;
 
+import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.*;
 import com.ericsHouse.rooms.Room0;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -16,6 +18,9 @@ public class EricHouseClient {
     // ask questions about AB145-148
     public static void main(String[] args) throws IOException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
+
+        David david = new David();
+        david.getBackpack().add("item");
 
         while (true) {
             // AB#133 On game start, display title screen prompt
