@@ -14,7 +14,7 @@ public class EricHouseClient {
     // AB#144 might make a userInputValidation method
 
     // ask questions about AB145-148
-    public static void main(String[] args) throws NoSuchMethodException, IOException {
+    public static void main(String[] args) throws IOException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
 
         while (true) {
