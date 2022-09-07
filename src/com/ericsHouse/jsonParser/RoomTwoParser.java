@@ -2,27 +2,38 @@ package com.ericsHouse.jsonParser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.File;
 import java.io.IOException;
 
 public class RoomTwoParser {
+    static File roomTwoPrompts = new File("../22SDE05-EscapeEric/resources/roomTwoPrompts.json");
+    static File location = new File("../22SDE05-EscapeEric/resources/locations.json");
+    static ObjectMapper objectMapper = new ObjectMapper();
+    static JsonNode jsonNodePrompts;
+    static JsonNode jsonNodeInfo;
 
-    public static void roomTwoPrompt(String prompt) throws IOException {
-        File jsonActionsPromptTest = new File("../22SDE05-EscapeEric/resources/roomTwoPrompts.json");
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(jsonActionsPromptTest);
-
-        System.out.println(jsonNode.findValue(prompt).asText());
+    static {
+        try {
+            jsonNodePrompts = objectMapper.readTree(roomTwoPrompts);
+            jsonNodeInfo = objectMapper.readTree(location);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static void enterRoom() {
-        System.out.println("\nWelcome to Room 2:\n"
-                + "\nTo your left you see a table."
-                + "\nTo your right you see a Desk."
-                + "\nYou also see something shiny on the floor in front of you."
-                + "\nStraight ahead is the locked door to the next room."
-        );
+
+    public static void getPrompt(String prompt) {
+        System.out.println(jsonNodePrompts.findValue(prompt).asText());
+    }
+
+    public static ArrayNode getItems(String info) {
+        return (ArrayNode) jsonNodeInfo.findValue(info).findValue("items");
+    }
+
+    public static String getName(String info) {
+        return jsonNodeInfo.findValue(info).findValue("name").asText();
     }
 
 }
