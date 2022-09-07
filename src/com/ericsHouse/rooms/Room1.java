@@ -3,15 +3,11 @@ package com.ericsHouse.rooms;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
 import com.ericsHouse.jsonParser.RoomZeroParser;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Scanner;
 
 
@@ -25,7 +21,7 @@ public class Room1 {
 
     public static void gameLogic() throws IOException {
         RoomZeroParser.getPrompt("gameStart");
-        System.out.println("\nA small floating figure appears in front of you.\n");
+        System.out.println("\nYOU ARE IN ROOM1!!!!!.\n");
         RoomZeroParser.getPrompt("askShaq");
 
         System.out.println("\n" + roomItems);
