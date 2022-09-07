@@ -1,35 +1,41 @@
 package com.ericsHouse.rooms;
 
+import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
 import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 
 public class Room0 {
 
-    public static String room = "RoomTwo";
+    public static String room = "RoomZero";
+
+    public static String roomName = RoomZeroParser.getName(room);
+    public static ArrayNode items = RoomZeroParser.getItems(room);
+    public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
         RoomZeroParser.getPrompt("gameStart");
-        System.out.println("\nA small floating figure appears in front of you.\n");
+        System.out.println("\nA small floating figure appears in front of you.");
         RoomZeroParser.getPrompt("askShaq");
 
-        String roomName = RoomZeroParser.getName(room);
-        ArrayNode items = RoomZeroParser.getItems(room);
-        System.out.println(roomName);
-        System.out.println(items);
-
-
         playerAction();
-
 
     }
 
     public static void playerAction() throws IOException {
         while (true) {
+            System.out.println("\nCurrent Room: " + roomName);
+            System.out.println("David's Backpack: " + David.getBackpack());
             System.out.println("\nWhat would you like to do?");
             ActionsPrompt.actionsPrompt();
 
@@ -58,8 +64,18 @@ public class Room0 {
     }
 
     public static void inspectLeft() throws IOException {
-        RoomZeroParser.getPrompt("inspectLeft");
-        // add item found to player inventory.
+//        System.out.println("David Backpack: " + David.getBackpack());
+//        System.out.println("Room Items List: " + roomItems);
+        if (roomItems.contains("note")) {
+            RoomZeroParser.getPrompt("inspectLeft");
+            David.addBackpack("note");
+            roomItems.remove("note");
+//            System.out.println("David Backpack: " + David.getBackpack());
+//            System.out.println("Room Items List: " + roomItems);
+        } else {
+            RoomZeroParser.getPrompt("inspectLeftEmpty");
+        }
+
         playerAction();
     }
 
@@ -75,7 +91,13 @@ public class Room0 {
 
     public static void moveToNextRoom() throws IOException {
         //make conditional to handle challenge for room and lock/unlock door;
-        RoomZeroParser.getPrompt("openDoorLocked");
+        if (David.getBackpack().contains("note")) {
+            RoomZeroParser.getPrompt("openDoorUnlocked");
+            // end process and move back to EricHouseClient
+        } else {
+            RoomZeroParser.getPrompt("openDoorLocked");
+        }
+
         playerAction();
     }
 
