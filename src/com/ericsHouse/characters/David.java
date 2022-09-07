@@ -1,15 +1,22 @@
 package com.ericsHouse.characters;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
-
 import java.util.ArrayList;
 
 public class David {
 
-    private ArrayList<String> backpack = new ArrayList<>();
+    static David david = new David();
 
-    public ArrayList<String> getBackpack() {
+    private static ArrayList<String> backpack = new ArrayList<>();
+
+    public static ArrayList<String> getBackpack() {
         return backpack;
     }
 
+    public static void addBackpack(String item) {
+        backpack.add(item);
+    }
+
+    public boolean backpackContains(String item) {
+        return backpack.contains(item);
+    }
 }

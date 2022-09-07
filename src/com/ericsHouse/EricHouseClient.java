@@ -19,9 +19,6 @@ public class EricHouseClient {
     public static void main(String[] args) throws IOException {
         // AB#139 & 142 & 143 players can make choices e.g. ask shaq, inspect left/right, etc
 
-        David david = new David();
-        david.getBackpack().add("item");
-
         while (true) {
             // AB#133 On game start, display title screen prompt
             TitleScreen.titleScreen();
