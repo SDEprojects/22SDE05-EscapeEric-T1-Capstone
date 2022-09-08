@@ -5,6 +5,7 @@ import com.ericsHouse.jsonParser.*;
 import com.ericsHouse.rooms.Room0;
 import com.ericsHouse.rooms.Room1;
 import com.ericsHouse.rooms.Room2;
+import com.ericsHouse.rooms.Room4;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
@@ -32,9 +33,10 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                Room0.gameLogic();
-                Room1.gameLogic();
-                Room2.gameLogic();
+//                Room0.gameLogic();
+//                Room1.gameLogic();
+//                Room2.gameLogic();
+                Room4.gameLogic();
             }
 
             // AB#134 introduce the game to the players

@@ -19,10 +19,7 @@ public class Room4 {
     public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
-        RoomFourParser.getPrompt("gameStart");
-        System.out.println("\nA small floating figure appears in front of you.");
-        RoomFourParser.getPrompt("askShaq");
-
+        RoomFourParser.getPrompt("enterRoom");
         playerAction();
     }
 
@@ -68,7 +65,7 @@ public class Room4 {
     }
 
     public static void inspectFloor() throws IOException {
-        if (roomItems.contains("Rug")){
+        if (roomItems.contains("Key")){
             RoomFourParser.getPrompt("inspectFloor");
         David.addBackpack("Key");
         roomItems.remove("Key");

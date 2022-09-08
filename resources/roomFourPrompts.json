@@ -6,5 +6,5 @@
   "inspectFloorEmpty": "\nThe rug has been flipped over. There's nothing underneath.",
   "openDoorLocked": "\nThe door is locked.",
   "openDoorUnlocked": "\nYou use the key to open the lock. The door opens and you proceed to the next room...",
-  "askShaq": "\nMaybe take a peek under the rug?",
+  "askShaq": "\nMaybe take a peek under the rug?"
 }
