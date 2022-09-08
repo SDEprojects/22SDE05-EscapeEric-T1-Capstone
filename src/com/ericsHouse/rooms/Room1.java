@@ -94,7 +94,7 @@ public class Room1 {
     }
 
     public static void invalidCommand() throws IOException {
-        RoomZeroParser.getPrompt("invalidCommand");
+        RoomOneParser.getPrompt("invalidCommand");
         playerAction();
     }
 }
