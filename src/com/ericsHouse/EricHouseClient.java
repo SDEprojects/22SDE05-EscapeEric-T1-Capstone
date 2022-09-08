@@ -15,7 +15,6 @@ import java.util.Scanner;
 
 public class EricHouseClient {
 
-    public static String currentRoom = "";
     // AB#144 might make a userInputValidation method
 
     // ask questions about AB145-148

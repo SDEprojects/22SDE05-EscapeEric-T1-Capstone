@@ -17,42 +17,38 @@ public class Room2 {
     public static String room = "RoomTwo";
 
     public static String roomName = RoomTwoParser.getName(room);
+    static ArrayList<String> doorInventory = new ArrayList<>();
     public static ArrayList roomItems = new ObjectMapper().convertValue(RoomTwoParser.getItems(room), ArrayList.class);
 
     public static void gameLogic() throws IOException {
         RoomTwoParser.getPrompt("enterRoom");
 
-        //playerAction();
-
-        System.out.println("YOU HAVE REACHED ROOM TWO!!!!!!!!!!!!!!");
-
+        playerAction();
     }
 
     public static void playerAction() throws IOException {
-        while (true) {
-            System.out.println("\nCurrent Room: " + roomName);
-            System.out.println("David's Backpack: " + David.getBackpack());
-            System.out.println("\nWhat would you like to do?");
-            ActionsPrompt.actionsPrompt();
+        System.out.println("\nCurrent Room: " + roomName);
+        System.out.println("David's Backpack: " + David.getBackpack());
+        System.out.println("\nWhat would you like to do?");
+        ActionsPrompt.actionsPrompt();
 
-            Scanner scanner = new Scanner(System.in);
-            String nextAction = scanner.next();
-            if (nextAction.equalsIgnoreCase("0")) {
-                quit();
-            } else if (nextAction.equalsIgnoreCase("1")) {
-                inspectLeft();
-            } else if (nextAction.equalsIgnoreCase("2")) {
-                inspectRight();
-            } else if (nextAction.equalsIgnoreCase("3")) {
-                inspectFloor();
-            } else if (nextAction.equalsIgnoreCase("4")) {
-                moveToNextRoom();
-            } else if (nextAction.equalsIgnoreCase("5")) {
-                askShaq();
-            } else {
-                invalidCommand();
-                playerAction();
-            }
+        Scanner scanner = new Scanner(System.in);
+        String nextAction = scanner.next();
+        if (nextAction.equalsIgnoreCase("0")) {
+            quit();
+        } else if (nextAction.equalsIgnoreCase("1")) {
+            inspectLeft();
+        } else if (nextAction.equalsIgnoreCase("2")) {
+            inspectRight();
+        } else if (nextAction.equalsIgnoreCase("3")) {
+            inspectFloor();
+        } else if (nextAction.equalsIgnoreCase("4")) {
+            moveToNextRoom();
+        } else if (nextAction.equalsIgnoreCase("5")) {
+            askShaq();
+        } else {
+            invalidCommand();
+            playerAction();
         }
     }
 
@@ -63,12 +59,12 @@ public class Room2 {
     }
 
     public static void inspectLeft() throws IOException {
-        if (roomItems.contains("knife")) {
-            RoomOneParser.getPrompt("inspectLeft");
-            David.addBackpack("knife");
-            roomItems.remove("knife");
+        if (roomItems.contains("Onion")) {
+            RoomTwoParser.getPrompt("inspectLeft");
+            David.addBackpack("Onion");
+            roomItems.remove("Onion");
         } else {
-            RoomOneParser.getPrompt("inspectLeftEmpty");
+            RoomTwoParser.getPrompt("inspectLeftEmpty");
         }
 
 
@@ -76,33 +72,68 @@ public class Room2 {
     }
 
     public static void inspectRight() throws IOException {
-        RoomOneParser.getPrompt("inspectRight");
+        if (roomItems.contains("Pencil")) {
+            RoomTwoParser.getPrompt("inspectRight");
+            David.addBackpack("Pencil");
+            David.addBackpack("Emerald");
+            roomItems.remove("Pencil");
+            roomItems.remove("Emerald");
+        } else {
+            RoomTwoParser.getPrompt("inspectRightEmpty");
+        }
         playerAction();
     }
 
     public static void inspectFloor() throws IOException {
-        RoomOneParser.getPrompt("inspectFloor");
+        if (roomItems.contains("Needle")) {
+            RoomTwoParser.getPrompt("inspectFloor");
+            David.addBackpack("Needle");
+            roomItems.remove("Needle");
+        } else {
+            RoomTwoParser.getPrompt("inspectFloorEmpty");
+        }
         playerAction();
     }
 
     public static void moveToNextRoom() throws IOException {
-        if (David.getBackpack().contains("knife")) {
-            RoomOneParser.getPrompt("openDoorUnlocked");
-            // end process and move back to EricHouseClient
+        if (David.getBackpack().contains("Onion")
+                && David.getBackpack().contains("Pencil")
+                && David.getBackpack().contains("Emerald")
+                && David.getBackpack().contains("Needle")) {
+            RoomTwoParser.getPrompt("openDoorLockedWithItems");
+            addItemToDoor();
+            if (doorInventory.indexOf("Onion") == 0
+                    && doorInventory.indexOf("Pencil") == 1
+                    && doorInventory.indexOf("Emerald") == 2
+                    && doorInventory.indexOf("Needle") == 3) {
+                RoomTwoParser.getPrompt("openDoorUnlocked");
+            } else {
+                doorInventory.clear();
+                RoomTwoParser.getPrompt("openDoorLockedIncorrectOrder");
+                playerAction();
+            }
         } else {
-            RoomOneParser.getPrompt("openDoorLocked");
+            RoomTwoParser.getPrompt("openDoorLocked");
+            playerAction();
         }
-
-        playerAction();
-
     }
 
     public static void askShaq() throws IOException {
-        RoomOneParser.getPrompt("askShaq");
+        RoomTwoParser.getPrompt("askShaq");
         playerAction();
     }
 
-    public static void invalidCommand() throws IOException {
-        RoomZeroParser.getPrompt("invalidCommand");
+    public static void invalidCommand() {
+        RoomTwoParser.getPrompt("invalidCommand");
     }
+
+    public static void addItemToDoor() {
+        for (int i = 1; i < 5; i++) {
+            System.out.println("Item " + i +":");
+            Scanner scanner = new Scanner(System.in);
+            String item = scanner.next();
+            doorInventory.add(item);
+        }
+    }
+
 }
