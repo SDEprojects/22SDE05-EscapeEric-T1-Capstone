@@ -6,5 +6,6 @@
   "inspectFloor": "\nThere is nothing on the floor.",
   "openDoorLocked": "\nThe door is locked.",
   "openDoorUnlocked": "\nThe door opens and you proceed to the next room...",
-  "askShaq": "\nWhat's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note."
+  "askShaq": "\nWhat's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
+  "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
 }

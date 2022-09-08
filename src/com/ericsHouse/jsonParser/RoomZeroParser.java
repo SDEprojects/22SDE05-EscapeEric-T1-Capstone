@@ -4,20 +4,21 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class RoomZeroParser {
-    static File roomZeroPrompts = new File("../22SDE05-EscapeEric/resources/roomZeroPrompts.json");
-    static File roomZeroInformation = new File("../22SDE05-EscapeEric/resources/locations.json");
+    static InputStream iStreamPrompts = getFileFromResourceAsStream("roomZeroPrompts.json");
+    static InputStream iStreamLocations = getFileFromResourceAsStream("locations.json");
     static ObjectMapper objectMapper = new ObjectMapper();
+    static Reader readerPrompts = new InputStreamReader(iStreamPrompts);
+    static Reader readerLocations = new InputStreamReader(iStreamLocations);
     static JsonNode jsonNodePrompts;
-    static JsonNode jsonNodeInfo;
+    static JsonNode jsonNodeLocations;
 
     static {
         try {
-            jsonNodePrompts = objectMapper.readTree(roomZeroPrompts);
-            jsonNodeInfo = objectMapper.readTree(roomZeroInformation);
+            jsonNodePrompts = objectMapper.readTree(readerPrompts);
+            jsonNodeLocations = objectMapper.readTree(readerLocations);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -29,11 +30,20 @@ public class RoomZeroParser {
     }
 
     public static ArrayNode getItems(String info) {
-        return (ArrayNode) jsonNodeInfo.findValue(info).findValue("items");
+        return (ArrayNode) jsonNodeLocations.findValue(info).findValue("items");
     }
 
     public static String getName(String info) {
-        return jsonNodeInfo.findValue(info).findValue("name").asText();
+        return jsonNodeLocations.findValue(info).findValue("name").asText();
     }
 
+    private static InputStream getFileFromResourceAsStream(String fileName) {
+        ClassLoader classLoader = RoomZeroParser.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+    }
 }
