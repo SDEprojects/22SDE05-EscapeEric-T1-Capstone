@@ -3,6 +3,7 @@ package com.ericsHouse;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.*;
 import com.ericsHouse.rooms.Room0;
+import com.ericsHouse.rooms.Room1;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class EricHouseClient {
                 break;
             } else {
                 Room0.gameLogic();
+                Room1.gameLogic();
             }
 
             // AB#134 introduce the game to the players
