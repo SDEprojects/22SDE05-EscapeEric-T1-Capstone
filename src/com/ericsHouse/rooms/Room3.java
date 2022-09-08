@@ -1,5 +1,7 @@
 package com.ericsHouse.rooms;
 
+
+
 //public class Room3 implements Rooms{
 //    @Override
 //    public void quit() {

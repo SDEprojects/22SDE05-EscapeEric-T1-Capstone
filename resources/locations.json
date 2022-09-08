@@ -16,7 +16,7 @@
     "items": []
   },
   "RoomFour": {
-    "name": "NEED ROOM NAME - ERIC",
-    "items": []
+    "name": "Key Room",
+    "items": ["Key"]
   }
 }
