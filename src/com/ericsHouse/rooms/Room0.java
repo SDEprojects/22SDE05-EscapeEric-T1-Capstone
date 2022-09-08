@@ -48,6 +48,8 @@ public class Room0 {
             moveToNextRoom();
         } else if (nextAction.equalsIgnoreCase("5")) {
             askShaq();
+        } else {
+            invalidCommand();
         }
     }
 
@@ -79,20 +81,21 @@ public class Room0 {
     }
 
     public static void moveToNextRoom() throws IOException {
-        //make conditional to handle challenge for room and lock/unlock door;
         if (David.getBackpack().contains("note")) {
             RoomZeroParser.getPrompt("openDoorUnlocked");
-            // end process and move back to EricHouseClient
         } else {
             RoomZeroParser.getPrompt("openDoorLocked");
             playerAction();
         }
     }
 
-
     public static void askShaq() throws IOException {
         RoomZeroParser.getPrompt("askShaq");
         playerAction();
     }
 
+    public static void invalidCommand() throws IOException {
+        RoomZeroParser.getPrompt("invalidCommand");
+        playerAction();
+    }
 }
