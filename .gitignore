@@ -23,3 +23,6 @@
 hs_err_pid*
 /.idea/
 22SDE05-EscapeEric.iml
+/out/
+.DS_STORE
+/META-INF/

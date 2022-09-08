@@ -1,0 +1,10 @@
+{
+  "enterRoom": "\nWelcome to Room 4:\n\nTo your left you see a wall.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
+  "inspectLeft": "\nThere's nothing to the left.",
+  "inspectRight": "\nThere's nothing on the table",
+  "inspectFloor": "\nYou inspect the floor. There is a rug with a corner that is slightly pulled up. You pull up the corner and find a key.",
+  "inspectFloorEmpty": "\nThe rug has been flipped over. There's nothing underneath.",
+  "openDoorLocked": "\nThe door is locked.",
+  "openDoorUnlocked": "\nYou use the key to open the lock. The door opens and you feel the cool breeze of fresh air on your face. You have escaped Eric!",
+  "askShaq": "\nMaybe take a peek under the rug?"
+}
