@@ -55,7 +55,7 @@ public class Room4 {
     }
 
     public static void inspectLeft() throws IOException {
-        RoomFourParser.getPrompt("inspectLeftEmpty");
+        RoomFourParser.getPrompt("inspectLeft");
         playerAction();
     }
 

@@ -2,10 +2,7 @@ package com.ericsHouse;
 
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.*;
-import com.ericsHouse.rooms.Room0;
-import com.ericsHouse.rooms.Room1;
-import com.ericsHouse.rooms.Room2;
-import com.ericsHouse.rooms.Room4;
+import com.ericsHouse.rooms.*;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
@@ -23,6 +20,7 @@ public class EricHouseClient {
 
         while (true) {
             // AB#133 On game start, display title screen prompt
+            // AB#134 introduce the game to the players
             TitleScreen.titleScreen();
 
             // AB#135 players choose to play a new game or not
@@ -32,20 +30,17 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-//                Room0.gameLogic();
-//                Room1.gameLogic();
-//                Room2.gameLogic();
+                Room0.gameLogic();
+                Room1.gameLogic();
+                Room2.gameLogic();
+                Room3.gameLogic();
                 Room4.gameLogic();
             }
-
-            // AB#134 introduce the game to the players
-
-            // AB#137-140  player can get help by typing "help" or "h" / this will display the commands
 
             // AB#141 player should be able to see where they currently are, display the challenge
 
             // AB#135-136 when the game is over, ask if the player wants to play again or quit
-//            System.out.println("Game Over! Do you want to play again? Press y/n ");
+            System.out.println("Game Over! Do you want to play again? Press y/n ");
             answer = scanner.next();
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
