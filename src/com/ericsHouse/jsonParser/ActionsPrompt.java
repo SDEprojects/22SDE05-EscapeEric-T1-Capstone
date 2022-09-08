@@ -7,12 +7,8 @@ import java.io.*;
 
 public class ActionsPrompt {
     public static void actionsPrompt() throws IOException {
-//        File jsonActionsPromptTest = new File("../22SDE05-EscapeEric/resources/actionsPrompt.json");
-//
-//        ObjectMapper objectMapper = new ObjectMapper();
-//
-//        JsonNode jsonNode = objectMapper.readTree(jsonActionsPromptTest);
-        InputStream iStreamActions = getFileFromResourceAsStream("actionsPrompt.json");
+        // AB#137-140  player can get help by typing "help" or "h" / this will display the commands
+        InputStream iStreamActions = getFileFromResourceAsStream();
         ObjectMapper objectMapper = new ObjectMapper();
         Reader readerActions = new InputStreamReader(iStreamActions);
         JsonNode jsonNode = objectMapper.readTree(readerActions);
@@ -25,13 +21,12 @@ public class ActionsPrompt {
         System.out.println(jsonNode.findValue("5").asText());
     }
 
-    private static InputStream getFileFromResourceAsStream(String fileName) {
+    private static InputStream getFileFromResourceAsStream() {
         ClassLoader classLoader = RoomZeroParser.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        InputStream inputStream = classLoader.getResourceAsStream("actionsPrompt.json");
         if (inputStream == null) {
-            throw new IllegalArgumentException("file not found! " + fileName);
+            throw new IllegalArgumentException("file not found! " + "actionsPrompt.json");
         } else {
-            System.out.println("Found " + fileName);
             return inputStream;
         }
     }
