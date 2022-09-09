@@ -2,9 +2,7 @@ package com.ericsHouse.rooms;
 
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomOneParser;
 import com.ericsHouse.jsonParser.RoomTwoParser;
-import com.ericsHouse.jsonParser.RoomZeroParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
