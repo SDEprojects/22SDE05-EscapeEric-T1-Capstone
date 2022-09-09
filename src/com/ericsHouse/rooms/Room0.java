@@ -1,5 +1,6 @@
 package com.ericsHouse.rooms;
 
+import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
 import com.ericsHouse.jsonParser.RoomZeroParser;
@@ -29,6 +30,7 @@ public class Room0 {
     }
 
     public static void playerAction() throws IOException {
+        EricHouseClient.clearConsole();
         System.out.println("\nCurrent Room: " + roomName);
         System.out.println("David's Backpack: " + David.getBackpack());
         System.out.println("\nWhat would you like to do?");

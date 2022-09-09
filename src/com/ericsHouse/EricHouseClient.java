@@ -20,6 +20,22 @@ public class EricHouseClient {
         }
     }
 
+    public static void clearConsole()
+    {
+        try {
+            final String os = System.getProperty("os.name");
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            }
+            else {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e) {
+            System.out.println("Couldn't refresh the console");
+        }
+    }
+
     // AB#144 might make a userInputValidation method
 
     // ask questions about AB145-148
@@ -38,11 +54,11 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                Room0.gameLogic();
-                Room1.gameLogic();
-                Room2.gameLogic();
+//                Room0.gameLogic();
+//                Room1.gameLogic();
+//                Room2.gameLogic();
                 Room3.gameLogic();
-                Room4.gameLogic();
+//                Room4.gameLogic();
             }
 
             // AB#141 player should be able to see where they currently are, display the challenge
