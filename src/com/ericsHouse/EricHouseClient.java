@@ -1,9 +1,7 @@
 package com.ericsHouse;
 
-import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.*;
 import com.ericsHouse.rooms.*;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,6 +9,15 @@ import java.util.Scanner;
 
 
 public class EricHouseClient {
+    public static int chancesRemaining = 5;
+
+    public static void ericAppearsCheck() {
+        chancesRemaining -= 1;
+
+        if (chancesRemaining == 0) {
+            EricAppearsParser.getPrompt("ericAppears");
+        }
+    }
 
     // AB#144 might make a userInputValidation method
 
@@ -30,11 +37,11 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                Room0.gameLogic();
-                Room1.gameLogic();
-                Room2.gameLogic();
+//                Room0.gameLogic();
+//                Room1.gameLogic();
+//                Room2.gameLogic();
                 Room3.gameLogic();
-                Room4.gameLogic();
+//                Room4.gameLogic();
             }
 
             // AB#141 player should be able to see where they currently are, display the challenge
