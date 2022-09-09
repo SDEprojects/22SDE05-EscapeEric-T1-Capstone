@@ -108,6 +108,9 @@ public class Room3 {
     public static void moveToNextRoom() throws IOException {
         if (question1Correct && question2Correct && question3Correct) {
             RoomThreeParser.getPrompt("openDoorUnlocked");
+            question1Correct = false;
+            question2Correct = false;
+            question3Correct = false;
         } else {
             RoomThreeParser.getPrompt("openDoorLocked");
             playerAction();
