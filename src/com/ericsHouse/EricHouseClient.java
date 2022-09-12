@@ -1,9 +1,7 @@
 package com.ericsHouse;
 
-import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.*;
 import com.ericsHouse.rooms.*;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,6 +9,32 @@ import java.util.Scanner;
 
 
 public class EricHouseClient {
+    public static int chancesRemaining = 5;
+
+    public static void ericAppearsCheck() {
+        chancesRemaining -= 1;
+        // figure out how to make this start the game over, instead of just killing the entire process
+        if (chancesRemaining == 0) {
+            EricAppearsParser.getPrompt("ericAppears");
+            System.exit(0);
+        }
+    }
+
+    public static void clearConsole()
+    {
+        try {
+            final String os = System.getProperty("os.name");
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            }
+            else {
+                Runtime.getRuntime().exec("clear");
+            }
+        }
+        catch (final Exception e) {
+            System.out.println("Couldn't refresh the console");
+        }
+    }
 
     // AB#144 might make a userInputValidation method
 
@@ -24,17 +48,17 @@ public class EricHouseClient {
             TitleScreen.titleScreen();
 
             // AB#135 players choose to play a new game or not
-            System.out.println("\nWould you like to play a new game? Press y/n ");
+            System.out.println("\nWould you like to start the game? Press y/n ");
             Scanner scanner = new Scanner(System.in);
             String answer = scanner.next();
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                Room0.gameLogic();
-                Room1.gameLogic();
-                Room2.gameLogic();
+//                Room0.gameLogic();
+//                Room1.gameLogic();
+//                Room2.gameLogic();
                 Room3.gameLogic();
-                Room4.gameLogic();
+//                Room4.gameLogic();
             }
 
             // AB#141 player should be able to see where they currently are, display the challenge
@@ -46,6 +70,5 @@ public class EricHouseClient {
                 break;
             }
         }
-
     }
 }
