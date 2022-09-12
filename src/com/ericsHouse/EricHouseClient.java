@@ -20,18 +20,19 @@ public class EricHouseClient {
         }
     }
 
-    public static void clearConsole()
-    {
+    public static void clearConsole() {
         try {
             final String os = System.getProperty("os.name");
-            if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
+            if(os.contains("Windows")){
+                ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
+                Process startProcess = pb.inheritIO().start();
+                startProcess.waitFor();
+            } else {
+                ProcessBuilder pb = new ProcessBuilder("clear");
+                Process startProcess = pb.inheritIO().start();
+                startProcess.waitFor();
             }
-            else {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e) {
+        } catch (final Exception e) {
             System.out.println("Couldn't refresh the console");
         }
     }

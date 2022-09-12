@@ -30,6 +30,7 @@ public class Room3 {
 
     public static void playerAction() throws IOException {
         EricHouseClient.clearConsole();
+
         System.out.println("\nCurrent Room: " + roomName);
         System.out.println("Eric is " + EricHouseClient.chancesRemaining + " rooms away");
         System.out.println("David's Backpack: " + David.getBackpack());

@@ -1,0 +1,19 @@
+<<<<<<< Updated upstream
+=======
+{
+  "enterRoom": "\nYou made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
+  "inspectLeft": "\nYou inspect the Annabelle doll to your left. You find a note, the note reads\n\tWhat gets wetter the more it dries?\n\n",
+  "inspectLeftCorrect": "You have correctly answered this question, the door started shaking",
+  "inspectLeftHint" : "You have chosen the wrong answer, think about a sponge or something...\"",
+  "inspectRight": "\nYou look over to the right and find a Leprechaun, it looks like it's alive. You pry the note from its hand, the note reads\n\tThe person who makes it has no need for it; the person who buys it has no use for it. The person who uses it can neither see nor feel it. What is it? ",
+  "inspectRightCorrect": "You have correctly answered this question, the door slowly opens a little, still can't fit through",
+  "inspectRightHint" : "You have chosen the wrong answer, would you rather be 6ft High or 6ft below",
+  "inspectFloor": "\nOn the floor there is a Ouija board, it spells out\n\tDavid's parents have three sons: Snap, Crackle, and what’s the name of the third son?",
+  "inspectFloorCorrect": "You have correctly answered this question, you can start to see through to the other room",
+  "inspectFloorHint" : "You have chosen the wrong answer, if you choose Pop you need to stop",
+  "openDoorLocked": "\nThe door is locked with a big rusty padlock. There must be some way to open it...",
+  "openDoorUnlocked": "\nYou have successfully completed all 3 Riddles in the room, you may advance to the next room",
+  "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is less <=6 letters",
+  "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
+}
+>>>>>>> Stashed changes
