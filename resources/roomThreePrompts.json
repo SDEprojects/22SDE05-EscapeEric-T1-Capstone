@@ -11,6 +11,6 @@
   "inspectFloorHint" : "You have chosen the wrong answer, if you choose Pop you need to stop",
   "openDoorLocked": "\nThe door is locked with a big rusty padlock. There must be some way to open it...",
   "openDoorUnlocked": "\nYou have successfully completed all 3 Riddles in the room, you may advance to the next room",
-  "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is less <=6 letters",
+  "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is <=6 letters",
   "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
 }
