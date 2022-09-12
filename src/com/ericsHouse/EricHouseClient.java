@@ -21,6 +21,11 @@ public class EricHouseClient {
     }
 
     public static void clearConsole() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n<Press Any Key Then Type Enter To Continue>");
+        scanner.next();
+
         try {
             final String os = System.getProperty("os.name");
             if(os.contains("Windows")){
