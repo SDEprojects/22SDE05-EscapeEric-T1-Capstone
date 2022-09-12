@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 {
   "enterRoom": "\nYou made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
   "inspectLeft": "\nYou inspect the Annabelle doll to your left. You find a note, the note reads\n\tWhat gets wetter the more it dries?\n\n",
@@ -16,4 +14,3 @@
   "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is less <=6 letters",
   "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
 }
->>>>>>> Stashed changes
