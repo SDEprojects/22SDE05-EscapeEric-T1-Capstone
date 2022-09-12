@@ -1,13 +1,12 @@
 package com.ericsHouse.rooms;
 
+import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
 import com.ericsHouse.jsonParser.RoomThreeParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import java.util.Scanner;
 
@@ -22,18 +21,18 @@ public class Room3 {
 
     public static String roomName = RoomThreeParser.getName(room);
     public static ArrayNode items = RoomThreeParser.getItems(room);
-    public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
         RoomThreeParser.getPrompt("enterRoom");
-        RoomThreeParser.getPrompt("askShaq");
-
 
         playerAction();
     }
 
     public static void playerAction() throws IOException {
+        EricHouseClient.clearConsole();
+
         System.out.println("\nCurrent Room: " + roomName);
+        System.out.println("Eric is " + EricHouseClient.chancesRemaining + " rooms away");
         System.out.println("David's Backpack: " + David.getBackpack());
         System.out.println("\nWhat would you like to do?");
         ActionsPrompt.actionsPrompt();
@@ -57,8 +56,6 @@ public class Room3 {
         }
     }
 
-
-
     public static void quit() {
         System.exit(0);
     }
@@ -69,10 +66,11 @@ public class Room3 {
 
         Scanner scanner = new Scanner(System.in);
         if (scanner.next().toLowerCase().equals(answer)) {
-            System.out.println("You have correctly answered this question");
+            RoomThreeParser.getPrompt("inspectLeftCorrect");
             question1Correct = true;
         } else {
-            System.out.println("You have chosen the wrong answer");
+            EricHouseClient.ericAppearsCheck();
+            RoomThreeParser.getPrompt("inspectLeftHint");
         }
         playerAction();
     }
@@ -83,10 +81,11 @@ public class Room3 {
 
         Scanner scanner = new Scanner(System.in);
         if (scanner.next().toLowerCase().equals(answer)) {
-            System.out.println("You have correctly answered this question");
+            RoomThreeParser.getPrompt("inspectRightCorrect");
             question2Correct = true;
         } else {
-            System.out.println("You have chosen the wrong answer");
+            EricHouseClient.ericAppearsCheck();
+            RoomThreeParser.getPrompt("inspectRightHint");
         }
         playerAction();
     }
@@ -97,10 +96,11 @@ public class Room3 {
 
         Scanner scanner = new Scanner(System.in);
         if (scanner.next().toLowerCase().equals(answer)) {
-            System.out.println("You have correctly answered this question");
+            RoomThreeParser.getPrompt("inspectFloorCorrect");
             question3Correct = true;
         } else {
-            System.out.println("You have chosen the wrong answer");
+            EricHouseClient.ericAppearsCheck();
+            RoomThreeParser.getPrompt("inspectFloorHint");
         }
         playerAction();
     }
@@ -108,6 +108,9 @@ public class Room3 {
     public static void moveToNextRoom() throws IOException {
         if (question1Correct && question2Correct && question3Correct) {
             RoomThreeParser.getPrompt("openDoorUnlocked");
+            question1Correct = false;
+            question2Correct = false;
+            question3Correct = false;
         } else {
             RoomThreeParser.getPrompt("openDoorLocked");
             playerAction();

@@ -1,10 +1,9 @@
 package com.ericsHouse.rooms;
 
+import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomOneParser;
 import com.ericsHouse.jsonParser.RoomTwoParser;
-import com.ericsHouse.jsonParser.RoomZeroParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -27,7 +26,10 @@ public class Room2 {
     }
 
     public static void playerAction() throws IOException {
+        EricHouseClient.clearConsole();
+
         System.out.println("\nCurrent Room: " + roomName);
+        System.out.println("Eric is " + EricHouseClient.chancesRemaining + " rooms away");
         System.out.println("David's Backpack: " + David.getBackpack());
         System.out.println("\nWhat would you like to do?");
         ActionsPrompt.actionsPrompt();
@@ -108,6 +110,7 @@ public class Room2 {
                     && doorInventory.indexOf("Needle") == 3) {
                 RoomTwoParser.getPrompt("openDoorUnlocked");
             } else {
+                EricHouseClient.ericAppearsCheck();
                 doorInventory.clear();
                 RoomTwoParser.getPrompt("openDoorLockedIncorrectOrder");
                 playerAction();

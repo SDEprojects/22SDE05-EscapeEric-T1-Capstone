@@ -1,9 +1,9 @@
 package com.ericsHouse.rooms;
 
+import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
 import com.ericsHouse.jsonParser.RoomOneParser;
-import com.ericsHouse.jsonParser.RoomZeroParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -26,6 +26,7 @@ public class Room1 {
     }
 
     public static void playerAction() throws IOException {
+        EricHouseClient.clearConsole();
         System.out.println("\nCurrent Room: " + roomName);
         System.out.println("David's Backpack: " + David.getBackpack());
         System.out.println("\nWhat would you like to do?");
