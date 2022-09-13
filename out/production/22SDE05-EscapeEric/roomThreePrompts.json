@@ -9,8 +9,8 @@
   "inspectFloor": "\nOn the floor there is a Ouija board, it spells out\n\tDavid's parents have three sons: Snap, Crackle, and what’s the name of the third son?",
   "inspectFloorCorrect": "You have correctly answered this question, you can start to see through to the other room",
   "inspectFloorHint" : "You have chosen the wrong answer, if you choose Pop you need to stop",
-  "openDoorLocked": "\nThe door is locked with a big rusty padlock. There must be some way to open it...",
+  "openDoorLocked": "\nSolve the three riddles to open this door.",
   "openDoorUnlocked": "\nYou have successfully completed all 3 Riddles in the room, you may advance to the next room",
-  "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is less <=6 letters",
+  "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is <=6 letters",
   "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
 }

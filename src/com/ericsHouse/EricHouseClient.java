@@ -23,22 +23,25 @@ public class EricHouseClient {
     public static void clearConsole() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n<Press Any Key Then Type Enter To Continue>");
-        scanner.next();
-
-        try {
-            final String os = System.getProperty("os.name");
-            if(os.contains("Windows")){
-                ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
-                Process startProcess = pb.inheritIO().start();
-                startProcess.waitFor();
-            } else {
-                ProcessBuilder pb = new ProcessBuilder("clear");
-                Process startProcess = pb.inheritIO().start();
-                startProcess.waitFor();
+        System.out.println("\n<Hit Enter To Continue>");
+        String readString = scanner.nextLine();
+        if (readString.equals("")) {
+            try {
+                final String os = System.getProperty("os.name");
+                if (os.contains("Windows")) {
+                    ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
+                    Process startProcess = pb.inheritIO().start();
+                    startProcess.waitFor();
+                } else {
+                    ProcessBuilder pb = new ProcessBuilder("clear");
+                    Process startProcess = pb.inheritIO().start();
+                    startProcess.waitFor();
+                }
+            } catch (final Exception e) {
+                System.out.println("Couldn't refresh the console");
             }
-        } catch (final Exception e) {
-            System.out.println("Couldn't refresh the console");
+        } else {
+            clearConsole();
         }
     }
 
@@ -60,11 +63,11 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-//                Room0.gameLogic();
-//                Room1.gameLogic();
-//                Room2.gameLogic();
+                Room0.gameLogic();
+                Room1.gameLogic();
+                Room2.gameLogic();
                 Room3.gameLogic();
-//                Room4.gameLogic();
+                Room4.gameLogic();
             }
 
             // AB#141 player should be able to see where they currently are, display the challenge
