@@ -22,6 +22,7 @@ public class Room0 {
     public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
+        EricHouseClient.clearConsole();
         RoomZeroParser.getPrompt("gameStart");
         System.out.println("\nA small floating figure appears in front of you.");
         RoomZeroParser.getPrompt("askShaq");

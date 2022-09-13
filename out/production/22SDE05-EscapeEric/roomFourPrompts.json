@@ -1,10 +1,15 @@
 {
-  "enterRoom": "\nWelcome to Room 4:\n\nTo your left you see a wall.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
-  "inspectLeft": "\nThere's nothing to the left.",
-  "inspectRight": "\nThere's nothing on the table",
-  "inspectFloor": "\nYou inspect the floor. There is a rug with a corner that is slightly pulled up. You pull up the corner and find a key.",
-  "inspectFloorEmpty": "\nThe rug has been flipped over. There's nothing underneath.",
-  "openDoorLocked": "\nThe door is locked.",
-  "openDoorUnlocked": "\nYou use the key to open the lock. The door opens and you feel the cool breeze of fresh air on your face. You have escaped Eric!",
-  "askShaq": "\nMaybe take a peek under the rug?"
+  "enterRoom": "\nWelcome to Room 4 - Game Room:\n\nAn anvil sits in the middle of the room\nTo your right is a big storage shelf full of odds and ends\nTo your left you see an old dresser\nStraight ahead is the locked door to the next room.",
+  "inspectLeft": "\nYou open the door of the old dresser and find a pair of mirrored glasses and put them on.\nVery Stylish!",
+  "inspectLeftEmpty": "\nTheres nothing left in the empty old dresser.",
+  "inspectRight": "\nThe shelf contains several piles of supplies. You collect some paper, a thin sheet of metal, and a wrench.",
+  "inspectRightEmpty": "\nNothing else of good use on the shelf.",
+  "inspectFloor": "\nYou walk up to the anvil in the center of the room. Could come in handy to craft something.\nWould you like to craft something? (y/n)",
+  "inspectFloorCraftHat": "\nYou've crafted a metal hat! You put it on, a perfect fit.",
+  "inspectFloorCraftAirplane": "\nYou've crafted a paper airplane. You throw it at the locked door... it does nothing.",
+  "inspectFloorCraftFail": "\nYou cant craft anything with this combo.",
+  "openDoorLocked": "\nA mirror hangs on the door with a reflection of yourself.\nYour reflection smiles back and holds up one hand flat with the other fist sitting on top.\nHe is challenging you to rock-paper-scissors! (Best 2 out of 3)",
+  "openDoorLockedLoser": "\nThe Door has won this round.",
+  "openDoorUnlocked": "\nYOU WIN! The door opens and you feel the cool breeze of fresh air on your face.\nYou step outside the house and realize you have escaped.You have escaped Eric!",
+  "askShaq": "\nThat is no ordinary mirror on the door... i think its somehow reading your mind!\nIf you can find a way to keep it out of your head i bet you can beat it!"
 }

@@ -2,7 +2,7 @@
   "enterRoom": "\nWelcome to Room 2 - Word Order Room:\n\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
   "inspectLeft": "\nYou inspect the table to your left.\nYou find an Onion and put it in your backpack.\nMight come in handy or make a good snack later.",
   "inspectLeftEmpty": "\nYou inspect the table to your left and find it empty.",
-  "inspectRight": "\nYou inspect the desk on the right.\nYou find a Pencil sitting on top and an Emerald in the top drawer.\nYou put them both in your backpack.",
+  "inspectRight": "\nYou inspect the desk on the right.\nYou find a Hammer and a Pencil sitting on top and an Emerald in the top drawer.\nYou put them both in your backpack.",
   "inspectRightEmpty": "\nJust an old empty Desk over there.",
   "inspectFloor": "\nYou inspect the floor.\nYou find a Needle on the ground and put it in your backpack.\nThat would've been uncomfortable to step on.",
   "inspectFloorEmpty": "\nNothing on the floor but dirt... Eric could stand to sweep up...",

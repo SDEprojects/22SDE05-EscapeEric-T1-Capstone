@@ -4,19 +4,27 @@ import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
 import com.ericsHouse.jsonParser.RoomFourParser;
+import com.ericsHouse.jsonParser.RoomTwoParser;
+import com.ericsHouse.jsonParser.RoomZeroParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
+import javax.print.attribute.standard.SheetCollate;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Room4 {
     public static String room = "RoomFour";
+    public static int playerWins = 0;
+    public static int doorWins = 0;
 
     public static String roomName = RoomFourParser.getName(room);
     public static ArrayNode items = RoomFourParser.getItems(room);
+    static ArrayList<String> anvilMaterial = new ArrayList<>();
+    static ArrayList<String> anvilTool = new ArrayList<>();
     public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
@@ -29,6 +37,7 @@ public class Room4 {
         System.out.println("\nCurrent Room: " + roomName);
         System.out.println("Eric is " + EricHouseClient.chancesRemaining + " rooms away");
         System.out.println("David's Backpack: " + David.getBackpack());
+        System.out.println("David is wearing: " + David.getWornItems());
         System.out.println("\nWhat would you like to do?");
         ActionsPrompt.actionsPrompt();
 
@@ -51,39 +60,56 @@ public class Room4 {
         }
     }
 
-
-
     public static void quit() {
         System.exit(0);
     }
 
     public static void inspectLeft() throws IOException {
-        RoomFourParser.getPrompt("inspectLeft");
+        if (roomItems.contains("Mirrored Glasses")) {
+            RoomFourParser.getPrompt("inspectLeft");
+            David.addWornItems("Mirrored Glasses");
+            roomItems.remove("Mirrored Glasses");
+        } else {
+            RoomFourParser.getPrompt("inspectLeftEmpty");
+        }
         playerAction();
     }
 
     public static void inspectRight() throws IOException {
-        RoomFourParser.getPrompt("inspectRight");
+        if (roomItems.contains("Paper")) {
+            RoomFourParser.getPrompt("inspectRight");
+            David.addBackpack("Paper");
+            David.addBackpack("SheetMetal");
+            David.addBackpack("Wrench");
+            roomItems.remove("Paper");
+            roomItems.remove("SheetMetal");
+            roomItems.remove("Wrench");
+        } else {
+            RoomFourParser.getPrompt("inspectRightEmpty");
+        }
         playerAction();
     }
 
     public static void inspectFloor() throws IOException {
-        if (roomItems.contains("Key")){
-            RoomFourParser.getPrompt("inspectFloor");
-        David.addBackpack("Key");
-        roomItems.remove("Key");
-    } else {
-        RoomFourParser.getPrompt("inspectFloorEmpty");
-    }
-        playerAction();
+        RoomFourParser.getPrompt("inspectFloor");
+
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.next();
+        if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
+            craftItem();
+            playerAction();
+        } else {
+            playerAction();
+        }
     }
 
     public static void moveToNextRoom() throws IOException {
-        if (David.getBackpack().contains("Key")) {
-            RoomFourParser.getPrompt("openDoorUnlocked");
+        if (David.getWornItems().contains("Metal Hat") && David.getWornItems().contains("Mirrored Glasses")) {
+            RoomFourParser.getPrompt("openDoorLocked");
+            RPSFair();
         } else {
             RoomFourParser.getPrompt("openDoorLocked");
-            playerAction();
+            RPSUnfair();
         }
     }
 
@@ -94,6 +120,109 @@ public class Room4 {
 
     public static void invalidCommand() throws IOException {
         RoomFourParser.getPrompt("invalidCommand");
+        playerAction();
+    }
+
+    public static void craftItem() {
+        System.out.println("What tool would you like to use: ");
+        Scanner scanner = new Scanner(System.in);
+        String tool = scanner.next();
+        anvilTool.add(tool);
+
+        System.out.println("What material would you like to craft: ");
+        String material = scanner.next();
+        anvilMaterial.add(material);
+
+        if (anvilTool.contains("Hammer") && anvilMaterial.contains("SheetMetal")) {
+            RoomFourParser.getPrompt("inspectFloorCraftHat");
+            David.addWornItems("Metal Hat");
+            David.removeBackpack("SheetMetal");
+            anvilMaterial.clear();
+            anvilTool.clear();
+        } else if (anvilMaterial.contains("Paper")) {
+            RoomFourParser.getPrompt("inspectFloorCraftAirplane");
+            David.removeBackpack("Paper");
+            anvilMaterial.clear();
+            anvilTool.clear();
+        } else {
+            RoomFourParser.getPrompt("inspectFloorCraftFail");
+        }
+    }
+
+    public static void RPSFair() throws IOException {
+        while (doorWins != 2 && playerWins != 2) {
+            System.out.println("\nType your next move: rock, paper, or scissors: ");
+            Scanner scanner = new Scanner(System.in);
+            String playerMove = scanner.nextLine();
+
+            Random random = new Random();
+            int randomNumber = random.nextInt(3);
+
+            String computerMove;
+            if (randomNumber == 0) {
+                computerMove = "rock";
+            } else if (randomNumber == 1) {
+                computerMove = "paper";
+            } else {
+                computerMove = "scissors";
+            }
+            System.out.println("\nDoor chooses " + computerMove + ".");
+
+            if (playerMove.equals(computerMove)) {
+                System.out.println("\nDraw.");
+            } else if (doesPlayerWin(playerMove, computerMove)) {
+                System.out.println("\nYou win.");
+                playerWins++;
+                System.out.println("Player Wins: " + playerWins);
+            } else {
+                System.out.println("\nDoor wins!");
+                doorWins++;
+                System.out.println("Door wins: " + doorWins);
+            }
+        }
+        if (doorWins == 2) {
+            RoomFourParser.getPrompt("openDoorLockedLoser");
+            EricHouseClient.ericAppearsCheck();
+            doorWins = 0;
+            playerWins = 0;
+            playerAction();
+        } else if (playerWins == 2) {
+            RoomFourParser.getPrompt("openDoorUnlocked");
+        }
+    }
+
+    public static boolean doesPlayerWin(String playerMove, String computerMove) {
+        if (playerMove.equals("rock")) {
+            return computerMove.equals("scissors");
+        } else if (playerMove.equals("paper")) {
+            return computerMove.equals("rock");
+        } else {
+            return computerMove.equals("paper");
+        }
+    }
+
+    public static void RPSUnfair() throws IOException {
+        while (doorWins < 2) {
+            System.out.println("\nType your next move: Rock, Paper, or Scissors: ");
+            Scanner scanner = new Scanner(System.in);
+            String playerMove = scanner.next();
+            if (playerMove.equalsIgnoreCase("Rock")) {
+                System.out.println("\nDoor chooses Paper. Door wins.");
+                doorWins++;
+            } else if (playerMove.equalsIgnoreCase("Paper")) {
+                System.out.println("\nDoor chooses Scissors. Door wins.");
+                doorWins++;
+            } else if (playerMove.equalsIgnoreCase("Scissors")) {
+                System.out.println("\nDoor chooses Rock. Door wins.");
+                doorWins++;
+            } else {
+                System.out.println("\nThat's not a valid move. Try again.");
+            }
+        }
+        RoomFourParser.getPrompt("openDoorLockedLoser");
+        EricHouseClient.ericAppearsCheck();
+        doorWins = 0;
+        playerWins = 0;
         playerAction();
     }
 }
