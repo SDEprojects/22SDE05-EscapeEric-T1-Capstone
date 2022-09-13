@@ -1,11 +1,11 @@
 {
   "gameStart": "\nYou awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
-  "inspectLeft": "\nYou inspect the table to the left and find a note:\n\tWelcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\n\tOh… I almost forgot…\n\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\n\tGOOD LUCK!",
+  "inspectLeft": "\nYou inspect the table to the left and find a note:\n\tWelcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\n\tOh, I almost forgot.\n\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\n\tGOOD LUCK!",
   "inspectLeftEmpty": "\nYou Inspect the table and find it empty.",
   "inspectRight": "\nThe room is empty to the right",
   "inspectFloor": "\nThere is nothing on the floor.",
   "openDoorLocked": "\nThe door is locked.",
-  "openDoorUnlocked": "\nThe door opens and you proceed to the next room...",
+  "openDoorUnlocked": "\nThe door opens and you proceed to the next room.",
   "askShaq": "\nWhat's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
   "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
 }

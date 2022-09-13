@@ -68,18 +68,18 @@ public class Room2 {
         } else {
             RoomTwoParser.getPrompt("inspectLeftEmpty");
         }
-
-
         playerAction();
     }
 
     public static void inspectRight() throws IOException {
         if (roomItems.contains("Pencil")) {
             RoomTwoParser.getPrompt("inspectRight");
+            David.addBackpack("Hammer");
             David.addBackpack("Pencil");
             David.addBackpack("Emerald");
             roomItems.remove("Pencil");
             roomItems.remove("Emerald");
+            roomItems.remove("Hammer");
         } else {
             RoomTwoParser.getPrompt("inspectRightEmpty");
         }

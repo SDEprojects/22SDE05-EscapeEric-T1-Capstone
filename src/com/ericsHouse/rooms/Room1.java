@@ -19,6 +19,7 @@ public class Room1 {
     public static ArrayList roomItems = new ObjectMapper().convertValue(RoomOneParser.getItems(room), ArrayList.class);
 
     public static void gameLogic() throws IOException {
+        EricHouseClient.clearConsole();
         RoomOneParser.getPrompt("enterRoom");
 
         playerAction();

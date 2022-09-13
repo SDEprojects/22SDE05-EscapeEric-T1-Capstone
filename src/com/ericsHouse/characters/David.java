@@ -15,8 +15,18 @@ public class David {
     public static void addBackpack(String item) {
         backpack.add(item);
     }
-
-    public boolean backpackContains(String item) {
-        return backpack.contains(item);
+    public static void removeBackpack(String item) {
+        backpack.remove(item);
     }
+
+    private static ArrayList<String> wornItems = new ArrayList<>();
+
+    public static ArrayList<String> getWornItems() {
+        return wornItems;
+    }
+
+    public static void addWornItems(String item) {
+        wornItems.add(item);
+    }
+
 }

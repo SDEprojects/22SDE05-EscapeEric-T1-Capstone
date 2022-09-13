@@ -9,14 +9,14 @@
   },
   "RoomTwo": {
     "name": "Word Order Room",
-    "items": ["Onion", "Pencil", "Emerald", "Needle"]
+    "items": ["Onion", "Hammer", "Pencil", "Emerald", "Needle"]
   },
   "RoomThree": {
     "name": "Riddle Room",
     "items": []
   },
   "RoomFour": {
-    "name": "Key Room",
-    "items": ["Key"]
+    "name": "Game Room",
+    "items": ["Paper", "SheetMetal", "Wrench", "Mirrored Glasses"]
   }
 }
