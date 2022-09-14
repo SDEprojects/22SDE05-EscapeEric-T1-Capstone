@@ -15,7 +15,7 @@ public class EricHouseClient {
         chancesRemaining -= 1;
         // figure out how to make this start the game over, instead of just killing the entire process
         if (chancesRemaining == 0) {
-            EricAppearsParser.getPrompt("ericAppears");
+            RoomZeroParser.getPrompt("ericAppears");
             System.exit(0);
         }
     }
