@@ -31,7 +31,7 @@ public class SuperObject {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
             RoomZeroParser.getPrompt(gp.obj[objIndex].name);
-            Player.addItem(gp.obj[objIndex]);
+            gp.player.addItem(gp.obj[objIndex]);
             gp.obj[objIndex] = null;
         }
         //If item isn't gettable display dialogue box with description

@@ -39,13 +39,10 @@ public class OBJ_Glasses extends SuperObject {
             }catch (IOException e){
 
             }
+            gp.player.addItem(gp.obj[objIndex]);
+            System.out.println(gp.player.getBackpack().size());
             RoomZeroParser.getPrompt(gp.obj[objIndex].name);
             gp.obj[objIndex] = null;
-
-        }
-        //If item isn't gettable display dialogue box with description
-        else{
-            RoomZeroParser.getPrompt(gp.obj[objIndex].name);
         }
     }
 

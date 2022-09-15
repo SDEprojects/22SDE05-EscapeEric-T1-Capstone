@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Player extends Entity {
 
-    private static ArrayList<SuperObject> backpack = new ArrayList<>();
+    private ArrayList<SuperObject> backpack = new ArrayList<>();
     private static boolean hatEquipped = false;
     private static boolean glassesEquipped = false;
     GamePanel gp;
@@ -151,10 +151,10 @@ public class Player extends Entity {
         }
         g2.drawImage(image, playerX, playerY, gp.tileSize, gp.tileSize, null);
     }
-    public static void addItem(SuperObject item) {
+    public  void addItem(SuperObject item) {
         backpack.add(item);
     }
-    public static void removeItem(SuperObject item) {
+    public  void removeItem(SuperObject item) {
         backpack.remove(item);
     }
     public static void equipHat() {
@@ -164,7 +164,7 @@ public class Player extends Entity {
         glassesEquipped = true;
     }
 
-    public static ArrayList<SuperObject> getBackpack() {
+    public  ArrayList<SuperObject> getBackpack() {
         return backpack;
     }
 
