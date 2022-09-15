@@ -47,5 +47,18 @@ public class AssetSetter {
         gp.obj[7] = new OBJ_Car();
         gp.obj[7].screenY = 100;
         gp.obj[7].screenX = 300;
+
+        gp.obj[8] = new OBJ_Door();
+        gp.obj[8].screenY = 144;
+        gp.obj[8].screenX = 0;
+
+    }
+
+    //Check if getPressed is checked
+    //TODO Check if player is close to the object and determine the output based on the object
+    public void update(){
+        if (gp.keyH.getPressed){
+            gp.obj[8] = null;
+        }
     }
 }

@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable{
     //SCREEN SETTINGS
     final int originalTileSize = 16; // 16 x 16 tile
     final int scale = 3;
+    final int FPS = 60;
 
     public final int tileSize = originalTileSize * scale; //48 x 48 tile
     public final int maxScreenCol = 16;
@@ -27,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable{
     public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
 
-    public SuperObject[] obj = new SuperObject[8];
+    public SuperObject[] obj = new SuperObject[9];
 
     public void setUpGame(){
         assetSetter.setObject();
@@ -49,8 +50,10 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.start();
     }
 
+    //GAME ENGINE DELTA TIME
+    //calculates the time difference between the previous frame that was drawn and the current frame
     public void run(){
-        double drawInterval = 1000000000/60;
+        double drawInterval = 1000000000/FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -79,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
         player.update();
+        assetSetter.update();
     }
 
     public void paintComponent(Graphics g){
