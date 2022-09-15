@@ -21,7 +21,7 @@ public class Riddle {
     }
 
     public static void thirdRiddle(String input) {
-        String answer = "david";
+        String answer = "character_images";
         if (input.equalsIgnoreCase(answer)) {
             question3Correct = true;
         }

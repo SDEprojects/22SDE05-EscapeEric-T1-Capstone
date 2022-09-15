@@ -5,6 +5,11 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
+    private GamePanel gp;
+
+    public KeyHandler(GamePanel gp) {
+        this.gp = gp;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -28,6 +33,10 @@ public class KeyHandler implements KeyListener {
         }
         if(code == KeyEvent.VK_E){
             getPressed = true;
+            int index = gp.cChecker.checkObject(gp.player, true);
+            if(index!=999){
+                gp.obj[index].interact(index, gp);
+            }
         }
     }
 

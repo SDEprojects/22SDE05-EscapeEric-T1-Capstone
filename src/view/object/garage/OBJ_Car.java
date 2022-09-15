@@ -1,14 +1,15 @@
-package view.object;
+package view.object.garage;
 
 import view.GamePanel;
+import view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class OBJ_Car extends SuperObject{
+public class OBJ_Car extends SuperObject {
     public OBJ_Car(){
-        name = "note";
+        name = "car";
         try{
             image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/car.png"));
         }catch (IOException e){
@@ -16,7 +17,6 @@ public class OBJ_Car extends SuperObject{
         }
         collision = true;
         solidArea = new Rectangle(0,0,150 * 2,90 * 2);
-
     }
 
     @Override

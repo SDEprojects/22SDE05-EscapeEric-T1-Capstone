@@ -22,10 +22,10 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    public KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
-    public AssetSetter assetSetter = new AssetSetter(this);
+    public AssetSetter assetSetter = new AssetSetter(this, keyH);
     public Player player = new Player(this, keyH);
 
     public SuperObject[] obj = new SuperObject[9];
@@ -82,7 +82,6 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
         player.update();
-        assetSetter.update();
     }
 
     public void paintComponent(Graphics g){

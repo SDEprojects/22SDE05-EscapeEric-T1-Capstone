@@ -1,9 +1,11 @@
-package view.object;
+package view.object.garage;
+
+import view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class OBJ_Dresser extends SuperObject{
+public class OBJ_Dresser extends SuperObject {
 
     public OBJ_Dresser(){
         name = "dresser";

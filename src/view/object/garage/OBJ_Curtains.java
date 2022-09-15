@@ -1,12 +1,13 @@
-package view.object;
+package view.object.garage;
 
 import view.GamePanel;
+import view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class OBJ_Curtains extends SuperObject{
+public class OBJ_Curtains extends SuperObject {
 
     public OBJ_Curtains(){
         name = "curtains";
