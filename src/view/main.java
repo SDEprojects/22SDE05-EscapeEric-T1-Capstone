@@ -27,7 +27,7 @@ public class main {
         //Sets display location to the center of the screen
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
+        //TODO - Put intro screen before game panel is started
         gamePanel.setUpGame();
         gamePanel.startGameThread();
 

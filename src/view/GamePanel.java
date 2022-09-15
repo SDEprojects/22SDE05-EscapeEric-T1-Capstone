@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable{
     public AssetSetter assetSetter = new AssetSetter(this, keyH);
     public Player player = new Player(this, keyH);
 
-    public SuperObject[] obj = new SuperObject[9];
+    public SuperObject[] obj = new SuperObject[10];
 
     public int gameState;
     public final int playState = 1;
