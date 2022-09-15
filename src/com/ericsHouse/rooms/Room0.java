@@ -9,24 +9,22 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import java.util.Scanner;
 
 
-public class Room0 {
+public class Room0{
 
     public static String room = "RoomZero";
-
-    public static String roomName = RoomZeroParser.getName(room);
-    public static ArrayNode items = RoomZeroParser.getItems(room);
+    public static RoomZeroParser currentRoom = new RoomZeroParser("roomZeroPrompts.json");
+    public static String roomName = currentRoom.getName(room);
+    public static ArrayNode items = currentRoom.getItems(room);
     public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
         EricHouseClient.clearConsole();
-        RoomZeroParser.getPrompt("gameStart");
+        currentRoom.getPrompt("gameStart");
         System.out.println("\nA small floating figure appears in front of you.");
-        RoomZeroParser.getPrompt("askShaq");
-
+        currentRoom.getPrompt("askShaq");
         playerAction();
     }
 
@@ -63,42 +61,43 @@ public class Room0 {
     }
 
     public static void inspectLeft() throws IOException {
-        if (roomItems.contains("note")) {
-            RoomZeroParser.getPrompt("inspectLeft");
-            David.addBackpack("note");
-            roomItems.remove("note");
+        if (roomItems.contains("Note")) {
+            currentRoom.getPrompt("inspectLeft");
+            David.addBackpack("Note");
+            roomItems.remove("Note");
         } else {
-            RoomZeroParser.getPrompt("inspectLeftEmpty");
+            currentRoom.getPrompt("inspectLeftEmpty");
         }
         playerAction();
     }
 
     public static void inspectRight() throws IOException {
-        RoomZeroParser.getPrompt("inspectRight");
+        currentRoom.getPrompt("inspectRight");
         playerAction();
     }
 
     public static void inspectFloor() throws IOException {
-        RoomZeroParser.getPrompt("inspectFloor");
+        currentRoom.getPrompt("inspectFloor");
         playerAction();
     }
 
     public static void moveToNextRoom() throws IOException {
-        if (David.getBackpack().contains("note")) {
-            RoomZeroParser.getPrompt("openDoorUnlocked");
+        if (David.getBackpack().contains("Note")) {
+            currentRoom.getPrompt("openDoorUnlocked");
         } else {
-            RoomZeroParser.getPrompt("openDoorLocked");
+            currentRoom.getPrompt("openDoorLocked");
             playerAction();
         }
     }
 
     public static void askShaq() throws IOException {
-        RoomZeroParser.getPrompt("askShaq");
+        currentRoom.getPrompt("askShaq");
         playerAction();
     }
 
     public static void invalidCommand() throws IOException {
-        RoomZeroParser.getPrompt("invalidCommand");
+        currentRoom.getPrompt("invalidCommand");
         playerAction();
     }
 }
+

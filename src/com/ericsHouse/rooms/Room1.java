@@ -3,8 +3,9 @@ package com.ericsHouse.rooms;
 import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomOneParser;
+import com.ericsHouse.jsonParser.RoomZeroParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,16 +15,15 @@ import java.util.Scanner;
 public class Room1 {
 
     public static String room = "RoomOne";
-
-    public static String roomName = RoomOneParser.getName(room);
-    public static ArrayList roomItems = new ObjectMapper().convertValue(RoomOneParser.getItems(room), ArrayList.class);
+    public static RoomZeroParser currentRoom = new RoomZeroParser("roomZeroPrompts.json");
+    public static String roomName = currentRoom.getName(room);
+    public static ArrayNode items = currentRoom.getItems(room);
+    public static ArrayList roomItems = new ObjectMapper().convertValue(currentRoom.getItems(room), ArrayList.class);
 
     public static void gameLogic() throws IOException {
         EricHouseClient.clearConsole();
-        RoomOneParser.getPrompt("enterRoom");
-
+        currentRoom.getPrompt("enterRoom");
         playerAction();
-
     }
 
     public static void playerAction() throws IOException {
@@ -59,12 +59,12 @@ public class Room1 {
     }
 
     public static void inspectLeft() throws IOException {
-        if (roomItems.contains("knife")) {
-            RoomOneParser.getPrompt("inspectLeft");
-            David.addBackpack("knife");
-            roomItems.remove("knife");
+        if (roomItems.contains("Knife")) {
+            currentRoom.getPrompt("inspectLeft");
+            David.addBackpack("Knife");
+            roomItems.remove("Knife");
         } else {
-            RoomOneParser.getPrompt("inspectLeftEmpty");
+            currentRoom.getPrompt("inspectLeftEmpty");
         }
 
 
@@ -72,31 +72,31 @@ public class Room1 {
     }
 
     public static void inspectRight() throws IOException {
-        RoomOneParser.getPrompt("inspectRight");
+        currentRoom.getPrompt("inspectRight");
         playerAction();
     }
 
     public static void inspectFloor() throws IOException {
-        RoomOneParser.getPrompt("inspectFloor");
+        currentRoom.getPrompt("inspectFloor");
         playerAction();
     }
 
     public static void moveToNextRoom() throws IOException {
-        if (David.getBackpack().contains("knife")) {
-            RoomOneParser.getPrompt("openDoorUnlocked");
+        if (David.getBackpack().contains("Knife")) {
+            currentRoom.getPrompt("openDoorUnlocked");
         } else {
-            RoomOneParser.getPrompt("openDoorLocked");
+            currentRoom.getPrompt("openDoorLocked");
             playerAction();
         }
     }
 
     public static void askShaq() throws IOException {
-        RoomOneParser.getPrompt("askShaq");
+        currentRoom.getPrompt("askShaq");
         playerAction();
     }
 
     public static void invalidCommand() throws IOException {
-        RoomOneParser.getPrompt("invalidCommand");
+        currentRoom.getPrompt("invalidCommand");
         playerAction();
     }
 }

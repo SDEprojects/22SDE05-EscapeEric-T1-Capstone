@@ -7,13 +7,25 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import java.io.*;
 
 public class RoomZeroParser {
-    static InputStream iStreamPrompts = getFileFromResourceAsStream("roomZeroPrompts.json");
+    static InputStream iStreamPrompts=getFileFromResourceAsStream("roomZeroPrompts.json");;
     static InputStream iStreamLocations = getFileFromResourceAsStream("locations.json");
     static ObjectMapper objectMapper = new ObjectMapper();
     static Reader readerPrompts = new InputStreamReader(iStreamPrompts);
     static Reader readerLocations = new InputStreamReader(iStreamLocations);
     static JsonNode jsonNodePrompts;
     static JsonNode jsonNodeLocations;
+
+    public RoomZeroParser(String file) {
+        this.iStreamPrompts = getFileFromResourceAsStream(file);
+    }
+
+    public static InputStream getiStreamPrompts() {
+        return iStreamPrompts;
+    }
+
+    public void setiStreamPrompts(String file) {
+        iStreamPrompts =  getFileFromResourceAsStream(file);
+    }
 
     static {
         try {
@@ -37,7 +49,7 @@ public class RoomZeroParser {
         return jsonNodeLocations.findValue(info).findValue("name").asText();
     }
 
-    private static InputStream getFileFromResourceAsStream(String fileName) {
+    public static InputStream getFileFromResourceAsStream(String fileName) {
         ClassLoader classLoader = RoomZeroParser.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
         if (inputStream == null) {

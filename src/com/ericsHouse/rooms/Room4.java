@@ -3,32 +3,29 @@ package com.ericsHouse.rooms;
 import com.ericsHouse.EricHouseClient;
 import com.ericsHouse.characters.David;
 import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomFourParser;
-import com.ericsHouse.jsonParser.RoomTwoParser;
 import com.ericsHouse.jsonParser.RoomZeroParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import javax.print.attribute.standard.SheetCollate;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class Room4 {
     public static String room = "RoomFour";
+    public static RoomZeroParser currentRoom = new RoomZeroParser("roomZeroPrompts.json");
     public static int playerWins = 0;
     public static int doorWins = 0;
 
-    public static String roomName = RoomFourParser.getName(room);
-    public static ArrayNode items = RoomFourParser.getItems(room);
+    public static String roomName = currentRoom.getName(room);
+    public static ArrayNode items = currentRoom.getItems(room);
     static ArrayList<String> anvilMaterial = new ArrayList<>();
     static ArrayList<String> anvilTool = new ArrayList<>();
     public static ArrayList roomItems = new ObjectMapper().convertValue(items, ArrayList.class);
 
     public static void gameLogic() throws IOException {
-        RoomFourParser.getPrompt("enterRoom");
+        currentRoom.getPrompt("enterRoom");
         playerAction();
     }
 
@@ -66,18 +63,18 @@ public class Room4 {
 
     public static void inspectLeft() throws IOException {
         if (roomItems.contains("Mirrored Glasses")) {
-            RoomFourParser.getPrompt("inspectLeft");
+            currentRoom.getPrompt("inspectLeft");
             David.addWornItems("Mirrored Glasses");
             roomItems.remove("Mirrored Glasses");
         } else {
-            RoomFourParser.getPrompt("inspectLeftEmpty");
+            currentRoom.getPrompt("inspectLeftEmpty");
         }
         playerAction();
     }
 
     public static void inspectRight() throws IOException {
         if (roomItems.contains("Paper")) {
-            RoomFourParser.getPrompt("inspectRight");
+            currentRoom.getPrompt("inspectRight");
             David.addBackpack("Paper");
             David.addBackpack("SheetMetal");
             David.addBackpack("Wrench");
@@ -85,13 +82,13 @@ public class Room4 {
             roomItems.remove("SheetMetal");
             roomItems.remove("Wrench");
         } else {
-            RoomFourParser.getPrompt("inspectRightEmpty");
+            currentRoom.getPrompt("inspectRightEmpty");
         }
         playerAction();
     }
 
     public static void inspectFloor() throws IOException {
-        RoomFourParser.getPrompt("inspectFloor");
+        currentRoom.getPrompt("inspectFloor");
 
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.next();
@@ -105,21 +102,21 @@ public class Room4 {
 
     public static void moveToNextRoom() throws IOException {
         if (David.getWornItems().contains("Metal Hat") && David.getWornItems().contains("Mirrored Glasses")) {
-            RoomFourParser.getPrompt("openDoorLocked");
+            currentRoom.getPrompt("openDoorLocked");
             RPSFair();
         } else {
-            RoomFourParser.getPrompt("openDoorLocked");
+            currentRoom.getPrompt("openDoorLocked");
             RPSUnfair();
         }
     }
 
     public static void askShaq() throws IOException {
-        RoomFourParser.getPrompt("askShaq");
+        currentRoom.getPrompt("askShaq");
         playerAction();
     }
 
     public static void invalidCommand() throws IOException {
-        RoomFourParser.getPrompt("invalidCommand");
+        currentRoom.getPrompt("invalidCommand");
         playerAction();
     }
 
@@ -134,18 +131,18 @@ public class Room4 {
         anvilMaterial.add(material);
 
         if (anvilTool.contains("Hammer") && anvilMaterial.contains("SheetMetal")) {
-            RoomFourParser.getPrompt("inspectFloorCraftHat");
+            currentRoom.getPrompt("inspectFloorCraftHat");
             David.addWornItems("Metal Hat");
             David.removeBackpack("SheetMetal");
             anvilMaterial.clear();
             anvilTool.clear();
         } else if (anvilMaterial.contains("Paper")) {
-            RoomFourParser.getPrompt("inspectFloorCraftAirplane");
+            currentRoom.getPrompt("inspectFloorCraftAirplane");
             David.removeBackpack("Paper");
             anvilMaterial.clear();
             anvilTool.clear();
         } else {
-            RoomFourParser.getPrompt("inspectFloorCraftFail");
+            currentRoom.getPrompt("inspectFloorCraftFail");
         }
     }
 
@@ -181,13 +178,13 @@ public class Room4 {
             }
         }
         if (doorWins == 2) {
-            RoomFourParser.getPrompt("openDoorLockedLoser");
+            currentRoom.getPrompt("openDoorLockedLoser");
             EricHouseClient.ericAppearsCheck();
             doorWins = 0;
             playerWins = 0;
             playerAction();
         } else if (playerWins == 2) {
-            RoomFourParser.getPrompt("openDoorUnlocked");
+            currentRoom.getPrompt("openDoorUnlocked");
         }
     }
 
@@ -219,7 +216,7 @@ public class Room4 {
                 System.out.println("\nThat's not a valid move. Try again.");
             }
         }
-        RoomFourParser.getPrompt("openDoorLockedLoser");
+        currentRoom.getPrompt("openDoorLockedLoser");
         EricHouseClient.ericAppearsCheck();
         doorWins = 0;
         playerWins = 0;

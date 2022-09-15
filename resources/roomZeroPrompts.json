@@ -1,11 +1,73 @@
 {
-  "gameStart": "\nYou awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
-  "inspectLeft": "\nYou inspect the table to the left and find a note:\n\tWelcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\n\tOh, I almost forgot.\n\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\n\tGOOD LUCK!",
-  "inspectLeftEmpty": "\nYou Inspect the table and find it empty.",
-  "inspectRight": "\nThe room is empty to the right",
-  "inspectFloor": "\nThere is nothing on the floor.",
-  "openDoorLocked": "\nThe door is locked.",
-  "openDoorUnlocked": "\nThe door opens and you proceed to the next room.",
-  "askShaq": "\nWhat's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
-  "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
+  "roomZero": {
+    "gameStart": "\nYou awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
+    "inspectLeft": "\nYou inspect the table to the left and find a note:\n\tWelcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\n\tOh, I almost forgot.\n\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\n\tGOOD LUCK!",
+    "inspectLeftEmpty": "\nYou Inspect the table and find it empty.",
+    "inspectRight": "\nThe room is empty to the right",
+    "inspectFloor": "\nThere is nothing on the floor.",
+    "openDoorLocked": "\nThe door is locked.",
+    "openDoorUnlocked": "\nThe door opens and you proceed to the next room.",
+    "askShaq": "\nWhat's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
+    "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
+  },
+  "roomOne": {
+    "enterRoom": "\nWelcome to Room 1 - Knife Room:\n\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
+    "inspectLeft": "\nYou inspect the bookshelf to your left. You find a knife and put it in your backpack.",
+    "inspectLeftEmpty": "\nYou inspect the bookshelf. Just a bunch of dusty worn out books.",
+    "inspectRight": "\nYou inspect the table on the right. You find a knife and read:\n\t'This dang old door lock has been messed up for weeks. I just keep jimmying it open with a knife.'",
+    "inspectFloor": "\nThere is nothing on the floor.",
+    "openDoorLocked": "\nThe door is locked with a big rusty padlock. There must be some way to open it...",
+    "openDoorUnlocked": "\nYou use the knife to jimmy open the lock. The door opens and you proceed to the next room...",
+    "askShaq": "\nTo figure out what the room challenge is, try to open the locked door.\nMake sure you look for helpful clues or items in every room.\nMaybe the note on that table can offer up a clue.",
+    "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
+  },
+  "roomTwo": {
+    "enterRoom": "\nWelcome to Room 2 - Word Order Room:\n\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
+    "inspectLeft": "\nYou inspect the table to your left.\nYou find an Onion and put it in your backpack.\nMight come in handy or make a good snack later.",
+    "inspectLeftEmpty": "\nYou inspect the table to your left and find it empty.",
+    "inspectRight": "\nYou inspect the desk on the right.\nYou find a Hammer and a Pencil sitting on top and an Emerald in the top drawer.\nYou put them both in your backpack.",
+    "inspectRightEmpty": "\nJust an old empty Desk over there.",
+    "inspectFloor": "\nYou inspect the floor.\nYou find a Needle on the ground and put it in your backpack.\nThat would've been uncomfortable to step on.",
+    "inspectFloorEmpty": "\nNothing on the floor but dirt... Eric could stand to sweep up...",
+    "openDoorLocked": "\nAn offering of four objects in the correct order is required to OPEN this door.",
+    "openDoorLockedWithItems": "\nYou have collected the correct items. Enter them in the correct order to open this door.",
+    "openDoorLockedIncorrectOrder": "\nThat is the wrong order! BE GONE!",
+    "openDoorUnlocked": "\nYou have successfully entered the four object in the correct order.\nThe door opens and you proceed to the next room...",
+    "askShaq": "\nThose are some random objects in this room.\nPerhaps the order of the objects doesn't have anything to do with the items themselves...",
+    "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list.",
+    "ericClosingIn": "\nEric is getting closer..."
+  },
+  "roomThree": {
+    "enterRoom": "\nYou made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
+    "inspectLeft": "\nYou inspect the Annabelle doll to your left. You find a note, the note reads\n\tWhat gets wetter the more it dries?\n\n",
+    "inspectLeftCorrect": "You have correctly answered this question, the door started shaking",
+    "inspectLeftHint" : "You have chosen the wrong answer, think about a sponge or something...\"",
+    "inspectRight": "\nYou look over to the right and find a Leprechaun, it looks like it's alive. You pry the note from its hand, the note reads\n\tThe person who makes it has no need for it; the person who buys it has no use for it. The person who uses it can neither see nor feel it. What is it? ",
+    "inspectRightCorrect": "You have correctly answered this question, the door slowly opens a little, still can't fit through",
+    "inspectRightHint" : "You have chosen the wrong answer, would you rather be 6ft High or 6ft below",
+    "inspectFloor": "\nOn the floor there is a Ouija board, it spells out\n\tDavid's parents have three sons: Snap, Crackle, and what’s the name of the third son?",
+    "inspectFloorCorrect": "You have correctly answered this question, you can start to see through to the other room",
+    "inspectFloorHint" : "You have chosen the wrong answer, if you choose Pop you need to stop",
+    "openDoorLocked": "\nSolve the three riddles to open this door.",
+    "openDoorUnlocked": "\nYou have successfully completed all 3 Riddles in the room, you may advance to the next room",
+    "askShaq": "\nThe answer to each question is just one word, don't overthink it. Each word is <=6 letters",
+    "invalidCommand": "\nThat command is invalid! Please choose a proper command from the list."
+  },
+  "roomFour": {
+    "enterRoom": "\nWelcome to Room 4 - Game Room:\n\nAn anvil sits in the middle of the room\nTo your right is a big storage shelf full of odds and ends\nTo your left you see an old dresser\nStraight ahead is the locked door to the next room.",
+    "inspectLeft": "\nYou open the door of the old dresser and find a pair of mirrored glasses and put them on.\nVery Stylish!",
+    "inspectLeftEmpty": "\nTheres nothing left in the empty old dresser.",
+    "inspectRight": "\nThe shelf contains several piles of supplies. You collect some paper, a thin sheet of metal, and a wrench.",
+    "inspectRightEmpty": "\nNothing else of good use on the shelf.",
+    "inspectFloor": "\nYou walk up to the anvil in the center of the room. Could come in handy to craft something.\nWould you like to craft something? (y/n)",
+    "inspectFloorCraftHat": "\nYou've crafted a metal hat! You put it on, a perfect fit.",
+    "inspectFloorCraftAirplane": "\nYou've crafted a paper airplane. You throw it at the locked door... it does nothing.",
+    "inspectFloorCraftFail": "\nYou cant craft anything with this combo.",
+    "openDoorLocked": "\nA mirror hangs on the door with a reflection of yourself.\nYour reflection smiles back and holds up one hand flat with the other fist sitting on top.\nHe is challenging you to rock-paper-scissors! (Best 2 out of 3)",
+    "openDoorLockedLoser": "\nThe Door has won this round.",
+    "openDoorUnlocked": "\nYOU WIN! The door opens and you feel the cool breeze of fresh air on your face.\nYou step outside the house and realize you have escaped.You have escaped Eric!",
+    "askShaq": "\nThat is no ordinary mirror on the door... i think its somehow reading your mind!\nIf you can find a way to keep it out of your head i bet you can beat it!"
+  },
+  "ericAppears": "\n\n\nEric Appeared!!!!\nHe lunges at you violently at full speed with crackhead like energy. He picks you up as if you were a toy AND HE GIVES YOU A hug :)\nEric asks why you were running through his house? Turns out, he just wanted to talk to you. He just wanted a friend."
+
 }
