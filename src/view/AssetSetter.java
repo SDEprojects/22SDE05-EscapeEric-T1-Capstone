@@ -1,12 +1,14 @@
 package view;
 
-import view.object.*;
+import view.object.garage.*;
 
 public class AssetSetter {
 
     GamePanel gp;
-    public AssetSetter(GamePanel gp){
+    KeyHandler keyH;
+    public AssetSetter(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
+        this.keyH = keyH;
     }
 
     public void setObject(){
@@ -38,7 +40,7 @@ public class AssetSetter {
 
         gp.obj[5] = new OBJ_Note();
         gp.obj[5].screenY = 400;
-        gp.obj[5].screenX = 100;
+        gp.obj[5].screenX = 90;
 
         gp.obj[6] = new OBJ_Poster();
         gp.obj[6].screenY = 20;
@@ -56,9 +58,5 @@ public class AssetSetter {
 
     //Check if getPressed is checked
     //TODO Check if player is close to the object and determine the output based on the object
-    public void update(){
-        if (gp.keyH.getPressed){
-            gp.obj[8] = null;
-        }
-    }
+
 }
