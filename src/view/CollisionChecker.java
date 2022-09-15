@@ -89,6 +89,10 @@ public class CollisionChecker {
                             if(gp.obj[i].collision == true){
                                 entity.collisionOn = true;
                             }
+                            if(player == true){
+                                //Returns the index of the object (allows for picking up
+                                index = i;
+                            }
                         }
                         break;
                     case "left":
@@ -96,6 +100,10 @@ public class CollisionChecker {
                         if(entity.solidArea.intersects(gp.obj[i].solidArea)){
                             if(gp.obj[i].collision == true){
                                 entity.collisionOn = true;
+                            }
+                            if(player == true){
+                                //Returns the index of the object (allows for picking up
+                                index = i;
                             }
                         }
                         break;
@@ -105,14 +113,23 @@ public class CollisionChecker {
                             if(gp.obj[i].collision == true){
                                 entity.collisionOn = true;
                             }
+                            if(player == true){
+                                //Returns the index of the object (allows for picking up
+                                index = i;
+                            }
                         }
                         break;
                 }
             }
             entity.solidArea.x = entity.solidAreaDefaultX;
             entity.solidArea.y = entity.solidAreaDefaultY;
-            gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
-            gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
+            try {
+                gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
+                gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
+            }catch (NullPointerException e){
+
+            }
+
 
         }
 

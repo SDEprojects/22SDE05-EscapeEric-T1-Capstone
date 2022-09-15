@@ -91,7 +91,7 @@ public class Room3 {
     }
 
     public static void inspectFloor() throws IOException {
-        String answer = "david";
+        String answer = "character_images";
         currentRoom.getPrompt("inspectFloor");
 
         Scanner scanner = new Scanner(System.in);

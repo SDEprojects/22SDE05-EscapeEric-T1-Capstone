@@ -1,17 +1,18 @@
-package view.object;
+package view.object.garage;
 
 import view.GamePanel;
+import view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class OBJ_Note extends SuperObject{
+public class OBJ_Frog extends SuperObject {
 
-    public OBJ_Note(){
-        name = "note";
+    public OBJ_Frog(){
+        name = "frog";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/note.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/frog.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
