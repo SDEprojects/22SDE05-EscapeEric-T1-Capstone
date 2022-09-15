@@ -43,5 +43,9 @@ public class AssetSetter {
         gp.obj[6] = new OBJ_Poster();
         gp.obj[6].screenY = 20;
         gp.obj[6].screenX = 570;
+
+        gp.obj[7] = new OBJ_Car();
+        gp.obj[7].screenY = 100;
+        gp.obj[7].screenX = 300;
     }
 }
