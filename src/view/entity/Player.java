@@ -1,10 +1,12 @@
-package view;
+package view.entity;
+
+import view.GamePanel;
+import view.KeyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.security.Key;
 import java.util.Objects;
 
 public class Player extends Entity {
@@ -16,13 +18,21 @@ public class Player extends Entity {
         this.gp = gp;
         this.keyH = keyH;
 
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        solidArea.width = 32;
+        solidArea.height = 32;
+
         setDefaultValues();
         getPlayerImage();
     }
 
     public void setDefaultValues() {
-        playerX = 100;
-        playerY = 100;
+        playerX = 200;
+        playerY = 200;
         speed = 4;
         direction = "down";
     }
@@ -46,20 +56,44 @@ public class Player extends Entity {
         if(keyH.leftPressed || keyH.downPressed || keyH.upPressed|| keyH.rightPressed){
             if (keyH.upPressed) {
                 direction = "up";
-                playerY -= speed;
+
             }
             else if (keyH.downPressed) {
                 direction = "down";
-                playerY += speed;
+
             }
             else if (keyH.rightPressed) {
                 direction = "right";
-                playerX += speed;
+
             }
             else if (keyH.leftPressed) {
                 direction = "left";
-                playerX -= speed;
+
             }
+            collisionOn = false;
+            //CHECK TILE COLLISION
+            gp.cChecker.checkTile(this);
+            //CHECK OBJECT COLLISION
+            int objIndex = gp.cChecker.checkObject(this,true);
+            //IF COLLISION IS FALSE, PLAYER CAN MOVE
+            if(!collisionOn){
+                switch (direction){
+                    case "up":
+                        playerY -= speed;
+                        break;
+                    case "down":
+                        playerY += speed;
+                        break;
+                    case "left":
+                        playerX -= speed;
+                        break;
+                    case "right":
+                        playerX += speed;
+                        break;
+                }
+            }
+
+            //Every 12 frames the sprite changes
             spriteCounter++;
             if (spriteCounter > 12) {
                 if (spriteNum == 1) {

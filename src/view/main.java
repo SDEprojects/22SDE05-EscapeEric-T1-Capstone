@@ -20,6 +20,7 @@ public class main {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
+        gamePanel.setUpGame();
         gamePanel.startGameThread();
 
     }

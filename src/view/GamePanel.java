@@ -1,10 +1,12 @@
 package view;
 
-import javax.imageio.ImageIO;
+import view.entity.Player;
+import view.object.SuperObject;
+import view.tile.TileManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Objects;
 
 public class GamePanel extends JPanel implements Runnable{
 
@@ -12,20 +14,24 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16; // 16 x 16 tile
     final int scale = 3;
 
-    final int tileSize = originalTileSize * scale; //48 x 48 tile
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
+    public final int tileSize = originalTileSize * scale; //48 x 48 tile
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol; //768 pixels
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
+    public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter assetSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
 
-    int playerY = 100;
-    int playerX = 100;
-    int playerSpeed = 4;
+    public SuperObject[] obj = new SuperObject[7];
+
+    public void setUpGame(){
+        assetSetter.setObject();
+    }
 
     private Image backgroundImage;
 
@@ -79,6 +85,13 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         tileM.draw(g2);
+
+        for(int i = 0; i < obj.length; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2,this);
+            }
+        }
+
         player.draw(g2);
 
         g2.dispose();
