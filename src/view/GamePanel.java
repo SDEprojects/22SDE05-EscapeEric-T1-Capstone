@@ -30,8 +30,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     public SuperObject[] obj = new SuperObject[9];
 
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+
     public void setUpGame(){
         assetSetter.setObject();
+        gameState = playState;
     }
 
     private Image backgroundImage;
@@ -81,7 +86,12 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update(){
-        player.update();
+        if(gameState == playState){
+            player.update();
+        }
+        if(gameState == pauseState){
+
+        }
     }
 
     public void paintComponent(Graphics g){

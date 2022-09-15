@@ -38,6 +38,13 @@ public class KeyHandler implements KeyListener {
                 gp.obj[index].interact(index, gp);
             }
         }
+        if(code == KeyEvent.VK_P){
+            if(gp.gameState==gp.playState){
+                gp.gameState = gp.pauseState;
+            }else if (gp.gameState == gp.pauseState){
+                gp.gameState = gp.playState;
+            }
+        }
     }
 
     @Override
