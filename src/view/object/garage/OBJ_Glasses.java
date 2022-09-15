@@ -8,17 +8,17 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class OBJ_Note extends SuperObject {
+public class OBJ_Glasses extends SuperObject {
 
-    public OBJ_Note(){
-        name = "note";
+    public OBJ_Glasses(){
+        name = "glasses";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/note.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/glasses-hidden.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
 
-        solidArea = new Rectangle(0,0,16*2,16*2);
+        solidArea = new Rectangle(0,0,48*2,48*2);
         gettable = true;
     }
 
@@ -34,6 +34,11 @@ public class OBJ_Note extends SuperObject {
         if(gettable){
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
+            try {
+                image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/glasses.png"));
+            }catch (IOException e){
+
+            }
             RoomZeroParser.getPrompt(gp.obj[objIndex].name);
             gp.obj[objIndex] = null;
 
@@ -43,4 +48,5 @@ public class OBJ_Note extends SuperObject {
             RoomZeroParser.getPrompt(gp.obj[objIndex].name);
         }
     }
+
 }

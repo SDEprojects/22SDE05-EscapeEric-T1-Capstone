@@ -18,7 +18,6 @@ public class OBJ_Door extends SuperObject {
         collision = true;
         solidArea = new Rectangle(0,0,16,48*2);
         //This is the dirty way to remove the door, there should be a method called for door interaction
-        gettable = true;
     }
 
     @Override

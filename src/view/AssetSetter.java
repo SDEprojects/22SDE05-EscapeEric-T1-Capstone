@@ -24,6 +24,11 @@ public class AssetSetter {
         //X moves object left and right
         gp.obj[1].screenX = 139;
 
+        gp.obj[9] = new OBJ_Glasses();
+        gp.obj[9].screenY = 50;
+        gp.obj[9].screenX = 145;
+
+
         gp.obj[2] = new OBJ_Dresser();
         //Y moves object up and down
         gp.obj[2].screenY = 16;
