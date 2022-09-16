@@ -1,11 +1,11 @@
 {
   "RoomZero": {
     "name": "Starter Room",
-    "items": ["note"]
+    "items": ["Note"]
   },
   "RoomOne": {
-    "name": "knife Room",
-    "items": ["knife"]
+    "name": "Knife Room",
+    "items": ["Knife"]
   },
   "RoomTwo": {
     "name": "Word Order Room",
