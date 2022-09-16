@@ -36,6 +36,20 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_A || code == 37) {
                 leftPressed = true;
             }
+            if (code == KeyEvent.VK_M) {
+                getPressed = true;
+                try {
+                    Music.play();
+                } catch (Exception ex) {
+                }
+            }
+            if (code == KeyEvent.VK_N) {
+                getPressed = true;
+                try {
+                    Music.stop();
+                } catch (Exception ex) {
+                }
+            }
             if (code == KeyEvent.VK_E) {
                 getPressed = true;
                 int index = gp.cChecker.checkObject(gp.player, true);
@@ -48,13 +62,12 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
             }
-        }
-        else if (gp.gameState == gp.pauseState) {
+        } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
             }
         } else if (gp.gameState == gp.dialogueState) {
-            if(code == KeyEvent.VK_E){
+            if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
         }
