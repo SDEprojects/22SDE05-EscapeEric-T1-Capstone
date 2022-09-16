@@ -10,7 +10,7 @@ public class UI {
 
     public UI(GamePanel gp) {
         this.gp = gp;
-        ariel = new Font("Ariel", Font.PLAIN, 20);
+        ariel = new Font("Ariel", Font.PLAIN, 18);
 
     }
 
@@ -33,17 +33,20 @@ public class UI {
         int x = gp.tileSize * 2;
         int y = gp.tileSize / 2;
         int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 5;
+        int height = gp.tileSize * 11;
         drawSubWindow(x, y, width, height);
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(currentDialogue, x, y);
+        for(String escape : currentDialogue.split("\n")){
+            g2.drawString(escape, x, y);
+            y+= 40;
+        }
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
         Color c = new Color(0, 0, 0,100);
         g2.setColor(c);
-        g2.fillRoundRect(x, y, width, height, 30, 30);
+        g2.fillRoundRect(x, y, width, height, 50, 50);
         c = new Color(255,255,255);
         g2.setStroke(new BasicStroke(5));
         g2.setColor(c);
