@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable {
 
     //SCREEN SETTINGS
     final int originalTileSize = 16; // 16 x 16 tile
@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol; //768 pixels
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
+    private static boolean isDead = false;
 
     TileManager tileM = new TileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
@@ -60,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable{
         long timer = 0;
         int drawCount = 0;
 
-        while(gameThread!=null){
+        while(!isDead){
             currentTime = System.nanoTime();
 
             delta+=(currentTime - lastTime)/drawInterval;
@@ -78,6 +79,8 @@ public class GamePanel extends JPanel implements Runnable{
                 timer = 0;
             }
         }
+        // JPanel for a lose screen
+        // Call lose method here?
     }
 
     public void update(){
@@ -100,4 +103,7 @@ public class GamePanel extends JPanel implements Runnable{
         g2.dispose();
     }
 
+    public static void setDead(boolean dead) {
+        isDead = dead;
+    }
 }
