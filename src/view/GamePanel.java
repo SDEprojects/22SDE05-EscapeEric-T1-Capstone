@@ -6,8 +6,10 @@ import view.entity.Player;
 import view.object.AssetSetter;
 import view.object.SuperObject;
 import view.object.garage.GarageAssetSetter;
+import view.object.kitchen.KitchenAssetSetter;
 import view.tile.garage.GarageTileManager;
 import view.tile.TileManager;
+import view.tile.kitchen.KitchenTileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,15 +40,22 @@ public class GamePanel extends JPanel implements Runnable{
     public RoomMap allRooms = new RoomMap(this);
     public CollisionChecker cChecker = new CollisionChecker(this,tileM,assetSetter,player);
 
-    public void setUpGame() throws IOException {
-       currentRoom = allRooms.roomMap.get("garage");
-       currentRoom.setRoomItems("Eric's Garage");
+    public UI ui = new UI(this);
+
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+    public final int dialogueState = 3;
+
+    public void setUpGame(){
+        currentRoom = allRooms.roomMap.get("garage");
+        currentRoom.setRoomItems("Eric's Garage");
+        gameState = playState;
     }
 
     public void setCurrentRoom(String roomName){
         currentRoom = allRooms.roomMap.get(roomName);
     }
-
     public GamePanel() throws IOException {
         //Sets the size of the JPanel
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -96,7 +105,12 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update() throws IOException {
-        player.update();
+        if(gameState == playState){
+            player.update();
+        }
+        if(gameState == pauseState){
+
+        }
     }
 
     public void paintComponent(Graphics g){
@@ -112,7 +126,8 @@ public class GamePanel extends JPanel implements Runnable{
         }
         currentRoom.draw(g2);
         player.draw(g2);
-
+        //ui
+        ui.draw(g2);
         g2.dispose();
     }
 
