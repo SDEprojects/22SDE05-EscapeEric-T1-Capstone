@@ -37,8 +37,9 @@ public class RoomZeroParser {
     }
 
 
-    public static void getPrompt(String prompt) {
-        System.out.println(jsonNodePrompts.findValue(prompt).asText());
+    public static String getPrompt(String prompt) {
+        String item = jsonNodePrompts.findValue(prompt).asText();
+        return item;
     }
 
     public static ArrayNode getItems(String info) {

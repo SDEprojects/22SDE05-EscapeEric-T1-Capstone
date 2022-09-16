@@ -2,7 +2,6 @@ package view.object;
 
 import com.ericsHouse.jsonParser.RoomZeroParser;
 import view.GamePanel;
-import view.entity.Player;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -36,6 +35,7 @@ public class SuperObject {
         }
         //If item isn't gettable display dialogue box with description
         else {
+            //gp.gameState = gp.dialogueState;
             RoomZeroParser.getPrompt(gp.obj[objIndex].name);
         }
     }

@@ -36,9 +36,16 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this,tileM,assetSetter,player);
 
+    public UI ui = new UI(this);
+
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+    public final int dialogueState = 3;
 
     public void setUpGame(){
         assetSetter.setObject();
+        gameState = playState;
     }
 
     public GamePanel() throws IOException {
@@ -90,7 +97,12 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update() throws IOException {
-        player.update();
+        if(gameState == playState){
+            player.update();
+        }
+        if(gameState == pauseState){
+
+        }
     }
 
     public void paintComponent(Graphics g){
@@ -103,9 +115,9 @@ public class GamePanel extends JPanel implements Runnable{
                 obj[i].draw(g2,this);
             }
         }
-
         player.draw(g2);
-
+        //ui
+        ui.draw(g2);
         g2.dispose();
     }
 
