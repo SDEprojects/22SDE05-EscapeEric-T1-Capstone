@@ -2,6 +2,9 @@ package view.object.garage;
 
 import view.GamePanel;
 import view.object.AssetSetter;
+import view.object.SuperObject;
+
+import java.util.Arrays;
 
 public class GarageAssetSetter extends AssetSetter {
 
@@ -12,6 +15,9 @@ public class GarageAssetSetter extends AssetSetter {
 
     @Override
     public void setObject() {
+        Arrays.fill(gp.obj, null);
+        gp.obj = new SuperObject[10];
+
         gp.obj[0] = new OBJ_Dresser();
         //Y moves object up and down
         gp.obj[0].screenY = 16;

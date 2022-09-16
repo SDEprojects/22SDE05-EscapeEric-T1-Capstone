@@ -23,21 +23,24 @@ import static view.BuildWindow.window;
 
 public class Room{
 
-   GamePanel gp;
+    public final String name;
+    GamePanel gp;
     private AssetSetter assetSetter;
     private TileManager tileManager;
     public String entrance;
-    String exit;
+    public String exit;
     public Rectangle entranceIntersect;
-    private Rectangle exitIntersect;
+    public Rectangle exitIntersect;
 
-    public Room(GamePanel gp, AssetSetter assetSetter, TileManager tileManager) {
+    public Room(String name, GamePanel gp, AssetSetter assetSetter, TileManager tileManager, String entrance, String exit, Rectangle entranceIntersect, Rectangle exitIntersect) {
+        this.name = name;
         this.gp = gp;
         this.assetSetter = assetSetter;
         this.tileManager = tileManager;
-        entranceIntersect = new Rectangle(0, 144, 11, 48*2);
-        exitIntersect = new Rectangle(678, 144, 11, 48 *2);
-        entrance = "kitchen";
+        this.entranceIntersect = entranceIntersect;
+        this.exitIntersect = exitIntersect;
+        this.entrance = entrance;
+        this.exit = exit;
 
     }
 
@@ -46,8 +49,7 @@ public class Room{
         gp.assetSetter = assetSetter;
         gp.assetSetter.setObject();
         window.setTitle(title);
-        gp.player.playerY = 360;
-        gp.player.playerX = 680;
+
     }
 
     public void draw(Graphics2D g2){

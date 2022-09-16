@@ -10,7 +10,7 @@ public class UI {
 
     public UI(GamePanel gp) {
         this.gp = gp;
-        ariel = new Font("Ariel", Font.PLAIN, 18);
+        ariel = new Font("Arial", Font.PLAIN, 18);
 
     }
 

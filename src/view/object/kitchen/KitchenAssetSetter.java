@@ -20,8 +20,7 @@ public class KitchenAssetSetter extends AssetSetter {
         //Reset the array
         Arrays.fill(gp.obj, null);
         gp.obj = new SuperObject[29];
-        gp.player.playerY = 360;
-        gp.player.playerX = 680;
+
         //Setting all objects in the kitchen
         gp.obj[0] = new OBJ_Fridge();
         gp.obj[0].screenX = 11 * 3;
