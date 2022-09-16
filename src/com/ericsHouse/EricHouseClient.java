@@ -63,7 +63,7 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                Room0.gameLogic();
+                //Room0.gameLogic();
                 Room1.gameLogic();
                 Room2.gameLogic();
                 Room3.gameLogic();

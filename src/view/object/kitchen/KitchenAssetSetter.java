@@ -54,6 +54,7 @@ public class KitchenAssetSetter extends AssetSetter {
         gp.obj[7] = new OBJ_Kitchen("door", "/kitchen/kitchen_OBJ/door.png", 26,30);
         gp.obj[7].screenX = 214 * 3;
         gp.obj[7].screenY = 10;
+        gp.obj[7].collision = false;
 
         gp.obj[8] = new OBJ_Kitchen("house-plant", "/kitchen/kitchen_OBJ/house-plant.png", 18,28);
         gp.obj[8].screenX = 239 * 3;
