@@ -2,7 +2,6 @@ package view.object.garage;
 
 import com.ericsHouse.jsonParser.RoomZeroParser;
 import view.GamePanel;
-import view.entity.Player;
 import view.object.SuperObject;
 
 import javax.imageio.ImageIO;
@@ -10,14 +9,13 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class OBJ_Note extends SuperObject {
 
     public OBJ_Note(){
         name = "note";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/note.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/note.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

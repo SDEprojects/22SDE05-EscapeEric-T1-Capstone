@@ -1,17 +1,17 @@
-package view;
+package view.object.garage;
 
-import view.object.garage.*;
+import view.GamePanel;
+import view.object.AssetSetter;
 
-public class AssetSetter {
+public class GarageAssetSetter extends AssetSetter {
 
-    GamePanel gp;
-    KeyHandler keyH;
-    public AssetSetter(GamePanel gp, KeyHandler keyH){
-        this.gp = gp;
-        this.keyH = keyH;
+
+    public GarageAssetSetter(GamePanel gp) {
+        super(gp);
     }
 
-    public void setObject(){
+    @Override
+    public void setObject() {
         gp.obj[0] = new OBJ_Dresser();
         //Y moves object up and down
         gp.obj[0].screenY = 16;
@@ -58,10 +58,5 @@ public class AssetSetter {
         gp.obj[8] = new OBJ_Door();
         gp.obj[8].screenY = 144;
         gp.obj[8].screenX = 0;
-
     }
-
-    //Check if getPressed is checked
-    //TODO Check if player is close to the object and determine the output based on the object
-
 }

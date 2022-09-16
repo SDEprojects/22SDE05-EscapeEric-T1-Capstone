@@ -12,7 +12,7 @@ public class OBJ_Curtains extends SuperObject {
     public OBJ_Curtains(){
         name = "curtains";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage_OBJ/curtains.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/curtains.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
