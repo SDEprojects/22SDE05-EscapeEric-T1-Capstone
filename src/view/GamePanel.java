@@ -29,10 +29,12 @@ public class GamePanel extends JPanel implements Runnable{
     public Player player = new Player(this, keyH);
 
     public SuperObject[] obj = new SuperObject[10];
+    public UI ui = new UI(this);
 
     public int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
+    public final int dialogueState = 3;
 
     public void setUpGame(){
         assetSetter.setObject();
@@ -104,9 +106,9 @@ public class GamePanel extends JPanel implements Runnable{
                 obj[i].draw(g2,this);
             }
         }
-
         player.draw(g2);
-
+        //ui
+        ui.draw(g2);
         g2.dispose();
     }
 
