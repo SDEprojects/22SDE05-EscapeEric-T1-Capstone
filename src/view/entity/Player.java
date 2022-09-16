@@ -57,7 +57,7 @@ public class Player extends Entity {
         }
     }
 
-    public void update() {
+    public void update() throws IOException {
         if(keyH.leftPressed || keyH.downPressed || keyH.upPressed|| keyH.rightPressed){
             if (keyH.upPressed) {
                 direction = "up";
