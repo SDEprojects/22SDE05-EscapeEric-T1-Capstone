@@ -8,7 +8,7 @@
     "door":"You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
     "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
-    "invalidCommand": "That command is invalid! Please choose a proper command from the list."
+    "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
     "hutch": "testing"
   },
   "roomOne": {
