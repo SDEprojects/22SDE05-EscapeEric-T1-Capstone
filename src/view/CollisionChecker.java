@@ -1,14 +1,32 @@
 package view;
 
 import view.entity.Entity;
+import view.entity.Player;
+import view.object.AssetSetter;
+import view.object.kitchen.KitchenAssetSetter;
+import view.tile.TileManager;
+import view.tile.kitchen.KitchenTileManager;
+
+import java.awt.*;
+import java.io.IOException;
+
+import static view.BuildWindow.window;
 
 public class CollisionChecker {
 
     GamePanel gp;
+    TileManager tileM;
+    AssetSetter assetSetter;
+    Player player;
 
-    public CollisionChecker(GamePanel gp){this.gp = gp;}
+    public CollisionChecker(GamePanel gp, TileManager tileM, AssetSetter assetSetter, Player player){
+        this.gp = gp;
+        this.tileM = tileM;
+        this.assetSetter = assetSetter;
+        this.player = player;
+    }
 
-    public void checkTile(Entity entity){
+    public void checkTile(Entity entity) throws IOException {
         int entityLeftScreenX = entity.playerX + entity.solidArea.x;
         int entityRightScreenX = entity.playerX + entity.solidArea.x + entity.solidArea.width;
         int entityTopScreenY = entity.playerY + entity.solidArea.y;
@@ -20,43 +38,53 @@ public class CollisionChecker {
         int entityBottomRow = entityBottomScreenY/gp.tileSize;
 
         int tileNum1, tileNum2;
+        try{
+            switch(entity.direction){
+                case "up":
+                    //predicting where the player will be while they are moving up
+                    entityTopRow = (entityTopScreenY - entity.speed)/gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+                    tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+                    if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
+                        entity.collisionOn = true;
+                    }
+                    break;
+                case "down":
+                    entityBottomRow = (entityBottomScreenY + entity.speed)/gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+                    tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+                    if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
+                        entity.collisionOn = true;
+                    }
+                    break;
+                case "left":
+                    entityLeftCol = (entityLeftScreenX - entity.speed)/gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+                    tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+                    if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
+                        entity.collisionOn = true;
+                    }
+                    break;
+                case "right":
+                    entityRightCol = (entityRightScreenX + entity.speed)/gp.tileSize;
+                    tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+                    tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+                    if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
+                        entity.collisionOn = true;
+                    }
+                    break;
 
-        switch(entity.direction){
-            case "up":
-                //predicting where the player will be while they are moving up
-                entityTopRow = (entityTopScreenY - entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
-                    entity.collisionOn = true;
-                }
-                break;
-            case "down":
-                entityBottomRow = (entityBottomScreenY + entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
-                    entity.collisionOn = true;
-                }
-                break;
-            case "left":
-                entityLeftCol = (entityLeftScreenX - entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
-                    entity.collisionOn = true;
-                }
-                break;
-            case "right":
-                entityRightCol = (entityRightScreenX + entity.speed)/gp.tileSize;
-                tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision){
-                    entity.collisionOn = true;
-                }
-                break;
-
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            //When the character is out of bounds, then set new window
+            gp.tileM = new KitchenTileManager(gp);
+            gp.assetSetter = new KitchenAssetSetter(gp);
+            gp.assetSetter.setObject();
+            window.setTitle("Escape Eric - The Kitchen");
+            gp.player.playerY = 360;
+            gp.player.playerX = 680;
         }
+
     }
     public int checkObject(Entity entity, boolean player){
 

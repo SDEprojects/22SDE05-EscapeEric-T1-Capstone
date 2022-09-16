@@ -1,8 +1,13 @@
 package view;
 
 import view.entity.Player;
+import view.object.AssetSetter;
 import view.object.SuperObject;
+import view.object.garage.GarageAssetSetter;
+import view.object.kitchen.KitchenAssetSetter;
+import view.tile.garage.GarageTileManager;
 import view.tile.TileManager;
+import view.tile.kitchen.KitchenTileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +15,8 @@ import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    //CurrentGamePanelThread
+    public boolean gpRun = true;
     //SCREEN SETTINGS
     final int originalTileSize = 16; // 16 x 16 tile
     final int scale = 3;
@@ -22,20 +29,26 @@ public class GamePanel extends JPanel implements Runnable {
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
     private static boolean isDead = false;
 
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new GarageTileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
-    Thread gameThread;
-    public CollisionChecker cChecker = new CollisionChecker(this);
-    public AssetSetter assetSetter = new AssetSetter(this, keyH);
+    public AssetSetter assetSetter = new GarageAssetSetter(this);
     public Player player = new Player(this, keyH);
 
     public SuperObject[] obj = new SuperObject[10];
+    Thread gameThread;
+    public CollisionChecker cChecker = new CollisionChecker(this,tileM,assetSetter,player);
+
+    public UI ui = new UI(this);
+
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+    public final int dialogueState = 3;
 
     public void setUpGame(){
         assetSetter.setObject();
+        gameState = playState;
     }
-
-    private Image backgroundImage;
 
     public GamePanel() throws IOException {
         //Sets the size of the JPanel
@@ -61,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
         long timer = 0;
         int drawCount = 0;
 
-        while(!isDead){
+        while(gpRun){
             currentTime = System.nanoTime();
 
             delta+=(currentTime - lastTime)/drawInterval;
@@ -69,7 +82,11 @@ public class GamePanel extends JPanel implements Runnable {
             lastTime = currentTime;
 
             if(delta >= 1){
-                update();
+                try {
+                    update();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 repaint();
                 delta--;
                 drawCount++;
@@ -83,8 +100,13 @@ public class GamePanel extends JPanel implements Runnable {
         // Call lose method here?
     }
 
-    public void update(){
-        player.update();
+    public void update() throws IOException {
+        if(gameState == playState){
+            player.update();
+        }
+        if(gameState == pauseState){
+
+        }
     }
 
     public void paintComponent(Graphics g){
@@ -97,9 +119,9 @@ public class GamePanel extends JPanel implements Runnable {
                 obj[i].draw(g2,this);
             }
         }
-
         player.draw(g2);
-
+        //ui
+        ui.draw(g2);
         g2.dispose();
     }
 
