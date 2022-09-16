@@ -1,5 +1,7 @@
 package view;
 
+import com.ericsHouse.rooms.Room;
+import com.ericsHouse.rooms.RoomMap;
 import view.entity.Player;
 import view.object.AssetSetter;
 import view.object.SuperObject;
@@ -16,6 +18,7 @@ import java.io.IOException;
 public class GamePanel extends JPanel implements Runnable{
     //CurrentGamePanelThread
     public boolean gpRun = true;
+    public Room currentRoom;
     //SCREEN SETTINGS
     final int originalTileSize = 16; // 16 x 16 tile
     final int scale = 3;
@@ -34,6 +37,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public SuperObject[] obj = new SuperObject[10];
     Thread gameThread;
+    public RoomMap allRooms = new RoomMap(this);
     public CollisionChecker cChecker = new CollisionChecker(this,tileM,assetSetter,player);
 
     public UI ui = new UI(this);
@@ -44,10 +48,14 @@ public class GamePanel extends JPanel implements Runnable{
     public final int dialogueState = 3;
 
     public void setUpGame(){
-        assetSetter.setObject();
+        currentRoom = allRooms.roomMap.get("garage");
+        currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
 
+    public void setCurrentRoom(String roomName){
+        currentRoom = allRooms.roomMap.get(roomName);
+    }
     public GamePanel() throws IOException {
         //Sets the size of the JPanel
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -108,6 +116,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
         tileM.draw(g2);
 
         for(int i = 0; i < obj.length; i++){
@@ -115,6 +124,7 @@ public class GamePanel extends JPanel implements Runnable{
                 obj[i].draw(g2,this);
             }
         }
+        currentRoom.draw(g2);
         player.draw(g2);
         //ui
         ui.draw(g2);

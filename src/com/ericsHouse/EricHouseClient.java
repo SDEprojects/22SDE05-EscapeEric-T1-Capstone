@@ -63,11 +63,8 @@ public class EricHouseClient {
             if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
                 break;
             } else {
-                Room0.gameLogic();
-                Room1.gameLogic();
-                Room2.gameLogic();
-                Room3.gameLogic();
-                Room4.gameLogic();
+                //Room0.gameLogic();
+
             }
 
             // AB#141 player should be able to see where they currently are, display the challenge
