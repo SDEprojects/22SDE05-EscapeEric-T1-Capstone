@@ -43,7 +43,7 @@ public class OBJ_Radio extends SuperObject {
                 musicPlaying = true;
             }
         }catch (UnsupportedAudioFileException | IOException | LineUnavailableException e){
-
+            e.printStackTrace();
         }
 
     }

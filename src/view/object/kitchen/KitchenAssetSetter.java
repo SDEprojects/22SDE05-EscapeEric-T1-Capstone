@@ -16,8 +16,7 @@ public class KitchenAssetSetter extends AssetSetter {
     @Override
     public void setObject(){
         //TODO put all the object instantiation information in a txt or json file and parse it and
-        //instantiate with a for loop
-        //Reset the array
+        //Resetting the obj array for the kitchen objects to be drawn in the room
         Arrays.fill(gp.obj, null);
         gp.obj = new SuperObject[29];
 
