@@ -49,7 +49,9 @@ public class GamePanel extends JPanel implements Runnable{
     public final int deathState = 4;
 
     public void setUpGame(){
-        currentRoom = allRooms.roomMap.get("garage");
+
+        //TODO make sure the player is starting in the garage
+        currentRoom = allRooms.roomMap.get("living-room");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
