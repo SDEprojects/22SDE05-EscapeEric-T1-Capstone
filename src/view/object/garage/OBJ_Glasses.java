@@ -13,7 +13,7 @@ public class OBJ_Glasses extends SuperObject {
     public OBJ_Glasses(){
         name = "glasses";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/glasses-hidden.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/glasses-hidden.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class OBJ_Glasses extends SuperObject {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
             try {
-                image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/glasses.png"));
+                image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/glasses.png"));
             }catch (IOException e){
 
             }

@@ -6,6 +6,7 @@ import view.object.garage.GarageAssetSetter;
 import view.object.kitchen.KitchenAssetSetter;
 import view.object.living_room.LivingRoomAssetSetter;
 import view.tile.TileManager;
+import view.tile.bedroom.BedroomTileManager;
 import view.tile.garage.GarageTileManager;
 import view.tile.kitchen.KitchenTileManager;
 import view.tile.living_room.LivingRoomTileManager;
@@ -39,22 +40,24 @@ public class RoomMap {
         Rectangle gEntranceIntersect = new Rectangle(760, 340, 11, 48*2);
         AssetSetter gAssets = new GarageAssetSetter(gp);
         TileManager gTiles = new GarageTileManager(gp);
-        Room garage = new Room("garage",gp,gAssets,gTiles,"kitchen", "kitchen", gEntranceIntersect, gExitIntersect);
+        Room garage = new Room("garage",gp,gAssets,gTiles, "kitchen", "kitchen", gEntranceIntersect, gExitIntersect);
 
         //LIVING ROOM TILES AND ASSETS
         Rectangle lExitIntersect = new Rectangle(0, 144, 11, 48*2);
         Rectangle lEntranceIntersect = new Rectangle(760, 340, 11, 48*2);
         TileManager lTiles = new LivingRoomTileManager(gp);
         AssetSetter lAssets = new LivingRoomAssetSetter(gp);
-        Room livingRoom = new Room("living-room", gp, lAssets,lTiles,"kitchen","bedroom",lEntranceIntersect,lExitIntersect);
+        Room livingRoom = new Room("living-room", gp, lAssets,lTiles, "kitchen", "bedroom",lEntranceIntersect,lExitIntersect);
 
         //BEDROOM TILES AND ASSETS
-
+        TileManager bTiles = new BedroomTileManager(gp);
+        Room bedroom = new Room("bedroom",gp,lAssets,bTiles,"living-room","bathroom",lEntranceIntersect,lExitIntersect);
 
 
         //Putting Assets in a map for access
-        roomMap.put("kitchen", kitchen);
-        roomMap.put("garage", garage);
+        roomMap.put("rooms/kitchen", kitchen);
+        roomMap.put("rooms/garage", garage);
         roomMap.put("living-room",livingRoom);
+        roomMap.put("bedroom",bedroom);
     }
 }

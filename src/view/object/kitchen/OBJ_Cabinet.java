@@ -12,7 +12,7 @@ public class OBJ_Cabinet extends SuperObject {
     public OBJ_Cabinet(){
         name = "cabinet";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/kitchen/kitchen_OBJ/cabinet.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/cabinet.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

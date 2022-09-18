@@ -11,7 +11,7 @@ public class OBJ_Car extends SuperObject {
     public OBJ_Car(){
         name = "car";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/car.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/car.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

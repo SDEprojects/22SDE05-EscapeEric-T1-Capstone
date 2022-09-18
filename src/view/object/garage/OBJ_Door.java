@@ -11,7 +11,7 @@ public class OBJ_Door extends SuperObject {
     public OBJ_Door(){
         name = "door";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/garage-door-closed.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/garage-door-closed.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

@@ -12,7 +12,7 @@ public class OBJ_Fridge extends SuperObject {
     public OBJ_Fridge(){
         name = "fridge";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/kitchen/kitchen_OBJ/fridge.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/fridge.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

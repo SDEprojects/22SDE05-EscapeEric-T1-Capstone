@@ -17,7 +17,7 @@ public class OBJ_Radio extends SuperObject {
     public OBJ_Radio(){
         name = "radio";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/kitchen/kitchen_OBJ/radio.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/radio.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
