@@ -15,7 +15,4 @@ public class LosePanel extends JPanel {
     final int screenWidth = tileSize * maxScreenCol; //768 pixels
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
-    public static void lose() {
-        GamePanel.setDead(true);
-    }
 }
