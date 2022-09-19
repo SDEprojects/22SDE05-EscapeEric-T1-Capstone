@@ -6,10 +6,8 @@ import view.entity.Player;
 import view.object.AssetSetter;
 import view.object.SuperObject;
 import view.object.garage.GarageAssetSetter;
-import view.object.kitchen.KitchenAssetSetter;
-import view.tile.garage.GarageTileManager;
 import view.tile.TileManager;
-import view.tile.kitchen.KitchenTileManager;
+import view.tile.garage.GarageTileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setUpGame(){
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("bathroom");
+        currentRoom = allRooms.roomMap.get("garage");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
