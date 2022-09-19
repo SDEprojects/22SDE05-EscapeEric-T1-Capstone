@@ -1,12 +1,15 @@
 package com.ericsHouse.rooms;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import view.GamePanel;
 import view.object.AssetSetter;
+import view.object.bathroom.BathroomAssetSetter;
 import view.object.bedroom.BedroomAssetSetter;
 import view.object.garage.GarageAssetSetter;
 import view.object.kitchen.KitchenAssetSetter;
 import view.object.living_room.LivingRoomAssetSetter;
 import view.tile.TileManager;
+import view.tile.bathroom.BathroomTileManager;
 import view.tile.bedroom.BedroomTileManager;
 import view.tile.garage.GarageTileManager;
 import view.tile.kitchen.KitchenTileManager;
@@ -58,10 +61,18 @@ public class RoomMap {
         Room bedroom = new Room("bedroom",gp,bAssets,bTiles,"living-room","bathroom",bEntranceIntersect,bExitIntersect);
 
 
+        //BATHROOM TILES AND ASSETS
+        Rectangle baExitIntersect = new Rectangle(0, 144, 11, 48*2);
+        Rectangle baEntranceIntersect = new Rectangle(0 , 166 * 2, 11, 48*2);
+        TileManager baTiles = new BathroomTileManager(gp);
+        AssetSetter baAssets = new BathroomAssetSetter(gp);
+        Room bathroom = new Room("bathroom",gp,baAssets,baTiles,"living-room","bathroom",baEntranceIntersect,baExitIntersect);
+
         //Putting Assets in a map for access
         roomMap.put("kitchen", kitchen);
         roomMap.put("garage", garage);
         roomMap.put("living-room",livingRoom);
         roomMap.put("bedroom",bedroom);
+        roomMap.put("bathroom",bathroom);
     }
 }
