@@ -59,8 +59,8 @@ public class RoomMap {
 
 
         //Putting Assets in a map for access
-        roomMap.put("rooms/kitchen", kitchen);
-        roomMap.put("rooms/garage", garage);
+        roomMap.put("kitchen", kitchen);
+        roomMap.put("garage", garage);
         roomMap.put("living-room",livingRoom);
         roomMap.put("bedroom",bedroom);
     }
