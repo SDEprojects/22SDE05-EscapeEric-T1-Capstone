@@ -11,7 +11,7 @@ public class OBJ_Poster extends SuperObject {
     public OBJ_Poster(){
         name = "poster";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/posters.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/posters.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

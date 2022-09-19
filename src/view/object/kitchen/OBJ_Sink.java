@@ -12,7 +12,7 @@ public class OBJ_Sink extends SuperObject {
     public OBJ_Sink(){
         name = "sink";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/kitchen/kitchen_OBJ/sink.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/sink.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

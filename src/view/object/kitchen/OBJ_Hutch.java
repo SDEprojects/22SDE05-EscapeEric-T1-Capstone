@@ -12,7 +12,7 @@ public class OBJ_Hutch extends SuperObject {
     public OBJ_Hutch(){
         name = "hutch";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/kitchen/kitchen_OBJ/hutch.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/hutch.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

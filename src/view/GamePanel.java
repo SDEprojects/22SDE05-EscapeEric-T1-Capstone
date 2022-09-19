@@ -27,8 +27,8 @@ public class GamePanel extends JPanel implements Runnable{
     public final int tileSize = originalTileSize * scale; //48 x 48 tile
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol; //768 pixels
-    final int screenHeight = tileSize * maxScreenRow; //576 pixels
+    final int screenWidth = tileSize * maxScreenCol; //768 pixels (aesprite = 256)
+    final int screenHeight = tileSize * maxScreenRow; //576 pixels (aesprite = 192)
 
     public TileManager tileM = new GarageTileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
@@ -46,8 +46,11 @@ public class GamePanel extends JPanel implements Runnable{
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
+    public final int deathState = 4;
 
     public void setUpGame(){
+
+        //TODO make sure the player is starting in the garage
         currentRoom = allRooms.roomMap.get("garage");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;

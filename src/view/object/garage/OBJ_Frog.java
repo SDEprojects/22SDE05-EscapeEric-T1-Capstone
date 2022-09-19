@@ -12,7 +12,7 @@ public class OBJ_Frog extends SuperObject {
     public OBJ_Frog(){
         name = "frog";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/frog.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/frog.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

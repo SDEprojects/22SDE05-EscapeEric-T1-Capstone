@@ -62,6 +62,10 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
             }
+            //TODO - remove comment before release, used to test death screen
+            if(code == KeyEvent.VK_J){
+                gp.gameState = gp.deathState;
+            }
         } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;

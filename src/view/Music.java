@@ -12,7 +12,7 @@ public class Music {
 
     public static void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         classLoader = Thread.currentThread().getContextClassLoader();
-        InputStream musicStream = classLoader.getResourceAsStream("coding-night.wav");
+        InputStream musicStream = classLoader.getResourceAsStream("sounds/8-Bit-Bop.wav");
         InputStream bufferedMusic = new BufferedInputStream(musicStream);
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedMusic);
         try {
