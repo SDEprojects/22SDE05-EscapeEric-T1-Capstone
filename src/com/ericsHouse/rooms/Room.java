@@ -49,7 +49,6 @@ public class Room{
         gp.assetSetter = assetSetter;
         gp.assetSetter.setObject();
         window.setTitle(title);
-
     }
 
     public void draw(Graphics2D g2){

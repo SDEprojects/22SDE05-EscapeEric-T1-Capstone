@@ -1,0 +1,29 @@
+bathtub.png,31,32 place 4,104
+toilet.png,13,22 place 23,47
+toilet-paper.png,15,8 place 43,48
+seat.png,17,16 place 101,56
+towel-holder.png, 18,12 place 101,34 & 176,35
+wall-mirror.png, 11,13 place 128,28 & 156,28
+david-mirror.png, 22,39 place 203,25
+bathroom-sink.png, 54,30 place 120,37
+shelves.png,32,34 place 67,31
+green-bottle.png,7,9 place 23,43
+towel-pile-1.png,16,14 place 5,90 & 203,162
+towel-pile-2.png,16,11 place 186,161
+towel-pile-3.png, 16,16 place 198,145
+washer-dryer.png, 32,23 place 219,139
+rug.png,47,32 place 103,108
+toothbrush.png,8,8 place 143,31
+flower.png,18,28 place 5,42 && 238,42
+ocean-picture.png,22,16 place 19,25
+black-bottle.png,9,9 place 104,53
+sleeping-cat.png,13,11 place 
+
+
+
+
+
+
+
+
+
