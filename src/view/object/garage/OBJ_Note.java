@@ -15,7 +15,7 @@ public class OBJ_Note extends SuperObject {
     public OBJ_Note(){
         name = "note";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/garage/garage_OBJ/note.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/note.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

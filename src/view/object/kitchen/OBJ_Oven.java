@@ -10,9 +10,9 @@ import java.io.IOException;
 public class OBJ_Oven extends SuperObject {
 
     public OBJ_Oven(){
-        name = "sink";
+        name = "oven";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/kitchen/kitchen_OBJ/ovens.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/ovens.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

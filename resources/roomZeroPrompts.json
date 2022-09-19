@@ -2,14 +2,16 @@
   "roomZero": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
     "note": "Welcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\tOh, I almost forgot.\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\tGOOD LUCK!",
-    "car": "This is a pretty cool ride, looks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
-    "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies, too bad he's trying to catch you\n",
+    "car": "This is a pretty cool ride\nLooks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
+    "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies.\nToo bad he's trying to catch you\n",
     "dresser": "I like this dresser, such a great use of storage!\nOh and look A FROGGIE IS ON TOP OF ONE OF THEM!\n",
     "door":"You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
     "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
-    "hutch": "testing"
+    "hutch": "testing",
+    "radio": "Let's play some tunes",
+    "fridge": "refrigerator"
   },
   "roomOne": {
     "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",

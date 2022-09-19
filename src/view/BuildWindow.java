@@ -10,7 +10,7 @@ public class BuildWindow {
     public static JFrame window;
 
     public static void buildWindow(GamePanel gamePanel, String title) throws IOException {
-        BufferedImage image = ImageIO.read(main.class.getResourceAsStream("/garage/garage_OBJ/frog.png"));
+        BufferedImage image = ImageIO.read(main.class.getResourceAsStream("/rooms/garage/garage_OBJ/frog.png"));
         window = new JFrame();
         //Setting the frame to close when user clicks "x"
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
