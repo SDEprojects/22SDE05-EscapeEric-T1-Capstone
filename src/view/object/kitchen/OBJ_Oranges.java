@@ -1,4 +1,4 @@
-package view.object.garage;
+package view.object.kitchen;
 
 import com.ericsHouse.jsonParser.RoomZeroParser;
 import view.GamePanel;
@@ -8,24 +8,23 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class OBJ_Glasses extends SuperObject {
-
-    public OBJ_Glasses(){
-        name = "glasses";
-        try{
-            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/glasses-hidden.png"));
-        }catch (IOException e){
+public class OBJ_Oranges extends SuperObject {
+    public OBJ_Oranges() {
+        name = "oranges";
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/oranges.png"));
+        } catch (
+                IOException e) {
             e.printStackTrace();
         }
 
-        solidArea = new Rectangle(0,0,48*2,48*2);
+        solidArea = new Rectangle(0, 0, 95 * 3, 85 * 3);
         gettable = true;
     }
 
     @Override
-    public void draw(Graphics2D g2, GamePanel gp){
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-
+    public void draw(Graphics2D g2, GamePanel gp) {
+        g2.drawImage(image, screenX, screenY,gp.tileSize, gp.tileSize, null);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class OBJ_Glasses extends SuperObject {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
             try {
-                image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/glasses.png"));
+                image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/oranges.png"));
             }catch (IOException e){
 
             }
@@ -44,5 +43,4 @@ public class OBJ_Glasses extends SuperObject {
             gp.obj[objIndex] = null;
         }
     }
-
 }
