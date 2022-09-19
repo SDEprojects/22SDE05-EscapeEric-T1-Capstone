@@ -117,5 +117,33 @@ public class BedroomAssetSetter extends AssetSetter {
         gp.obj[23] = new OBJ_Kitchen("blocks", "/rooms/bedroom/bedroom_OBJ/blocks.png",19,18);
         gp.obj[23].screenX = 118 * 3;
         gp.obj[23].screenY = 102 * 3;
+
+        gp.obj[24] = new OBJ_Kitchen("bunny-picture", "/rooms/bedroom/bedroom_OBJ/bunny-picture.png",24,24);
+        gp.obj[24].screenX = 30 * 3;
+        gp.obj[24].screenY = 14 * 3;
+
+        gp.obj[25] = new OBJ_Kitchen("dino-picture", "/rooms/bedroom/bedroom_OBJ/dino-picture.png",23,22);
+        gp.obj[25].screenX = 177 * 3;
+        gp.obj[25].screenY = 17 * 3;
+
+        gp.obj[26] = new OBJ_Kitchen("cat-plushie", "/rooms/bedroom/bedroom_OBJ/cat-plushie.png",13,13);
+        gp.obj[26].screenX = 104 * 3;
+        gp.obj[26].screenY = 43 * 3;
+
+        gp.obj[27] = new OBJ_Kitchen("penguin-plushie", "/rooms/bedroom/bedroom_OBJ/penguin-plushie.png",13,13);
+        gp.obj[27].screenX = 116 * 3;
+        gp.obj[27].screenY = 42 * 3;
+
+        gp.obj[28] = new OBJ_Kitchen("star-plushie", "/rooms/bedroom/bedroom_OBJ/star-plushie.png",11,10);
+        gp.obj[28].screenX = 124 * 3;
+        gp.obj[28].screenY = 60 * 3;
+
+        gp.obj[29] = new OBJ_Kitchen("star-plushie", "/rooms/bedroom/bedroom_OBJ/star-plushie.png",11,10);
+        gp.obj[29].screenX = 99 * 3;
+        gp.obj[29].screenY = 60 * 3;
+
+        gp.obj[30] = new OBJ_Kitchen("bear-plushie", "/rooms/bedroom/bedroom_OBJ/bear-plushie.png",14,14);
+        gp.obj[30].screenX = 110 * 3;
+        gp.obj[30].screenY = 58 * 3;
     }
 }
