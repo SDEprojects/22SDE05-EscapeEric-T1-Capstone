@@ -1,6 +1,6 @@
 package view.object;
 
-import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.ericsHouse.jsonParser.JsonParser;
 import view.GamePanel;
 
 import java.awt.*;
@@ -29,14 +29,14 @@ public class SuperObject {
         if (gettable) {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
-            RoomZeroParser.getPrompt(gp.obj[objIndex].name);
+            JsonParser.getPrompt(gp.obj[objIndex].name);
             gp.player.addItem(gp.obj[objIndex]);
             gp.obj[objIndex] = null;
         }
         //If item isn't gettable display dialogue box with description
         else {
             //gp.gameState = gp.dialogueState;
-            RoomZeroParser.getPrompt(gp.obj[objIndex].name);
+            JsonParser.getPrompt(gp.obj[objIndex].name);
         }
     }
 }

@@ -1,6 +1,6 @@
 package view;
 
-import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.ericsHouse.jsonParser.JsonParser;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -54,7 +54,7 @@ public class KeyHandler implements KeyListener {
                 getPressed = true;
                 int index = gp.cChecker.checkObject(gp.player, true);
                 if (index != 999) {
-                    gp.ui.currentDialogue = RoomZeroParser.getPrompt(gp.obj[index].name);
+                    gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[index].name);
                     gp.gameState = gp.dialogueState;
                     gp.obj[index].interact(index, gp);
                 }

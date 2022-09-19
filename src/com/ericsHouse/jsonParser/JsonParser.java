@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.io.*;
 
-public class RoomZeroParser {
+public class JsonParser {
     static InputStream iStreamPrompts=getFileFromResourceAsStream("roomZeroPrompts.json");;
     static InputStream iStreamLocations = getFileFromResourceAsStream("locations.json");
     static ObjectMapper objectMapper = new ObjectMapper();
@@ -15,7 +15,7 @@ public class RoomZeroParser {
     static JsonNode jsonNodePrompts;
     static JsonNode jsonNodeLocations;
 
-    public RoomZeroParser(String file) {
+    public JsonParser(String file) {
         this.iStreamPrompts = getFileFromResourceAsStream(file);
     }
 
@@ -51,7 +51,7 @@ public class RoomZeroParser {
     }
 
     public static InputStream getFileFromResourceAsStream(String fileName) {
-        ClassLoader classLoader = RoomZeroParser.class.getClassLoader();
+        ClassLoader classLoader = JsonParser.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
         if (inputStream == null) {
             throw new IllegalArgumentException("file not found! " + fileName);

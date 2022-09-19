@@ -174,20 +174,6 @@ public class CollisionChecker {
             case "up":
             case "down":
             case "left":
-                entity.solidArea.x -= entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = 350;
-                    gp.player.playerX = 350;
-
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = 350;
-                    gp.player.playerX = 350;
-                }
-                break;
             case "right":
                 entity.solidArea.x += entity.speed;
                 if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {

@@ -1,6 +1,6 @@
 package view.object.garage;
 
-import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.ericsHouse.jsonParser.JsonParser;
 import view.GamePanel;
 import view.object.SuperObject;
 
@@ -36,7 +36,7 @@ public class OBJ_Note extends SuperObject {
         //TODO - refactor this check so that it's not so hard coded
         List<SuperObject> hasGlasses = gp.player.getBackpack().stream().filter(obj -> obj.name.equals("glasses")).collect(Collectors.toList());
         if(gettable && hasGlasses.size() > 0){
-            RoomZeroParser.getPrompt(gp.obj[objIndex].name);
+            JsonParser.getPrompt(gp.obj[objIndex].name);
             gp.player.addItem(gp.obj[objIndex]);
             System.out.println(gp.player.getBackpack().size());
             gp.obj[objIndex] = null;
