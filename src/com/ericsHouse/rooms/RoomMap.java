@@ -51,9 +51,11 @@ public class RoomMap {
         Room livingRoom = new Room("living-room", gp, lAssets,lTiles, "kitchen", "bedroom",lEntranceIntersect,lExitIntersect);
 
         //BEDROOM TILES AND ASSETS
+        Rectangle bExitIntersect = new Rectangle(0, 144, 11, 48*2);
+        Rectangle bEntranceIntersect = new Rectangle(0 , 166 * 2, 11, 48*2);
         TileManager bTiles = new BedroomTileManager(gp);
         AssetSetter bAssets = new BedroomAssetSetter(gp);
-        Room bedroom = new Room("bedroom",gp,bAssets,bTiles,"living-room","bathroom",lEntranceIntersect,lExitIntersect);
+        Room bedroom = new Room("bedroom",gp,bAssets,bTiles,"living-room","bathroom",bEntranceIntersect,bExitIntersect);
 
 
         //Putting Assets in a map for access
