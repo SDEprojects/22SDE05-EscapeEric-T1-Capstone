@@ -2,6 +2,7 @@ package com.ericsHouse.rooms;
 
 import view.GamePanel;
 import view.object.AssetSetter;
+import view.object.bedroom.BedroomAssetSetter;
 import view.object.garage.GarageAssetSetter;
 import view.object.kitchen.KitchenAssetSetter;
 import view.object.living_room.LivingRoomAssetSetter;
@@ -51,7 +52,8 @@ public class RoomMap {
 
         //BEDROOM TILES AND ASSETS
         TileManager bTiles = new BedroomTileManager(gp);
-        Room bedroom = new Room("bedroom",gp,lAssets,bTiles,"living-room","bathroom",lEntranceIntersect,lExitIntersect);
+        AssetSetter bAssets = new BedroomAssetSetter(gp);
+        Room bedroom = new Room("bedroom",gp,bAssets,bTiles,"living-room","bathroom",lEntranceIntersect,lExitIntersect);
 
 
         //Putting Assets in a map for access

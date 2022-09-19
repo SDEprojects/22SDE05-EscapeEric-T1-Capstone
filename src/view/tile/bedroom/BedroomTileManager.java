@@ -51,6 +51,9 @@ public class BedroomTileManager extends TileManager {
             tile[8].image = ImageIO.read(getClass().getResourceAsStream("/rooms/bedroom/tiles/right-upper-corner.png"));
             tile[8].collision = true;
 
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/rooms/bedroom/tiles/bottom-wall-main.png"));
+            tile[9].collision = true;
 
         }catch (IOException e){
             e.printStackTrace();
