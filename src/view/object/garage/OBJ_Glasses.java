@@ -24,7 +24,6 @@ public class OBJ_Glasses extends SuperObject {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp){
-
         g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
     }
