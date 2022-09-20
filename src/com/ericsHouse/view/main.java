@@ -26,7 +26,7 @@ public class main {
         window.setResizable(false);
         window.setTitle("Escape Eric - Office Garage");
         window.setIconImage(image);
-        window.setSize(984,604);
+        //window.setSize(984,612);
 
         GamePanel gamePanel = new GamePanel();
         SidePanel sidePanel = new SidePanel();
@@ -34,6 +34,7 @@ public class main {
         window.add(gamePanel, BorderLayout.LINE_START);
 
         window.add(sidePanel, BorderLayout.LINE_END);
+        window.pack();
         sidePanel.timerSetUp();
         sidePanel.inventorySetUp();
         sidePanel.buttonSetpUp();

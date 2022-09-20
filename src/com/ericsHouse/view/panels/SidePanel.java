@@ -12,7 +12,7 @@ public class SidePanel extends JPanel {
 
     public static ArrayList<String> items;
     final int screenWidth = 216;
-    final int screenHeight = 604;
+    final int screenHeight = GamePanel.screenHeight;
 
     public SidePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));

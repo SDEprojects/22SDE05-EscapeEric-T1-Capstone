@@ -11,6 +11,10 @@
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
   "kitchen": {
+    "door": {
+      "locked": "There's a note on the door.\n'This dang old door lock has been messed up for weeks.\nI just keep jimmying it open with a knife.'",
+      "unlocked": "You use the knife to jimmy open the lock.\nThe door opens and you can proceed to the next room..."
+    },
     "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
     "hutch": "A storage chest.",
     "radio": "Let's play some tunes",
@@ -25,7 +29,6 @@
     "inspectRight": "You inspect the table on the right. You find a knife and read:\n\t'This dang old door lock has been messed up for weeks. I just keep jimmying it open with a knife.'",
     "inspectFloor": "There is nothing on the floor.",
     "openDoorLocked": "The door is locked with a big rusty padlock. There must be some way to open it...",
-    "openDoorUnlocked": "You use the knife to jimmy open the lock. The door opens and you proceed to the next room...",
     "askShaq": "To figure out what the room challenge is, try to open the locked door.\nMake sure you look for helpful clues or items in every room.\nMaybe the note on that table can offer up a clue.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },

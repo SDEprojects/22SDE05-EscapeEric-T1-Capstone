@@ -16,7 +16,7 @@ public class KitchenAssetSetter extends AssetSetter {
         //TODO put all the object instantiation information in a txt or json file and parse it and
         //Resetting the obj array for the kitchen objects to be drawn in the room
         Arrays.fill(gp.obj, null);
-        gp.obj = new SuperObject[29];
+        gp.obj = new SuperObject[30];
 
         //Setting all objects in the kitchen
         gp.obj[0] = new OBJ_Fridge();
@@ -43,17 +43,12 @@ public class KitchenAssetSetter extends AssetSetter {
         gp.obj[5].screenX = 175 * 3;
         gp.obj[5].screenY = 36;
 
-        gp.obj[6] = new OBJ_Kitchen("house-plant", "/rooms/kitchen/kitchen_OBJ/house-plant.png", 18,28);
-        gp.obj[6].screenX = 197 * 3;
-        gp.obj[6].screenY = 36;
-
         gp.obj[7] = new OBJ_Kitchen("door", "/rooms/kitchen/kitchen_OBJ/door.png", 26,30);
-        gp.obj[7].screenX = 214 * 3;
+        gp.obj[7].screenX = 205 * 3;
         gp.obj[7].screenY = 10;
-        gp.obj[7].collision = false;
 
         gp.obj[8] = new OBJ_Kitchen("house-plant", "/rooms/kitchen/kitchen_OBJ/house-plant.png", 18,28);
-        gp.obj[8].screenX = 239 * 3;
+        gp.obj[8].screenX = 229 * 3;
         gp.obj[8].screenY = 36;
 
         gp.obj[9] = new OBJ_Kitchen("cat-pic", "/rooms/kitchen/kitchen_OBJ/cat-pic.png", 16  ,16);
@@ -138,5 +133,12 @@ public class KitchenAssetSetter extends AssetSetter {
         gp.obj[28] = new OBJ_Kitchen("flowers", "/rooms/kitchen/kitchen_OBJ/flowers.png", 16  ,16);
         gp.obj[28].screenX = 45 * 3;
         gp.obj[28].screenY = 145 * 3;
+
+        gp.obj[29] = new OBJ_Kitchen("knife", "/rooms/kitchen/kitchen_OBJ/knife.png", 18  ,21);
+        gp.obj[29].screenX = 47 * 3;
+        gp.obj[29].screenY = 61 * 3;
+        gp.obj[29].solidArea.y = gp.obj[29].solidArea.y * 3;
+        gp.obj[29].solidArea.x = gp.obj[29].solidArea.x * 3;
+        gp.obj[29].gettable = true;
     }
 }
