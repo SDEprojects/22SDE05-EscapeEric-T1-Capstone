@@ -34,7 +34,7 @@ public class RoomMap {
     public void generateRooms() throws IOException {
         //KITCHEN TILES AND ASSETS
         Rectangle kEntranceIntersect = new Rectangle(760, 340, 11, 48*2);
-        Rectangle kExitIntersect = new Rectangle(678, 144, 11, 48 *2);
+        Rectangle kExitIntersect = new Rectangle(212 * 3, 17, 30 * 3, 16 *3);
         AssetSetter kAssets = new KitchenAssetSetter(gp);
         TileManager kTiles = new KitchenTileManager(gp);
         Room kitchen = new Room("kitchen",gp, kAssets,kTiles, "garage", "living-room", kEntranceIntersect,kExitIntersect);
@@ -54,7 +54,7 @@ public class RoomMap {
         Room livingRoom = new Room("living-room", gp, lAssets,lTiles, "kitchen", "bedroom",lEntranceIntersect,lExitIntersect);
 
         //BEDROOM TILES AND ASSETS
-        Rectangle bExitIntersect = new Rectangle(0, 144, 11, 48*2);
+        Rectangle bExitIntersect = new Rectangle(218 * 3, 36 * 3, 26 * 3, 14 * 3);
         Rectangle bEntranceIntersect = new Rectangle(0 , 166 * 2, 11, 48*2);
         TileManager bTiles = new BedroomTileManager(gp);
         AssetSetter bAssets = new BedroomAssetSetter(gp);
@@ -62,11 +62,11 @@ public class RoomMap {
 
 
         //BATHROOM TILES AND ASSETS
-        Rectangle baExitIntersect = new Rectangle(0, 144, 11, 48*2);
-        Rectangle baEntranceIntersect = new Rectangle(0 , 166 * 2, 11, 48*2);
+        Rectangle baExitIntersect = new Rectangle(199 * 3, 34 * 3, 30 * 3, 15 * 3);
+        Rectangle baEntranceIntersect = new Rectangle(32 * 3 , 187 * 3, 33 * 3, 5 * 3);
         TileManager baTiles = new BathroomTileManager(gp);
         AssetSetter baAssets = new BathroomAssetSetter(gp);
-        Room bathroom = new Room("bathroom",gp,baAssets,baTiles,"living-room","bathroom",baEntranceIntersect,baExitIntersect);
+        Room bathroom = new Room("bathroom",gp,baAssets,baTiles,"bedroom","bathroom",baEntranceIntersect,baExitIntersect);
 
         //Putting Assets in a map for access
         roomMap.put("kitchen", kitchen);
