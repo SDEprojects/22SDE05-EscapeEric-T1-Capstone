@@ -1,6 +1,5 @@
 package com.ericsHouse.view.panels;
 
-import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.util.Time;
 
