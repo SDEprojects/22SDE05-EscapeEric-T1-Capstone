@@ -28,6 +28,8 @@ public class JsonParser {
             e.printStackTrace();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }catch (NullPointerException e){
+            return "Well that's just the coolest lil' thing!";
         }
         return item;
     }

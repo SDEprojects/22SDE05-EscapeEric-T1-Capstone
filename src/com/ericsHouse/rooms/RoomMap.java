@@ -47,8 +47,8 @@ public class RoomMap {
         Room garage = new Room("garage",gp,gAssets,gTiles, "kitchen", "kitchen", gEntranceIntersect, gExitIntersect);
 
         //LIVING ROOM TILES AND ASSETS
-        Rectangle lExitIntersect = new Rectangle(0, 144, 11, 48*2);
-        Rectangle lEntranceIntersect = new Rectangle(760, 340, 11, 48*2);
+        Rectangle lExitIntersect = new Rectangle(251*3, 110*3, 11, 48);
+        Rectangle lEntranceIntersect = new Rectangle(160 * 3, 189 * 3, 32 * 3, 4 * 3);
         TileManager lTiles = new LivingRoomTileManager(gp);
         AssetSetter lAssets = new LivingRoomAssetSetter(gp);
         Room livingRoom = new Room("living-room", gp, lAssets,lTiles, "kitchen", "bedroom",lEntranceIntersect,lExitIntersect);
