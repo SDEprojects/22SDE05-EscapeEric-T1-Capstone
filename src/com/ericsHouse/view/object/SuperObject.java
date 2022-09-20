@@ -7,8 +7,9 @@ import com.ericsHouse.view.panels.GamePanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class SuperObject {
+import static com.ericsHouse.view.main.sidePanel;
 
+public abstract class SuperObject {
 
     public BufferedImage image;
     public String name;
@@ -21,6 +22,7 @@ public class SuperObject {
     public boolean gettable = false;
     public boolean riddleItem = false;
     public boolean solved = false;
+
     public static boolean win = false;
     public void draw(Graphics2D g2, GamePanel gp) {
 
@@ -32,14 +34,16 @@ public class SuperObject {
         if (gettable) {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
-            JsonParser.getPrompt(gp.obj[objIndex].name,gp);
+            JsonParser.getPrompt(gp.obj[objIndex].name, gp);
             gp.player.addItem(gp.obj[objIndex]);
+            sidePanel.inventorySetUp(gp);
+            sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
         }
         //If item isn't gettable display dialogue box with description
         else {
             gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[objIndex].name,gp);
+            gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[objIndex].name, gp);
         }
     }
 }

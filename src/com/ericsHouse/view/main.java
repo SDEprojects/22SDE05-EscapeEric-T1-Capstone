@@ -14,6 +14,7 @@ import static com.ericsHouse.view.util.Time.gameTimer;
 public class main {
 
     public static JFrame window;
+    public static SidePanel sidePanel;
 
     public static void main(String[] args) throws IOException {
         BufferedImage image = ImageIO.read(main.class.getResourceAsStream("/rooms/garage/garage_OBJ/frog.png"));
@@ -29,15 +30,16 @@ public class main {
         //window.setSize(984,612);
 
         GamePanel gamePanel = new GamePanel();
-        SidePanel sidePanel = new SidePanel();
+        sidePanel = new SidePanel();
         //pack causes this window to be sized to fit the preferred size and layouts of its subcomponents(GamePanel)
         window.add(gamePanel, BorderLayout.LINE_START);
 
         window.add(sidePanel, BorderLayout.LINE_END);
         window.pack();
         sidePanel.timerSetUp();
-        sidePanel.inventorySetUp();
+        sidePanel.inventorySetUp(gamePanel);
         sidePanel.buttonSetpUp();
+
         // TODO - use this set size to create a 200px wide JPanel inside the window to display the Game Control information
 
         // Pack can be used to build a new window with the game panel dimensions (we can build a side window to show a list of commands)
@@ -47,6 +49,7 @@ public class main {
         window.setVisible(true);
         //TODO - Put intro screen before game panel is started
         gamePanel.setUpGame();
+        sidePanel.inventoryDisplay();
         gamePanel.startGameThread();
         gameTimer.start();
     }
