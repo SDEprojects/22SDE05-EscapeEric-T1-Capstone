@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.ericsHouse.view.main.sidePanel;
+
 public class OBJ_Note extends SuperObject {
 
     public OBJ_Note(){
@@ -38,7 +40,8 @@ public class OBJ_Note extends SuperObject {
         if(gettable && hasGlasses.size() > 0){
             JsonParser.getPrompt(gp.obj[objIndex].name,gp);
             gp.player.addItem(gp.obj[objIndex]);
-            System.out.println(gp.player.getBackpack().size());
+            sidePanel.inventorySetUp(gp);
+            sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
 
         }

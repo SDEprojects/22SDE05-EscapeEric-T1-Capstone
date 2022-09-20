@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
+import static com.ericsHouse.view.main.sidePanel;
+
 public class OBJ_Glasses extends SuperObject {
 
     public OBJ_Glasses(){
@@ -35,12 +37,13 @@ public class OBJ_Glasses extends SuperObject {
             //If user selects get item then the object is put in their inventory
             try {
                 image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/glasses.png"));
-            }catch (IOException e){
+            } catch (IOException e){
 
             }
             gp.player.addItem(gp.obj[objIndex]);
-            System.out.println(gp.player.getBackpack().size());
             JsonParser.getPrompt(gp.obj[objIndex].name,gp);
+            sidePanel.inventorySetUp(gp);
+            sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
         }
     }
