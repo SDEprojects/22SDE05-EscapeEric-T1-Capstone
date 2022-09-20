@@ -1,19 +1,18 @@
 package com.ericsHouse.rooms;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import view.GamePanel;
-import view.object.AssetSetter;
-import view.object.bathroom.BathroomAssetSetter;
-import view.object.bedroom.BedroomAssetSetter;
-import view.object.garage.GarageAssetSetter;
-import view.object.kitchen.KitchenAssetSetter;
-import view.object.living_room.LivingRoomAssetSetter;
-import view.tile.TileManager;
-import view.tile.bathroom.BathroomTileManager;
-import view.tile.bedroom.BedroomTileManager;
-import view.tile.garage.GarageTileManager;
-import view.tile.kitchen.KitchenTileManager;
-import view.tile.living_room.LivingRoomTileManager;
+import com.ericsHouse.view.object.bathroom.BathroomAssetSetter;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.object.AssetSetter;
+import com.ericsHouse.view.object.bedroom.BedroomAssetSetter;
+import com.ericsHouse.view.object.garage.GarageAssetSetter;
+import com.ericsHouse.view.object.kitchen.KitchenAssetSetter;
+import com.ericsHouse.view.object.living_room.LivingRoomAssetSetter;
+import com.ericsHouse.view.tile.TileManager;
+import com.ericsHouse.view.tile.bathroom.BathroomTileManager;
+import com.ericsHouse.view.tile.bedroom.BedroomTileManager;
+import com.ericsHouse.view.tile.garage.GarageTileManager;
+import com.ericsHouse.view.tile.kitchen.KitchenTileManager;
+import com.ericsHouse.view.tile.living_room.LivingRoomTileManager;
 
 import java.awt.*;
 import java.io.IOException;
