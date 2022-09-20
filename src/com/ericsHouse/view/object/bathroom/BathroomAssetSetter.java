@@ -1,11 +1,9 @@
-package view.object.bathroom;
+package com.ericsHouse.view.object.bathroom;
 
-import view.GamePanel;
-import view.object.AssetSetter;
-import view.object.SuperObject;
-import view.object.kitchen.OBJ_Kitchen;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.object.AssetSetter;
+import com.ericsHouse.view.object.SuperObject;
 
-import java.io.InputStream;
 import java.util.Arrays;
 
 public class BathroomAssetSetter extends AssetSetter {

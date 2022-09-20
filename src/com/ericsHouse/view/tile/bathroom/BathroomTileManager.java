@@ -1,8 +1,8 @@
-package view.tile.bathroom;
+package com.ericsHouse.view.tile.bathroom;
 
-import view.GamePanel;
-import view.tile.Tile;
-import view.tile.TileManager;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.tile.Tile;
+import com.ericsHouse.view.tile.TileManager;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;

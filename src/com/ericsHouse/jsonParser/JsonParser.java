@@ -3,7 +3,7 @@ package com.ericsHouse.jsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import view.GamePanel;
+import com.ericsHouse.view.panels.GamePanel;
 
 import java.io.*;
 

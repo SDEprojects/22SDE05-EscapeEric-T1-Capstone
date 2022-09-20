@@ -1,7 +1,7 @@
-package view.object.bathroom;
+package com.ericsHouse.view.object.bathroom;
 
-import view.GamePanel;
-import view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

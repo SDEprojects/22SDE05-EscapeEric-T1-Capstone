@@ -1,8 +1,8 @@
-package view.object.kitchen;
+package com.ericsHouse.view.object.kitchen;
 
 import com.ericsHouse.jsonParser.JsonParser;
-import view.GamePanel;
-import view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
