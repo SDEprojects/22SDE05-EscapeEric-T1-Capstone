@@ -25,10 +25,10 @@ public class UI {
     }
 
     public Font importFont() {
-        InputStream is = UI.class.getResourceAsStream("/font_style/VT323-Regular.ttf");
+        InputStream is = UI.class.getResourceAsStream("/font_style/PressStart2P-Regular.ttf");
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-            Font sizedFont = font.deriveFont(22f);
+            Font sizedFont = font.deriveFont(9f);
             return sizedFont;
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
