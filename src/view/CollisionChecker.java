@@ -172,20 +172,59 @@ public class CollisionChecker {
 
         switch (entity.direction) {
             case "up":
+                entity.solidArea.x += entity.speed;
+                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
+                    gp.setCurrentRoom(gp.currentRoom.entrance);
+                    gp.player.playerY = gp.currentRoom.exitIntersect.y - 75;
+                    gp.player.playerX = gp.currentRoom.exitIntersect.x;
+                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
+                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
+                    gp.setCurrentRoom(gp.currentRoom.exit);
+                    gp.player.playerY = gp.currentRoom.entranceIntersect.y - 75;
+                    gp.player.playerX = gp.currentRoom.entranceIntersect.x;
+                }
+                break;
             case "down":
+                entity.solidArea.x += entity.speed;
+                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
+                    gp.setCurrentRoom(gp.currentRoom.entrance);
+                    gp.player.playerY = gp.currentRoom.exitIntersect.y + 75;
+                    gp.player.playerX = gp.currentRoom.exitIntersect.x;
+                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
+                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
+                    gp.setCurrentRoom(gp.currentRoom.exit);
+                    gp.player.playerY = gp.currentRoom.entranceIntersect.y + 75;
+                    gp.player.playerX = gp.currentRoom.entranceIntersect.x;
+                }
+                break;
             case "left":
+                entity.solidArea.x += entity.speed;
+                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
+                    gp.setCurrentRoom(gp.currentRoom.entrance);
+                    gp.player.playerY = gp.currentRoom.exitIntersect.y;
+                    gp.player.playerX = gp.currentRoom.exitIntersect.x - 75;
+                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
+                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
+                    gp.setCurrentRoom(gp.currentRoom.exit);
+                    gp.player.playerY = gp.currentRoom.entranceIntersect.y;
+                    gp.player.playerX = gp.currentRoom.entranceIntersect.x - 75;
+                }
+                break;
             case "right":
                 entity.solidArea.x += entity.speed;
                 if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
                     gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
                     gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = 350;
-                    gp.player.playerX = 350;
+                    gp.player.playerY = gp.currentRoom.exitIntersect.y;
+                    gp.player.playerX = gp.currentRoom.exitIntersect.x + 75;
                 }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
                     gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
                     gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = 350;
-                    gp.player.playerX = 350;
+                    gp.player.playerY = gp.currentRoom.entranceIntersect.y;
+                    gp.player.playerX = gp.currentRoom.entranceIntersect.x + 75;
                 }
                 break;
         }
