@@ -11,6 +11,10 @@
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
   "kitchen": {
+    "door": {
+      "locked": "There's a note on the door.\n'",
+      "unlocked": "You have successfully completed all 3 Riddles in the room, you may advance to the next room"
+    },
     "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
     "hutch": "A storage chest.",
     "radio": "Let's play some tunes",
