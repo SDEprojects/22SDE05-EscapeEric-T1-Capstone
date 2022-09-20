@@ -1,7 +1,7 @@
-package view.object.living_room;
+package com.ericsHouse.view.object.living_room;
 
-import view.GamePanel;
-import view.object.SuperObject;
+import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -78,6 +78,21 @@ public class JsonParser {
         }
         return item;
     }
+
+    public static String doorUnlockedParser( GamePanel gp){
+        String item = null;
+        try {
+            InputStream is = getFileFromResourceAsStream("roomZeroPrompts.json");
+            jsonNodePrompts = objectMapper.readTree(is);
+            item = jsonNodePrompts.get(gp.currentRoom.name).get("door").get("unlocked").textValue();
+            return item;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return item;
+    }
     public static InputStream getFileFromResourceAsStream(String fileName) {
         ClassLoader classLoader = JsonParser.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
