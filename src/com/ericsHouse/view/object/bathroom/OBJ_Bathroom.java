@@ -32,13 +32,14 @@ public class OBJ_Bathroom extends SuperObject {
     }
     @Override
     public void interact(int objIndex, GamePanel gp){
-        if(Objects.equals(gp.obj[objIndex].name, "david-mirror")){
+        if(Objects.equals(gp.obj[objIndex].name, "david-mirror") && !win){
             gp.gameState = gp.dialogueState;
             gp.ui.currentDialogue = JsonParser.RockPaperScissors(gp);
             gp.gameState = gp.rockPaperScissors;
         }
-        else if(this.win){
-            gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[objIndex].name,gp);
+        else if(win){
+            gp.ui.currentDialogue = "You've already beat your mirror reflection.";
+            gp.gameState = gp.dialogueState;
         }
     }
 }
