@@ -16,8 +16,11 @@
     "oven" : "Tried to follow a recipe,\nit said for a bigger portion just double everything,\nbut my oven doesn’t go up to 600 degrees.",
     "sink" : "It's sink or swim.",
     "avocados" : "Holy Guacamole!\nThese are going to be helpful later on.",
-    "oranges" : "Doing all this dev work..\nNeed that vitamin C."
-
+    "oranges" : "Doing all this dev work..\nNeed that vitamin C.",
+    "cat-pic" : "Once was the ancestors of the big cat, Tigger.",
+    "house-plant" : "I promised I won't kill these ones.",
+    "microwave" : "Nuke'em",
+    "flowers" : "Don't smell like pooooohoooh"
   },
   "roomOne": {
     "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",

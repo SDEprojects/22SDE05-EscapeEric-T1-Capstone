@@ -3,9 +3,7 @@ package view.object.bathroom;
 import view.GamePanel;
 import view.object.AssetSetter;
 import view.object.SuperObject;
-import view.object.kitchen.OBJ_Kitchen;
 
-import java.io.InputStream;
 import java.util.Arrays;
 
 public class BathroomAssetSetter extends AssetSetter {
@@ -24,7 +22,7 @@ public class BathroomAssetSetter extends AssetSetter {
         gp.obj[0].screenX = 4 * 3;
         gp.obj[0].screenY = 104 * 3;
 
-        gp.obj[1] = new OBJ_Bathroom("toilet", "/rooms/bathroom/bathroom_OBJ/toilet.png",13,22);
+        gp.obj[1] = new OBJ_Toilet();
         gp.obj[1].screenX = 23 * 3;
         gp.obj[1].screenY = 47 * 3;
 

@@ -26,8 +26,6 @@ public class OBJ_Bathroom extends SuperObject {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp){
-
         g2.drawImage(image, screenX, screenY, width * 3, height * 3, null);
-
     }
 }

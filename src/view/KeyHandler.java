@@ -54,6 +54,7 @@ public class KeyHandler implements KeyListener {
                 getPressed = true;
                 int index = gp.cChecker.checkObject(gp.player, true);
                 if (index != 999) {
+
                     gp.ui.currentDialogue = RoomZeroParser.getPrompt(gp.obj[index].name);
                     gp.gameState = gp.dialogueState;
                     gp.obj[index].interact(index, gp);

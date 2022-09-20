@@ -17,7 +17,6 @@ public class UI {
         this.gp = gp;
 //        ariel = new Font("Arial", Font.PLAIN, 18);
         pixelFont = importFont();
-
     }
 
     public Font importFont() {
@@ -100,4 +99,11 @@ public class UI {
         }
     }
 
+    public void builder (int frameX, int frameY){
+        String Text = "parser info";
+        int textX = frameX + gp.tileSize;
+        int textY = frameY + gp.tileSize;
+        g2.drawString(Text, textX, textY);
+
+    }
 }
