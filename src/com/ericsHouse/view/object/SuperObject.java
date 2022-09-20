@@ -21,6 +21,7 @@ public class SuperObject {
     public boolean gettable = false;
     public boolean riddleItem = false;
     public boolean solved = false;
+    public static boolean win = false;
     public void draw(Graphics2D g2, GamePanel gp) {
 
         g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2, null);

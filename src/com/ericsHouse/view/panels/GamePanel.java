@@ -6,12 +6,10 @@ import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.AssetSetter;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.garage.GarageAssetSetter;
-import com.ericsHouse.view.object.kitchen.KitchenAssetSetter;
-import com.ericsHouse.view.tile.garage.GarageTileManager;
 import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
-import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.CollisionChecker;
+import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.UI;
 
 import javax.swing.*;
@@ -54,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int riddleState = 5;
     public final int riddleCorrect = 6;
     public final int riddleIncorrect = 7;
+    public final int rockPaperScissors = 8;
 
     //SUB STATES
     public int subState = 0;
@@ -65,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("kitchen");
+        currentRoom = allRooms.roomMap.get("bathroom");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }

@@ -1,8 +1,7 @@
 package com.ericsHouse.view.util;
 
-import com.ericsHouse.view.panels.GamePanel;
-
 import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.view.panels.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -53,14 +52,17 @@ public class UI {
         if (gp.gameState == gp.riddleState) {
             drawRiddleScreen(gp.subState);
         }
-        if(gp.gameState == gp.riddleCorrect){
-           drawDialogueScreen();
+        if (gp.gameState == gp.riddleCorrect) {
+            drawDialogueScreen();
         }
-        if(gp.gameState == gp.riddleIncorrect){
+        if (gp.gameState == gp.riddleIncorrect) {
             drawDialogueScreen();
         }
         if (gp.gameState == gp.deathState) {
             drawDeathScreen(0, 0, gp.screenWidth, gp.screenHeight);
+        }
+        if (gp.gameState == gp.rockPaperScissors) {
+            rockPaperScissorsDisplay(gp.subState);
         }
     }
 
@@ -79,6 +81,7 @@ public class UI {
 
         g2.drawString("Press 'E' To Continue", width - 125, height);
     }
+
     private void drawRiddleScreen(int subState) {
         int x = gp.tileSize * 2;
         int y = gp.tileSize / 2;
@@ -95,7 +98,7 @@ public class UI {
                 "  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "one", gp);
         String riddleTwo = subState == gp.optionTwo ? ">  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "two", gp) :
                 "  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "two", gp);
-        String riddleThree = subState == gp.optionThree? ">  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "three", gp) :
+        String riddleThree = subState == gp.optionThree ? ">  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "three", gp) :
                 "  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "three", gp);
 
         g2.drawString(riddleOne, x, y + gp.tileSize);
@@ -105,7 +108,28 @@ public class UI {
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
 
-
+    public void rockPaperScissorsDisplay(int subState) {
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 10;
+        drawSubWindow(x, y, width, height);
+        x += gp.tileSize;
+        y += gp.tileSize;
+        for (String escape : currentDialogue.split("\n")) {
+            g2.drawString(escape, x, y);
+            y += 40;
+        }
+        g2.drawString(subState == gp.optionOne ? ">   Rock" : "   Rock", x, y + gp.tileSize);
+        g2.drawString(subState == gp.optionTwo ? ">   Paper" : "   Paper", x, y + gp.tileSize * 2);
+        g2.drawString(subState == gp.optionThree ? ">   Scissors" : "   Scissors", x, y + gp.tileSize * 3);
+        g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
+    }
+    public static boolean checkWin(int selection, int games, int wins){
+        int rps = (int) (Math.random() * 3)+1;
+        System.out.println(rps+ " "+ selection);
+        return rps == selection;
+    }
 
     private void drawSubWindow(int x, int y, int width, int height) {
         Color c = new Color(0, 0, 0, 200);
@@ -141,13 +165,5 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void builder (int frameX, int frameY){
-        String Text = "parser info";
-        int textX = frameX + gp.tileSize;
-        int textY = frameY + gp.tileSize;
-        g2.drawString(Text, textX, textY);
-
     }
 }
