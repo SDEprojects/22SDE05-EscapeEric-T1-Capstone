@@ -1,12 +1,15 @@
 package com.ericsHouse.rooms;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import view.GamePanel;
 import view.object.AssetSetter;
+import view.object.bathroom.BathroomAssetSetter;
 import view.object.bedroom.BedroomAssetSetter;
 import view.object.garage.GarageAssetSetter;
 import view.object.kitchen.KitchenAssetSetter;
 import view.object.living_room.LivingRoomAssetSetter;
 import view.tile.TileManager;
+import view.tile.bathroom.BathroomTileManager;
 import view.tile.bedroom.BedroomTileManager;
 import view.tile.garage.GarageTileManager;
 import view.tile.kitchen.KitchenTileManager;
@@ -31,7 +34,7 @@ public class RoomMap {
     public void generateRooms() throws IOException {
         //KITCHEN TILES AND ASSETS
         Rectangle kEntranceIntersect = new Rectangle(760, 340, 11, 48*2);
-        Rectangle kExitIntersect = new Rectangle(678, 144, 11, 48 *2);
+        Rectangle kExitIntersect = new Rectangle(212 * 3, 17, 30 * 3, 16 *3);
         AssetSetter kAssets = new KitchenAssetSetter(gp);
         TileManager kTiles = new KitchenTileManager(gp);
         Room kitchen = new Room("kitchen",gp, kAssets,kTiles, "garage", "living-room", kEntranceIntersect,kExitIntersect);
@@ -51,17 +54,25 @@ public class RoomMap {
         Room livingRoom = new Room("living-room", gp, lAssets,lTiles, "kitchen", "bedroom",lEntranceIntersect,lExitIntersect);
 
         //BEDROOM TILES AND ASSETS
-        Rectangle bExitIntersect = new Rectangle(0, 144, 11, 48*2);
+        Rectangle bExitIntersect = new Rectangle(218 * 3, 36 * 3, 26 * 3, 14 * 3);
         Rectangle bEntranceIntersect = new Rectangle(0 , 166 * 2, 11, 48*2);
         TileManager bTiles = new BedroomTileManager(gp);
         AssetSetter bAssets = new BedroomAssetSetter(gp);
         Room bedroom = new Room("bedroom",gp,bAssets,bTiles,"living-room","bathroom",bEntranceIntersect,bExitIntersect);
 
 
+        //BATHROOM TILES AND ASSETS
+        Rectangle baExitIntersect = new Rectangle(199 * 3, 34 * 3, 30 * 3, 15 * 3);
+        Rectangle baEntranceIntersect = new Rectangle(32 * 3 , 187 * 3, 33 * 3, 5 * 3);
+        TileManager baTiles = new BathroomTileManager(gp);
+        AssetSetter baAssets = new BathroomAssetSetter(gp);
+        Room bathroom = new Room("bathroom",gp,baAssets,baTiles,"bedroom","bathroom",baEntranceIntersect,baExitIntersect);
+
         //Putting Assets in a map for access
         roomMap.put("kitchen", kitchen);
         roomMap.put("garage", garage);
         roomMap.put("living-room",livingRoom);
         roomMap.put("bedroom",bedroom);
+        roomMap.put("bathroom",bathroom);
     }
 }

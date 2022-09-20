@@ -1,22 +1,10 @@
 package com.ericsHouse.rooms;
 
-import com.ericsHouse.EricHouseClient;
-import com.ericsHouse.characters.David;
-import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomZeroParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import view.GamePanel;
 import view.object.AssetSetter;
-import view.object.kitchen.KitchenAssetSetter;
-import view.tile.Tile;
 import view.tile.TileManager;
-import view.tile.kitchen.KitchenTileManager;
 
 import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 import static view.BuildWindow.window;
 
@@ -49,7 +37,6 @@ public class Room{
         gp.assetSetter = assetSetter;
         gp.assetSetter.setObject();
         window.setTitle(title);
-
     }
 
     public void draw(Graphics2D g2){

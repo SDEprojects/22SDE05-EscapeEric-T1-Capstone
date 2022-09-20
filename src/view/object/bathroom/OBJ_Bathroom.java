@@ -1,4 +1,4 @@
-package view.object.kitchen;
+package view.object.bathroom;
 
 import view.GamePanel;
 import view.object.SuperObject;
@@ -7,11 +7,11 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class OBJ_Kitchen extends SuperObject {
+public class OBJ_Bathroom extends SuperObject {
     public int width;
     public int height;
 
-    public OBJ_Kitchen(String name, String file, int width, int height){
+    public OBJ_Bathroom(String name, String file, int width, int height){
         this.name = name;
         this.width = width;
         this.height = height;
@@ -26,6 +26,8 @@ public class OBJ_Kitchen extends SuperObject {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp){
+
         g2.drawImage(image, screenX, screenY, width * 3, height * 3, null);
+
     }
 }

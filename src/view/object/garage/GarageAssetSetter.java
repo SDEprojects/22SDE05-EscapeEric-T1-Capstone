@@ -34,7 +34,6 @@ public class GarageAssetSetter extends AssetSetter {
         gp.obj[9].screenY = 50;
         gp.obj[9].screenX = 145;
 
-
         gp.obj[2] = new OBJ_Dresser();
         //Y moves object up and down
         gp.obj[2].screenY = 16;

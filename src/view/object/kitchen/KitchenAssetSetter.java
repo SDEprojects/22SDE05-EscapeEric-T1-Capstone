@@ -108,19 +108,13 @@ public class KitchenAssetSetter extends AssetSetter {
         gp.obj[21].screenX = 35 * 3;
         gp.obj[21].screenY = 28 * 2;
 
-        gp.obj[22] = new OBJ_Kitchen("avocado", "/rooms/kitchen/kitchen_OBJ/avocados.png", 16  ,16);
+        gp.obj[22] = new OBJ_Avocados();
         gp.obj[22].screenX = 85 * 3;
         gp.obj[22].screenY = 34 * 2;
 
-        gp.obj[22] = new OBJ_Kitchen("pears", "/rooms/kitchen/kitchen_OBJ/avocados.png", 16  ,16);
-        gp.obj[22].screenX = 85 * 3;
-        gp.obj[22].screenY = 34 * 2;
-        gp.obj[22].gettable = true;
-
-        gp.obj[23] = new OBJ_Kitchen("oranges", "/rooms/kitchen/kitchen_OBJ/oranges.png", 16  ,16);
+        gp.obj[23] = new OBJ_Oranges();
         gp.obj[23].screenX = 95 * 3;
-        gp.obj[23].screenY = 85 * 3;
-        gp.obj[23].gettable = true;
+        gp.obj[23].screenY = 86 * 3;
 
         gp.obj[24] = new OBJ_Radio();
         gp.obj[24].screenX = 123 * 3;
