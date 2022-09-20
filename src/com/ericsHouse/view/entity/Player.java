@@ -151,7 +151,7 @@ public class Player extends Entity {
         }
         g2.drawImage(image, playerX, playerY, gp.tileSize, gp.tileSize, null);
     }
-    public  void addItem(SuperObject item) {
+    public static void addItem(SuperObject item) {
         backpack.add(item);
     }
     public  void removeItem(SuperObject item) {
