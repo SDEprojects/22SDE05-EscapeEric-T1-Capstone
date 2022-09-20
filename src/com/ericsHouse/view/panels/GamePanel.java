@@ -6,12 +6,10 @@ import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.AssetSetter;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.garage.GarageAssetSetter;
-import com.ericsHouse.view.object.kitchen.KitchenAssetSetter;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
 import com.ericsHouse.view.tile.TileManager;
-import com.ericsHouse.view.tile.garage.GarageTileManager;
-import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.CollisionChecker;
+import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
 
@@ -38,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     public TileManager tileM = new GarageTileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     public AssetSetter assetSetter = new GarageAssetSetter(this);
+
     public Player player = new Player(this, keyH);
 
     public SuperObject[] obj = new SuperObject[10];
