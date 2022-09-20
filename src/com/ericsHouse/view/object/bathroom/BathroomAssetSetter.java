@@ -4,6 +4,7 @@ import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.object.AssetSetter;
 import com.ericsHouse.view.object.SuperObject;
 
+import java.io.InputStream;
 import java.util.Arrays;
 
 public class BathroomAssetSetter extends AssetSetter {

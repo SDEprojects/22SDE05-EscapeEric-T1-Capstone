@@ -53,6 +53,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int riddleState = 5;
     public final int riddleCorrect = 6;
     public final int riddleIncorrect = 7;
+    public final int rockPaperScissors = 8;
 
     //SUB STATES
     public int subState = 0;
@@ -64,7 +65,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("kitchen");
+        currentRoom = allRooms.roomMap.get("bathroom");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }

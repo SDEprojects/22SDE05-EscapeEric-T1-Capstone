@@ -1,8 +1,8 @@
 package com.ericsHouse.view.object;
 
 import com.ericsHouse.jsonParser.JsonParser;
-import com.ericsHouse.view.panels.GamePanel;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ericsHouse.view.panels.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -23,6 +23,7 @@ public abstract class SuperObject {
     public boolean riddleItem = false;
     public boolean solved = false;
 
+    public static boolean win = false;
     public void draw(Graphics2D g2, GamePanel gp) {
 
         g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2, null);
