@@ -63,14 +63,14 @@
       }
     },
     "bird": {
-      "riddle": "The bird tweets at you...\nThe person who makes it has no need for it;\nthe person who buys it has no use for it.\nThe person who uses it can neither see nor feel it.\nWhat is it?",
+      "riddle": "The bird tweets at you...\nHow many letters are in The Alphabet?",
       "answers": {
-        "one": "Coffin",
-        "two": "A Gift",
-        "three": "Movies",
+        "one": "11",
+        "two": "26",
+        "three": "15",
         "correct": "1",
-        "correctOut": "You have correctly answered this question\nGood luck on your journey SQWAAAAWK",
-        "falseOut": "You have chosen the wrong answer\nHint: would you rather be 6ft High or 6ft below"
+        "correctOut": "You have correctly answered this question\n'The Alphabet' DOES have 11 letters!\nGood luck on your journey SQWAAAAWK",
+        "falseOut": "You have chosen the wrong answer\nHint: Try thinking about it another way"
       }
     },
     "bear-plushie": {

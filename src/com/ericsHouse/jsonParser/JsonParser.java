@@ -3,7 +3,7 @@ package com.ericsHouse.jsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import view.GamePanel;
+import com.ericsHouse.view.panels.GamePanel;
 
 import java.io.*;
 
@@ -28,6 +28,8 @@ public class JsonParser {
             e.printStackTrace();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }catch (NullPointerException e){
+            return "Well that's just the coolest lil' thing!";
         }
         return item;
     }
