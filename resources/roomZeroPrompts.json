@@ -5,22 +5,21 @@
     "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\n too bad he's trying to catch you.",
     "car": "This is a pretty cool ride\nLooks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
     "dresser": "I like this dresser, such a great use of storage!\nOh and look A FROGGIE IS ON TOP OF ONE OF THEM!\n",
-    "door":"You better read that note before you head forward\nProbably has some nifty tips\n",
+    "door": "You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
     "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
-    "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
+    "invalidCommand": "That command is invalid! Please choose a proper command from the list."
+  },
+  "kitchen": {
+    "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
     "hutch": "A storage chest.",
     "radio": "Let's play some tunes",
     "fridge": "Always knock on the fridge before opening.\nJust in case there is a salad dressing",
-    "cabinet" : "As my wife opened the cabinet,\na coffee cup crashed on her head\nIt's awful to see someone you love mugged.",
-    "oven" : "Tried to follow a recipe,\nit said for a bigger portion just double everything,\nbut my oven doesn’t go up to 600 degrees.",
-    "sink" : "It's sink or swim.",
-    "avocados" : "Holy Guacamole!\nThese are going to be helpful later on.",
-    "oranges" : "Doing all this dev work..\nNeed that vitamin C."
-
-  },
-  "roomOne": {
-    "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
+    "cabinet": "As my wife opened the cabinet,\na coffee cup crashed on her head\nIt's awful to see someone you love mugged.",
+    "oven": "Tried to follow a recipe,\nit said for a bigger portion just double everything,\nbut my oven doesn’t go up to 600 degrees.",
+    "sink": "It's sink or swim.",
+    "avocados": "Holy Guacamole!\nThese are going to be helpful later on.",
+    "oranges": "Doing all this dev work..\nNeed that vitamin C.",
     "inspectLeft": "You inspect the bookshelf to your left. You find a knife and put it in your backpack.",
     "inspectLeftEmpty": "You inspect the bookshelf. Just a bunch of dusty worn out books.",
     "inspectRight": "You inspect the table on the right. You find a knife and read:\n\t'This dang old door lock has been messed up for weeks. I just keep jimmying it open with a knife.'",
@@ -30,7 +29,7 @@
     "askShaq": "To figure out what the room challenge is, try to open the locked door.\nMake sure you look for helpful clues or items in every room.\nMaybe the note on that table can offer up a clue.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
-  "roomTwo": {
+  "living-room": {
     "enterRoom": "Welcome to Room 2 - Word Order Room:\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
     "inspectLeft": "You inspect the table to your left.\nYou find an Onion and put it in your backpack.\nMight come in handy or make a good snack later.",
     "inspectLeftEmpty": "You inspect the table to your left and find it empty.",
@@ -46,23 +45,56 @@
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
     "ericClosingIn": "Eric is getting closer..."
   },
-  "roomThree": {
+  "bedroom": {
     "enterRoom": "You made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
-    "inspectLeft": "You inspect the Annabelle doll to your left. You find a note, the note reads\n\tWhat gets wetter the more it dries?\n",
-    "inspectLeftCorrect": "You have correctly answered this question, the door started shaking",
-    "inspectLeftHint" : "You have chosen the wrong answer, think about a sponge or something...\"",
-    "inspectRight": "You look over to the right and find a Leprechaun, it looks like it's alive. You pry the note from its hand, the note reads\n\tThe person who makes it has no need for it; the person who buys it has no use for it. The person who uses it can neither see nor feel it. What is it? ",
-    "inspectRightCorrect": "You have correctly answered this question, the door slowly opens a little, still can't fit through",
-    "inspectRightHint" : "You have chosen the wrong answer, would you rather be 6ft High or 6ft below",
-    "inspectFloor": "On the floor there is a Ouija board, it spells out\n\tDavid's parents have three sons: Snap, Crackle, and what’s the name of the third son?",
-    "inspectFloorCorrect": "You have correctly answered this question, you can start to see through to the other room",
-    "inspectFloorHint" : "You have chosen the wrong answer, if you choose Pop you need to stop",
-    "openDoorLocked": "Solve the three riddles to open this door.",
-    "openDoorUnlocked": "You have successfully completed all 3 Riddles in the room, you may advance to the next room",
-    "askShaq": "The answer to each question is just one word, don't overthink it. Each word is <=6 letters",
-    "invalidCommand": "That command is invalid! Please choose a proper command from the list."
+    "car-toy": {
+      "riddle": "You inspect the car and find a note.\nWhat gets wetter the more it dries?",
+      "answers": {
+        "one": "Water",
+        "two": "Dishes",
+        "three": "Towel",
+        "correct": "3",
+        "correctOut": "You have correctly answered this question\nThe car beeps with joy!",
+        "falseOut": "You have chosen the wrong answer\nThink about a sponge or something..."
+      }
+    },
+    "bird": {
+      "riddle": "The bird tweets at you...\nThe person who makes it has no need for it;\nthe person who buys it has no use for it.\nThe person who uses it can neither see nor feel it.\nWhat is it?",
+      "answers": {
+        "one": "Coffin",
+        "two": "A Gift",
+        "three": "Movies",
+        "correct": "1",
+        "correctOut": "You have correctly answered this question\nGood luck on your journey SQWAAAAWK",
+        "falseOut": "You have chosen the wrong answer\nHint: would you rather be 6ft High or 6ft below"
+      }
+    },
+    "bear-plushie": {
+      "riddle": "The bear grumbles....\nWhat's the question you can never answer yes to?",
+      "answers": {
+        "one": "Can we extend the sprint?",
+        "two": "Are you asleep?",
+        "three": "What is your favorite color?",
+        "correct": "2",
+        "correctOut": "That's the one, have a beary good day!",
+        "falseOut": "You have chosen the wrong answer\nHint: Can't answer at this time."
+      }
+    },
+    "door": {
+      "locked": "Look through the items in the room.\nThey have riddles for you to answer.\nSolve the three riddles to open this door.",
+      "unlocked": "You have successfully completed all 3 Riddles in the room, you may advance to the next room"
+    },
+    "askShaq": "Think about your answers, if you answer incorrectly, you will lose time",
+    "side-table-girl": "That's a cute side-table, nice and pink!",
+    "side-table-boy": "That's a cute side-table, nice and blue!",
+    "bed": "It would be nice to rest, but you don't have time\nERIC IS COMING!",
+    "toys": "You wish you had a cool chest like this for your toys.",
+    "play-desk": "This desk is perfect for coloring.\nMaybe later.",
+    "play-chair": "It would be nice to rest, but you don't have time\nERIC IS COMING!",
+    "football": "Footballs alright\nBut you would rather be exploring caves.",
+    "blocks": "The blocks spell out.\nI.M.C.O.M.I.N.G.F.O.R.Y.O.U\nYou wonder what 'I, M.C. Omingfo ryou' means\nM.C Oming seems like a nice guy"
   },
-  "roomFour": {
+  "bathroom": {
     "enterRoom": "Welcome to Room 4 - Game Room:\nAn anvil sits in the middle of the room\nTo your right is a big storage shelf full of odds and ends\nTo your left you see an old dresser\nStraight ahead is the locked door to the next room.",
     "inspectLeft": "You open the door of the old dresser and find a pair of mirrored glasses and put them on.\nVery Stylish!",
     "inspectLeftEmpty": "Theres nothing left in the empty old dresser.",
@@ -78,5 +110,4 @@
     "askShaq": "That is no ordinary mirror on the door... i think its somehow reading your mind!\nIf you can find a way to keep it out of your head i bet you can beat it!"
   },
   "ericAppears": "Eric Appeared!!!!\nHe lunges at you violently at full speed with crackhead like energy.\n He picks you up as if you were a toy AND HE GIVES YOU A hug :)\nEric asks why you were running through his house? Turns out, he just wanted to talk to you. He just wanted a friend."
-
 }

@@ -18,7 +18,7 @@ public class BedroomAssetSetter extends AssetSetter {
     @Override
     public void setObject() {
         Arrays.fill(gp.obj, null);
-        gp.obj = new SuperObject[34];
+        gp.obj = new OBJ_Bedroom[34];
 
         gp.obj[0] = new OBJ_Bedroom("side-table-girl", "/rooms/bedroom/bedroom_OBJ/side-table-girl.png",14,21);
         gp.obj[0].screenX = 22 * 3;
@@ -28,30 +28,30 @@ public class BedroomAssetSetter extends AssetSetter {
         gp.obj[1].screenX = 51 * 3;
         gp.obj[1].screenY = 50 * 3;
 
-        gp.obj[2] = new OBJ_Bedroom("girl-bed", "/rooms/bedroom/bedroom_OBJ/girl-bed.png",15,26);
+        gp.obj[2] = new OBJ_Bedroom("bed", "/rooms/bedroom/bedroom_OBJ/girl-bed.png",15,26);
         gp.obj[2].screenX = 36 * 3;
         gp.obj[2].screenY = 56 * 3;
 
-        gp.obj[3] = new OBJ_Bedroom("girl-toys", "/rooms/bedroom/bedroom_OBJ/girl-toys.png",16,13);
+        gp.obj[3] = new OBJ_Bedroom("toys", "/rooms/bedroom/bedroom_OBJ/girl-toys.png",16,13);
         gp.obj[3].screenX = 66 * 3;
         gp.obj[3].screenY = 58 * 3;
 
-        gp.obj[4] = new OBJ_Bedroom("boy-toys", "/rooms/bedroom/bedroom_OBJ/boy-toys.png",16,13);
+        gp.obj[4] = new OBJ_Bedroom("toys", "/rooms/bedroom/bedroom_OBJ/boy-toys.png",16,13);
         gp.obj[4].screenX = 149 * 3;
         gp.obj[4].screenY = 56 * 3;
 
         gp.obj[5] = new OBJ_Bedroom("door", "/rooms/bedroom/bedroom_OBJ/door.png",24,30);
         gp.obj[5].screenX = 219 * 3;
         gp.obj[5].screenY = 35 * 3;
-        //gp.obj[5].collision = false;
 
-        gp.obj[6] = new OBJ_Bedroom("boy-bed", "/rooms/bedroom/bedroom_OBJ/boy-bed.png",15,27);
+        gp.obj[6] = new OBJ_Bedroom("bed", "/rooms/bedroom/bedroom_OBJ/boy-bed.png",15,27);
         gp.obj[6].screenX = 180 * 3;
         gp.obj[6].screenY = 55 * 3;
 
         gp.obj[7] = new OBJ_Bedroom("bird", "/rooms/bedroom/bedroom_OBJ/bird.png",15,33);
         gp.obj[7].screenX = 19 * 3;
         gp.obj[7].screenY = 151 * 3;
+        gp.obj[7].riddleItem = true;
 
         gp.obj[8] = new OBJ_Bedroom("car-mat", "/rooms/bedroom/bedroom_OBJ/car-mat.png",34,18);
         gp.obj[8].screenX = 159 * 3;
@@ -78,6 +78,7 @@ public class BedroomAssetSetter extends AssetSetter {
         gp.obj[13] = new OBJ_Bedroom("car-toy", "/rooms/bedroom/bedroom_OBJ/car-toy.png",18,14);
         gp.obj[13].screenX = 182 * 3;
         gp.obj[13].screenY = 169 * 3;
+        gp.obj[13].riddleItem = true;
 
         gp.obj[14] = new OBJ_Bedroom("football", "/rooms/bedroom/bedroom_OBJ/football.png",15,10);
         gp.obj[14].screenX = 191 * 3;
@@ -146,5 +147,6 @@ public class BedroomAssetSetter extends AssetSetter {
         gp.obj[30] = new OBJ_Bedroom("bear-plushie", "/rooms/bedroom/bedroom_OBJ/bear-plushie.png",14,14);
         gp.obj[30].screenX = 110 * 3;
         gp.obj[30].screenY = 58 * 3;
+        gp.obj[30].riddleItem = true;
     }
 }

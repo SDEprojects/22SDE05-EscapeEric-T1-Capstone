@@ -1,8 +1,9 @@
 package com.ericsHouse.jsonParser;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
+import view.GamePanel;
 
 import java.io.*;
 
@@ -10,46 +11,71 @@ public class JsonParser {
     static InputStream iStreamPrompts=getFileFromResourceAsStream("roomZeroPrompts.json");;
     static InputStream iStreamLocations = getFileFromResourceAsStream("locations.json");
     static ObjectMapper objectMapper = new ObjectMapper();
-    static Reader readerPrompts = new InputStreamReader(iStreamPrompts);
-    static Reader readerLocations = new InputStreamReader(iStreamLocations);
     static JsonNode jsonNodePrompts;
-    static JsonNode jsonNodeLocations;
+
 
     public JsonParser(String file) {
         this.iStreamPrompts = getFileFromResourceAsStream(file);
     }
-
-    public static InputStream getiStreamPrompts() {
-        return iStreamPrompts;
-    }
-
-    public void setiStreamPrompts(String file) {
-        iStreamPrompts =  getFileFromResourceAsStream(file);
-    }
-
-    static {
+    public static String getPrompt(String prompt, GamePanel gp) {
+        String item = null;
         try {
-            jsonNodePrompts = objectMapper.readTree(readerPrompts);
-            jsonNodeLocations = objectMapper.readTree(readerLocations);
+            InputStream is = getFileFromResourceAsStream("roomZeroPrompts.json");
+            jsonNodePrompts = objectMapper.readTree(is);
+            item = jsonNodePrompts.get(gp.currentRoom.name).get(prompt).textValue();
+            return item;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-
-    public static String getPrompt(String prompt) {
-        String item = jsonNodePrompts.findValue(prompt).asText();
         return item;
     }
 
-    public static ArrayNode getItems(String info) {
-        return (ArrayNode) jsonNodeLocations.findValue(info).findValue("items");
+    public static String riddleParser(String prompt, GamePanel gp){
+        String item = null;
+        try {
+            InputStream is = getFileFromResourceAsStream("roomZeroPrompts.json");
+            jsonNodePrompts = objectMapper.readTree(is);
+            item = jsonNodePrompts.get(gp.currentRoom.name).get(prompt).get("riddle").textValue();
+            return item;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return item;
     }
 
-    public static String getName(String info) {
-        return jsonNodeLocations.findValue(info).findValue("name").asText();
+    public static String riddleAnswerParser(String prompt, String answer, GamePanel gp){
+        String item = null;
+        try {
+            InputStream is = getFileFromResourceAsStream("roomZeroPrompts.json");
+            jsonNodePrompts = objectMapper.readTree(is);
+            item = jsonNodePrompts.get(gp.currentRoom.name).get(prompt).get("answers").get(answer).textValue();
+            return item;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return item;
     }
 
+    public static String doorParser( GamePanel gp){
+        String item = null;
+        try {
+            InputStream is = getFileFromResourceAsStream("roomZeroPrompts.json");
+            jsonNodePrompts = objectMapper.readTree(is);
+            item = jsonNodePrompts.get(gp.currentRoom.name).get("door").get("locked").textValue();
+            return item;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return item;
+    }
     public static InputStream getFileFromResourceAsStream(String fileName) {
         ClassLoader classLoader = JsonParser.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
