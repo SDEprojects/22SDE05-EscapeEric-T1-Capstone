@@ -24,15 +24,15 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean gpRun = true;
     public Room currentRoom;
     //SCREEN SETTINGS
-    final int originalTileSize = 16; // 16 x 16 tile
-    final int scale = 3;
+    static final int originalTileSize = 16; // 16 x 16 tile
+    static final int scale = 3;
     final int FPS = 60;
 
-    public final int tileSize = originalTileSize * scale; //48 x 48 tile
-    public final int maxScreenCol = 16;
-    public final int maxScreenRow = 12;
-    public final int screenWidth = tileSize * maxScreenCol; //768 pixels (aesprite = 256)
-    public final int screenHeight = tileSize * maxScreenRow; //576 pixels (aesprite = 192)
+    public static final int tileSize = originalTileSize * scale; //48 x 48 tile
+    public static final int maxScreenCol = 16;
+    public static final int maxScreenRow = 12;
+    public static final int screenWidth = tileSize * maxScreenCol; //768 pixels (aesprite = 256)
+    public static final int screenHeight = tileSize * maxScreenRow; //576 pixels (aesprite = 192)
 
     public TileManager tileM = new GarageTileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
@@ -66,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("bedroom");
+        currentRoom = allRooms.roomMap.get("kitchen");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }

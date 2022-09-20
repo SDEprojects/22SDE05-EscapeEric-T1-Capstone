@@ -2,7 +2,6 @@ package com.ericsHouse.view.panels;
 
 import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.SuperObject;
-import com.ericsHouse.view.object.bedroom.OBJ_Bedroom;
 import com.ericsHouse.view.util.Time;
 
 import javax.swing.*;
@@ -15,8 +14,9 @@ public class SidePanel extends JPanel {
 
     public static Map<String, JButton> items = new HashMap<>();
     final int screenWidth = 216;
-    final int screenHeight = 604;
+    final int screenHeight = GamePanel.screenHeight;
     GridBagConstraints c = new GridBagConstraints();
+
 
     public SidePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
