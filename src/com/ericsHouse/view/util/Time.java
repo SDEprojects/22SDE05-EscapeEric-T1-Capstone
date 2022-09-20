@@ -6,8 +6,8 @@ import java.text.DecimalFormat;
 public class Time {
 
     public static Timer gameTimer;
-    private static int minute;
-    private static int second;
+    public static int minute;
+    public static int second;
     static String dMinute;
     static String dSecond;
     static DecimalFormat dFormat = new DecimalFormat("00");
@@ -30,7 +30,7 @@ public class Time {
                 dMinute = dFormat.format(minute);
                 label.setText(dMinute + ":" + dSecond);
             }
-            if (minute == 0 && second == 0) {
+            if (minute <= 0 && second <= 0) {
                 gameTimer.stop();
 //                LosePanel.lose();
             }

@@ -9,7 +9,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class SidePanel extends JPanel {
-
     public static ArrayList<String> items;
     final int screenWidth = 216;
     final int screenHeight = GamePanel.screenHeight;
@@ -25,7 +24,7 @@ public class SidePanel extends JPanel {
         timerLabel.setVerticalAlignment(JLabel.TOP);
         timerLabel.setBounds(58, 0, 100, 50);
         timerLabel.setText("04:00");
-        Time.setUpTimer(4, 0, timerLabel);
+        Time.setUpTimer(4, 00, timerLabel);
         this.add(timerLabel, BorderLayout.PAGE_START);
     }
 

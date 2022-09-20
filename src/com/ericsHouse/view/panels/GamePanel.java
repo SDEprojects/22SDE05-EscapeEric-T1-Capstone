@@ -12,6 +12,7 @@ import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
 import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.CollisionChecker;
+import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
 
 import javax.swing.*;
@@ -65,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("kitchen");
+        currentRoom = allRooms.roomMap.get("bedroom");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
@@ -112,6 +113,7 @@ public class GamePanel extends JPanel implements Runnable {
                     throw new RuntimeException(e);
                 }
                 repaint();
+
                 delta--;
                 drawCount++;
             }
@@ -128,6 +130,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (gameState == pauseState) {
 
+        }
+        if(!Time.gameTimer.isRunning()){
+            gameState = deathState;
         }
     }
 
