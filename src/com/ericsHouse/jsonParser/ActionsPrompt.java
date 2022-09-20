@@ -22,7 +22,7 @@ public class ActionsPrompt {
     }
 
     private static InputStream getFileFromResourceAsStream() {
-        ClassLoader classLoader = RoomZeroParser.class.getClassLoader();
+        ClassLoader classLoader = JsonParser.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("actionsPrompt.json");
         if (inputStream == null) {
             throw new IllegalArgumentException("file not found! " + "actionsPrompt.json");

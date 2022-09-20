@@ -1,6 +1,8 @@
 package view;
 
-import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.ericsHouse.Riddle;
+import com.ericsHouse.jsonParser.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,6 +10,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
     private GamePanel gp;
+    public static int objIndex;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -22,7 +25,6 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (gp.gameState == gp.playState) {
-
 
             if (code == KeyEvent.VK_W || code == 38) {
                 upPressed = true;
@@ -54,17 +56,20 @@ public class KeyHandler implements KeyListener {
                 getPressed = true;
                 int index = gp.cChecker.checkObject(gp.player, true);
                 if (index != 999) {
+                    try {
+                        objIndex = index;
+                        gp.obj[index].interact(index, gp);
+                    } catch (JsonProcessingException ex) {
+                        throw new RuntimeException(ex);
+                    }
 
-                    gp.ui.currentDialogue = RoomZeroParser.getPrompt(gp.obj[index].name);
-                    gp.gameState = gp.dialogueState;
-                    gp.obj[index].interact(index, gp);
                 }
             }
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
             }
             //TODO - remove comment before release, used to test death screen
-            if(code == KeyEvent.VK_J){
+            if (code == KeyEvent.VK_J) {
                 gp.gameState = gp.deathState;
             }
         } else if (gp.gameState == gp.pauseState) {
@@ -75,7 +80,41 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
+        } else if (gp.gameState == gp.riddleState) {
+            if (code == KeyEvent.VK_E) {
+                Riddle.checkRiddle(gp);
+                if (Riddle.riddleCorrect) {
+                    gp.gameState = gp.riddleCorrect;
+                    gp.obj[objIndex].solved = true;
+                    Riddle.riddleCorrect = false;
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "correctOut", gp);
+                } else {
+                    gp.gameState = gp.riddleIncorrect;
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "falseOut", gp);
+                }
+
+            }
+        } else if (gp.gameState == gp.riddleCorrect) {
+            if (code == KeyEvent.VK_E) {
+                gp.gameState = gp.playState;
+            }
+
+        } else if (gp.gameState == gp.riddleIncorrect) {
+            if (code == KeyEvent.VK_E) {
+                gp.gameState = gp.playState;
+            }
         }
+        if (code == KeyEvent.VK_S) {
+            if (gp.subState < gp.optionThree) {
+                gp.subState = gp.subState + 1;
+            }
+        }
+        if (code == KeyEvent.VK_W) {
+            if (gp.subState > gp.optionOne) {
+                gp.subState = gp.subState - 1;
+            }
+        }
+
     }
 
     @Override

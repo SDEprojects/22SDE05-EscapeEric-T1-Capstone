@@ -1,6 +1,6 @@
 package view.object.garage;
 
-import com.ericsHouse.jsonParser.RoomZeroParser;
+import com.ericsHouse.jsonParser.JsonParser;
 import view.GamePanel;
 import view.object.SuperObject;
 
@@ -40,7 +40,7 @@ public class OBJ_Glasses extends SuperObject {
             }
             gp.player.addItem(gp.obj[objIndex]);
             System.out.println(gp.player.getBackpack().size());
-            RoomZeroParser.getPrompt(gp.obj[objIndex].name);
+            JsonParser.getPrompt(gp.obj[objIndex].name,gp);
             gp.obj[objIndex] = null;
         }
     }
