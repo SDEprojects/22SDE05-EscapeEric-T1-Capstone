@@ -24,6 +24,7 @@
     "sink": "It's sink or swim.",
     "avocados": "Holy Guacamole!\nThese are going to be helpful later on.",
     "oranges": "Doing all this dev work..\nNeed that vitamin C.",
+    "knife": "This is a nice shiny knife\nShould only be used for veggies and doors.",
     "inspectLeft": "You inspect the bookshelf to your left. You find a knife and put it in your backpack.",
     "inspectLeftEmpty": "You inspect the bookshelf. Just a bunch of dusty worn out books.",
     "inspectRight": "You inspect the table on the right. You find a knife and read:\n\t'This dang old door lock has been messed up for weeks. I just keep jimmying it open with a knife.'",

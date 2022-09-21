@@ -8,7 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-import static com.ericsHouse.view.main.sidePanel;
+import static com.ericsHouse.view.GameFrame.sidePanel;
+
 
 public class OBJ_Glasses extends SuperObject {
 
@@ -42,8 +43,8 @@ public class OBJ_Glasses extends SuperObject {
             }
             gp.player.addItem(gp.obj[objIndex]);
             JsonParser.getPrompt(gp.obj[objIndex].name,gp);
-            sidePanel.inventorySetUp(gp);
-            sidePanel.inventoryDisplay();
+            sidePanel.inventorySetUp(gp.obj[objIndex]);
+            //sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
         }
     }

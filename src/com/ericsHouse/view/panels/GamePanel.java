@@ -40,16 +40,16 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
 
     public SuperObject[] obj = new SuperObject[10];
-    Thread gameThread;
+    public Thread gameThread;
     public RoomMap allRooms = new RoomMap(this);
     public CollisionChecker cChecker = new CollisionChecker(this, tileM, assetSetter, player);
 
     public UI ui = new UI(this);
     //GAME STATES
-    public int gameState;
+    public static int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
-    public final int dialogueState = 3;
+    public static final int dialogueState = 3;
     public final int deathState = 4;
     public final int riddleState = 5;
     public final int riddleCorrect = 6;

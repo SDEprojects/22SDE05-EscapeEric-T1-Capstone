@@ -10,7 +10,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
-import static com.ericsHouse.view.main.sidePanel;
+import static com.ericsHouse.view.GameFrame.sidePanel;
+
 
 public class OBJ_Kitchen extends SuperObject {
     public int width;
@@ -45,11 +46,11 @@ public class OBJ_Kitchen extends SuperObject {
         if (gettable) {
             JsonParser.getPrompt(gp.obj[objIndex].name, gp);
             gp.player.addItem(gp.obj[objIndex]);
-            sidePanel.inventorySetUp(gp);
-            sidePanel.inventoryDisplay();
+            sidePanel.inventorySetUp(gp.obj[objIndex]);
+            //sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
         }
-        if (Objects.equals(gp.obj[objIndex].name, "door")) {
+        else if (Objects.equals(gp.obj[objIndex].name, "door")) {
             if (hasKnife) {
                 gp.gameState = gp.dialogueState;
                 gp.ui.currentDialogue = JsonParser.doorUnlockedParser(gp);

@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.ericsHouse.view.main.sidePanel;
+import static com.ericsHouse.view.GameFrame.sidePanel;
+
 
 public class OBJ_Note extends SuperObject {
 
@@ -40,8 +41,8 @@ public class OBJ_Note extends SuperObject {
         if(gettable && hasGlasses.size() > 0){
             JsonParser.getPrompt(gp.obj[objIndex].name,gp);
             gp.player.addItem(gp.obj[objIndex]);
-            sidePanel.inventorySetUp(gp);
-            sidePanel.inventoryDisplay();
+            sidePanel.inventorySetUp(gp.obj[objIndex]);
+            //sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
 
         }

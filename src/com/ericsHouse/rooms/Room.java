@@ -6,7 +6,7 @@ import com.ericsHouse.view.tile.TileManager;
 
 import java.awt.*;
 
-import static com.ericsHouse.view.main.window;
+import static com.ericsHouse.view.GameFrame.window;
 
 
 public class Room {
