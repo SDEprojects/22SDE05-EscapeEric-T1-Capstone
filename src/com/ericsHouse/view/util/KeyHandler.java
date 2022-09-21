@@ -1,8 +1,9 @@
 package com.ericsHouse.view.util;
 
 import com.ericsHouse.jsonParser.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -12,6 +13,8 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
     private GamePanel gp;
     public static int objIndex;
+    int games = 0;
+    int wins = 0;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -77,6 +80,38 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
+
+        } else if (gp.gameState == gp.rockPaperScissors) {
+            if (code == KeyEvent.VK_E) {
+                if (SuperObject.win) {
+                    gp.ui.currentDialogue = "You already beat your reflection too many times..  ";
+                    gp.gameState = gp.dialogueState;
+                } else {
+                    if (wins <= 2) {
+                        if (UI.checkWin(this.gp.subState, games, wins)) {
+                            wins++;
+                            gp.ui.currentDialogue = "number of wins: " + wins;
+                        }
+                        else{
+                            gp.ui.currentDialogue = "number of wins: " + wins;
+                        }
+                        games++;
+                    } else {
+                        gp.ui.currentDialogue = "You Lost, final score :" + (games-wins)+wins;
+                        gp.gameState = gp.dialogueState;
+                    }
+                    if (wins >= 2) {
+                        SuperObject.win = true;
+                        gp.ui.currentDialogue = "You Won, you finally beat the person\nwho spends all your money!";
+                        gp.gameState = gp.dialogueState;
+                    } else if (games > 2) {
+                        games = 0;
+                        wins = 0;
+                        gp.ui.currentDialogue = "Sorry you lost, try again";
+                        gp.gameState = gp.dialogueState;
+                    }
+                }
+            }
         } else if (gp.gameState == gp.riddleState) {
             if (code == KeyEvent.VK_E) {
                 Riddle.checkRiddle(gp);
@@ -94,7 +129,6 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.riddleIncorrect;
                     gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "falseOut", gp);
                 }
-
             }
         } else if (gp.gameState == gp.riddleCorrect) {
             if (code == KeyEvent.VK_E) {
@@ -116,7 +150,6 @@ public class KeyHandler implements KeyListener {
                 gp.subState = gp.subState - 1;
             }
         }
-
     }
 
     @Override
