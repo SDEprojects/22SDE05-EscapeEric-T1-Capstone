@@ -1,27 +1,15 @@
 package com.ericsHouse.rooms;
 
-import com.ericsHouse.EricHouseClient;
-import com.ericsHouse.characters.David;
-import com.ericsHouse.jsonParser.ActionsPrompt;
-import com.ericsHouse.jsonParser.RoomZeroParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import view.GamePanel;
-import view.object.AssetSetter;
-import view.object.kitchen.KitchenAssetSetter;
-import view.tile.Tile;
-import view.tile.TileManager;
-import view.tile.kitchen.KitchenTileManager;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.object.AssetSetter;
+import com.ericsHouse.view.tile.TileManager;
 
 import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-import static view.BuildWindow.window;
+import static com.ericsHouse.view.GameFrame.window;
 
 
-public class Room{
+public class Room {
 
     public final String name;
     GamePanel gp;
@@ -44,19 +32,18 @@ public class Room{
 
     }
 
-    public void setRoomItems(String title){
+    public void setRoomItems(String title) {
         gp.tileM = tileManager;
         gp.assetSetter = assetSetter;
         gp.assetSetter.setObject();
         window.setTitle(title);
-
     }
 
-    public void draw(Graphics2D g2){
-        try{
-            g2.drawRect(entranceIntersect.x,entranceIntersect.y,entranceIntersect.width,entranceIntersect.height);
+    public void draw(Graphics2D g2) {
+        try {
+            g2.drawRect(entranceIntersect.x, entranceIntersect.y, entranceIntersect.width, entranceIntersect.height);
             g2.drawRect(exitIntersect.x, exitIntersect.y, exitIntersect.width, exitIntersect.height);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
