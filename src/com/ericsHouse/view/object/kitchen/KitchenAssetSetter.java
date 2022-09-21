@@ -188,6 +188,9 @@ public class KitchenAssetSetter extends AssetSetter {
 //        gp.obj[21] = new OBJ_Kitchen("microwave", "/rooms/kitchen/kitchen_OBJ/microwave.png", 16  ,16);
 //        gp.obj[21].screenX = 35 * 3;
 //        gp.obj[21].screenY = 28 * 2;
+        gp.obj[22] = new OBJ_Pears();
+        gp.obj[22].screenX = 85 * 3;
+        gp.obj[22].screenY = 34 * 2;
 
         OBJ_Avocados avocados = new OBJ_Avocados();
         avocados.screenX = 85 * 3;

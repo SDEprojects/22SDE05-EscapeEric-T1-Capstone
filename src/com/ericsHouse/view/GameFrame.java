@@ -35,7 +35,7 @@ public class GameFrame extends JFrame implements ActionListener {
         //window.setSize(984,612);
 
         gamePanel = new GamePanel();
-        sidePanel = new SidePanel(this,backgroundImage);
+        sidePanel = new SidePanel(this,backgroundImage,gamePanel);
         //pack causes this window to be sized to fit the preferred size and layouts of its subcomponents(GamePanel)
         window.add(gamePanel, BorderLayout.LINE_START);
 

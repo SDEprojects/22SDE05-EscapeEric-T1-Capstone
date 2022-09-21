@@ -213,6 +213,9 @@ public class LivingRoomAssetSetter extends AssetSetter {
 //        gp.obj[23] = new OBJ_LivingRoom("sleeping-dog", "/rooms/living_room/living_room_OBJ/sleeping-dog.png",11,12);
 //        gp.obj[23].screenX = 244 * 3;
 //        gp.obj[23].screenY = 116 * 3;
+        gp.obj[23] = new OBJ_Dog("sleeping-dog", "/rooms/living_room/living_room_OBJ/sleeping-dog.png",11,12);
+        gp.obj[23].screenX = 244 * 3;
+        gp.obj[23].screenY = 105 * 3;
 
         OBJ_LivingRoom sideLamp = new OBJ_LivingRoom("side-lamp", "/rooms/living_room/living_room_OBJ/side-lamp.png",13,29);
         sideLamp.screenX = 79 * 3;
