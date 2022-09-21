@@ -20,6 +20,7 @@ import java.util.*;
 import java.util.List;
 
 import static com.ericsHouse.view.panels.GamePanel.gameState;
+import static com.ericsHouse.view.panels.GamePanel.objIndex;
 
 public class SidePanel extends JPanel {
 
@@ -35,17 +36,19 @@ public class SidePanel extends JPanel {
     final int screenHeight = GamePanel.screenHeight;
     GridBagConstraints c = new GridBagConstraints();
     GridBagConstraints d = new GridBagConstraints();
+    GamePanel gp;
 
     private Image image;
 
 
-    public SidePanel(JFrame jframe, Image image) throws IOException {
+    public SidePanel(JFrame jframe, Image image, GamePanel gp) throws IOException {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setLayout(new BorderLayout());
         this.jframe = jframe;
         this.image = image;
         this.setOpaque(false);
+        this.gp = gp;
         timePanel.setOpaque(false);
         assistButtons.setOpaque(false);
         timePanel.setLayout(new BorderLayout());
@@ -112,6 +115,7 @@ public class SidePanel extends JPanel {
             if(gameState == GamePanel.wordOrder){
                 OBJ_Dog.wo.addClickedObject(button.getName());
             }else{
+                gp.ui.currentDialogue = "HOLDING STATE, FIGURE OUT A WAY TO PRINT \nITEM DESCRIPTION";
                 gameState = GamePanel.dialogueState;
             }
         });
