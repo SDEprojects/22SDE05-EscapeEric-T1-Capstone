@@ -21,7 +21,7 @@ public class OBJ_Avocados extends SuperObject {
             e.printStackTrace();
         }
 
-        solidArea = new Rectangle(0, 0, 85 * 3, 46 * 3);
+        solidArea = new Rectangle(0, 0, 18 * 3, 28 * 3);
         gettable = true;
     }
 
