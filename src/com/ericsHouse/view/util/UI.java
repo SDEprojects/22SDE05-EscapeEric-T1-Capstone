@@ -64,6 +64,9 @@ public class UI {
         if (gp.gameState == gp.rockPaperScissors) {
             rockPaperScissorsDisplay(gp.subState);
         }
+        if(gp.gameState == gp.wordOrder){
+            drawWordOrderScreen();
+        }
     }
 
     private void drawDialogueScreen() {
@@ -106,6 +109,22 @@ public class UI {
         g2.drawString(riddleThree, x, y + gp.tileSize * 3);
 
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
+    }
+
+    private void drawWordOrderScreen() {
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 7;
+        drawSubWindow(x, y, width, height);
+        x += gp.tileSize;
+        y += gp.tileSize;
+        for (String escape : currentDialogue.split("\n")) {
+            g2.drawString(escape, x, y);
+            y += 40;
+        }
+
+        g2.drawString("Click the items in your inventory in the right order.", width - 425, height);
     }
 
     public void rockPaperScissorsDisplay(int subState) {

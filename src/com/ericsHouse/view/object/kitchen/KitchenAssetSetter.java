@@ -103,7 +103,7 @@ public class KitchenAssetSetter extends AssetSetter {
         gp.obj[21].screenX = 35 * 3;
         gp.obj[21].screenY = 28 * 2;
 
-        gp.obj[22] = new OBJ_Avocados();
+        gp.obj[22] = new OBJ_Pears();
         gp.obj[22].screenX = 85 * 3;
         gp.obj[22].screenY = 34 * 2;
 
