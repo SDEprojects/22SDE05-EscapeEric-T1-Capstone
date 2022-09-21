@@ -22,11 +22,11 @@ import java.util.Map;
 public class RoomMap {
 
     GamePanel gp;
-    public Map<String, Room> roomMap = new HashMap<>();
+    public static Map<String, Room> roomMap;
 
     public RoomMap(GamePanel gp) throws IOException {
         this.gp = gp;
-
+        roomMap = new HashMap<>();
         generateRooms();
     }
 
