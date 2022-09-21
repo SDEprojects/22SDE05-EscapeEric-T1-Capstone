@@ -22,7 +22,7 @@ public class GameFrame extends JFrame implements ActionListener {
 
     GameFrame() throws IOException {
         BufferedImage image = ImageIO.read(main.class.getResourceAsStream("/rooms/garage/garage_OBJ/frog.png"));
-
+        BufferedImage backgroundImage = ImageIO.read(main.class.getResourceAsStream("/side-panel-background.png"));
         // Game window is initialized and organized
         window = new JFrame();
 
@@ -34,7 +34,7 @@ public class GameFrame extends JFrame implements ActionListener {
         //window.setSize(984,612);
 
         gamePanel = new GamePanel();
-        sidePanel = new SidePanel(this);
+        sidePanel = new SidePanel(this,backgroundImage);
         //pack causes this window to be sized to fit the preferred size and layouts of its subcomponents(GamePanel)
         window.add(gamePanel, BorderLayout.LINE_START);
 

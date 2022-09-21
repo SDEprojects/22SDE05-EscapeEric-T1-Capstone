@@ -24,7 +24,7 @@ public class UI {
         pixelFont = importFont();
     }
 
-    public Font importFont() {
+    public static Font importFont() {
         InputStream is = UI.class.getResourceAsStream("/font_style/PressStart2P-Regular.ttf");
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);

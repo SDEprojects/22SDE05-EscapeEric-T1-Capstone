@@ -83,7 +83,7 @@ public class JsonParser {
     public static String doorUnlockedParser( GamePanel gp){
         String item = null;
         try {
-            InputStream is = getFileFromResourceAsStream("roomZeroPrompts.json");
+            InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
             item = jsonNodePrompts.get(gp.currentRoom.name).get("door").get("unlocked").textValue();
             return item;
