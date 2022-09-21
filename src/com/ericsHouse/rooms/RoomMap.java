@@ -74,4 +74,5 @@ public class RoomMap {
         roomMap.put("bedroom",bedroom);
         roomMap.put("bathroom",bathroom);
     }
+    //bathroom needs to be implemented once the game has won that the ending plays.
 }
