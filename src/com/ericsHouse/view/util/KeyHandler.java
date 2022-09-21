@@ -62,6 +62,7 @@ public class KeyHandler implements KeyListener {
                 if (index != 999) {
                     try {
                         objIndex = index;
+                        System.out.println(objIndex);
                         gp.obj[index].interact(index, gp);
                     } catch (JsonProcessingException ex) {
                         throw new RuntimeException(ex);
@@ -139,7 +140,12 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
+        } else if(gp.gameState == gp.wordOrder){
+            if(code == KeyEvent.VK_E){
+                gp.gameState = gp.playState;
+            }
         }
+
         if (code == KeyEvent.VK_S) {
             if (gp.subState < gp.optionThree) {
                 gp.subState = gp.subState + 1;

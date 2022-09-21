@@ -19,6 +19,7 @@ import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    public static int objIndex;
     //CurrentGamePanelThread
     public boolean gpRun = true;
     public Room currentRoom;
@@ -39,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public Player player = new Player(this, keyH);
 
-    public SuperObject[] obj = new SuperObject[10];
+    public static SuperObject[] obj = new SuperObject[10];
     Thread gameThread;
     public RoomMap allRooms = new RoomMap(this);
     public CollisionChecker cChecker = new CollisionChecker(this, tileM, assetSetter, player);
@@ -55,6 +56,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int riddleCorrect = 6;
     public final int riddleIncorrect = 7;
     public final int rockPaperScissors = 8;
+    public static final int wordOrder = 9;
 
     //SUB STATES
     public int subState = 0;
@@ -66,7 +68,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("bathroom");
+        currentRoom = allRooms.roomMap.get("garage");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }

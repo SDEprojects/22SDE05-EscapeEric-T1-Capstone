@@ -11,11 +11,11 @@ import java.io.IOException;
 import static com.ericsHouse.view.GameFrame.sidePanel;
 
 
-public class OBJ_Avocados extends SuperObject {
-    public OBJ_Avocados() {
-        name = "avocados";
+public class OBJ_Pears extends SuperObject {
+    public OBJ_Pears() {
+        name = "pears";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/avocados.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/pears.png"));
         } catch (
                 IOException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class OBJ_Avocados extends SuperObject {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
             try {
-                image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/avocados.png"));
+                image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/pears.png"));
             } catch (IOException e){
 
             }

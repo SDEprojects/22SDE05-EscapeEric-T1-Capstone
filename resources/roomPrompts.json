@@ -1,5 +1,4 @@
 {
-
   "garage": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
     "note": "Welcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\tOh, I almost forgot.\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\tGOOD LUCK!",
@@ -20,7 +19,7 @@
     "cabinet": "As my wife opened the cabinet,\na coffee cup crashed on her head\nIt's awful to see someone you love mugged.",
     "oven": "Tried to follow a recipe,\nit said for a bigger portion just double everything,\nbut my oven doesn’t go up to 600 degrees.",
     "sink": "It's sink or swim.",
-    "avocados": "Holy Guacamole!\nThese are going to be helpful later on.",
+    "pears": "#TheBestFruit!\nThese are going to be helpful later on.",
     "oranges": "Doing all this dev work..\nNeed that vitamin C.",
     "knife": "This is a nice shiny knife\nShould only be used for veggies and doors.",
     "door": {

@@ -1,8 +1,11 @@
 package com.ericsHouse.view.panels;
 
+import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.object.living_room.OBJ_Dog;
 import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
+import com.ericsHouse.view.util.WordOrder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,6 +18,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.List;
+
+import static com.ericsHouse.view.panels.GamePanel.gameState;
+import static com.ericsHouse.view.panels.GamePanel.objIndex;
 
 public class SidePanel extends JPanel {
 
@@ -30,17 +36,19 @@ public class SidePanel extends JPanel {
     final int screenHeight = GamePanel.screenHeight;
     GridBagConstraints c = new GridBagConstraints();
     GridBagConstraints d = new GridBagConstraints();
+    GamePanel gp;
 
     private Image image;
 
 
-    public SidePanel(JFrame jframe, Image image) throws IOException {
+    public SidePanel(JFrame jframe, Image image, GamePanel gp) throws IOException {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setLayout(new BorderLayout());
         this.jframe = jframe;
         this.image = image;
         this.setOpaque(false);
+        this.gp = gp;
         timePanel.setOpaque(false);
         assistButtons.setOpaque(false);
         timePanel.setLayout(new BorderLayout());
@@ -97,14 +105,19 @@ public class SidePanel extends JPanel {
         Image img = newImg.getScaledInstance(48,48, Image.SCALE_SMOOTH);
         ImageIcon imgI = new ImageIcon(img);
         JButton button = new JButton(imgI);
-        JLabel label = new JLabel(sp.name);
+        //JLabel label = new JLabel(sp.name);
         button.setPreferredSize(new Dimension(16*4, 16*4));
         button.setBorder(BorderFactory.createEmptyBorder());
-        button.add(label);
-        label.setVisible(false);
+        button.setName(sp.name);
+        //label.setVisible(false);
         button.setContentAreaFilled(false);
         button.addActionListener(e->{
-            System.out.println("Event listener working");
+            if(gameState == GamePanel.wordOrder){
+                OBJ_Dog.wo.addClickedObject(button.getName());
+            }else{
+                gp.ui.currentDialogue = "HOLDING STATE, FIGURE OUT A WAY TO PRINT \nITEM DESCRIPTION";
+                gameState = GamePanel.dialogueState;
+            }
         });
 
         inventory.revalidate();
