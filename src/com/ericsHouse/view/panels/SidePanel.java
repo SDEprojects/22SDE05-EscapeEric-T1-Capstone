@@ -104,8 +104,7 @@ public class SidePanel extends JPanel {
         label.setVisible(false);
         button.setContentAreaFilled(false);
         button.addActionListener(e->{
-            System.out.println(this.screenHeight);
-            System.out.println(this.screenWidth);
+            System.out.println("Event listener working");
         });
 
         inventory.revalidate();
