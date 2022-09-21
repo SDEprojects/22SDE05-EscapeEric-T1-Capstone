@@ -22,7 +22,7 @@ public class OBJ_Radio extends SuperObject {
             e.printStackTrace();
         }
         collision = true;
-        solidArea = new Rectangle(0,0,16 * 3,16 * 3);
+        solidArea = new Rectangle(10,-18,16 * 3,22 * 3);
     }
 
     @Override

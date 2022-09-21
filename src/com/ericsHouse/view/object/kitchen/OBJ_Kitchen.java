@@ -61,8 +61,9 @@ public class OBJ_Kitchen extends SuperObject {
                     e.printStackTrace();
                 }
             } else {
-                gp.gameState = gp.dialogueState;
                 gp.ui.currentDialogue = JsonParser.doorParser(gp);
+                gp.gameState = gp.dialogueState;
+
             }
 
         } else {
