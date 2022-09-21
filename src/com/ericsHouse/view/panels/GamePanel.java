@@ -8,7 +8,6 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.garage.GarageAssetSetter;
 import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
-import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.util.CollisionChecker;
 import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.Time;

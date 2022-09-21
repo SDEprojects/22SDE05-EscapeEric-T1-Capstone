@@ -87,11 +87,11 @@ public class LivingRoomAssetSetter extends AssetSetter {
         gp.obj[16].screenX = 173 * 3;
         gp.obj[16].screenY = 34 * 3;
 
-        gp.obj[17] = new OBJ_LivingRoom("couch-left", "/rooms/living_room/living_room_OBJ/couch-left.png",15,32);
+        gp.obj[17] = new OBJ_LivingRoom("couch", "/rooms/living_room/living_room_OBJ/couch-left.png",15,32);
         gp.obj[17].screenX = 79 * 3;
         gp.obj[17].screenY = 91 * 3;
 
-        gp.obj[18] = new OBJ_LivingRoom("couch-right", "/rooms/living_room/living_room_OBJ/couch-right.png",15,32);
+        gp.obj[18] = new OBJ_LivingRoom("couch", "/rooms/living_room/living_room_OBJ/couch-right.png",15,32);
         gp.obj[18].screenX = 169 * 3;
         gp.obj[18].screenY = 91 * 3;
 
@@ -99,11 +99,11 @@ public class LivingRoomAssetSetter extends AssetSetter {
         gp.obj[19].screenX = 120 * 3;
         gp.obj[19].screenY = 95 * 3;
 
-        gp.obj[20] = new OBJ_LivingRoom("bottom-couch", "/rooms/living_room/living_room_OBJ/bottom-couch.png",80,19);
+        gp.obj[20] = new OBJ_LivingRoom("couch", "/rooms/living_room/living_room_OBJ/bottom-couch.png",80,19);
         gp.obj[20].screenX = 94 * 3;
         gp.obj[20].screenY = 128 * 3;
 
-        gp.obj[21] = new OBJ_LivingRoom("glass-table", "/rooms/living_room/living_room_OBJ/glass-table.png",18,15);
+        gp.obj[21] = new OBJ_LivingRoom("coffee-table", "/rooms/living_room/living_room_OBJ/glass-table.png",18,15);
         gp.obj[21].screenX = 21 * 3;
         gp.obj[21].screenY = 166 * 3;
 
