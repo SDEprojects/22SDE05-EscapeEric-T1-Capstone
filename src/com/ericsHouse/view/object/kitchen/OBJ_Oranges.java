@@ -21,7 +21,7 @@ public class OBJ_Oranges extends SuperObject {
             e.printStackTrace();
         }
 
-        solidArea = new Rectangle(0, 0, 95 * 3, 85 * 3);
+        solidArea = new Rectangle(0, 0, 20 * 3, 20 * 3);
         gettable = true;
     }
 

@@ -1,5 +1,6 @@
 package com.ericsHouse.view;
 
+import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.panels.SidePanel;
 
@@ -74,6 +75,7 @@ public class GameFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sidePanel.askShaqButton) {
             gamePanel.setFocusable(true);
+            gamePanel.ui.currentDialogue = JsonParser.getPrompt("askShaq", gamePanel);
             gamePanel.gameState = gamePanel.dialogueState;
             System.out.println(e.getActionCommand());
         }

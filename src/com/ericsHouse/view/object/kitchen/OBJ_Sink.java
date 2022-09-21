@@ -22,8 +22,6 @@ public class OBJ_Sink extends SuperObject {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp){
-
         g2.drawImage(image, screenX, screenY, 62 * 3, 46 * 3, null);
-
     }
 }
