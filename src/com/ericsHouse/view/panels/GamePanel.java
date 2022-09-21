@@ -8,8 +8,10 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.garage.GarageAssetSetter;
 import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
+import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.util.CollisionChecker;
 import com.ericsHouse.view.util.KeyHandler;
+import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
 
 import javax.swing.*;
@@ -45,10 +47,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     public UI ui = new UI(this);
     //GAME STATES
-    public int gameState;
+    public static int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
-    public final int dialogueState = 3;
+    public static final int dialogueState = 3;
     public final int deathState = 4;
     public final int riddleState = 5;
     public final int riddleCorrect = 6;
@@ -65,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("bathroom");
+        currentRoom = allRooms.roomMap.get("kitchen");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
@@ -112,6 +114,7 @@ public class GamePanel extends JPanel implements Runnable {
                     throw new RuntimeException(e);
                 }
                 repaint();
+
                 delta--;
                 drawCount++;
             }
@@ -128,6 +131,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (gameState == pauseState) {
 
+        }
+        if(!Time.gameTimer.isRunning()){
+            gameState = deathState;
         }
     }
 

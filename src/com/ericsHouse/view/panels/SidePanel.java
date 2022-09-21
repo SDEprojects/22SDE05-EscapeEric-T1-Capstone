@@ -2,40 +2,71 @@ package com.ericsHouse.view.panels;
 
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.util.Time;
+import com.ericsHouse.view.util.UI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.List;
 
 public class SidePanel extends JPanel {
 
+    private final JFrame jframe;
+    public JPanel inventory = new JPanel();
+    public JPanel timePanel = new JPanel();
+    public JPanel assistButtons = new JPanel();
+    public Box box = Box.createHorizontalBox();
+    public JButton askShaqButton;
+    public JButton helpButton;
     public static Map<String, JButton> items = new HashMap<>();
     final int screenWidth = 216;
     final int screenHeight = GamePanel.screenHeight;
     GridBagConstraints c = new GridBagConstraints();
+    GridBagConstraints d = new GridBagConstraints();
+
+    private Image image;
 
 
-    public SidePanel() {
+    public SidePanel(JFrame jframe, Image image) throws IOException {
+
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setLayout(new GridBagLayout());
+        this.setLayout(new BorderLayout());
+        this.jframe = jframe;
+        this.image = image;
+        this.setOpaque(false);
+        timePanel.setOpaque(false);
+        assistButtons.setOpaque(false);
+        timePanel.setLayout(new BorderLayout());
+        timePanel.setBorder(new EmptyBorder(0,0,100,0));
+        assistButtons.setLayout(new BorderLayout(15,15));
+        assistButtons.setBackground(Color.BLUE);
+
+
     }
 
     public void timerSetUp() {
-        // Game Timer
         JLabel timerLabel = new JLabel("HELLOOOOOO");
-        timerLabel.setHorizontalAlignment(JLabel.CENTER);
-        timerLabel.setBounds(58, 0, 100, 50);
+
+        timerLabel.setFont(UI.importFont());
         timerLabel.setText("04:00");
+
         Time.setUpTimer(4, 0, timerLabel);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.ipady = 50;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 3;
-        this.add(timerLabel, c);
+
+        box.add(Box.createHorizontalGlue());
+        box.add(timerLabel);
+        box.add(Box.createHorizontalGlue());
+        timePanel.setPreferredSize(new Dimension(216,175));
+        timePanel.add(box,BorderLayout.CENTER);
+
+        this.add(timePanel,BorderLayout.PAGE_START);
+
     }
 
     public void inventorySetUp(GamePanel gp) {
@@ -44,16 +75,12 @@ public class SidePanel extends JPanel {
             ImageIcon image = new ImageIcon(item.image);
             items.put(item.name, new JButton());
             items.get(item.name).setIcon(image);
-            items.get(item.name).setPreferredSize(new Dimension(72, 72));
+            items.get(item.name).setPreferredSize(new Dimension(16*4, 16*4));
         }
-    }
+        inventory.setOpaque(false);
+        inventory.revalidate();
+        inventory.repaint();
 
-    public void inventoryDisplay() {
-        JPanel inventory = new JPanel();
-        Collection<JButton> values = items.values();
-        for (JButton button : values) {
-            inventory.add(button);
-        }
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
         c.weighty = 1.0;
@@ -61,22 +88,76 @@ public class SidePanel extends JPanel {
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = 3;
-        this.add(inventory, c);
+        this.add(inventory, BorderLayout.CENTER,1);
     }
 
-    public void buttonSetpUp() {
-        JButton askShaqButton = new JButton("Ask Shaq");
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 2;
-        c.gridwidth = 1;
-        this.add(askShaqButton, c);
+    public void inventorySetUp(SuperObject sp){
+        ImageIcon image = new ImageIcon(sp.image);
+        Image newImg = image.getImage();
+        Image img = newImg.getScaledInstance(48,48, Image.SCALE_SMOOTH);
+        ImageIcon imgI = new ImageIcon(img);
+        JButton button = new JButton(imgI);
+        JLabel label = new JLabel(sp.name);
+        button.setPreferredSize(new Dimension(16*4, 16*4));
+        button.setBorder(BorderFactory.createEmptyBorder());
+        button.add(label);
+        label.setVisible(false);
+        button.setContentAreaFilled(false);
+        button.addActionListener(e->{
+            System.out.println("Event listener working");
+        });
 
-        JButton helpButton = new JButton("Help");
+        inventory.revalidate();
+        inventory.repaint();
+        inventory.add(button);
+
+        c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.5;
-        c.gridx = 2;
-        c.gridy = 2;
-        c.gridwidth = 1;
-        this.add(helpButton, c);
+        c.weighty = 1.0;
+        c.ipady = 454;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 3;
+        this.add(inventory, BorderLayout.CENTER,1);
+    }
+
+
+    public void buttonSetUp() {
+        assistButtons.setPreferredSize(new Dimension(screenWidth,156));
+        assistButtons.setBackground(Color.CYAN);
+
+        askShaqButton = new JButton("Ask Shaq");
+        askShaqButton.setFont(UI.importFont());
+        askShaqButton.setPreferredSize(new Dimension(15,50));
+        askShaqButton.setContentAreaFilled(false);
+        askShaqButton.setBorder(BorderFactory.createEmptyBorder());
+        assistButtons.add(askShaqButton,BorderLayout.PAGE_START);
+        askShaqButton.addActionListener((ActionListener) jframe);
+
+
+        helpButton = new JButton("Help");
+        helpButton.setFont(UI.importFont());
+        assistButtons.add(helpButton,BorderLayout.CENTER);
+        helpButton.setContentAreaFilled(false);
+        helpButton.setBorder(BorderFactory.createEmptyBorder(0,0,35,0));
+        helpButton.addActionListener((ActionListener) jframe);
+        this.add(assistButtons, BorderLayout.PAGE_END);
+
+    }
+
+
+    @Override
+    protected void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+
+        g.drawImage(this.image, 0, 0, null); // image full size
+        //g.drawImage(background, 0, 0, getWidth(), getHeight(), null); // image scaled
+    }
+
+    @Override
+    public Dimension getPreferredSize()
+    {
+        return new Dimension(this.image.getWidth(this), this.image.getHeight(this));
     }
 }

@@ -8,8 +8,7 @@
     "door": "You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
     "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nIf you get stuck, feel free to type 'ask Shaq' at any point and i'll do my best to help you in your escape.\nTo get started, why don't you try inspecting that table to your left and reading that note.",
-    "invalidCommand": "That command is invalid! Please choose a proper command from the list."
-  },
+    "invalidCommand": "That command is invalid! Please choose a proper command from the list."},
   "kitchen": {
     "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
     "hutch": "A storage chest.",
@@ -20,16 +19,21 @@
     "sink": "It's sink or swim.",
     "avocados": "Holy Guacamole!\nThese are going to be helpful later on.",
     "oranges": "Doing all this dev work..\nNeed that vitamin C.",
+    "knife": "This is a nice shiny knife\nShould only be used for veggies and doors.",
+    "door": {
+      "locked": "There's a note on the door.\n'The door sticks sometimes...\nI've been using a knife to jimmy it open'",
+      "unlocked": "You use the knife to jimmy open the lock.\nThe door opens and you proceed to the next room..."
+
+    },
     "inspectLeft": "You inspect the bookshelf to your left. You find a knife and put it in your backpack.",
     "inspectLeftEmpty": "You inspect the bookshelf. Just a bunch of dusty worn out books.",
     "inspectRight": "You inspect the table on the right. You find a knife and read:\n\t'This dang old door lock has been messed up for weeks. I just keep jimmying it open with a knife.'",
     "inspectFloor": "There is nothing on the floor.",
-    "openDoorLocked": "The door is locked with a big rusty padlock. There must be some way to open it...",
-    "openDoorUnlocked": "You use the knife to jimmy open the lock. The door opens and you proceed to the next room...",
     "askShaq": "To figure out what the room challenge is, try to open the locked door.\nMake sure you look for helpful clues or items in every room.\nMaybe the note on that table can offer up a clue.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
   "living-room": {
+    "emerald-earrings": "",
     "enterRoom": "Welcome to Room 2 - Word Order Room:\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
     "inspectLeft": "You inspect the table to your left.\nYou find an Onion and put it in your backpack.\nMight come in handy or make a good snack later.",
     "inspectLeftEmpty": "You inspect the table to your left and find it empty.",

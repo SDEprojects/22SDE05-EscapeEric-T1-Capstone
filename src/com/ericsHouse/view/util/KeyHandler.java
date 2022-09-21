@@ -5,6 +5,7 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -71,10 +72,6 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
             }
-            //TODO - remove comment before release, used to test death screen
-            if (code == KeyEvent.VK_J) {
-                gp.gameState = gp.deathState;
-            }
         } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
@@ -124,6 +121,11 @@ public class KeyHandler implements KeyListener {
                     Riddle.riddleCorrect = false;
                     gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "correctOut", gp);
                 } else {
+                    //TODO this needs to be refactored
+                    Time.second = Time.second - 60;
+                    if (Time.minute <= 0 && Time.second <= 0) {
+                        Time.gameTimer.stop();
+                    }
                     gp.gameState = gp.riddleIncorrect;
                     gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "falseOut", gp);
                 }

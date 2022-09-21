@@ -7,7 +7,8 @@ import com.ericsHouse.view.panels.GamePanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static com.ericsHouse.view.main.sidePanel;
+import static com.ericsHouse.view.GameFrame.sidePanel;
+
 
 public abstract class SuperObject {
 
@@ -36,8 +37,8 @@ public abstract class SuperObject {
             //If user selects get item then the object is put in their inventory
             JsonParser.getPrompt(gp.obj[objIndex].name, gp);
             gp.player.addItem(gp.obj[objIndex]);
-            sidePanel.inventorySetUp(gp);
-            sidePanel.inventoryDisplay();
+            sidePanel.inventorySetUp(gp.obj[objIndex]);
+            //sidePanel.inventoryDisplay();
             gp.obj[objIndex] = null;
         }
         //If item isn't gettable display dialogue box with description
