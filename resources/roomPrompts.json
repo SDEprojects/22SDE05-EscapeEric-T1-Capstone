@@ -17,7 +17,7 @@
     "cabinet": "As my wife opened the cabinet,\na coffee cup crashed on her head\nIt's awful to see someone you love mugged.",
     "oven": "Tried to follow a recipe,\nit said for a bigger portion just double everything,\nbut my oven doesn’t go up to 600 degrees.",
     "sink": "It's sink or swim.",
-    "avocados": "Holy Guacamole!\nThese are going to be helpful later on.",
+    "pears": "#TheBestFruit!\nThese are going to be helpful later on.",
     "oranges": "Doing all this dev work..\nNeed that vitamin C.",
     "knife": "This is a nice shiny knife\nShould only be used for veggies and doors.",
     "door": {
@@ -47,7 +47,8 @@
     "openDoorUnlocked": "You have successfully entered the four object in the correct order.\nThe door opens and you proceed to the next room...",
     "askShaq": "Those are some random objects in this room.\nPerhaps the order of the objects doesn't have anything to do with the items themselves...",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
-    "ericClosingIn": "Eric is getting closer..."
+    "ericClosingIn": "Eric is getting closer...",
+    "sleeping-dog": "The dog is dozing deeply....\n You see a note next to the dog.\n'Give my pup the right items in the right order\nand he will move out of the way'\n"
   },
   "bedroom": {
     "enterRoom": "You made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",

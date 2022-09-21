@@ -1,8 +1,11 @@
 package com.ericsHouse.view.panels;
 
+import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.object.living_room.OBJ_Dog;
 import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
+import com.ericsHouse.view.util.WordOrder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.List;
+
+import static com.ericsHouse.view.panels.GamePanel.gameState;
 
 public class SidePanel extends JPanel {
 
@@ -97,14 +102,18 @@ public class SidePanel extends JPanel {
         Image img = newImg.getScaledInstance(48,48, Image.SCALE_SMOOTH);
         ImageIcon imgI = new ImageIcon(img);
         JButton button = new JButton(imgI);
-        JLabel label = new JLabel(sp.name);
+        //JLabel label = new JLabel(sp.name);
         button.setPreferredSize(new Dimension(16*4, 16*4));
         button.setBorder(BorderFactory.createEmptyBorder());
-        button.add(label);
-        label.setVisible(false);
+        button.setName(sp.name);
+        //label.setVisible(false);
         button.setContentAreaFilled(false);
         button.addActionListener(e->{
-            System.out.println("Event listener working");
+            if(gameState == GamePanel.wordOrder){
+                OBJ_Dog.wo.addClickedObject(button.getName());
+            }else{
+                gameState = GamePanel.dialogueState;
+            }
         });
 
         inventory.revalidate();
