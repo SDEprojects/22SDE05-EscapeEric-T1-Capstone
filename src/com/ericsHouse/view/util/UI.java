@@ -194,14 +194,17 @@ public class UI {
         }
     }
     private void drawShaq() {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
+        int x = gp.tileSize ;
+        int y = gp.tileSize *5;
+        int width = gp.screenWidth - (gp.tileSize * 8);
+        int height = gp.tileSize * 2;
         BufferedImage image = null;
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("ask-shaq.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/ask-shaq.png"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-        g2.drawImage(image,x,y,null);
+        drawDialogueScreen();
+        g2.drawImage(image,x,y,width,height,null);
     }
 }

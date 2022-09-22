@@ -66,5 +66,7 @@ public class GarageAssetSetter extends AssetSetter {
         door.screenX = 0;
         door.screenY = 144;
         roomMap.get("garage").mapObjects.put("door", door);
+
+
     }
 }

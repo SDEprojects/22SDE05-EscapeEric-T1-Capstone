@@ -5,7 +5,6 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Objects;
@@ -95,8 +94,7 @@ public class KeyHandler implements KeyListener {
                         if (UI.checkWin(this.gp.subState, games, wins)) {
                             wins++;
                             gp.ui.currentDialogue = "number of wins: " + wins;
-                        }
-                        else{
+                        } else {
                             gp.ui.currentDialogue = "number of wins: " + wins;
                         }
                         games++;
@@ -146,41 +144,43 @@ public class KeyHandler implements KeyListener {
         } else if (gp.gameState == gp.wordOrder) {
             if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
-        } else if (GamePanel.gameState == gp.Shaq) {
+            }
+            if (code == KeyEvent.VK_S) {
+                if (gp.subState < gp.optionThree) {
+                    gp.subState = gp.subState + 1;
+                }
+            }
+            if (code == KeyEvent.VK_W) {
+                if (gp.subState > gp.optionOne) {
+                    gp.subState = gp.subState - 1;
+                }
+            }
+        }
+        else if (GamePanel.gameState == gp.Shaq) {
             if (code == KeyEvent.VK_E) {
                 GamePanel.gameState = gp.playState;
             }
         }
-
-        if (code == KeyEvent.VK_S) {
-            if (gp.subState < gp.optionThree) {
-                gp.subState = gp.subState + 1;
-            }
-        }
-        if (code == KeyEvent.VK_W) {
-            if (gp.subState > gp.optionOne) {
-                gp.subState = gp.subState - 1;
-            }
-        }
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
-        if (code == KeyEvent.VK_W || code == 38) {
-            upPressed = false;
+        @Override
+        public void keyReleased (KeyEvent e){
+            int code = e.getKeyCode();
+            if (code == KeyEvent.VK_W || code == 38) {
+                upPressed = false;
+            }
+            if (code == KeyEvent.VK_S || code == 40) {
+                downPressed = false;
+            }
+            if (code == KeyEvent.VK_D || code == 39) {
+                rightPressed = false;
+            }
+            if (code == KeyEvent.VK_A || code == 37) {
+                leftPressed = false;
+            }
+            if (code == KeyEvent.VK_E) {
+                getPressed = false;
+            }
         }
-        if (code == KeyEvent.VK_S || code == 40) {
-            downPressed = false;
-        }
-        if (code == KeyEvent.VK_D || code == 39) {
-            rightPressed = false;
-        }
-        if (code == KeyEvent.VK_A || code == 37) {
-            leftPressed = false;
-        }
-        if (code == KeyEvent.VK_E) {
-            getPressed = false;
-        }
-    }
+
 }
