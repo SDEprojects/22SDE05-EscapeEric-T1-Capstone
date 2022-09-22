@@ -76,10 +76,10 @@ public class GameFrame extends JFrame implements ActionListener {
         if (e.getSource() == sidePanel.askShaqButton) {
             gamePanel.setFocusable(true);
             gamePanel.ui.currentDialogue = JsonParser.getPrompt("askShaq", gamePanel);
-            gamePanel.gameState = gamePanel.dialogueState;
-            System.out.println(e.getActionCommand());
+            gamePanel.gameState = gamePanel.Shaq;
         }
         if (e.getSource() == sidePanel.helpButton) {
+            gamePanel.ui.currentDialogue = JsonParser.getPrompt("help", gamePanel);
             gamePanel.setFocusable(true);
             gamePanel.gameState = gamePanel.dialogueState;
         }
