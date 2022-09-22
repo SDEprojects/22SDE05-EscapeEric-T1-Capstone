@@ -68,6 +68,9 @@ public class UI {
         if (gp.gameState == gp.wordOrder) {
             drawWordOrderScreen();
         }
+        if(gp.gameState == gp.winState){
+            drawWinScreen(0, 0, gp.screenWidth, gp.screenHeight);
+        }
         if(gp.gameState == gp.Shaq){
             drawShaq();
         }
@@ -179,6 +182,15 @@ public class UI {
     public void drawDeathScreen(int x, int y, int width, int height) {
         try {
             BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/Game-Over.png"));
+            g2.drawImage(image, x, y, width, height, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawWinScreen(int x, int y, int width, int height) {
+        try {
+            BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/intro-screen.png"));
             g2.drawImage(image, x, y, width, height, null);
         } catch (IOException e) {
             e.printStackTrace();

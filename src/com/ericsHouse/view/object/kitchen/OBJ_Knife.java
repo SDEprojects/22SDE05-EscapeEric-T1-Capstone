@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-import static com.ericsHouse.view.GameFrame.sidePanel;
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
+import static com.ericsHouse.view.util.GameFrame.sidePanel;
 
 
 public class OBJ_Knife extends SuperObject {

@@ -65,7 +65,8 @@ public class RoomMap {
         Rectangle baEntranceIntersect = new Rectangle(32 * 3 , 187 * 3, 33 * 3, 5 * 3);
         TileManager baTiles = new BathroomTileManager(gp);
         AssetSetter baAssets = new BathroomAssetSetter(gp);
-        Room bathroom = new Room("bathroom",gp,baAssets,baTiles,"bedroom","bathroom",baEntranceIntersect,baExitIntersect);
+        //BATHROOM EXIT NEEDS TO BE AN END GAME EXIT
+        Room bathroom = new Room("bathroom",gp,baAssets,baTiles,"bedroom","win",baEntranceIntersect,baExitIntersect);
 
         //Putting Assets in a map for access
         roomMap.put("kitchen", kitchen);
