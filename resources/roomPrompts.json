@@ -51,7 +51,8 @@
     "coffee-table": "I hate it when a murder chases me and\nthen I stub my toe on a table.",
     "couch": "I shouldn't sit at a time like this!",
     "cushion-cat": "He sure does love his animals!",
-    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n",
+    "sleeping-dog": "The dog grumbles.\nYou see a note next to the dog\n'To get him to move you have to give him items\nIn the right order'"
   },
   "bedroom": {
     "enterRoom": "You made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
