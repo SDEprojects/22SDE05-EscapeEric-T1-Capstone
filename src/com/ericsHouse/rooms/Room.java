@@ -1,10 +1,14 @@
 package com.ericsHouse.rooms;
 
+import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.object.AssetSetter;
 import com.ericsHouse.view.tile.TileManager;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static com.ericsHouse.view.GameFrame.window;
 
@@ -13,7 +17,8 @@ public class Room {
 
     public final String name;
     GamePanel gp;
-    private AssetSetter assetSetter;
+    AssetSetter assetSetter;
+    public Map<String, SuperObject> mapObjects;
     private TileManager tileManager;
     public String entrance;
     public String exit;
@@ -29,13 +34,13 @@ public class Room {
         this.exitIntersect = exitIntersect;
         this.entrance = entrance;
         this.exit = exit;
-
+        this.mapObjects = new LinkedHashMap<>();
     }
 
     public void setRoomItems(String title) {
         gp.tileM = tileManager;
         gp.assetSetter = assetSetter;
-        gp.assetSetter.setObject();
+//        gp.assetSetter.setObject();
         window.setTitle(title);
     }
 

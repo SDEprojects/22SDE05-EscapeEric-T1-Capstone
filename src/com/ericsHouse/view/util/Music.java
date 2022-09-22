@@ -16,10 +16,10 @@ public class Music {
         InputStream bufferedMusic = new BufferedInputStream(musicStream);
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedMusic);
         try {
-            if(clip.isActive()){
+            if (clip.isActive()) {
                 clip.stop();
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             //Do nothing if no clip exists, proceed as usual
         }
         clip = AudioSystem.getClip();
@@ -29,6 +29,7 @@ public class Music {
         clip.start();
         clip.loop(clip.LOOP_CONTINUOUSLY);
     }
+
     public static void stop() {
         //stops the current clip
         clip.stop();

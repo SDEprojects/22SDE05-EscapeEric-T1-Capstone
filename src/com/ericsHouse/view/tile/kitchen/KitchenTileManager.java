@@ -11,12 +11,11 @@ public class KitchenTileManager extends TileManager {
     public KitchenTileManager(GamePanel gp) throws IOException {
         super(gp);
         loadmap("/rooms/kitchen/maps/kitchen-map.txt");
-
     }
 
     @Override
-    public void getTileImage(){
-        try{
+    public void getTileImage() {
+        try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/tiles/floor.png"));
 
@@ -44,10 +43,8 @@ public class KitchenTileManager extends TileManager {
             tile[6].image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/tiles/bottom-wall.png"));
             tile[6].collision = true;
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

@@ -14,8 +14,8 @@ public class GarageTileManager extends TileManager {
     }
 
     @Override
-    public void getTileImage(){
-        try{
+    public void getTileImage() {
+        try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/tiles/garage-floor.png"));
 
@@ -60,7 +60,7 @@ public class GarageTileManager extends TileManager {
             tile[10].image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/tiles/garage-tables8.png"));
             tile[10].collision = true;
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

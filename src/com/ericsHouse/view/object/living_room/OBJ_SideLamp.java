@@ -2,12 +2,12 @@ package com.ericsHouse.view.object.living_room;
 
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
-import java.io.InputStream;
+
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class OBJ_SideLamp extends SuperObject {
     public int width;
@@ -35,9 +35,9 @@ public class OBJ_SideLamp extends SuperObject {
     }
 
     @Override
-    public void interact(int objIndex, GamePanel gp) {
+    public void interact(String objIndex, GamePanel gp) {
         try {
-            gp.obj[objIndex].image = ImageIO.read(getClass().getResourceAsStream("/rooms/living_room/living_room_OBJ/side-lamp-on.png"));
+            currentRoom.mapObjects.get(objIndex).image = ImageIO.read(getClass().getResourceAsStream("/rooms/living_room/living_room_OBJ/side-lamp-on.png"));
             lampOn = true;
         } catch (IOException e) {
             e.printStackTrace();

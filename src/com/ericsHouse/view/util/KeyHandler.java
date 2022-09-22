@@ -5,13 +5,18 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
+
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
-    private final GamePanel gp;
-    public static int objIndex;
+    private GamePanel gp;
+    //    public static int objIndex;
+    public static String objIndex;
     int games = 0;
     int wins = 0;
 
@@ -27,7 +32,7 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        if (GamePanel.gameState == gp.playState) {
+        if (gp.gameState == gp.playState) {
 
             if (code == KeyEvent.VK_W || code == 38) {
                 upPressed = true;
@@ -57,90 +62,91 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_E) {
                 getPressed = true;
-                int index = gp.cChecker.checkObject(gp.player, true);
-                if (index != 999) {
+                String index = gp.cChecker.checkObject(gp.player, true); // Index was an int
+                if (!Objects.equals(index, "")) {
                     try {
                         objIndex = index;
-                        System.out.println(objIndex);
-                        gp.obj[index].interact(index, gp);
+                        currentRoom.mapObjects.get(objIndex).interact(index, gp);
                     } catch (JsonProcessingException ex) {
                         throw new RuntimeException(ex);
                     }
+
                 }
             }
             if (code == KeyEvent.VK_P) {
-                GamePanel.gameState = gp.pauseState;
+                gp.gameState = gp.pauseState;
             }
-        } else if (GamePanel.gameState == gp.pauseState) {
+        } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
-                GamePanel.gameState = gp.playState;
+                gp.gameState = gp.playState;
             }
-        } else if (GamePanel.gameState == GamePanel.dialogueState) {
+        } else if (gp.gameState == gp.dialogueState) {
             if (code == KeyEvent.VK_E) {
-                GamePanel.gameState = gp.playState;
+                gp.gameState = gp.playState;
             }
-        } else if (GamePanel.gameState == gp.rockPaperScissors) {
+
+        } else if (gp.gameState == gp.rockPaperScissors) {
             if (code == KeyEvent.VK_E) {
                 if (SuperObject.win) {
                     gp.ui.currentDialogue = "You already beat your reflection too many times..  ";
-                    GamePanel.gameState = GamePanel.dialogueState;
+                    gp.gameState = gp.dialogueState;
                 } else {
                     if (wins <= 2) {
                         if (UI.checkWin(this.gp.subState, games, wins)) {
                             wins++;
                             gp.ui.currentDialogue = "number of wins: " + wins;
-                        } else {
+                        }
+                        else{
                             gp.ui.currentDialogue = "number of wins: " + wins;
                         }
                         games++;
                     } else {
                         gp.ui.currentDialogue = "You Lost, final score :" + (games - wins) + wins;
-                        GamePanel.gameState = GamePanel.dialogueState;
+                        gp.gameState = gp.dialogueState;
                     }
                     if (wins >= 2) {
                         SuperObject.win = true;
                         gp.ui.currentDialogue = "You Won, you finally beat the person\nwho spends all your money!";
-                        GamePanel.gameState = GamePanel.dialogueState;
+                        gp.gameState = gp.dialogueState;
                     } else if (games > 2) {
                         games = 0;
                         wins = 0;
                         gp.ui.currentDialogue = "Sorry you lost, try again";
-                        GamePanel.gameState = GamePanel.dialogueState;
+                        gp.gameState = gp.dialogueState;
                     }
                 }
             }
-        } else if (GamePanel.gameState == gp.riddleState) {
+        } else if (gp.gameState == gp.riddleState) {
             if (code == KeyEvent.VK_E) {
                 Riddle.checkRiddle(gp);
                 if (Riddle.riddleCorrect) {
-                    GamePanel.gameState = gp.riddleCorrect;
-                    gp.obj[objIndex].solved = true;
+                    gp.gameState = gp.riddleCorrect;
+                    currentRoom.mapObjects.get(objIndex).solved = true;
                     Riddle.riddleCorrect = false;
-                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "correctOut", gp);
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
                 } else {
                     //TODO this needs to be refactored
                     Time.second = Time.second - 60;
                     if (Time.minute <= 0 && Time.second <= 0) {
                         Time.gameTimer.stop();
                     }
-                    GamePanel.gameState = gp.riddleIncorrect;
-                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "falseOut", gp);
+                    gp.gameState = gp.riddleIncorrect;
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
                 }
             }
-        } else if (GamePanel.gameState == gp.riddleCorrect) {
+        } else if (gp.gameState == gp.riddleCorrect) {
             if (code == KeyEvent.VK_E) {
-                GamePanel.gameState = gp.playState;
+                gp.gameState = gp.playState;
             }
 
-        } else if (GamePanel.gameState == gp.riddleIncorrect) {
+        } else if (gp.gameState == gp.riddleIncorrect) {
             if (code == KeyEvent.VK_E) {
-                GamePanel.gameState = gp.playState;
+                gp.gameState = gp.playState;
             }
-        } else if (GamePanel.gameState == GamePanel.wordOrder) {
+        } else if (gp.gameState == gp.wordOrder) {
             if (code == KeyEvent.VK_E) {
-                GamePanel.gameState = gp.playState;
-            }
-        }else if (GamePanel.gameState == gp.Shaq) {
+                gp.gameState = gp.playState;
+        } else if (GamePanel.gameState == gp.Shaq) {
             if (code == KeyEvent.VK_E) {
                 GamePanel.gameState = gp.playState;
             }
