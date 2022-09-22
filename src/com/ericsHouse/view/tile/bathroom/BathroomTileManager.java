@@ -14,8 +14,8 @@ public class BathroomTileManager extends TileManager {
     }
 
     @Override
-    public void getTileImage(){
-        try{
+    public void getTileImage() {
+        try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/rooms/bathroom/tiles/floor.png"));
 
@@ -47,9 +47,8 @@ public class BathroomTileManager extends TileManager {
             tile[7].image = ImageIO.read(getClass().getResourceAsStream("/rooms/bathroom/tiles/right-wall.png"));
             tile[7].collision = true;
 
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

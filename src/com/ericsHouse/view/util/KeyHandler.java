@@ -5,14 +5,17 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
+
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
     private GamePanel gp;
-    public static int objIndex;
+    //    public static int objIndex;
+    public static String objIndex;
     int games = 0;
     int wins = 0;
 
@@ -58,16 +61,14 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_E) {
                 getPressed = true;
-                int index = gp.cChecker.checkObject(gp.player, true);
-                if (index != 999) {
+                String index = gp.cChecker.checkObject(gp.player, true); // Index was an int
+                if (!Objects.equals(index, "")) {
                     try {
                         objIndex = index;
-                        System.out.println(objIndex);
-                        gp.obj[index].interact(index, gp);
+                        currentRoom.mapObjects.get(objIndex).interact(index, gp);
                     } catch (JsonProcessingException ex) {
                         throw new RuntimeException(ex);
                     }
-
                 }
             }
             if (code == KeyEvent.VK_P) {
@@ -92,13 +93,12 @@ public class KeyHandler implements KeyListener {
                         if (UI.checkWin(this.gp.subState, games, wins)) {
                             wins++;
                             gp.ui.currentDialogue = "number of wins: " + wins;
-                        }
-                        else{
+                        } else {
                             gp.ui.currentDialogue = "number of wins: " + wins;
                         }
                         games++;
                     } else {
-                        gp.ui.currentDialogue = "You Lost, final score :" + (games-wins)+wins;
+                        gp.ui.currentDialogue = "You Lost, final score :" + (games - wins) + wins;
                         gp.gameState = gp.dialogueState;
                     }
                     if (wins >= 2) {
@@ -118,9 +118,9 @@ public class KeyHandler implements KeyListener {
                 Riddle.checkRiddle(gp);
                 if (Riddle.riddleCorrect) {
                     gp.gameState = gp.riddleCorrect;
-                    gp.obj[objIndex].solved = true;
+                    currentRoom.mapObjects.get(objIndex).solved = true;
                     Riddle.riddleCorrect = false;
-                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "correctOut", gp);
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
                 } else {
                     //TODO this needs to be refactored
                     Time.second = Time.second - 60;
@@ -128,7 +128,7 @@ public class KeyHandler implements KeyListener {
                         Time.gameTimer.stop();
                     }
                     gp.gameState = gp.riddleIncorrect;
-                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "falseOut", gp);
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
                 }
             }
         } else if (gp.gameState == gp.riddleCorrect) {
@@ -140,8 +140,8 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
-        } else if(gp.gameState == gp.wordOrder){
-            if(code == KeyEvent.VK_E){
+        } else if (gp.gameState == gp.wordOrder) {
+            if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
         }
