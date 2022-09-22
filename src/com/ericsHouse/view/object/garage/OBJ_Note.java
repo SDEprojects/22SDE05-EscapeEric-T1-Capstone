@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.ericsHouse.view.GameFrame.sidePanel;
+import static com.ericsHouse.view.util.GameFrame.sidePanel;
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 
