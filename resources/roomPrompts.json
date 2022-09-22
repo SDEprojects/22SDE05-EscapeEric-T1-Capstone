@@ -1,4 +1,5 @@
 {
+
   "garage": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
     "note": "Welcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\tOh, I almost forgot.\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\tGOOD LUCK!",
@@ -51,6 +52,7 @@
     "coffee-table": "I hate it when a murder chases me and\nthen I stub my toe on a table.",
     "couch": "I shouldn't sit at a time like this!",
     "cushion-cat": "He sure does love his animals!",
+    "sleeping-dog" : "There must be a way to get this\n sleepy dog move out of the way!",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "bedroom": {

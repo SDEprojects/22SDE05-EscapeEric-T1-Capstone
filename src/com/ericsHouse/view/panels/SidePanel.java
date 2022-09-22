@@ -1,26 +1,19 @@
 package com.ericsHouse.view.panels;
 
-import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.living_room.OBJ_Dog;
 import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
-import com.ericsHouse.view.util.WordOrder;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.ericsHouse.view.panels.GamePanel.gameState;
-import static com.ericsHouse.view.panels.GamePanel.objIndex;
 
 public class SidePanel extends JPanel {
 
