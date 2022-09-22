@@ -10,7 +10,7 @@ import com.ericsHouse.view.tile.TileManager;
 import java.io.IOException;
 import java.util.Map;
 
-import static com.ericsHouse.view.panels.GamePanel.currentRoom;
+import static com.ericsHouse.view.panels.GamePanel.*;
 
 public class CollisionChecker {
 
@@ -169,7 +169,7 @@ public class CollisionChecker {
         switch (entity.direction) {
             case "up":
                 entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+              if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
                     gp.allRooms.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
                     gp.setCurrentRoom(currentRoom.entrance);
                     gp.player.playerY = currentRoom.exitIntersect.y - 75;

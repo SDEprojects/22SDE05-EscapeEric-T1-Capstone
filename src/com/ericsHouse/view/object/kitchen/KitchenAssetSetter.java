@@ -149,9 +149,6 @@ public class KitchenAssetSetter extends AssetSetter {
         OBJ_Knife knife = new OBJ_Knife();
         knife.screenX = 47 * 3;
         knife.screenY = 61 * 3;
-//        knife.solidArea.x *= 3;
-//        knife.solidArea.y *= 3;
-//        knife.gettable = true;
         roomMap.get("kitchen").mapObjects.put("knife", knife);
 
         OBJ_Oranges oranges = new OBJ_Oranges();

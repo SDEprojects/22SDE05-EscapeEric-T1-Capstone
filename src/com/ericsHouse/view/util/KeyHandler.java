@@ -5,10 +5,13 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.Objects;
 
+import static com.ericsHouse.rooms.RoomMap.roomMap;
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class KeyHandler implements KeyListener {
@@ -79,7 +82,9 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
             }
         } else if (gp.gameState == gp.dialogueState) {
-            if (code == KeyEvent.VK_E) {
+            if(SuperObject.win && code == KeyEvent.VK_E){
+                gp.gameState = gp.winState;
+            }else if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
 
@@ -103,8 +108,14 @@ public class KeyHandler implements KeyListener {
                     }
                     if (wins >= 2) {
                         SuperObject.win = true;
-                        gp.ui.currentDialogue = "You Won, you finally beat the person\nwho spends all your money!";
+                        gp.ui.currentDialogue = "You won!!\nThe mirror shows a vision of you standing outside.\nmight be some through the looking glass sort of thing.\nYou walk through to the garden on the other side....";
+                        try {
+                            roomMap.get("bathroom").mapObjects.get("davidMirror").image = ImageIO.read(Riddle.class.getResourceAsStream("/rooms/bathroom/bathroom_OBJ/david-mirror-won.png"));
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                         gp.gameState = gp.dialogueState;
+
                     } else if (games > 2) {
                         games = 0;
                         wins = 0;

@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int riddleIncorrect = 7;
     public final int rockPaperScissors = 8;
     public static final int wordOrder = 9;
+    public static final int winState = 10;
 
     //SUB STATES
     public int subState = 0;
@@ -68,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = RoomMap.roomMap.get("garage");
+        currentRoom = RoomMap.roomMap.get("bathroom");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
@@ -143,7 +144,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         //DRAWING EXIT COLLISIONS
-        currentRoom.draw(g2);
+//        currentRoom.draw(g2);
 
         //TILES
         tileM.draw(g2);
@@ -156,7 +157,7 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(g2);
         //UI
         ui.draw(g2);
-
+        currentRoom.draw(g2);
         g2.dispose();
     }
 

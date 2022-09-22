@@ -54,6 +54,7 @@ public class BathroomAssetSetter extends AssetSetter {
         davidMirror.screenY = 25 * 3;
         roomMap.get("bathroom").mapObjects.put("davidMirror", davidMirror);
 
+
         OBJ_Bathroom bathroomSink = new OBJ_Bathroom("bathroom-sink", "/rooms/bathroom/bathroom_OBJ/bathroom-sink.png", 54, 30);
         bathroomSink.screenX = 120 * 3;
         bathroomSink.screenY = 37 * 3;
