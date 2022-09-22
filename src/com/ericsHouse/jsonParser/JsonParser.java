@@ -11,7 +11,6 @@ import java.io.InputStream;
 public class JsonParser {
     static InputStream iStreamPrompts = getFileFromResourceAsStream("roomPrompts.json");
 
-    static InputStream iStreamLocations = getFileFromResourceAsStream("locations.json");
     static ObjectMapper objectMapper = new ObjectMapper();
     static JsonNode jsonNodePrompts;
 
