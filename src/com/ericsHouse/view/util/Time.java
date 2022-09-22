@@ -32,7 +32,6 @@ public class Time {
             }
             if (minute <= 0 && second <= 0) {
                 gameTimer.stop();
-//                LosePanel.lose();
             }
         });
 

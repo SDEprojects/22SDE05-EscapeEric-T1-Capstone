@@ -1,12 +1,16 @@
 package com.ericsHouse.view.util;
 
-import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.entity.Entity;
 import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.AssetSetter;
+import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.tile.TileManager;
 
 import java.io.IOException;
+import java.util.Map;
+
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class CollisionChecker {
 
@@ -78,85 +82,82 @@ public class CollisionChecker {
 
     }
 
-    public int checkObject(Entity entity, boolean player) {
-        int index = 999;
-        for (int i = 0; i < gp.obj.length; i++) {
-            if (gp.obj[i] != null) {
-                entity.solidArea.x = entity.playerX + entity.solidArea.x;
-                entity.solidArea.y = entity.playerY + entity.solidArea.y;
+    // Return was int before changes
+    public String checkObject(Entity entity, boolean player) {
+        String index = "";
+        for (Map.Entry<String, SuperObject> entry : currentRoom.mapObjects.entrySet()) {
+            entity.solidArea.x = entity.playerX + entity.solidArea.x;
+            entity.solidArea.y = entity.playerY + entity.solidArea.y;
 
-                gp.obj[i].solidArea.x = gp.obj[i].screenX + gp.obj[i].solidArea.x;
-                gp.obj[i].solidArea.y = gp.obj[i].screenY + gp.obj[i].solidArea.y;
+            entry.getValue().solidArea.x = entry.getValue().screenX + entry.getValue().solidArea.x;
+            entry.getValue().solidArea.y = entry.getValue().screenY + entry.getValue().solidArea.y;
 
-                switch (entity.direction) {
-                    case "up":
-                        entity.solidArea.y -= entity.speed;
+            switch (entity.direction) {
+                case "up":
+                    entity.solidArea.y -= entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
                         }
-                        break;
-                    case "down":
-                        entity.solidArea.y += entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
                         }
-                        break;
-                    case "left":
-                        entity.solidArea.x -= entity.speed;
+                    }
+                    break;
+                case "down":
+                    entity.solidArea.y += entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
                         }
-                        break;
-                    case "right":
-                        entity.solidArea.x += entity.speed;
-                        //Determine if exit Intersect
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
+                        }
+                    }
+                    break;
+                case "left":
+                    entity.solidArea.x -= entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
                         }
-                        break;
-                }
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
+                        }
+                    }
+                    break;
+                case "right":
+                    entity.solidArea.x += entity.speed;
+                    //Determine if exit Intersect
+
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
+                        }
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
+                        }
+                    }
+                    break;
             }
+//            }
             entity.solidArea.x = entity.solidAreaDefaultX;
             entity.solidArea.y = entity.solidAreaDefaultY;
             try {
-                gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
-                gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
+                entry.getValue().solidArea.x = entry.getValue().solidAreaDefaultX;
+                entry.getValue().solidArea.y = entry.getValue().solidAreaDefaultY;
             } catch (NullPointerException e) {
 
             }
-
-
         }
-
         return index;
     }
 
@@ -168,58 +169,58 @@ public class CollisionChecker {
         switch (entity.direction) {
             case "up":
                 entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y - 75;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y - 75;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    gp.player.playerY = currentRoom.exitIntersect.y - 75;
+                    gp.player.playerX = currentRoom.exitIntersect.x;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    gp.player.playerY = currentRoom.entranceIntersect.y - 75;
+                    gp.player.playerX = currentRoom.entranceIntersect.x;
                 }
                 break;
             case "down":
                 entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y + 75;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y + 75;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    gp.player.playerY = currentRoom.exitIntersect.y + 75;
+                    gp.player.playerX = currentRoom.exitIntersect.x;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    gp.player.playerY = currentRoom.entranceIntersect.y + 75;
+                    gp.player.playerX = currentRoom.entranceIntersect.x;
                 }
                 break;
             case "left":
                 entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x - 75;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x - 75;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    gp.player.playerY = currentRoom.exitIntersect.y;
+                    gp.player.playerX = currentRoom.exitIntersect.x - 75;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    gp.player.playerY = currentRoom.entranceIntersect.y;
+                    gp.player.playerX = currentRoom.entranceIntersect.x - 75;
                 }
                 break;
             case "right":
                 entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x + 75;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x + 75;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    gp.player.playerY = currentRoom.exitIntersect.y;
+                    gp.player.playerX = currentRoom.exitIntersect.x + 75;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    gp.allRooms.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    gp.player.playerY = currentRoom.entranceIntersect.y;
+                    gp.player.playerX = currentRoom.entranceIntersect.x + 75;
                 }
                 break;
         }

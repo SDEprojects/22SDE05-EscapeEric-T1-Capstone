@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 import static com.ericsHouse.view.util.KeyHandler.objIndex;
 
 
@@ -64,7 +65,7 @@ public class UI {
         if (gp.gameState == gp.rockPaperScissors) {
             rockPaperScissorsDisplay(gp.subState);
         }
-        if(gp.gameState == gp.wordOrder){
+        if (gp.gameState == gp.wordOrder) {
             drawWordOrderScreen();
         }
     }
@@ -97,12 +98,13 @@ public class UI {
             g2.drawString(escape, x, y);
             y += 40;
         }
-        String riddleOne = subState == gp.optionOne ? ">  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "one", gp) :
-                "  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "one", gp);
-        String riddleTwo = subState == gp.optionTwo ? ">  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "two", gp) :
-                "  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "two", gp);
-        String riddleThree = subState == gp.optionThree ? ">  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "three", gp) :
-                "  " + JsonParser.riddleAnswerParser(gp.obj[objIndex].name, "three", gp);
+
+        String riddleOne = subState == gp.optionOne ? ">  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "one", gp) :
+                "  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "one", gp);
+        String riddleTwo = subState == gp.optionTwo ? ">  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "two", gp) :
+                "  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "two", gp);
+        String riddleThree = subState == gp.optionThree ? ">  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "three", gp) :
+                "  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "three", gp);
 
         g2.drawString(riddleOne, x, y + gp.tileSize);
         g2.drawString(riddleTwo, x, y + gp.tileSize * 2);
@@ -139,14 +141,16 @@ public class UI {
             g2.drawString(escape, x, y);
             y += 40;
         }
+
         g2.drawString(subState == gp.optionOne ? ">   Rock" : "   Rock", x, y + gp.tileSize);
         g2.drawString(subState == gp.optionTwo ? ">   Paper" : "   Paper", x, y + gp.tileSize * 2);
         g2.drawString(subState == gp.optionThree ? ">   Scissors" : "   Scissors", x, y + gp.tileSize * 3);
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
-    public static boolean checkWin(int selection, int games, int wins){
-        int rps = (int) (Math.random() * 3)+1;
-        System.out.println(rps+ " "+ selection);
+
+    public static boolean checkWin(int selection, int games, int wins) {
+        int rps = (int) (Math.random() * 3) + 1;
+        System.out.println(rps + " " + selection);
         return rps == selection;
     }
 

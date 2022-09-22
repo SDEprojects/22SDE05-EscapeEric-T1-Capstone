@@ -1,14 +1,15 @@
 package com.ericsHouse.view.object.kitchen;
 
 import com.ericsHouse.jsonParser.JsonParser;
-import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
 import static com.ericsHouse.view.GameFrame.sidePanel;
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 
 public class OBJ_Pears extends SuperObject {
@@ -27,24 +28,23 @@ public class OBJ_Pears extends SuperObject {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
-        g2.drawImage(image, screenX, screenY,gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
 
     @Override
-    public void  interact(int objIndex, GamePanel gp){
-        if(gettable){
+    public void interact(String objIndex, GamePanel gp) {
+        if (gettable) {
             //If object is gettable, display dialogue box
             //If user selects get item then the object is put in their inventory
             try {
                 image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/pears.png"));
-            } catch (IOException e){
+            } catch (IOException e) {
 
             }
-            gp.player.addItem(gp.obj[objIndex]);
-            JsonParser.getPrompt(gp.obj[objIndex].name,gp);
-            sidePanel.inventorySetUp(gp.obj[objIndex]);
-            //sidePanel.inventoryDisplay();
-            gp.obj[objIndex] = null;
+            JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.player.addItem(currentRoom.mapObjects.get(objIndex));
+            sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
+            currentRoom.mapObjects.remove(objIndex);
         }
     }
 }

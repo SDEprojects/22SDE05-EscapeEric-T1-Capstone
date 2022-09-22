@@ -1,8 +1,8 @@
 package com.ericsHouse.view.entity;
 
+import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.util.KeyHandler;
-import com.ericsHouse.view.object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -19,6 +19,7 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
     int pressCounter = 0;
+
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -58,33 +59,29 @@ public class Player extends Entity {
     }
 
     public void update() throws IOException {
-        if(keyH.leftPressed || keyH.downPressed || keyH.upPressed|| keyH.rightPressed){
+        if (keyH.leftPressed || keyH.downPressed || keyH.upPressed || keyH.rightPressed) {
             if (keyH.upPressed) {
                 direction = "up";
 
-            }
-            else if (keyH.downPressed) {
+            } else if (keyH.downPressed) {
                 direction = "down";
 
-            }
-            else if (keyH.rightPressed) {
+            } else if (keyH.rightPressed) {
                 direction = "right";
 
-            }
-            else if (keyH.leftPressed) {
+            } else if (keyH.leftPressed) {
                 direction = "left";
 
             }
             collisionOn = false;
             //CHECK TILE COLLISION
             gp.cChecker.checkTile(this);
-            //CHECK OBJECT COLLISION
-            int objIndex = gp.cChecker.checkObject(this,true);
+            String objIndex = gp.cChecker.checkObject(this, true);
             gp.cChecker.checkExit(this);
 
             //IF COLLISION IS FALSE, PLAYER CAN MOVE
-            if(!collisionOn){
-                switch (direction){
+            if (!collisionOn) {
+                switch (direction) {
                     case "up":
                         playerY -= speed;
                         break;
@@ -115,7 +112,7 @@ public class Player extends Entity {
 
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
-        switch (direction){
+        switch (direction) {
             case "up":
                 if (spriteNum == 1) {
                     image = up1;
@@ -151,20 +148,24 @@ public class Player extends Entity {
         }
         g2.drawImage(image, playerX, playerY, gp.tileSize, gp.tileSize, null);
     }
+
     public static void addItem(SuperObject item) {
         backpack.add(item);
     }
-    public  void removeItem(SuperObject item) {
+
+    public void removeItem(SuperObject item) {
         backpack.remove(item);
     }
+
     public static void equipHat() {
         hatEquipped = true;
     }
+
     public static void equipGlasses() {
         glassesEquipped = true;
     }
 
-    public  ArrayList<SuperObject> getBackpack() {
+    public ArrayList<SuperObject> getBackpack() {
         return backpack;
     }
 

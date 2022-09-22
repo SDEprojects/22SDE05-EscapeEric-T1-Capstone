@@ -5,11 +5,12 @@ import com.ericsHouse.view.panels.GamePanel;
 public abstract class AssetSetter {
 
     public GamePanel gp;
-    public AssetSetter(GamePanel gp){
+
+    public AssetSetter(GamePanel gp) {
         this.gp = gp;
     }
 
-    public void setObject(){
+    public void setObject() {
 
     }
 
