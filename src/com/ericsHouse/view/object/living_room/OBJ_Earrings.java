@@ -1,11 +1,15 @@
 package com.ericsHouse.view.object.living_room;
 
+import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
+
+import static com.ericsHouse.view.GameFrame.sidePanel;
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class OBJ_Earrings extends SuperObject {
     public int width;
@@ -30,5 +34,17 @@ public class OBJ_Earrings extends SuperObject {
 
         g2.drawImage(image, screenX, screenY, width * 3, height * 3, null);
 
+    }
+
+    @Override
+    public void interact(String objIndex, GamePanel gp) {
+        if (gettable) {
+
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.player.addItem(currentRoom.mapObjects.get(objIndex));
+            sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
+            currentRoom.mapObjects.remove(objIndex);
+            gp.gameState = gp.dialogueState;
+        }
     }
 }

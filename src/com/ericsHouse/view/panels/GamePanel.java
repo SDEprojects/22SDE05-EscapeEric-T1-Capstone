@@ -56,7 +56,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int riddleCorrect = 6;
     public final int riddleIncorrect = 7;
     public final int rockPaperScissors = 8;
-    public static final int wordOrder = 9;
+    public final static int wordOrder = 9;
+    public final int Shaq = 10;
 
     //SUB STATES
     public int subState = 0;

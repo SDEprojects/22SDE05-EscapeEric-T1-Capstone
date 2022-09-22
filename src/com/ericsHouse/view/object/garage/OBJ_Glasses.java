@@ -38,10 +38,16 @@ public class OBJ_Glasses extends SuperObject {
             } catch (IOException e) {
 
             }
-            JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
-            gp.player.addItem(currentRoom.mapObjects.get(objIndex));
-            sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
-            currentRoom.mapObjects.remove(objIndex);
-        }
+                gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+                gp.player.addItem(currentRoom.mapObjects.get(objIndex));
+                sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
+                currentRoom.mapObjects.remove(objIndex);
+                gp.gameState = gp.dialogueState;
+            }
+            else {
+                gp.gameState = gp.dialogueState;
+                gp.ui.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nTry looking at all the objects in here.";
+                //System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
+            }
     }
 }

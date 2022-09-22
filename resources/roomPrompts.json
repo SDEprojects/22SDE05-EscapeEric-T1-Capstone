@@ -1,7 +1,7 @@
 {
   "garage": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
-    "note": "Welcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\tOh, I almost forgot.\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\tGOOD LUCK!",
+    "note": "Welcome to Eric's house!\nSolve the puzzle of each room to escape.\nOh, I almost forgot.\nEric is also here and he’s looking for you.\nIt would be in your best interest to not let him find you.\nDon't take too long and good luck!!",
     "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\n too bad he's trying to catch you.",
     "car": "This is a pretty cool ride\nLooks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
     "dresser": "I like this dresser, such a great use of storage!\nOh and look A FROGGIE IS ON TOP OF ONE OF THEM!\n",
@@ -38,7 +38,7 @@
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "living-room": {
-    "emerald-earrings": "",
+    "emerald-earrings": "These are some beautiful emerald earrings.\nIt's not stealing if you intend to give it back right?",
     "enterRoom": "Welcome to Room 2 - Word Order Room:\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
     "askShaq": "Those are some random objects in this room.\nPerhaps the order of the objects doesn't have \nanything to do with the items themselves...",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",

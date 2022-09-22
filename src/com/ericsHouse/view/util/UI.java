@@ -68,7 +68,12 @@ public class UI {
         if (gp.gameState == gp.wordOrder) {
             drawWordOrderScreen();
         }
+        if(gp.gameState == gp.Shaq){
+            drawShaq();
+        }
     }
+
+
 
     private void drawDialogueScreen() {
         int x = gp.tileSize * 2;
@@ -82,7 +87,6 @@ public class UI {
             g2.drawString(escape, x, y);
             y += 40;
         }
-
         g2.drawString("Press 'E' To Continue", width - 125, height);
     }
 
@@ -188,5 +192,19 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void drawShaq() {
+        int x = gp.tileSize ;
+        int y = gp.tileSize *5;
+        int width = gp.screenWidth - (gp.tileSize * 8);
+        int height = gp.tileSize * 2;
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/ask-shaq.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        drawDialogueScreen();
+        g2.drawImage(image,x,y,width,height,null);
     }
 }

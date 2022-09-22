@@ -39,12 +39,16 @@ public class OBJ_Note extends SuperObject {
         //TODO - refactor this check so that it's not so hard coded
         List<SuperObject> hasGlasses = gp.player.getBackpack().stream().filter(obj -> obj.name.equals("glasses")).collect(Collectors.toList());
         if (gettable && hasGlasses.size() > 0) {
-            JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
             gp.player.addItem(currentRoom.mapObjects.get(objIndex));
             sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
             currentRoom.mapObjects.remove(objIndex);
-        } else {
-            System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
+            gp.gameState = gp.dialogueState;
+        }
+            else {
+            gp.gameState = gp.dialogueState;
+            gp.ui.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nTry looking at all the objects in here.";
+            //System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
         }
     }
 }
