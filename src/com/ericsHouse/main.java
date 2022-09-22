@@ -1,4 +1,6 @@
-package com.ericsHouse.view;
+package com.ericsHouse;
+
+import com.ericsHouse.view.util.GameFrame;
 
 import java.io.IOException;
 

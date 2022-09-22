@@ -1,5 +1,6 @@
 package com.ericsHouse.view.panels;
 
+import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.living_room.OBJ_Dog;
 import com.ericsHouse.view.util.Time;
@@ -104,7 +105,12 @@ public class SidePanel extends JPanel {
             if (gameState == GamePanel.wordOrder) {
                 OBJ_Dog.wo.addClickedObject(button.getName());
             } else {
-                gp.ui.currentDialogue = "HOLDING STATE, FIGURE OUT A WAY TO PRINT \nITEM DESCRIPTION";
+//                gp.ui.currentDialogue = "HOLDING STATE, FIGURE OUT A WAY TO PRINT \nITEM DESCRIPTION";
+                try {
+                    gp.ui.currentDialogue = JsonParser.itemDescriptions(sp.name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 gameState = GamePanel.dialogueState;
             }
         });

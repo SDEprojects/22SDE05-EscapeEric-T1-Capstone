@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static com.ericsHouse.view.GameFrame.sidePanel;
+import static com.ericsHouse.view.util.GameFrame.sidePanel;
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 

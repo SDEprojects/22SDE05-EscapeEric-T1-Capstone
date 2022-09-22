@@ -14,6 +14,7 @@ public class JsonParser {
     static InputStream iStreamLocations = getFileFromResourceAsStream("locations.json");
     static ObjectMapper objectMapper = new ObjectMapper();
     static JsonNode jsonNodePrompts;
+    static JsonNode itemDescriptions;
 
 
     public JsonParser(String file) {
@@ -108,6 +109,18 @@ public class JsonParser {
             throw new RuntimeException(e);
         }
         return item;
+    }
+
+    public static String itemDescriptions(String label) throws IOException {
+        String description = "";
+        try {
+            InputStream is = getFileFromResourceAsStream("item-description.json");
+            itemDescriptions = objectMapper.readTree(is);
+            description = itemDescriptions.get(label).textValue();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return description;
     }
     public static InputStream getFileFromResourceAsStream(String fileName) {
         ClassLoader classLoader = JsonParser.class.getClassLoader();
