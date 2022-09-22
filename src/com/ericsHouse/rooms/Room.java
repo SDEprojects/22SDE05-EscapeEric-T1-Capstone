@@ -6,11 +6,10 @@ import com.ericsHouse.view.object.AssetSetter;
 import com.ericsHouse.view.tile.TileManager;
 
 import java.awt.*;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.ericsHouse.view.GameFrame.window;
+import static com.ericsHouse.view.util.GameFrame.window;
 
 
 public class Room {

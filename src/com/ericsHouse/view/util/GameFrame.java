@@ -1,6 +1,7 @@
-package com.ericsHouse.view;
+package com.ericsHouse.view.util;
 
 import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.main;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.panels.SidePanel;
 
@@ -21,7 +22,7 @@ public class GameFrame extends JFrame implements ActionListener {
     public static SidePanel sidePanel;
     public static GamePanel gamePanel;
 
-    GameFrame() throws IOException {
+    public GameFrame() throws IOException {
         BufferedImage image = ImageIO.read(main.class.getResourceAsStream("/rooms/garage/garage_OBJ/frog.png"));
         BufferedImage backgroundImage = ImageIO.read(main.class.getResourceAsStream("/side-panel-background.png"));
         // Game window is initialized and organized
