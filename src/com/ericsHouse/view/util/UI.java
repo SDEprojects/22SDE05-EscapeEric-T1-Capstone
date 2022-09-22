@@ -76,7 +76,18 @@ public class UI {
         }
     }
 
-
+    private void drawIntroScreen() {
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 7;
+        drawSubWindow(x, y, width, height);
+        for (String escape : currentDialogue.split("\n")) {
+            g2.drawString(escape, x, y);
+            y += 40;
+        }
+        g2.drawString("Press 'E' To Continue", width - 125, height);
+    }
 
     private void drawDialogueScreen() {
         int x = gp.tileSize * 2;
@@ -205,6 +216,7 @@ public class UI {
             e.printStackTrace();
         }
     }
+
     private void drawShaq() {
         int x = gp.tileSize ;
         int y = gp.tileSize *5;
