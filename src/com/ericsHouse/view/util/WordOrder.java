@@ -1,8 +1,10 @@
 package com.ericsHouse.view.util;
 
+import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.panels.GamePanel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
@@ -33,12 +35,13 @@ public class WordOrder {
                 gp.ui.currentDialogue = "The dog accepts that you know how to spell 'OPEN'\nHe grumbles and walks away.";
                 //TODO - figure out how to make this dynamic rather than hardcoding the array position numbers
                 currentRoom.mapObjects.remove("dog");
+                if(clickedObJ.size() == 4){
+                    clickedObJ.clear();
+                }
             } else {
-                gp.ui.currentDialogue = String.format("That's Correct I need %s more items from you.", 4 - clickedObJ.size());
+                gp.ui.currentDialogue = String.format("That's Correct I need %s more items from you.\n" +
+                        "Current Items:%s", 4 - clickedObJ.size(), clickedObJ);
             }
-        } else {
-            gp.ui.currentDialogue = "That wasn't the right answer";
-            clickedObJ.clear();
         }
     }
 
