@@ -44,7 +44,7 @@ public class OBJ_Bathroom extends SuperObject {
             gp.gameState = gp.dialogueState;
         } else {
             try{
-                gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[objIndex].name, gp);
+                gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
                 gp.gameState = gp.dialogueState;
             }
             catch (NullPointerException ex){
