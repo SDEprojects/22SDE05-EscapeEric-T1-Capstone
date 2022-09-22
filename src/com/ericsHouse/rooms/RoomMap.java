@@ -73,6 +73,12 @@ public class RoomMap {
         roomMap.put("living-room",livingRoom);
         roomMap.put("bedroom",bedroom);
         roomMap.put("bathroom",bathroom);
+
+        roomMap.get("kitchen").assetSetter.setObject();
+        roomMap.get("garage").assetSetter.setObject();
+        roomMap.get("living-room").assetSetter.setObject();
+        roomMap.get("bedroom").assetSetter.setObject();
+        roomMap.get("bathroom").assetSetter.setObject();
     }
     //bathroom needs to be implemented once the game has won that the ending plays.
 }

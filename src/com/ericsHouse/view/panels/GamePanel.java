@@ -8,7 +8,6 @@ import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.garage.GarageAssetSetter;
 import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
-import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.util.CollisionChecker;
 import com.ericsHouse.view.util.KeyHandler;
 import com.ericsHouse.view.util.Time;
@@ -18,12 +17,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+import static javax.swing.SwingUtilities.invokeLater;
+
 public class GamePanel extends JPanel implements Runnable {
 
     public static int objIndex;
     //CurrentGamePanelThread
     public boolean gpRun = true;
-    public Room currentRoom;
+    public static Room currentRoom;
     //SCREEN SETTINGS
     static final int originalTileSize = 16; // 16 x 16 tile
     static final int scale = 3;
@@ -40,8 +41,6 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetSetter assetSetter = new GarageAssetSetter(this);
 
     public Player player = new Player(this, keyH);
-
-    public static SuperObject[] obj = new SuperObject[10];
     Thread gameThread;
     public RoomMap allRooms = new RoomMap(this);
     public CollisionChecker cChecker = new CollisionChecker(this, tileM, assetSetter, player);
@@ -69,13 +68,13 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
 
         //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("garage");
+        currentRoom = RoomMap.roomMap.get("garage");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = playState;
     }
 
     public void setCurrentRoom(String roomName) {
-        currentRoom = allRooms.roomMap.get(roomName);
+        currentRoom = RoomMap.roomMap.get(roomName);
     }
 
     public GamePanel() throws IOException {
@@ -115,7 +114,8 @@ public class GamePanel extends JPanel implements Runnable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                repaint();
+                invokeLater(this::repaint);
+//                repaint();
 
                 delta--;
                 drawCount++;
@@ -134,7 +134,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == pauseState) {
 
         }
-        if(!Time.gameTimer.isRunning()){
+        if (!Time.gameTimer.isRunning()) {
             gameState = deathState;
         }
     }
@@ -149,10 +149,8 @@ public class GamePanel extends JPanel implements Runnable {
         tileM.draw(g2);
 
         //OBJECTS
-        for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null) {
-                obj[i].draw(g2, this);
-            }
+        for (SuperObject object : currentRoom.mapObjects.values()) {
+            object.draw(g2, this);
         }
         //PLAYER
         player.draw(g2);
