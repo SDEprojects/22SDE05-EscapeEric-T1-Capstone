@@ -39,10 +39,11 @@ public class OBJ_Oranges extends SuperObject {
             } catch (IOException e) {
 
             }
-            JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
             gp.player.addItem(currentRoom.mapObjects.get(objIndex));
             sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
             currentRoom.mapObjects.remove(objIndex);
+            gp.gameState = gp.dialogueState;
         }
     }
 }

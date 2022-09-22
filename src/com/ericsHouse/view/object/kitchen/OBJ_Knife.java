@@ -12,35 +12,29 @@ import static com.ericsHouse.view.GameFrame.sidePanel;
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 
-public class OBJ_Pears extends SuperObject {
-    public OBJ_Pears() {
-        name = "pears";
+public class OBJ_Knife extends SuperObject {
+    public OBJ_Knife() {
+        name = "knife";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/pears.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/knife.png"));
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
 
-        solidArea = new Rectangle(0, 0, 18 * 3, 28 * 3);
+        solidArea = new Rectangle(0, 0, 18 * 3, 21 * 3);
         gettable = true;
     }
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, 47*3, 61*3, gp.tileSize, gp.tileSize, null);
     }
 
     @Override
     public void interact(String objIndex, GamePanel gp) {
         if (gettable) {
-            //If object is gettable, display dialogue box
-            //If user selects get item then the object is put in their inventory
-            try {
-                image = ImageIO.read(getClass().getResourceAsStream("/rooms/kitchen/kitchen_OBJ/pears.png"));
-            } catch (IOException e) {
 
-            }
             gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
             gp.player.addItem(currentRoom.mapObjects.get(objIndex));
             sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
