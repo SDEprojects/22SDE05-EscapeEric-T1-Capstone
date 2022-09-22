@@ -42,6 +42,14 @@ public class OBJ_Bathroom extends SuperObject {
         } else if (win) {
             gp.ui.currentDialogue = "You've already beat your mirror reflection.";
             gp.gameState = gp.dialogueState;
+        } else {
+            try{
+                gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[objIndex].name, gp);
+                gp.gameState = gp.dialogueState;
+            }
+            catch (NullPointerException ex){
+                System.out.println("No descriptions");
+            }
         }
     }
 }

@@ -8,7 +8,9 @@
     "door": "You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
     "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nTo get started, why don't you try inspecting that table \nto your left and reading that note.",
-    "invalidCommand": "That command is invalid! Please choose a proper command from the list."},
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n",
+    "invalidCommand": "That command is invalid! Please choose a proper command from the list."
+  },
   "kitchen": {
     "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
     "hutch": "A storage chest.",
@@ -23,39 +25,33 @@
     "door": {
       "locked": "There's a note on the door.\n'The door sticks sometimes...\nI've been using a knife to jimmy it open'",
       "unlocked": "You use the knife to jimmy open the lock.\nThe door opens and you proceed to the next room..."
-
     },
-    "does nothing" : "does nothing",
+    "does nothing": "does nothing",
     "chair": "No time to sit and dwell!",
     "island": "Nothing to see here.",
     "cat-pic": "Lovely looking cat.",
-    "flowers" : "Smells lovely!",
+    "flowers": "Smells lovely!",
     "frog": "froggo",
     "house-plant": "I promise I won't let you die this time.",
-    "inspectLeft": "You inspect the bookshelf to your left. You find a knife and put it in your backpack.",
-    "inspectLeftEmpty": "You inspect the bookshelf. Just a bunch of dusty worn out books.",
-    "inspectRight": "You inspect the table on the right. You find a knife and read:\n\t'This dang old door lock has been messed up for weeks. I just keep jimmying it open with a knife.'",
-    "inspectFloor": "There is nothing on the floor.",
     "askShaq": "To figure out what the room challenge is,\ntry to open the locked door.\nMake sure you look for helpfuld items in every room.\nMaybe the note on that table can offer up a clue.",
-    "invalidCommand": "That command is invalid! Please choose a proper command from the list."
+    "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "living-room": {
     "emerald-earrings": "",
     "enterRoom": "Welcome to Room 2 - Word Order Room:\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
-    "inspectLeft": "You inspect the table to your left.\nYou find an Onion and put it in your backpack.\nMight come in handy or make a good snack later.",
-    "inspectLeftEmpty": "You inspect the table to your left and find it empty.",
-    "inspectRight": "You inspect the desk on the right.\nYou find a Hammer and a Pencil sitting on top and an Emerald in the top drawer.\nYou put them both in your backpack.",
-    "inspectRightEmpty": "Just an old empty Desk over there.",
-    "inspectFloor": "You inspect the floor.\nYou find a Needle on the ground and put it in your backpack.\nThat would've been uncomfortable to step on.",
-    "inspectFloorEmpty": "Nothing on the floor but dirt... Eric could stand to sweep up...",
-    "openDoorLocked": "An offering of four objects in the correct order is required to OPEN this door.",
-    "openDoorLockedWithItems": "You have collected the correct items. Enter them in the correct order to open this door.",
-    "openDoorLockedIncorrectOrder": "That is the wrong order! BE GONE!",
-    "openDoorUnlocked": "You have successfully entered the four object in the correct order.\nThe door opens and you proceed to the next room...",
     "askShaq": "Those are some random objects in this room.\nPerhaps the order of the objects doesn't have \nanything to do with the items themselves...",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
     "ericClosingIn": "Eric is getting closer...",
-    "sleeping-dog": "The dog is dozing deeply....\n You see a note next to the dog.\n'Give my pup the right items in the right order\nand he will move out of the way'\n"
+    "rug": "ruggable stepping their game up.",
+    "dresser": "I bet he hides the bodies here.",
+    "bookshelf": "All his books are written by Stephen King",
+    "smallshelf": "Some exquisite liquor.",
+    "fireplace": "AHHH A HAND,\nWait no that's just a log...",
+    "coffee-table": "I hate it when a murder chases me and\nthen I stub my toe on a table.",
+    "couch": "I shouldn't sit at a time like this!",
+    "cushion-cat": "He sure does love his animals!",
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "bedroom": {
     "enterRoom": "You made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
@@ -104,7 +100,11 @@
     "play-desk": "This desk is perfect for coloring.\nMaybe later.",
     "play-chair": "It would be nice to rest, but you don't have time\nERIC IS COMING!",
     "football": "Footballs alright\nBut you would rather be exploring caves.",
-    "blocks": "The blocks spell out.\nI.M.C.O.M.I.N.G.F.O.R.Y.O.U\nYou wonder what 'I, M.C. Omingfo ryou' means\nM.C Oming seems like a nice guy"
+    "car-mat" : "This brings back old memories..",
+    "heart-rug" : "<3",
+    "star-plushie" : "Wow that's a lot of plushies for a murderer.",
+    "blocks": "The blocks spell out.\nI.M.C.O.M.I.N.G.F.O.R.Y.O.U\nYou wonder what 'I, M.C. Omingfo ryou' means\nM.C Oming seems like a nice guy",
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "bathroom": {
     "david-mirror": {
@@ -115,19 +115,15 @@
         "scissors": "Scissors"
       }
     },
+    "toilet" : "Just roll with it.",
+    "seat" : "Looks like some fancy candles",
+    "shelves" : "He must love to decorate sheeesh",
+    "bathroom-sink" : "At least he cleans his hands after!",
     "enterRoom": "Welcome to Room 4 - Game Room:\nAn anvil sits in the middle of the room\nTo your right is a big storage shelf full of odds and ends\nTo your left you see an old dresser\nStraight ahead is the locked door to the next room.",
-    "inspectLeft": "You open the door of the old dresser and find a pair of mirrored glasses and put them on.\nVery Stylish!",
-    "inspectLeftEmpty": "Theres nothing left in the empty old dresser.",
-    "inspectRight": "The shelf contains several piles of supplies. You collect some paper, a thin sheet of metal, and a wrench.",
-    "inspectRightEmpty": "Nothing else of good use on the shelf.",
-    "inspectFloor": "You walk up to the anvil in the center of the room. Could come in handy to craft something.\nWould you like to craft something? (y/n)",
-    "inspectFloorCraftHat": "You've crafted a metal hat! You put it on, a perfect fit.",
-    "inspectFloorCraftAirplane": "You've crafted a paper airplane. You throw it at the locked door... it does nothing.",
-    "inspectFloorCraftFail": "You cant craft anything with this combo.",
-    "openDoorLocked": "A mirror hangs on the door with a reflection of yourself.\nYour reflection smiles back and holds up one hand flat with the other fist sitting on top.\nHe is challenging you to rock-paper-scissors! (Best 2 out of 3)",
-    "openDoorLockedLoser": "The Door has won this round.",
     "openDoorUnlocked": "YOU WIN! The door opens and you feel the cool breeze of fresh air on your face.\nYou step outside the house and realize you have escaped.You have escaped Eric!",
-    "askShaq": "That is no ordinary mirror on the door... \nI think its somehow reading your mind!\nIf you can find a way to keep it out of your head \nI bet you can beat it!"
+    "askShaq": "That is no ordinary mirror on the door... \nI think its somehow reading your mind!\nIf you can find a way to keep it out of your head \nI bet you can beat it!",
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
+  "help": "E: interacts with the game.\nWASD: helps you move.\nMusic on:M \nMusic off:N\n\n",
   "ericAppears": "Eric Appeared!!!!\nHe lunges at you violently at full speed with crackhead like energy.\n He picks you up as if you were a toy AND HE GIVES YOU A hug :)\nEric asks why you were running through his house? Turns out, he just wanted to talk to you. He just wanted a friend."
 }

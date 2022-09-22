@@ -101,12 +101,12 @@ public class LivingRoomAssetSetter extends AssetSetter {
         catStatue2.screenY = 34 * 3;
         roomMap.get("living-room").mapObjects.put("catStatue2", catStatue2);
 
-        OBJ_LivingRoom couchLeft = new OBJ_LivingRoom("couch-left", "/rooms/living_room/living_room_OBJ/couch-left.png", 15, 32);
+        OBJ_LivingRoom couchLeft = new OBJ_LivingRoom("couch", "/rooms/living_room/living_room_OBJ/couch-left.png", 15, 32);
         couchLeft.screenX = 79 * 3;
         couchLeft.screenY = 91 * 3;
         roomMap.get("living-room").mapObjects.put("couchLeft", couchLeft);
 
-        OBJ_LivingRoom couchRight = new OBJ_LivingRoom("couch-right", "/rooms/living_room/living_room_OBJ/couch-right.png", 15, 32);
+        OBJ_LivingRoom couchRight = new OBJ_LivingRoom("couch", "/rooms/living_room/living_room_OBJ/couch-right.png", 15, 32);
         couchRight.screenX = 169 * 3;
         couchRight.screenY = 91 * 3;
         roomMap.get("living-room").mapObjects.put("couchRight", couchRight);
@@ -116,12 +116,12 @@ public class LivingRoomAssetSetter extends AssetSetter {
         coffeeTable.screenY = 95 * 3;
         roomMap.get("living-room").mapObjects.put("coffeeTable", coffeeTable);
 
-        OBJ_LivingRoom couchBottom = new OBJ_LivingRoom("bottom-couch", "/rooms/living_room/living_room_OBJ/bottom-couch.png", 80, 19);
+        OBJ_LivingRoom couchBottom = new OBJ_LivingRoom("couch", "/rooms/living_room/living_room_OBJ/bottom-couch.png", 80, 19);
         couchBottom.screenX = 94 * 3;
         couchBottom.screenY = 128 * 3;
         roomMap.get("living-room").mapObjects.put("couchBottom", couchBottom);
 
-        OBJ_LivingRoom glassTable = new OBJ_LivingRoom("glass-table", "/rooms/living_room/living_room_OBJ/glass-table.png", 18, 15);
+        OBJ_LivingRoom glassTable = new OBJ_LivingRoom("coffee-table", "/rooms/living_room/living_room_OBJ/glass-table.png", 18, 15);
         glassTable.screenX = 21 * 3;
         glassTable.screenY = 166 * 3;
         roomMap.get("living-room").mapObjects.put("glassTable", glassTable);
