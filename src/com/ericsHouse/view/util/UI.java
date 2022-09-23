@@ -204,7 +204,7 @@ public class UI {
 
     public void drawWinScreen(int x, int y, int width, int height) {
         try {
-            BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/intro-screen.png"));
+            BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/final-screen.png"));
             g2.drawImage(image, x, y, width, height, null);
         } catch (IOException e) {
             e.printStackTrace();
