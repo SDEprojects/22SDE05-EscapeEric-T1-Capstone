@@ -39,8 +39,19 @@ public class OBJ_Dog extends SuperObject {
 
     @Override
     public void interact(String objIndex, GamePanel gp) throws JsonProcessingException {
-        gp.gameState = gp.wordOrder;
-        gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
-        wo = new WordOrder(gp);
+        int itemCount = 0;
+        for(SuperObject obj:gp.player.getBackpack()){
+            if(obj.name.equals("pears") || obj.name.equals( "oranges") || obj.name.equals("note") || obj.name.equals("emerald-earrings")){
+                itemCount++;
+            }
+        }
+        if(itemCount == 4){
+            gp.gameState = gp.wordOrder;
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            wo = new WordOrder(gp);
+        }else{
+            gp.ui.currentDialogue = "The dog gives you a look that makes you feel like\nyou may not have all the items you need.\nTry looking in the living-room and kitchen for the items.";
+            gp.gameState = gp.dialogueState;
+        }
     }
 }

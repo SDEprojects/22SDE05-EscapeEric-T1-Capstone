@@ -14,11 +14,10 @@ import java.util.Objects;
 public class Player extends Entity {
 
     public static ArrayList<SuperObject> backpack = new ArrayList<>();
-    private static boolean hatEquipped = false;
+    public static boolean hatEquipped = false;
     private static boolean glassesEquipped = false;
     GamePanel gp;
     KeyHandler keyH;
-    int pressCounter = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -53,6 +52,21 @@ public class Player extends Entity {
             left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/boy_left_2.png")));
             right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/boy_right_1.png")));
             right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/boy_right_2.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void newHat(){
+        try {
+            up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_up_1.png")));
+            up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_up_2.png")));
+            down1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_down_1.png")));
+            down2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_down_2.png")));
+            left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_left_1.png")));
+            left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_left_2.png")));
+            right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_right_1.png")));
+            right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_right_2.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,11 +163,15 @@ public class Player extends Entity {
         g2.drawImage(image, playerX, playerY, gp.tileSize, gp.tileSize, null);
     }
 
+    public ArrayList<SuperObject> getBackpack() {
+        return backpack;
+    }
+
     public static void addItem(SuperObject item) {
         backpack.add(item);
     }
 
-    public void removeItem(SuperObject item) {
+    public static void removeItem(SuperObject item) {
         backpack.remove(item);
     }
 
@@ -163,10 +181,6 @@ public class Player extends Entity {
 
     public static void equipGlasses() {
         glassesEquipped = true;
-    }
-
-    public ArrayList<SuperObject> getBackpack() {
-        return backpack;
     }
 
     public static boolean isHatEquipped() {

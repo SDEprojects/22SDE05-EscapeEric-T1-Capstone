@@ -174,5 +174,10 @@ public class BedroomAssetSetter extends AssetSetter {
         bearPlushie.screenY = 58 * 3;
         bearPlushie.riddleItem = true;
         roomMap.get("bedroom").mapObjects.put("bearPlushie", bearPlushie);
+
+        OBJ_Aluminum aluminum = new OBJ_Aluminum("aluminum", "/rooms/bedroom/bedroom_OBJ/aluminum.png", 10, 10);
+        aluminum.screenX = 26 * 3;
+        aluminum.screenY = 63 * 3;
+        roomMap.get("bedroom").mapObjects.put("aluminum", aluminum);
     }
 }
