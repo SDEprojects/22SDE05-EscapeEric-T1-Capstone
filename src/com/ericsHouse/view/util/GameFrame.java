@@ -73,13 +73,15 @@ public class GameFrame extends JFrame implements ActionListener {
        //gameTimer.stop();
     }
     public static void reset() throws IOException {
+        //timer
         Time.resetUpTimer(sidePanel.time());
         Time.gameTimer.start();
+        //inv
         sidePanel.inventorySetUp(new GamePanel());
         sidePanel.resetItems();
-        GamePanel.setUpGame();
+        //
         Player.setDefaultValues();
-
+        //RoomMap();
     }
 
     @Override
