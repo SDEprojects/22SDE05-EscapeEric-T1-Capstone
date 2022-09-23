@@ -1,13 +1,13 @@
 {
   "garage": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
-    "note": "Welcome to Eric's house!\nSolve the puzzle of each room to escape.\nOh, I almost forgot.\nEric is also here and he’s looking for you.\nIt would be in your best interest to not let him find you.\nDon't take too long and good luck!!",
+    "note": "Welcome to Eric's house!\nSolve the puzzle of each room to escape.\nEric is also here and he’s looking for you.\nIt would be in your best interest to not let him find you.\nDon't let your time run out and good luck!!",
     "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\n too bad he's trying to catch you.",
     "car": "This is a pretty cool ride\nLooks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
     "dresser": "I like this dresser, such a great use of storage!\nOh and look A FROGGIE IS ON TOP OF ONE OF THEM!\n",
     "door": "You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
-    "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nTo get started, why don't you try inspecting that table \nto your left and reading that note.",
+    "askShaq": "What's up, I'm Shaq, your friendly business ghost!\nI'm here to help guide you out of Eric's house.\nTo move around use WASD\nTo interact with objects, walk close and press E.\nTo get started, why don't you try inspecting that table \nto your left and reading that note.",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
@@ -33,7 +33,7 @@
     "flowers": "Smells lovely!",
     "frog": "froggo",
     "house-plant": "I promise I won't let you die this time.",
-    "askShaq": "To figure out what the room challenge is,\ntry to open the locked door.\nMake sure you look for helpfuld items in every room.\nMaybe the note on that table can offer up a clue.",
+    "askShaq": "To figure out what the room challenge is,\ntry to open the locked door.\nMake sure you look for helpfuld items in every room.\nMaybe the note on that door can offer up a clue.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },

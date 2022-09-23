@@ -69,7 +69,9 @@ public class GameFrame extends JFrame implements ActionListener {
         gamePanel.setUpGame();
         //sidePanel.inventoryDisplay();
         gamePanel.startGameThread();
-        gameTimer.start();
+        gamePanel.gameState = gamePanel.introState;
+        //gameTimer.start();
+       //gameTimer.stop();
     }
 
     @Override

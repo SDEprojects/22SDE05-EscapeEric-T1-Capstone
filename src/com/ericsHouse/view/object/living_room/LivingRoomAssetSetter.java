@@ -136,7 +136,7 @@ public class LivingRoomAssetSetter extends AssetSetter {
         dog.screenY = 105 * 3;
         roomMap.get("living-room").mapObjects.put("dog", dog);
 
-        OBJ_LivingRoom sideLamp = new OBJ_LivingRoom("side-lamp", "/rooms/living_room/living_room_OBJ/side-lamp.png", 13, 29);
+        OBJ_SideLamp sideLamp = new OBJ_SideLamp("side-lamp", "/rooms/living_room/living_room_OBJ/side-lamp.png", 13, 29);
         sideLamp.screenX = 79 * 3;
         sideLamp.screenY = 106 * 3;
         roomMap.get("living-room").mapObjects.put("sideLamp", sideLamp);

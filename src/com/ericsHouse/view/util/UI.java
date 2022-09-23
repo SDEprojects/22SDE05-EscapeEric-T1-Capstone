@@ -44,6 +44,9 @@ public class UI {
         if (gp.gameState == gp.playState) {
             //Do nothing
         }
+        if(gp.gameState == gp.introState){
+            drawIntroScreen(0, 0, gp.screenWidth, gp.screenHeight);
+        }
         if (gp.gameState == gp.pauseState) {
             pauseScreen();
         }
@@ -173,7 +176,7 @@ public class UI {
     }
 
     private void drawSubWindow(int x, int y, int width, int height) {
-        Color c = new Color(0, 0, 0, 200);
+        Color c = new Color(0, 0, 0, 215);
         g2.setColor(c);
         g2.fillRoundRect(x, y, width, height, 50, 50);
         c = new Color(255, 255, 255);
@@ -201,7 +204,7 @@ public class UI {
 
     public void drawWinScreen(int x, int y, int width, int height) {
         try {
-            BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/intro-screen.png"));
+            BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/final-screen.png"));
             g2.drawImage(image, x, y, width, height, null);
         } catch (IOException e) {
             e.printStackTrace();
@@ -218,17 +221,31 @@ public class UI {
     }
 
     private void drawShaq() {
-        int x = gp.tileSize ;
-        int y = gp.tileSize *5;
-        int width = gp.screenWidth - (gp.tileSize * 8);
-        int height = gp.tileSize * 2;
+        int shaqx = gp.tileSize * 5;
+        int shaqy = gp.tileSize - 20;
+        int shaqwidth = gp.tileSize * 5;
+        int shaqheight = gp.tileSize * 4;
         BufferedImage image = null;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/ask-shaq.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        drawDialogueScreen();
-        g2.drawImage(image,x,y,width,height,null);
+
+        int x = gp.tileSize * 2 -20;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 11;
+
+        drawSubWindow(x, y, width, height);
+        x += gp.tileSize;
+        y += gp.tileSize *5;
+        for (String escape : currentDialogue.split("\n")) {
+            g2.drawString(escape, x, y);
+            y += 40;
+        }
+        g2.drawString("Press 'E' To Continue", width - 125, height);
+        g2.drawImage(image,shaqx,shaqy,shaqwidth,shaqheight,null);
+
     }
 }

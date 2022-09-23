@@ -47,7 +47,7 @@ public class OBJ_Note extends SuperObject {
         }
             else {
             gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nTry looking at all the objects in here.";
+            gp.ui.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nI bet Eric hid them somewhere, sneaky dude.\nTry using 'E' next to any item to search for 'em.";
             //System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
         }
     }
