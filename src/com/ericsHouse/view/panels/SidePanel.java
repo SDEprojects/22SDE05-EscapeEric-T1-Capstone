@@ -55,9 +55,9 @@ public class SidePanel extends JPanel {
     public void timerSetUp() {
         JLabel timerLabel = new JLabel("HELLOOOOOO");
         timerLabel.setFont(UI.importFont());
-        timerLabel.setText("04:00");
+        timerLabel.setText("08:00");
 
-        Time.setUpTimer(4, 0, timerLabel);
+        Time.setUpTimer(8, 0, timerLabel);
 
         box.add(Box.createHorizontalGlue());
         box.add(timerLabel);
