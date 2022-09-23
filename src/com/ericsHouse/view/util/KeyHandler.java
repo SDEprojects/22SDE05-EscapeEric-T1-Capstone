@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static com.ericsHouse.rooms.RoomMap.roomMap;
-import static com.ericsHouse.view.panels.GamePanel.currentRoom;
+import static com.ericsHouse.view.panels.GamePanel.*;
 import static com.ericsHouse.view.util.Time.gameTimer;
 
 public class KeyHandler implements KeyListener {
@@ -115,7 +115,7 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.dialogueState;
                 } else {
                     if (wins <= 2) {
-                        if (UI.checkWin(this.gp.subState, games, wins)) {
+                        if (UI.checkWin(this.gp.subState)) {
                             wins++;
                             gp.ui.currentDialogue = "number of wins: " + wins;
                         } else {
@@ -174,8 +174,11 @@ public class KeyHandler implements KeyListener {
                     gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
                 }
             }
-        } else if (gp.gameState == gp.riddleCorrect ||gp.gameState == gp.riddleIncorrect || gp.gameState == gp.wordOrder || GamePanel.gameState == gp.Shaq) {
+        } else if (gp.gameState == gp.craftState || gp.gameState == gp.riddleCorrect ||gp.gameState == gp.riddleIncorrect || gp.gameState == gp.wordOrder || GamePanel.gameState == gp.Shaq) {
             if (code == KeyEvent.VK_E) {
+                if(gameState == craftState){
+                    Crafter.clickedItems.clear();
+                }
                 gp.gameState = gp.playState;
             }
 
