@@ -121,6 +121,11 @@ public class JsonParser {
         }
         return description;
     }
+
+    public static String roomIntro(String room) {
+        return jsonNodePrompts.get(room).get("enterRoom").textValue();
+    }
+
     public static InputStream getFileFromResourceAsStream(String fileName) {
         ClassLoader classLoader = JsonParser.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
