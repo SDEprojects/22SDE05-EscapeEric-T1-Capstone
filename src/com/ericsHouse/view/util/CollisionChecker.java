@@ -176,8 +176,6 @@ public class CollisionChecker {
                     gp.setCurrentRoom(currentRoom.entrance);
                     gp.player.playerY = currentRoom.exitIntersect.y - 75;
                     gp.player.playerX = currentRoom.exitIntersect.x;
-                    gp.ui.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
                     gp.setCurrentRoom(currentRoom.exit);
@@ -194,8 +192,6 @@ public class CollisionChecker {
                     gp.setCurrentRoom(currentRoom.entrance);
                     gp.player.playerY = currentRoom.exitIntersect.y + 75;
                     gp.player.playerX = currentRoom.exitIntersect.x;
-                    gp.ui.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
                     gp.setCurrentRoom(currentRoom.exit);
@@ -212,8 +208,6 @@ public class CollisionChecker {
                     gp.setCurrentRoom(currentRoom.entrance);
                     gp.player.playerY = currentRoom.exitIntersect.y;
                     gp.player.playerX = currentRoom.exitIntersect.x - 75;
-                    gp.ui.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
                     gp.setCurrentRoom(currentRoom.exit);
@@ -230,8 +224,6 @@ public class CollisionChecker {
                     gp.setCurrentRoom(currentRoom.entrance);
                     gp.player.playerY = currentRoom.exitIntersect.y;
                     gp.player.playerX = currentRoom.exitIntersect.x + 75;
-                    gp.ui.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
                     gp.setCurrentRoom(currentRoom.exit);

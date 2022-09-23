@@ -1,6 +1,7 @@
 package com.ericsHouse.view.util;
 
 import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.panels.GamePanel;
 
 import javax.imageio.ImageIO;
@@ -17,7 +18,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font pixelFont;
-    public String currentDialogue = "";
+    public static String currentDialogue = "";
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -77,20 +78,11 @@ public class UI {
         if(gp.gameState == gp.Shaq){
             drawShaq();
         }
+        if(gp.gameState == gp.craftState){
+            drawDialogueScreen();
+        }
     }
 
-    private void drawIntroScreen() {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 7;
-        drawSubWindow(x, y, width, height);
-        for (String escape : currentDialogue.split("\n")) {
-            g2.drawString(escape, x, y);
-            y += 40;
-        }
-        g2.drawString("Press 'E' To Continue", width - 125, height);
-    }
 
     private void drawDialogueScreen() {
         int x = gp.tileSize * 2;
@@ -104,7 +96,11 @@ public class UI {
             g2.drawString(escape, x, y);
             y += 40;
         }
-        g2.drawString("Press 'E' To Continue", width - 125, height);
+        if(gp.gameState == gp.craftState){
+            g2.drawString("Press 'E' When you are done", width - 160, height);
+        }else{
+            g2.drawString("Press 'E' To Continue", width - 125, height);
+        }
     }
 
     private void drawRiddleScreen(int subState) {
@@ -169,10 +165,14 @@ public class UI {
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
 
-    public static boolean checkWin(int selection, int games, int wins) {
-        int rps = (int) (Math.random() * 3) + 1;
-        System.out.println(rps + " " + selection);
-        return rps == selection;
+    public static boolean checkWin(int selection) {
+        if(Player.hatEquipped){
+            return true;
+        }else{
+            int rps = (int) (Math.random() * 3) + 1;
+            System.out.println(rps + " " + selection);
+            return rps == selection;
+        }
     }
 
     private void drawSubWindow(int x, int y, int width, int height) {

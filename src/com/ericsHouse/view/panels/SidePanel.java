@@ -3,6 +3,7 @@ package com.ericsHouse.view.panels;
 import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.living_room.OBJ_Dog;
+import com.ericsHouse.view.util.Crafter;
 import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
 
@@ -102,10 +103,20 @@ public class SidePanel extends JPanel {
         //label.setVisible(false);
         button.setContentAreaFilled(false);
         button.addActionListener(e -> {
+            if(button.getName() == "aluminum hat"){
+                gp.player.newHat();
+                gp.player.hatEquipped = true;
+            }
+            if(Crafter.hammerClicked && button.getName().equals("aluminum")){
+                inventory.remove(button);
+            }
             if (gameState == GamePanel.wordOrder) {
                 OBJ_Dog.wo.addClickedObject(button.getName());
-            } else {
-//                gp.ui.currentDialogue = "HOLDING STATE, FIGURE OUT A WAY TO PRINT \nITEM DESCRIPTION";
+            }
+            if(gameState == GamePanel.craftState){
+                Crafter.addClickedItems(button.getName());
+            }
+            if(gameState == gp.playState) {
                 try {
                     gp.ui.currentDialogue = JsonParser.itemDescriptions(sp.name);
                 } catch (IOException ex) {

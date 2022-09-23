@@ -33,10 +33,12 @@ public class OBJ_Door extends SuperObject {
     public void interact(String objIndex, GamePanel gp) {
         //TODO - refactor this check so that it's not so hard coded
         if (gp.player.getBackpack().size() == 2) {
-            System.out.println("You open the door and get ready to solve some puzzles!! Time to escape Eric's house");
+            gp.ui.currentDialogue = "You open the door and get ready to solve some puzzles!!\nLet's escape Eric's house";
             currentRoom.mapObjects.remove(objIndex);
+            gp.gameState = gp.dialogueState;
         } else {
-            System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
+            gp.ui.currentDialogue = "You hear Shaq's voice...\n'HEY get that note first.\nIt's important you know what's going on.'\n";
+            gp.gameState = gp.dialogueState;
         }
     }
 }

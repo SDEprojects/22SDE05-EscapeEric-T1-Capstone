@@ -130,5 +130,12 @@ public class BathroomAssetSetter extends AssetSetter {
         sleepingCat.screenX = 197 * 3;
         sleepingCat.screenY = 154 * 3;
         roomMap.get("bathroom").mapObjects.put("sleepingCat", sleepingCat);
+
+        OBJ_Hammer hammer = new OBJ_Hammer("hammer", "/rooms/bathroom/bathroom_OBJ/hammer.png", 10, 11);
+        hammer.screenX = 25 * 3;
+        hammer.screenY = 125 * 3;
+        roomMap.get("bathroom").mapObjects.put("hammer", hammer);
+
+
     }
 }

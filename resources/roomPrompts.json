@@ -2,13 +2,14 @@
   "garage": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
     "note": "Welcome to Eric's house!\nSolve the puzzle of each room to escape.\nEric is also here and he’s looking for you.\nIt would be in your best interest to not let him find you.\nDon't let your time run out and good luck!!",
-    "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\n too bad he's trying to catch you.",
+    "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\ntoo bad he's trying to catch you.",
     "car": "This is a pretty cool ride\nLooks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
     "dresser": "I like this dresser, such a great use of storage!\nOh and look A FROGGIE IS ON TOP OF ONE OF THEM!\n",
     "door": "You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
     "askShaq": "What's up, I'm Shaq, your friendly business ghost!\nI'm here to help guide you out of Eric's house.\nTo move around use WASD\nTo interact with objects, walk close and press E.\nTo get started, why don't you try inspecting that table \nto your left and reading that note.",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n",
+    "workbench": "Looks like Eric likes to do crafting\nOnce you have a hammer and some useful items,\ncome back here to build cool wearables.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
   "kitchen": {
@@ -102,6 +103,7 @@
     "play-chair": "It would be nice to rest, but you don't have time\nERIC IS COMING!",
     "football": "Footballs alright\nBut you would rather be exploring caves.",
     "car-mat" : "This brings back old memories..",
+    "aluminum": "This is a great sheet of aluminum\nI bet with the right tools you could craft a sweet hat.",
     "heart-rug" : "<3",
     "star-plushie" : "Wow that's a lot of plushies for a murderer.",
     "blocks": "The blocks spell out.\nI.M.C.O.M.I.N.G.F.O.R.Y.O.U\nYou wonder what 'I, M.C. Omingfo ryou' means\nM.C Oming seems like a nice guy",
@@ -121,6 +123,7 @@
     "shelves" : "He must love to decorate sheeesh",
     "bathroom-sink" : "At least he cleans his hands after!",
     "enterRoom": "Welcome to Room 4 - Game Room:\nAn anvil sits in the middle of the room\nTo your right is a big storage shelf full of odds and ends\nTo your left you see an old dresser\nStraight ahead is the locked door to the next room.",
+    "hammer": "What a cool hammer!!\nYou can probably use it for crafting.\nRemember that workbench in the garage?",
     "openDoorUnlocked": "YOU WIN! The door opens and you feel the cool breeze of fresh air on your face.\nYou step outside the house and realize you have escaped.You have escaped Eric!",
     "askShaq": "That is no ordinary mirror on the door... \nI think its somehow reading your mind!\nIf you can find a way to keep it out of your head \nI bet you can beat it!",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
