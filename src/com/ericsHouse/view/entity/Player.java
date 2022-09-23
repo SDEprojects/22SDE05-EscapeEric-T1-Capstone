@@ -149,11 +149,15 @@ public class Player extends Entity {
         g2.drawImage(image, playerX, playerY, gp.tileSize, gp.tileSize, null);
     }
 
+    public ArrayList<SuperObject> getBackpack() {
+        return backpack;
+    }
+
     public static void addItem(SuperObject item) {
         backpack.add(item);
     }
 
-    public void removeItem(SuperObject item) {
+    public static void removeItem(SuperObject item) {
         backpack.remove(item);
     }
 
@@ -163,10 +167,6 @@ public class Player extends Entity {
 
     public static void equipGlasses() {
         glassesEquipped = true;
-    }
-
-    public ArrayList<SuperObject> getBackpack() {
-        return backpack;
     }
 
     public static boolean isHatEquipped() {
