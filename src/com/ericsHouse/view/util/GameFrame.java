@@ -2,6 +2,7 @@ package com.ericsHouse.view.util;
 
 import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.main;
+import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.panels.SidePanel;
 
@@ -14,8 +15,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import static com.ericsHouse.view.util.Time.gameTimer;
 
 public class GameFrame extends JFrame implements ActionListener {
     public static JFrame window;
@@ -72,6 +71,15 @@ public class GameFrame extends JFrame implements ActionListener {
         gamePanel.gameState = gamePanel.introState;
         //gameTimer.start();
        //gameTimer.stop();
+    }
+    public static void reset() throws IOException {
+        Time.resetUpTimer(sidePanel.time());
+        Time.gameTimer.start();
+        sidePanel.inventorySetUp(new GamePanel());
+        sidePanel.resetItems();
+        GamePanel.setUpGame();
+        Player.setDefaultValues();
+
     }
 
     @Override

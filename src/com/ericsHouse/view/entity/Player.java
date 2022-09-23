@@ -36,7 +36,7 @@ public class Player extends Entity {
         getPlayerImage();
     }
 
-    public void setDefaultValues() {
+    public static void setDefaultValues() {
         playerX = 300;
         playerY = 300;
         speed = 4;

@@ -39,5 +39,28 @@ public class Time {
         });
 
     }
+    public static void resetUpTimer( JLabel label) {
+        minute = 4;
+        second = 0;
+        gameTimer.stop();
+        gameTimer = new Timer(1000, e -> {
+            second--;
+            dSecond = dFormat.format(second);
+            dMinute = dFormat.format(minute);
+            label.setText(dMinute + ":" + dSecond);
 
+            if (second < 0) {
+                second = 59;
+                minute--;
+                dSecond = dFormat.format(second);
+                dMinute = dFormat.format(minute);
+                label.setText(dMinute + ":" + dSecond);
+            }
+            if (minute <= 0 && second <= 0) {
+                GamePanel.gameState = GamePanel.deathState;
+                gameTimer.stop();
+            }
+        });
+
+    }
 }

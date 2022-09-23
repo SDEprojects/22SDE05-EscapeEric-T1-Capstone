@@ -33,8 +33,11 @@ public class SidePanel extends JPanel {
     GamePanel gp;
 
     private Image image;
+    JLabel timerLabel = new JLabel("HELLOOOOOO");
 
-
+    public JLabel time(){
+        return this.timerLabel;
+    }
     public SidePanel(JFrame jframe, Image image, GamePanel gp) throws IOException {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -52,7 +55,6 @@ public class SidePanel extends JPanel {
     }
 
     public void timerSetUp() {
-        JLabel timerLabel = new JLabel("HELLOOOOOO");
         timerLabel.setFont(UI.importFont());
         timerLabel.setText("04:00");
 
@@ -127,6 +129,11 @@ public class SidePanel extends JPanel {
         c.gridy = 1;
         c.gridwidth = 3;
         this.add(inventory, BorderLayout.CENTER, 1);
+    }
+    public void resetItems(){
+        items.clear();
+        inventory.removeAll();
+        inventory.repaint();
     }
 
 

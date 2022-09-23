@@ -63,7 +63,7 @@ public class UI {
             drawDialogueScreen();
         }
         if (gp.gameState == gp.deathState) {
-            drawDeathScreen(0, 0, gp.screenWidth, gp.screenHeight);
+            drawDeathScreen(0, 0, gp.screenWidth, gp.screenHeight, gp.subState);
         }
         if (gp.gameState == gp.rockPaperScissors) {
             rockPaperScissorsDisplay(gp.subState);
@@ -162,7 +162,6 @@ public class UI {
             g2.drawString(escape, x, y);
             y += 40;
         }
-
         g2.drawString(subState == gp.optionOne ? ">   Rock" : "   Rock", x, y + gp.tileSize);
         g2.drawString(subState == gp.optionTwo ? ">   Paper" : "   Paper", x, y + gp.tileSize * 2);
         g2.drawString(subState == gp.optionThree ? ">   Scissors" : "   Scissors", x, y + gp.tileSize * 3);
@@ -193,12 +192,31 @@ public class UI {
         g2.drawString(text, x, y);
     }
 
-    public void drawDeathScreen(int x, int y, int width, int height) {
+    public void drawDeathScreen(int x, int y, int width, int height, int subState) {
+        currentDialogue = "Play again?";
         try {
             BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/game_over/Game-Over.png"));
             g2.drawImage(image, x, y, width, height, null);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        x += gp.tileSize;
+        y += gp.tileSize;
+        for (String escape : currentDialogue.split("\n")) {
+            g2.drawString(escape, x, y);
+            y += 40;
+        }
+        g2.drawString(subState == gp.optionOne ? ">   Restart" : "   Restart", x, y + gp.tileSize);
+        g2.drawString(subState == gp.optionTwo ? ">   End Game" : "   End Game", x, y + gp.tileSize * 2);
+        g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
+    }
+    public static void playAgain(int subState) throws IOException{
+        if(subState == 1){
+            GameFrame.reset();
+            GamePanel.gameState= 1;
+        }
+        else if(subState == 2){
+            System.exit(0);
         }
     }
 
