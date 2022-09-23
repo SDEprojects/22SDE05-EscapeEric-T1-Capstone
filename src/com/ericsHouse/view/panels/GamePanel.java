@@ -10,7 +10,6 @@ import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
 import com.ericsHouse.view.util.CollisionChecker;
 import com.ericsHouse.view.util.KeyHandler;
-import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
 
 import javax.swing.*;
@@ -69,12 +68,11 @@ public class GamePanel extends JPanel implements Runnable {
     public final int optionThree = 3;
     public final int correctOption = 4;
 
-    public void setUpGame() {
-
+    public static void setUpGame() {
         //TODO make sure the player is starting in the garage
         currentRoom = RoomMap.roomMap.get("garage" );
         currentRoom.setRoomItems("Eric's Garage");
-        gameState = playState;
+        gameState = 1;
     }
 
     public void setCurrentRoom(String roomName) {

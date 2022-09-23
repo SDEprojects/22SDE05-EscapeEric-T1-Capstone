@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class RoomMap {
 
-    GamePanel gp;
+    static GamePanel gp;
     public static Map<String, Room> roomMap;
 
     public RoomMap(GamePanel gp) throws IOException {
@@ -29,8 +29,13 @@ public class RoomMap {
         roomMap = new HashMap<>();
         generateRooms();
     }
+    public static void resetMap(GamePanel gp) throws IOException {
+        RoomMap.gp = gp;
+        roomMap.clear();
+        generateRooms();
+    }
 
-    public void generateRooms() throws IOException {
+    public static void generateRooms() throws IOException {
         //KITCHEN TILES AND ASSETS
         Rectangle kEntranceIntersect = new Rectangle(760, 340, 11, 48*2);
         Rectangle kExitIntersect = new Rectangle(212 * 3, 17, 30 * 3, 16 *3);

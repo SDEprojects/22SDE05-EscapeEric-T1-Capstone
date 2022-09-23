@@ -14,6 +14,7 @@ import java.util.Objects;
 import static com.ericsHouse.rooms.RoomMap.roomMap;
 import static com.ericsHouse.view.panels.GamePanel.*;
 import static com.ericsHouse.view.util.Time.gameTimer;
+import static com.ericsHouse.view.util.UI.playAgain;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
@@ -79,15 +80,17 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
             }
-        }
-        else if(gp.gameState == gp.introState){
-            if(code == KeyEvent.VK_E){
+            if (code == KeyEvent.VK_J) {
+                gp.gameState = gp.deathState;
+            }
+        } else if (gp.gameState == gp.pauseState) {
+        } else if (gp.gameState == gp.introState) {
+            if (code == KeyEvent.VK_E) {
                 gp.ui.currentDialogue = JsonParser.getPrompt("askShaq", gp);
                 gameTimer.start();
                 gp.gameState = gp.Shaq;
             }
-        }
-        else if (gp.gameState == gp.pauseState) {
+        } else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
             }
@@ -145,6 +148,24 @@ public class KeyHandler implements KeyListener {
                 }
             }
 
+        } else if (gp.gameState == gp.deathState) {
+            if (code == KeyEvent.VK_E) {
+                try {
+                    playAgain(this.gp.subState);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            if (code == KeyEvent.VK_S) {
+                if (gp.subState < gp.optionTwo) {
+                    gp.subState = gp.subState + 1;
+                }
+            }
+            if (code == KeyEvent.VK_W) {
+                if (gp.subState > gp.optionOne) {
+                    gp.subState = gp.subState - 1;
+                }
+            }
         } else if (gp.gameState == gp.riddleState) {
             if (code == KeyEvent.VK_S) {
                 if (gp.subState < gp.optionThree) {
