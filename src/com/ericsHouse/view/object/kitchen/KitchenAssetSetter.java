@@ -12,31 +12,29 @@ public class KitchenAssetSetter extends AssetSetter {
 
     @Override
     public void setObject() {
-        //TODO put all the object instantiation information in a txt or json file and parse it and
-        // Resetting the obj array for the kitchen objects to be drawn in the room
 
         //Setting all objects in the kitchen
-        OBJ_Fridge fridge = new OBJ_Fridge();
+        OBJ_Kitchen fridge = new OBJ_Kitchen("fridge", "/rooms/kitchen/kitchen_OBJ/fridge.png", 18, 31);
         fridge.screenX = 11 * 3;
         fridge.screenY = 36;
         roomMap.get("kitchen").mapObjects.put("fridge", fridge);
 
-        OBJ_Cabinet cabinet = new OBJ_Cabinet();
+        OBJ_Kitchen cabinet = new OBJ_Kitchen("cabinet", "/rooms/kitchen/kitchen_OBJ/cabinet.png", 34, 46);
         cabinet.screenX = 31 * 3;
         cabinet.screenY = 0;
         roomMap.get("kitchen").mapObjects.put("cabinet", cabinet);
 
-        OBJ_Hutch hutch = new OBJ_Hutch();
+        OBJ_Kitchen hutch = new OBJ_Kitchen("hutch", "/rooms/kitchen/kitchen_OBJ/hutch.png", 22, 34);
         hutch.screenX = 61 * 3;
         hutch.screenY = 36;
         roomMap.get("kitchen").mapObjects.put("hutch", hutch);
 
-        OBJ_Sink sink = new OBJ_Sink();
+        OBJ_Kitchen sink = new OBJ_Kitchen("sink", "/rooms/kitchen/kitchen_OBJ/sink.png", 62, 46);
         sink.screenX = 82 * 3;
         sink.screenY = 0;
         roomMap.get("kitchen").mapObjects.put("sink", sink);
 
-        OBJ_Oven oven = new OBJ_Oven();
+        OBJ_Kitchen oven = new OBJ_Kitchen("oven", "/rooms/kitchen/kitchen_OBJ/ovens.png", 34, 41);
         oven.screenX = 142 * 3;
         oven.screenY = 15;
         roomMap.get("kitchen").mapObjects.put("oven", oven);
@@ -121,11 +119,6 @@ public class KitchenAssetSetter extends AssetSetter {
         microwave.screenY = 28 * 2;
         roomMap.get("kitchen").mapObjects.put("microwave", microwave);
 
-        OBJ_Pears pears = new OBJ_Pears();
-        pears.screenX = 85 * 3;
-        pears.screenY = 34 * 2;
-        roomMap.get("kitchen").mapObjects.put("pears", pears);
-
         OBJ_Kitchen table = new OBJ_Kitchen("table", "/rooms/kitchen/kitchen_OBJ/table.png", 25, 25);
         table.screenX = 40 * 3;
         table.screenY = 146 * 3;
@@ -146,6 +139,7 @@ public class KitchenAssetSetter extends AssetSetter {
         flowers.screenY = 145 * 3;
         roomMap.get("kitchen").mapObjects.put("flowers", flowers);
 
+        // Gettable Objects
         OBJ_Knife knife = new OBJ_Knife();
         knife.screenX = 47 * 3;
         knife.screenY = 61 * 3;
@@ -160,5 +154,10 @@ public class KitchenAssetSetter extends AssetSetter {
         radio.screenX = 123 * 3;
         radio.screenY = 58 * 3;
         roomMap.get("kitchen").mapObjects.put("radio", radio);
+
+        OBJ_Pears pears = new OBJ_Pears();
+        pears.screenX = 85 * 3;
+        pears.screenY = 34 * 2;
+        roomMap.get("kitchen").mapObjects.put("pears", pears);
     }
 }
