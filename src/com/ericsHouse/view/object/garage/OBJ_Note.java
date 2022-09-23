@@ -15,7 +15,6 @@ import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 
 public class OBJ_Note extends SuperObject {
-
     public OBJ_Note() {
         name = "note";
         try {

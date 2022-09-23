@@ -2,6 +2,7 @@ package com.ericsHouse.view.util;
 
 import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.main;
+import com.ericsHouse.rooms.RoomMap;
 import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.panels.SidePanel;
@@ -81,7 +82,8 @@ public class GameFrame extends JFrame implements ActionListener {
         sidePanel.resetItems();
         //
         Player.setDefaultValues();
-        //RoomMap();
+        RoomMap.resetMap(gamePanel);
+        GamePanel.setUpGame();
     }
 
     @Override

@@ -29,9 +29,9 @@ public class RoomMap {
         roomMap = new HashMap<>();
         generateRooms();
     }
-    public void resetMap(GamePanel gp) throws IOException {
-        this.gp = gp;
-        roomMap = new HashMap<>();
+    public static void resetMap(GamePanel gp) throws IOException {
+        RoomMap.gp = gp;
+        roomMap.clear();
         generateRooms();
     }
 
