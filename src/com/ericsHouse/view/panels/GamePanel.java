@@ -48,10 +48,11 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     //GAME STATES
     public static int gameState;
+    public final int introState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     public static final int dialogueState = 3;
-    public final int deathState = 4;
+    public static final int deathState = 4;
     public final int riddleState = 5;
     public final int riddleCorrect = 6;
     public final int riddleIncorrect = 7;
@@ -135,9 +136,6 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (gameState == pauseState) {
 
-        }
-        if (!Time.gameTimer.isRunning()) {
-            gameState = deathState;
         }
     }
 

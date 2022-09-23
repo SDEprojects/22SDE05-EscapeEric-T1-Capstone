@@ -1,5 +1,7 @@
 package com.ericsHouse.view.util;
 
+import com.ericsHouse.view.panels.GamePanel;
+
 import javax.swing.*;
 import java.text.DecimalFormat;
 
@@ -31,6 +33,7 @@ public class Time {
                 label.setText(dMinute + ":" + dSecond);
             }
             if (minute <= 0 && second <= 0) {
+                GamePanel.gameState = GamePanel.deathState;
                 gameTimer.stop();
             }
         });

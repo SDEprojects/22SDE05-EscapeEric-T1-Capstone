@@ -42,6 +42,9 @@ public class WordOrder {
                 gp.ui.currentDialogue = String.format("That's Correct I need %s more items from you.\n" +
                         "Current Items:%s", 4 - clickedObJ.size(), clickedObJ);
             }
+        }else{
+            gp.ui.currentDialogue = "Nope, that's not the way to do it.\nThe dog growls at you and turns around.\nBetter try again.";
+            clickedObJ.clear();
         }
     }
 

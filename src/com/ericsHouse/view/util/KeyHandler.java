@@ -13,6 +13,7 @@ import java.util.Objects;
 
 import static com.ericsHouse.rooms.RoomMap.roomMap;
 import static com.ericsHouse.view.panels.GamePanel.currentRoom;
+import static com.ericsHouse.view.util.Time.gameTimer;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, getPressed;
@@ -78,18 +79,36 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.pauseState;
             }
-        } else if (gp.gameState == gp.pauseState) {
+        }
+        else if(gp.gameState == gp.introState){
+            if(code == KeyEvent.VK_E){
+                gp.ui.currentDialogue = JsonParser.getPrompt("askShaq", gp);
+                gameTimer.start();
+                gp.gameState = gp.Shaq;
+            }
+        }
+        else if (gp.gameState == gp.pauseState) {
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
             }
         } else if (gp.gameState == gp.dialogueState) {
-            if(SuperObject.win && code == KeyEvent.VK_E){
+            if (SuperObject.win && code == KeyEvent.VK_E) {
                 gp.gameState = gp.winState;
-            }else if (code == KeyEvent.VK_E) {
+            } else if (code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
 
         } else if (gp.gameState == gp.rockPaperScissors) {
+            if (code == KeyEvent.VK_S) {
+                if (gp.subState < gp.optionThree) {
+                    gp.subState = gp.subState + 1;
+                }
+            }
+            if (code == KeyEvent.VK_W) {
+                if (gp.subState > gp.optionOne) {
+                    gp.subState = gp.subState - 1;
+                }
+            }
             if (code == KeyEvent.VK_E) {
                 if (SuperObject.win) {
                     gp.ui.currentDialogue = "You already beat your reflection too many times..  ";
@@ -125,37 +144,8 @@ public class KeyHandler implements KeyListener {
                     }
                 }
             }
-        } else if (gp.gameState == gp.riddleState) {
-            if (code == KeyEvent.VK_E) {
-                Riddle.checkRiddle(gp);
-                if (Riddle.riddleCorrect) {
-                    gp.gameState = gp.riddleCorrect;
-                    currentRoom.mapObjects.get(objIndex).solved = true;
-                    Riddle.riddleCorrect = false;
-                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
-                } else {
-                    //TODO this needs to be refactored
-                    Time.second = Time.second - 60;
-                    if (Time.minute <= 0 && Time.second <= 0) {
-                        Time.gameTimer.stop();
-                    }
-                    gp.gameState = gp.riddleIncorrect;
-                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
-                }
-            }
-        } else if (gp.gameState == gp.riddleCorrect) {
-            if (code == KeyEvent.VK_E) {
-                gp.gameState = gp.playState;
-            }
 
-        } else if (gp.gameState == gp.riddleIncorrect) {
-            if (code == KeyEvent.VK_E) {
-                gp.gameState = gp.playState;
-            }
-        } else if (gp.gameState == gp.wordOrder) {
-            if (code == KeyEvent.VK_E) {
-                gp.gameState = gp.playState;
-            }
+        } else if (gp.gameState == gp.riddleState) {
             if (code == KeyEvent.VK_S) {
                 if (gp.subState < gp.optionThree) {
                     gp.subState = gp.subState + 1;
@@ -166,32 +156,50 @@ public class KeyHandler implements KeyListener {
                     gp.subState = gp.subState - 1;
                 }
             }
-        }
-        else if (GamePanel.gameState == gp.Shaq) {
             if (code == KeyEvent.VK_E) {
-                GamePanel.gameState = gp.playState;
+                Riddle.checkRiddle(gp);
+
+                if (Riddle.riddleCorrect) {
+                    gp.gameState = gp.riddleCorrect;
+                    currentRoom.mapObjects.get(objIndex).solved = true;
+                    Riddle.riddleCorrect = false;
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
+                } else {
+                    //TODO this needs to be refactored
+                    Time.second = Time.second - 60;
+                    if (Time.minute <= 0 && Time.second <= 0) {
+                        gameTimer.stop();
+                    }
+                    gp.gameState = gp.riddleIncorrect;
+                    gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
+                }
             }
+        } else if (gp.gameState == gp.riddleCorrect ||gp.gameState == gp.riddleIncorrect || gp.gameState == gp.wordOrder || GamePanel.gameState == gp.Shaq) {
+            if (code == KeyEvent.VK_E) {
+                gp.gameState = gp.playState;
+            }
+
         }
     }
 
-        @Override
-        public void keyReleased (KeyEvent e){
-            int code = e.getKeyCode();
-            if (code == KeyEvent.VK_W || code == 38) {
-                upPressed = false;
-            }
-            if (code == KeyEvent.VK_S || code == 40) {
-                downPressed = false;
-            }
-            if (code == KeyEvent.VK_D || code == 39) {
-                rightPressed = false;
-            }
-            if (code == KeyEvent.VK_A || code == 37) {
-                leftPressed = false;
-            }
-            if (code == KeyEvent.VK_E) {
-                getPressed = false;
-            }
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int code = e.getKeyCode();
+        if (code == KeyEvent.VK_W || code == 38) {
+            upPressed = false;
         }
+        if (code == KeyEvent.VK_S || code == 40) {
+            downPressed = false;
+        }
+        if (code == KeyEvent.VK_D || code == 39) {
+            rightPressed = false;
+        }
+        if (code == KeyEvent.VK_A || code == 37) {
+            leftPressed = false;
+        }
+        if (code == KeyEvent.VK_E) {
+            getPressed = false;
+        }
+    }
 
 }
