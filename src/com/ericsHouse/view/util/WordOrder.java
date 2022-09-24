@@ -21,6 +21,7 @@ public class WordOrder {
     }
 
     public static void generateCompareList() {
+        compareList.clear();
         compareList.add("oranges");
         compareList.add("pears");
         compareList.add("emerald-earrings");
@@ -32,12 +33,10 @@ public class WordOrder {
         boolean listMatch = checkLists();
         if (listMatch) {
             if (clickedObJ.size() == compareList.size()) {
+
                 gp.ui.currentDialogue = "The dog accepts that you know how to spell 'OPEN'\nHe grumbles and walks away.";
-                //TODO - figure out how to make this dynamic rather than hardcoding the array position numbers
                 currentRoom.mapObjects.remove("dog");
-                if(clickedObJ.size() == 4){
-                    clickedObJ.clear();
-                }
+                clickedObJ.clear();
             } else {
                 gp.ui.currentDialogue = String.format("That's Correct I need %s more items from you.\n" +
                         "Current Items:%s", 4 - clickedObJ.size(), clickedObJ);

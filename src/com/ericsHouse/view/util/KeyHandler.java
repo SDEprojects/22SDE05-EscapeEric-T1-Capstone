@@ -200,6 +200,9 @@ public class KeyHandler implements KeyListener {
                 if(gameState == craftState){
                     Crafter.clickedItems.clear();
                 }
+                if(gameState==wordOrder){
+                    WordOrder.clickedObJ.clear();
+                }
                 gp.gameState = gp.playState;
             }
 

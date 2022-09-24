@@ -62,11 +62,10 @@ public class GamePanel extends JPanel implements Runnable {
     public static final int craftState = 12;
 
     //SUB STATES
-    public int subState = 0;
+    public int subState = 1;
     public final int optionOne = 1;
     public final int optionTwo = 2;
     public final int optionThree = 3;
-    public final int correctOption = 4;
 
     public static void setUpGame() {
         //TODO make sure the player is starting in the garage
