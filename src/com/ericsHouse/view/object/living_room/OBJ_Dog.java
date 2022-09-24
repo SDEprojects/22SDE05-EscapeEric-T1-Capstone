@@ -53,5 +53,6 @@ public class OBJ_Dog extends SuperObject {
             gp.ui.currentDialogue = "The dog gives you a look that makes you feel like\nyou may not have all the items you need.\nTry looking in the living-room and kitchen for the items.";
             gp.gameState = gp.dialogueState;
         }
+        System.out.println(gp.player.getBackpack());
     }
 }

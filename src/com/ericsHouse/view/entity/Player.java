@@ -174,6 +174,9 @@ public class Player extends Entity {
     public static void removeItem(SuperObject item) {
         backpack.remove(item);
     }
+    public static void removeAllItems(ArrayList<SuperObject> item) {
+        item.clear();
+    }
 
     public static void equipHat() {
         hatEquipped = true;
