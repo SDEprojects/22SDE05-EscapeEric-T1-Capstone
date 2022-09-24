@@ -1,6 +1,7 @@
 package com.ericsHouse.view.panels;
 
 import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.object.living_room.OBJ_Dog;
 import com.ericsHouse.view.util.Crafter;
@@ -142,7 +143,7 @@ public class SidePanel extends JPanel {
         this.add(inventory, BorderLayout.CENTER, 1);
     }
     public void resetItems(){
-        items.clear();
+        Player.removeAllItems(Player.backpack);
         inventory.removeAll();
         inventory.repaint();
     }
