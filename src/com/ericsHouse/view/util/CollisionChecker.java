@@ -164,7 +164,6 @@ public class CollisionChecker {
     }
 
     public void checkExit(Entity entity) {
-
         entity.solidArea.x = entity.playerX + entity.solidArea.x;
         entity.solidArea.y = entity.playerY + entity.solidArea.y;
 

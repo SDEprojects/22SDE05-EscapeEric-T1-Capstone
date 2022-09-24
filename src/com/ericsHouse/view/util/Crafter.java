@@ -20,8 +20,6 @@ public class Crafter {
 
     public static void addClickedItems(String item) {
         clickedItems.add(item);
-        System.out.println(clickedItems);
-        System.out.println(clickedItems.size());
         if (clickedItems.size() == 2) {
             if (clickedItems.last().equals("hammer") && clickedItems.first().equals("aluminum")) {
                 UI.currentDialogue = "You smash that aluminum into a fine metal hat.\nSelect the item from your inventory to wear it.\nThat's the only item you can build for now.";
