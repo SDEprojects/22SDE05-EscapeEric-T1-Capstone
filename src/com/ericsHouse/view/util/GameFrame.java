@@ -73,6 +73,9 @@ public class GameFrame extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * @throws IOException if the GamePanel isn't set up, it throws an IOException.
+     */
     public static void reset() throws IOException {
         //timer
         Time.resetUpTimer(sidePanel.time());
@@ -83,6 +86,7 @@ public class GameFrame extends JFrame implements ActionListener {
         //main panel
         Player.setDefaultValues();
         RoomMap.resetMap(gamePanel);
+        //sets up the game room again.
         GamePanel.setUpGame();
     }
 
