@@ -24,18 +24,34 @@ public class RoomMap {
     static GamePanel gp;
     public static Map<String, Room> roomMap;
 
+    /**
+     * A class to blueprint and hold the instantiated rooms to be accessed by the game
+     * @param gp current instance of the game
+     * @throws IOException
+     */
     public RoomMap(GamePanel gp) throws IOException {
         RoomMap.gp = gp;
         roomMap = new HashMap<>();
         generateRooms();
     }
 
+    /**
+     * Function to reset the instance of the maps to initial game load for the game restart
+     * @param gp current instance of the game
+     * @throws IOException
+     */
     public static void resetMap(GamePanel gp) throws IOException {
         RoomMap.gp = gp;
         roomMap.clear();
         generateRooms();
     }
 
+    /**
+     * Instantiating the rooms, this is called on game load
+     *  upon generation of the rooms, all the assets/objects, tiles and images are created as well
+     * @throws IOException thrown during the created of the Kitchen Tile manager,
+     *  possible error in reading the JSON files, i.e. non-existent, corrupted
+     */
     public static void generateRooms() throws IOException {
         //KITCHEN TILES AND ASSETS
         Rectangle kEntranceIntersect = new Rectangle(760, 340, 11, 48 * 2);
