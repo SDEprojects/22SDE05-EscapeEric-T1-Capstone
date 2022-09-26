@@ -2,6 +2,7 @@ package com.ericsHouse.view.object.garage;
 
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.util.UI;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,21 +28,19 @@ public class OBJ_Door extends SuperObject {
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2 + 5, null);
+        g2.drawImage(image, screenX, screenY, GamePanel.tileSize * 2, GamePanel.tileSize * 2 + 5, null);
 
     }
 
     @Override
     public void interact(String objIndex, GamePanel gp) {
-        List<SuperObject> hasGlasses = gp.player.getBackpack().stream().filter(obj -> obj.name.equals("glasses")).collect(Collectors.toList());
-            if (hasGlasses.size() > 0){
-            gp.ui.currentDialogue = "You open the door and get ready to solve some puzzles!!\nLet's escape Eric's house";
+        List<SuperObject> hasNote = gp.player.getBackpack().stream().filter(obj -> obj.name.equals("note")).collect(Collectors.toList());
+            if (hasNote.size() > 0){
+            UI.currentDialogue = "You open the door and get ready to solve some puzzles!!\nLet's escape Eric's house";
             currentRoom.mapObjects.remove(objIndex);
-            gp.gameState = gp.dialogueState;
-        } else {
-            System.out.println(gp.player.getBackpack());
-            gp.ui.currentDialogue = "You hear Shaq's voice...\n'HEY get that note first.\nIt's important you know what's going on.'\n";
-            gp.gameState = gp.dialogueState;
-        }
+            } else {
+            UI.currentDialogue = "You hear Shaq's voice...\n'HEY get that note first.\nIt's important you know what's going on.'\n";
+            }
+        GamePanel.gameState = GamePanel.dialogueState;
     }
 }
