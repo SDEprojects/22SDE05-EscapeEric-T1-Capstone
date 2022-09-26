@@ -35,7 +35,6 @@ public class OBJ_Note extends SuperObject {
 
     @Override
     public void interact(String objIndex, GamePanel gp) {
-        //TODO - refactor this check so that it's not so hard coded
         List<SuperObject> hasGlasses = gp.player.getBackpack().stream().filter(obj -> obj.name.equals("glasses")).collect(Collectors.toList());
         if (gettable && hasGlasses.size() > 0) {
             gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);

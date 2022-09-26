@@ -40,7 +40,7 @@ public class Time {
 
     }
     public static void resetUpTimer( JLabel label) {
-        minute = 4;
+        minute = 8;
         second = 0;
         gameTimer.stop();
         gameTimer = new Timer(1000, e -> {

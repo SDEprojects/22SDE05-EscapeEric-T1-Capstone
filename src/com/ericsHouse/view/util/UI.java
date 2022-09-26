@@ -200,15 +200,15 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        x += gp.tileSize;
-        y += gp.tileSize;
+        x += gp.tileSize ;
+        y += gp.tileSize * 7;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
-            y += 40;
+            y += 20;
         }
-        g2.drawString(subState == gp.optionOne ? ">   Restart" : "   Restart", x, y + gp.tileSize);
+        g2.drawString(subState == gp.optionOne ? ">   Restart" : "   Restart", x, y + gp.tileSize );
         g2.drawString(subState == gp.optionTwo ? ">   End Game" : "   End Game", x, y + gp.tileSize * 2);
-        g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
+        g2.drawString("Press 'E' To Submit Your Answer", x, height - 50);
     }
     public static void playAgain(int subState) throws IOException{
         if(subState == 1){
