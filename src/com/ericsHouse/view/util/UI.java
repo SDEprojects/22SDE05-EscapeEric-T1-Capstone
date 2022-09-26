@@ -196,7 +196,6 @@ public class UI {
             return true;
         }else{
             int rps = (int) (Math.random() * 3) + 1;
-            System.out.println(rps + " " + selection);
             return rps == selection;
         }
     }

@@ -49,7 +49,7 @@ public class OBJ_Bathroom extends SuperObject {
                 GamePanel.gameState = GamePanel.dialogueState;
             }
             catch (NullPointerException ex){
-                System.out.println("No descriptions");
+                ex.printStackTrace();
             }
         }
     }
