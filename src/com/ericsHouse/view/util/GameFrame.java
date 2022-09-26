@@ -89,7 +89,6 @@ public class GameFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(gameState);
         if (e.getSource() == sidePanel.askShaqButton) {
             if (gameState != GamePanel.deathState && gameState != introState) {
                 UI.currentDialogue = JsonParser.getPrompt("askShaq");
