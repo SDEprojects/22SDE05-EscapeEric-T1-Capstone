@@ -9,6 +9,10 @@ import static com.ericsHouse.view.util.WordOrder.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WordOrderTest {
+    /**
+     * Testing if in the living room if the items aren't inputted correctly
+     * then it returns false, I tried a different order, and it does work.
+     */
 
     @Test
     void generateCompareListTest() {
@@ -23,7 +27,6 @@ class WordOrderTest {
     }
 
     @Test
-            //I tried it in a different order, and it didn't run correctly.
     void checkLists() {
         compareList.add("oranges");
         compareList.add("pears");
