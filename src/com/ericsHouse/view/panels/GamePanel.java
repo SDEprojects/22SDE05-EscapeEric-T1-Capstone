@@ -18,6 +18,9 @@ import java.io.IOException;
 
 import static javax.swing.SwingUtilities.invokeLater;
 
+/**
+ * GamePanel is the main object
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     public static int objIndex;
