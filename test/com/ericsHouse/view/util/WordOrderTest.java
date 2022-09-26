@@ -8,6 +8,7 @@ import static com.ericsHouse.view.util.WordOrder.compareList;
 
 class WordOrderTest {
     @Test
+            //I tried it in a different order, and it didn't run correctly.
     void checkLists() {
         compareList.add("oranges");
         compareList.add("pears");
