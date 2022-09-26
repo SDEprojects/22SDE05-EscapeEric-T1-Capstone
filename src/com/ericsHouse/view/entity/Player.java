@@ -15,10 +15,14 @@ public class Player extends Entity {
 
     public static ArrayList<SuperObject> backpack = new ArrayList<>();
     public static boolean hatEquipped = false;
-    private static boolean glassesEquipped = false;
     GamePanel gp;
     KeyHandler keyH;
 
+    /**
+     * Constructor for the Player character that the user will play as
+     * @param gp current instance of the game panel
+     * @param keyH key handler for the character's/users input
+     */
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -35,6 +39,10 @@ public class Player extends Entity {
         getPlayerImage();
     }
 
+    /**
+     * Method for setting the Player's default position, speed and downward facing pixel graphic
+     * Also used as a part of the game restart mechanism
+     */
     public static void setDefaultValues() {
         playerX = 300;
         playerY = 300;
@@ -42,6 +50,9 @@ public class Player extends Entity {
         direction = "down";
     }
 
+    /**
+     * Method to grab the 2d pixel rendition of the Player pending on movement and directional positioning
+     */
     public void getPlayerImage() {
         try {
             up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/boy_up_1.png")));
@@ -57,6 +68,9 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * Method in grabbing 2d pixel rendition of Player when the aluminium hat is equipped
+     */
     public void newHat(){
         try {
             up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/character_images/david/mh_up_1.png")));
@@ -72,6 +86,11 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * This method continually checks on the input of the user in terms of movement or colliding with
+     *  other objects
+     * @throws IOException
+     */
     public void update() throws IOException {
         if (keyH.leftPressed || keyH.downPressed || keyH.upPressed || keyH.rightPressed) {
             if (keyH.upPressed) {
@@ -124,6 +143,10 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * This method draws the Player onto the GUI, and pending on the direction, getting the appropriate sprite
+     * @param g2 the graphics of the player to protect
+     */
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         switch (direction) {
@@ -163,34 +186,35 @@ public class Player extends Entity {
         g2.drawImage(image, playerX, playerY, gp.tileSize, gp.tileSize, null);
     }
 
+    /**
+     * Getter for the ArrayList backpack
+     * @return the arrayList backpack/inventory
+     */
     public ArrayList<SuperObject> getBackpack() {
         return backpack;
     }
 
+    /**
+     * Adds an item to the ArrayList backpack
+     * @param item gettable object to be added to backpack/inventory
+     */
     public static void addItem(SuperObject item) {
         backpack.add(item);
     }
 
+    /**
+     * Removes an item from the ArrayList backpack
+     * @param item object inside backpack/inventory to be removed
+     */
     public static void removeItem(SuperObject item) {
         backpack.remove(item);
     }
+
+    /**
+     * Method apart of the restart game mechanic where it resets the backpack to default, empty
+     * @param item the ArrayList backpack
+     */
     public static void removeAllItems(ArrayList<SuperObject> item) {
         item.clear();
-    }
-
-    public static void equipHat() {
-        hatEquipped = true;
-    }
-
-    public static void equipGlasses() {
-        glassesEquipped = true;
-    }
-
-    public static boolean isHatEquipped() {
-        return hatEquipped;
-    }
-
-    public static boolean isGlassesEquipped() {
-        return glassesEquipped;
     }
 }

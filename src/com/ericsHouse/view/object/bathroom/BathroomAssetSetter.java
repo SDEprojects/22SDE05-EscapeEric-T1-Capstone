@@ -7,10 +7,18 @@ import static com.ericsHouse.rooms.RoomMap.roomMap;
 
 public class BathroomAssetSetter extends AssetSetter {
 
+    /**
+     * Constructor for the Bathroom Asset Setter
+     * @param gp takes in the current game panel state
+     */
     public BathroomAssetSetter(GamePanel gp) {
         super(gp);
     }
 
+    /**
+     * An override of the parent abstract class Asset Setter, adding all the objects inside the bathroom
+     * Currently hard coded, on expansion, object details will be relayed via JSON file
+     */
     @Override
     public void setObject() {
 

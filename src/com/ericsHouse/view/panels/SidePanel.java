@@ -41,6 +41,14 @@ public class SidePanel extends JPanel {
         return this.timerLabel;
     }
 
+    /**
+     * Primary constructor for the Side Panel that takes in the parameters listed below
+     *
+     * @param jframe Current part of the frame that helps with focus and event listening on certain components
+     * @param image  background image for the side panel
+     * @param gp     current state of the Game Panel
+     * @throws IOException
+     */
     public SidePanel(JFrame jframe, Image image, GamePanel gp) throws IOException {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -57,6 +65,10 @@ public class SidePanel extends JPanel {
         assistButtons.setBackground(Color.BLUE);
     }
 
+    /**
+     * This method is used to set up a new JLabel that holds the game timers text
+     * Calls Time.setUpTimer to start the timer and have it update persistently
+     */
     public void timerSetUp() {
         timerLabel.setFont(UI.importFont());
         timerLabel.setText("08:00");
@@ -71,6 +83,11 @@ public class SidePanel extends JPanel {
         this.add(timePanel, BorderLayout.PAGE_START);
     }
 
+    /**
+     * This method sets up the inventory panel/component that is in the Side Panel
+     *
+     * @param gp Current Game Panel state, with its appropriate fields are used
+     */
     public void inventorySetUp(GamePanel gp) {
 //        Player.addItem(new OBJ_Bedroom("side-table-girl", "/rooms/bedroom/bedroom_OBJ/side-table-girl.png", 14, 21));
         for (SuperObject item : gp.player.getBackpack()) {
@@ -93,6 +110,12 @@ public class SidePanel extends JPanel {
         this.add(inventory, BorderLayout.CENTER, 1);
     }
 
+    /**
+     * This method sets up the individual items that are in the inventory by making sure the
+     * item image is rendered inside the inventory
+     *
+     * @param sp SuperObject, specifically the object that is placed in the inventory
+     */
     public void inventorySetUp(SuperObject sp) {
         ImageIcon image = new ImageIcon(sp.image);
         Image newImg = image.getImage();
@@ -142,12 +165,20 @@ public class SidePanel extends JPanel {
         this.add(inventory, BorderLayout.CENTER, 1);
     }
 
+    /**
+     * This method is used to reset the state of all the items in the inventory
+     * Primarily for the restart of the game in the same instance
+     */
     public void resetItems() {
         Player.removeAllItems(Player.backpack);
         inventory.removeAll();
         inventory.repaint();
     }
 
+    /**
+     * This method is used to set up the 2 buttons, askShaq and help
+     * Specifically their sizes, event listeners and images
+     */
     public void buttonSetUp() {
         assistButtons.setPreferredSize(new Dimension(screenWidth, 156));
         assistButtons.setBackground(Color.CYAN);
@@ -170,7 +201,11 @@ public class SidePanel extends JPanel {
 
     }
 
-
+    /**
+     * Override of the default Jframe method to suit our usage
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -179,6 +214,11 @@ public class SidePanel extends JPanel {
         //g.drawImage(background, 0, 0, getWidth(), getHeight(), null); // image scaled
     }
 
+    /**
+     * Override of default getPreferredSize() to the applications preferred size
+     *
+     * @return the overwritten preferred size
+     */
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(this.image.getWidth(this), this.image.getHeight(this));
