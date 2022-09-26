@@ -33,7 +33,6 @@ public class OBJ_Door extends SuperObject {
 
     @Override
     public void interact(String objIndex, GamePanel gp) {
-        //TODO - refactor this check so that it's not so hard coded
         List<SuperObject> hasGlasses = gp.player.getBackpack().stream().filter(obj -> obj.name.equals("glasses")).collect(Collectors.toList());
             if (hasGlasses.size() > 0){
             gp.ui.currentDialogue = "You open the door and get ready to solve some puzzles!!\nLet's escape Eric's house";

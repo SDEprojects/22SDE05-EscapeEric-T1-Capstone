@@ -50,7 +50,7 @@ public class BedroomAssetSetter extends AssetSetter {
         bed2.screenY = 55 * 3;
         roomMap.get("bedroom").mapObjects.put("bed", bed2);
 
-        OBJ_Bedroom bird = new OBJ_Bedroom("bird", "/rooms/bedroom/bedroom_OBJ/bird.png", 15, 33);
+        OBJ_Bird bird = new OBJ_Bird("bird", "/rooms/bedroom/bedroom_OBJ/bird.png", 15, 33);
         bird.screenX = 19 * 3;
         bird.screenY = 151 * 3;
         bird.riddleItem = true;

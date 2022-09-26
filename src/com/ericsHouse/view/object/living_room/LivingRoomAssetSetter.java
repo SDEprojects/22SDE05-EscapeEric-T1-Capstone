@@ -71,7 +71,7 @@ public class LivingRoomAssetSetter extends AssetSetter {
         smallShelf2.screenY = 56 * 3;
         roomMap.get("living-room").mapObjects.put("smallShelf2", smallShelf2);
 
-        OBJ_LivingRoom fireplace = new OBJ_LivingRoom("fireplace", "/rooms/living_room/living_room_OBJ/fireplace.png", 27, 30);
+        OBJ_FirePlace fireplace = new OBJ_FirePlace("fireplace", "/rooms/living_room/living_room_OBJ/fireplace.png", 27, 30);
         fireplace.screenX = 120 * 3;
         fireplace.screenY = 42 * 3;
         roomMap.get("living-room").mapObjects.put("fireplace", fireplace);
@@ -132,8 +132,8 @@ public class LivingRoomAssetSetter extends AssetSetter {
         roomMap.get("living-room").mapObjects.put("emeraldEarrings", emeraldEarrings);
 
         OBJ_Dog dog = new OBJ_Dog("sleeping-dog", "/rooms/living_room/living_room_OBJ/sleeping-dog.png", 11, 12);
-        dog.screenX = 244 * 3;
-        dog.screenY = 105 * 3;
+        dog.screenX = 240 * 3;
+        dog.screenY = 99 * 3;
         roomMap.get("living-room").mapObjects.put("dog", dog);
 
         OBJ_SideLamp sideLamp = new OBJ_SideLamp("side-lamp", "/rooms/living_room/living_room_OBJ/side-lamp.png", 13, 29);
