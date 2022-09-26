@@ -1,8 +1,10 @@
 package com.ericsHouse.view.object.garage;
 
 import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.util.UI;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,7 +29,7 @@ public class OBJ_Glasses extends SuperObject {
 
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, GamePanel.tileSize, GamePanel.tileSize, null);
     }
 
     @Override
@@ -38,15 +40,15 @@ public class OBJ_Glasses extends SuperObject {
             } catch (IOException e) {
 
             }
-                gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
-                gp.player.addItem(currentRoom.mapObjects.get(objIndex));
+                UI.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name);
+                Player.addItem(currentRoom.mapObjects.get(objIndex));
                 sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
                 currentRoom.mapObjects.remove(objIndex);
-                gp.gameState = gp.dialogueState;
+                GamePanel.gameState = GamePanel.dialogueState;
             }
             else {
-                gp.gameState = gp.dialogueState;
-                gp.ui.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nTry looking at all the objects in here.";
+                GamePanel.gameState = GamePanel.dialogueState;
+                UI.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nTry looking at all the objects in here.";
                 //System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
             }
     }

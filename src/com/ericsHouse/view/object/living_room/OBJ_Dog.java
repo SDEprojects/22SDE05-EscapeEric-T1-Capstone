@@ -78,7 +78,7 @@ public class OBJ_Dog extends SuperObject {
         }
         if(itemCount == 4){
             gp.gameState = gp.wordOrder;
-            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name);
             wo = new WordOrder(gp);
         }else{
             gp.ui.currentDialogue = "The dog gives you a look that makes you feel like\nyou may not have all the items you need.\nTry looking in the living-room and kitchen for the items.";

@@ -17,15 +17,15 @@ public class JsonParser {
 
 
     public JsonParser(String file) {
-        this.iStreamPrompts = getFileFromResourceAsStream(file);
+        iStreamPrompts = getFileFromResourceAsStream(file);
     }
 
-    public static String getPrompt(String prompt, GamePanel gp) {
+    public static String getPrompt(String prompt) {
         String item = null;
         try {
             InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
-            item = jsonNodePrompts.get(gp.currentRoom.name).get(prompt).textValue();
+            item = jsonNodePrompts.get(GamePanel.currentRoom.name).get(prompt).textValue();
             return item;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -35,12 +35,12 @@ public class JsonParser {
         return item;
     }
 
-    public static String riddleParser(String prompt, GamePanel gp) {
+    public static String riddleParser(String prompt) {
         String item = null;
         try {
             InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
-            item = jsonNodePrompts.get(gp.currentRoom.name).get(prompt).get("riddle").textValue();
+            item = jsonNodePrompts.get(GamePanel.currentRoom.name).get(prompt).get("riddle").textValue();
             return item;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class JsonParser {
         try {
             InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
-            item = jsonNodePrompts.get(gp.currentRoom.name).get(prompt).get("answers").get(answer).textValue();
+            item = jsonNodePrompts.get(GamePanel.currentRoom.name).get(prompt).get("answers").get(answer).textValue();
             return item;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -65,12 +65,12 @@ public class JsonParser {
         return item;
     }
 
-    public static String doorParser(GamePanel gp) {
+    public static String doorParser() {
         String item = null;
         try {
             InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
-            item = jsonNodePrompts.get(gp.currentRoom.name).get("door").get("locked").textValue();
+            item = jsonNodePrompts.get(GamePanel.currentRoom.name).get("door").get("locked").textValue();
             return item;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -80,12 +80,12 @@ public class JsonParser {
         return item;
     }
 
-    public static String doorUnlockedParser( GamePanel gp){
+    public static String doorUnlockedParser() {
         String item = null;
         try {
             InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
-            item = jsonNodePrompts.get(gp.currentRoom.name).get("door").get("unlocked").textValue();
+            item = jsonNodePrompts.get(GamePanel.currentRoom.name).get("door").get("unlocked").textValue();
             return item;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -95,12 +95,12 @@ public class JsonParser {
         return item;
     }
 
-    public static String RockPaperScissors(GamePanel gp) {
+    public static String RockPaperScissors() {
         String item = null;
         try {
             InputStream is = getFileFromResourceAsStream("roomPrompts.json");
             jsonNodePrompts = objectMapper.readTree(is);
-            item = jsonNodePrompts.get(gp.currentRoom.name).get("david-mirror").get("info").textValue();
+            item = jsonNodePrompts.get(GamePanel.currentRoom.name).get("david-mirror").get("info").textValue();
             return item;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
