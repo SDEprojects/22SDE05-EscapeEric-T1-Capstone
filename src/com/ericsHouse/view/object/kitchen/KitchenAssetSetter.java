@@ -6,10 +6,19 @@ import com.ericsHouse.view.panels.GamePanel;
 import static com.ericsHouse.rooms.RoomMap.roomMap;
 
 public class KitchenAssetSetter extends AssetSetter {
+
+    /**
+     * Constructor for the Kitchen Asset Setter
+     * @param gp current state of the game panel
+     */
     public KitchenAssetSetter(GamePanel gp) {
         super(gp);
     }
 
+    /**
+     * An override of the parent abstract class Asset Setter, adding all the objects inside the bathroom
+     * Currently hard coded, on expansion, object details will be relayed via JSON file
+     */
     @Override
     public void setObject() {
 

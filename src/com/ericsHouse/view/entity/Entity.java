@@ -3,7 +3,11 @@ package com.ericsHouse.view.entity;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Entity {
+/**
+ * An abstract parent class for all entities/characters in the game
+ *  currently only Player extends but pending expansion, future character will be inheritors of this class
+ */
+public abstract class Entity {
 
     public static int playerX;
     public static int playerY;

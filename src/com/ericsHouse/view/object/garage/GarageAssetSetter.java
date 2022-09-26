@@ -7,11 +7,18 @@ import static com.ericsHouse.rooms.RoomMap.roomMap;
 
 public class GarageAssetSetter extends AssetSetter {
 
-
+    /**
+     * Constructor for the Garage Asset Setter
+     * @param gp current state of the game panel
+     */
     public GarageAssetSetter(GamePanel gp) {
         super(gp);
     }
 
+    /**
+     * An override of the parent abstract class Asset Setter, adding all the objects inside the bathroom
+     * Currently hard coded, on expansion, object details will be relayed via JSON file
+     */
     @Override
     public void setObject() {
         //Y moves object up and down
