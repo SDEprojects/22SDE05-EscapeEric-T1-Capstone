@@ -42,7 +42,7 @@ public class OBJ_WorkBench extends SuperObject {
             gp.ui.currentDialogue = "To build a new item:\n1.Click on the hammer.\n2. Click the item you would like to craft.\n";
             gp.gameState = gp.craftState;
         }else{
-            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name);
             gp.gameState = gp.dialogueState;
         }
     }

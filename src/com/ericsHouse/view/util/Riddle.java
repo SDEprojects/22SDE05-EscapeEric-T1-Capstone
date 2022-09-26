@@ -14,7 +14,6 @@ public class Riddle {
     public static int riddleCount = 0;
     public static boolean riddleCorrect = false;
 
-
     public static void checkRiddle(GamePanel gp) {
 
         int riddleAnswer = Integer.parseInt(JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correct", gp));

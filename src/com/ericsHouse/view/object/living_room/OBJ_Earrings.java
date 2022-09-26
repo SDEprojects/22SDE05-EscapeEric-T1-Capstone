@@ -40,7 +40,7 @@ public class OBJ_Earrings extends SuperObject {
     public void interact(String objIndex, GamePanel gp) {
         if (gettable) {
 
-            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name);
             gp.player.addItem(currentRoom.mapObjects.get(objIndex));
             sidePanel.inventorySetUp(currentRoom.mapObjects.get(objIndex));
             currentRoom.mapObjects.remove(objIndex);

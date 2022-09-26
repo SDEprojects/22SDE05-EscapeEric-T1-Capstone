@@ -9,7 +9,7 @@ public class Music {
     public static Clip clip;
     public static FloatControl gainControl;
     public static ClassLoader classLoader;
-
+    //creates a thread for the music.
     public static void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         classLoader = Thread.currentThread().getContextClassLoader();
         InputStream musicStream = classLoader.getResourceAsStream("sounds/8-Bit-Bop.wav");
@@ -29,7 +29,7 @@ public class Music {
         clip.start();
         clip.loop(clip.LOOP_CONTINUOUSLY);
     }
-
+    //Stops the music
     public static void stop() {
         //stops the current clip
         clip.stop();

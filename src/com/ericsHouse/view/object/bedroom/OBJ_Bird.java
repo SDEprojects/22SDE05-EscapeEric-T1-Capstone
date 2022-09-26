@@ -3,8 +3,7 @@ package com.ericsHouse.view.object.bedroom;
 import com.ericsHouse.jsonParser.JsonParser;
 import com.ericsHouse.view.object.SuperObject;
 import com.ericsHouse.view.panels.GamePanel;
-import com.ericsHouse.view.util.WordOrder;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ericsHouse.view.util.UI;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -131,17 +130,17 @@ public class OBJ_Bird extends SuperObject {
     @Override
     public void interact(String objIndex, GamePanel gp) {
         if (Objects.equals(currentRoom.mapObjects.get(objIndex).name, "door")) {
-            gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = JsonParser.doorParser(gp);
+            GamePanel.gameState = GamePanel.dialogueState;
+            UI.currentDialogue = JsonParser.doorParser();
         } else if (this.riddleItem && !this.solved) {
-            gp.gameState = gp.riddleState;
-            gp.ui.currentDialogue = JsonParser.riddleParser(currentRoom.mapObjects.get(objIndex).name, gp);
+            GamePanel.gameState = gp.riddleState;
+            UI.currentDialogue = JsonParser.riddleParser(currentRoom.mapObjects.get(objIndex).name);
         } else if (this.riddleItem) {
-            gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
+            GamePanel.gameState = GamePanel.dialogueState;
+            UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
         } else {
-            gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name, gp);
+            GamePanel.gameState = GamePanel.dialogueState;
+            UI.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name);
         }
     }
 }
