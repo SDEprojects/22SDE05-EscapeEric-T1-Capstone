@@ -20,6 +20,9 @@ public class UI {
     Font pixelFont;
     public static String currentDialogue = "";
 
+    /**
+     * UI for this GP.
+     */
     public UI(GamePanel gp) {
         this.gp = gp;
         pixelFont = importFont();
@@ -36,6 +39,10 @@ public class UI {
         return null;
     }
 
+    /**
+     * @param g2 Used to display the color for the dialogue boxes.
+     * Whenever the game state changes then it calls a function within.
+     */
     public void draw(Graphics2D g2) {
         this.g2 = g2;
         g2.setFont(pixelFont);
@@ -82,6 +89,9 @@ public class UI {
     }
 
 
+    /**
+     * Creates the dialogue screen when you interact with an object.
+     */
     private void drawDialogueScreen() {
         int x = GamePanel.tileSize * 2;
         int y = GamePanel.tileSize / 2;
@@ -101,6 +111,12 @@ public class UI {
         }
     }
 
+    /**
+     * @param subState Depending on the sub-state you are
+     *                 able to pick what answer you want to use.
+     *                 using a ternary you can have a highlighted
+     *                 > mark.
+     */
     private void drawRiddleScreen(int subState) {
         int x = GamePanel.tileSize * 2;
         int y = GamePanel.tileSize / 2;
@@ -128,6 +144,9 @@ public class UI {
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
 
+    /**
+     * You draw the dialogue for the word order riddle.
+     */
     private void drawWordOrderScreen() {
         int x = GamePanel.tileSize * 2;
         int y = GamePanel.tileSize / 2;
@@ -144,6 +163,11 @@ public class UI {
         g2.drawString("Click the items in your inventory in the right order.", width - 425, height);
     }
 
+    /**
+     * @param subState uses the sub-state to pick the
+     *                 users rock paper scissors, pick
+     *                 uses a ternary in order to highlight.
+     */
     public void rockPaperScissorsDisplay(int subState) {
         int x = GamePanel.tileSize * 2;
         int y = GamePanel.tileSize / 2;
@@ -162,6 +186,11 @@ public class UI {
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
 
+    /**
+     * @param selection takes in the selection.
+     * @return returns a true false if you won.
+     *
+     */
     public static boolean checkWin(int selection) {
         if(Player.hatEquipped){
             return true;

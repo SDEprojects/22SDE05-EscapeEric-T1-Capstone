@@ -7,8 +7,11 @@ import static com.ericsHouse.view.util.WordOrder.clickedObJ;
 import static com.ericsHouse.view.util.WordOrder.compareList;
 
 class WordOrderTest {
+    /**
+     * Testing if in the living room if the items aren't inputted correctly
+     * then it returns false, I tried a different order, and it does work.
+     */
     @Test
-            //I tried it in a different order, and it didn't run correctly.
     void checkLists() {
         compareList.add("oranges");
         compareList.add("pears");
