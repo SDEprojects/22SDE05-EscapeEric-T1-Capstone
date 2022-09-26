@@ -37,9 +37,10 @@ public class SidePanel extends JPanel {
     private Image image;
     JLabel timerLabel = new JLabel("HELLOOOOOO");
 
-    public JLabel time(){
+    public JLabel time() {
         return this.timerLabel;
     }
+
     public SidePanel(JFrame jframe, Image image, GamePanel gp) throws IOException {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -99,27 +100,25 @@ public class SidePanel extends JPanel {
         ImageIcon imgI = new ImageIcon(img);
         JButton button = new JButton(imgI);
 
-        //JLabel label = new JLabel(sp.name);
         button.setPreferredSize(new Dimension(16 * 4, 16 * 4));
         button.setBorder(BorderFactory.createEmptyBorder());
         button.setName(sp.name);
-        //label.setVisible(false);
         button.setContentAreaFilled(false);
         button.addActionListener(e -> {
-            if(button.getName() == "aluminum hat"){
+            if (button.getName() == "aluminum hat") {
                 gp.player.newHat();
                 gp.player.hatEquipped = true;
             }
-            if(Crafter.hammerClicked && button.getName().equals("aluminum")){
+            if (Crafter.hammerClicked && button.getName().equals("aluminum")) {
                 inventory.remove(button);
             }
             if (gameState == GamePanel.wordOrder) {
                 OBJ_Dog.wo.addClickedObject(button.getName());
             }
-            if(gameState == GamePanel.craftState){
+            if (gameState == GamePanel.craftState) {
                 Crafter.addClickedItems(button.getName());
             }
-            if(gameState == gp.playState) {
+            if (gameState == gp.playState) {
                 try {
                     gp.ui.currentDialogue = JsonParser.itemDescriptions(sp.name);
                 } catch (IOException ex) {
@@ -142,12 +141,12 @@ public class SidePanel extends JPanel {
         c.gridwidth = 3;
         this.add(inventory, BorderLayout.CENTER, 1);
     }
-    public void resetItems(){
+
+    public void resetItems() {
         Player.removeAllItems(Player.backpack);
         inventory.removeAll();
         inventory.repaint();
     }
-
 
     public void buttonSetUp() {
         assistButtons.setPreferredSize(new Dimension(screenWidth, 156));

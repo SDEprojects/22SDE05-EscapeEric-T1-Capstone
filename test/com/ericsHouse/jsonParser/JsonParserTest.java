@@ -11,7 +11,6 @@ class JsonParserTest {
 
     @Test
     void getFileFromResourceAsStream() {
-
         // File exists
         InputStream is = JsonParser.getFileFromResourceAsStream("roomPrompts.json");
         assertNotNull(is);

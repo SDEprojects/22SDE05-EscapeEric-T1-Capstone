@@ -47,8 +47,8 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     //GAME STATES
     public static int gameState;
-    public final int introState = 0;
-    public final int playState = 1;
+    public static final int introState = 0;
+    public static final int playState = 1;
     public final int pauseState = 2;
     public static final int dialogueState = 3;
     public static final int deathState = 4;
@@ -68,9 +68,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int optionThree = 3;
 
     public static void setUpGame() {
-        currentRoom = RoomMap.roomMap.get("garage" );
+        currentRoom = RoomMap.roomMap.get("garage");
         currentRoom.setRoomItems("Eric's Garage");
-        gameState = 1;
+        gameState = GamePanel.playState;
     }
 
     public void setCurrentRoom(String roomName) {
@@ -94,7 +94,7 @@ public class GamePanel extends JPanel implements Runnable {
     //GAME ENGINE DELTA TIME
     //calculates the time difference between the previous frame that was drawn and the current frame
     public void run() {
-        double drawInterval = 1000000000 / FPS;
+        double drawInterval = 16666666;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -132,7 +132,6 @@ public class GamePanel extends JPanel implements Runnable {
             player.update();
         }
         if (gameState == pauseState) {
-
         }
     }
 

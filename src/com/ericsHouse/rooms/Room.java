@@ -18,7 +18,7 @@ public class Room {
     GamePanel gp;
     AssetSetter assetSetter;
     public Map<String, SuperObject> mapObjects;
-    private TileManager tileManager;
+    private final TileManager tileManager;
     public String entrance;
     public String exit;
     public Rectangle entranceIntersect;

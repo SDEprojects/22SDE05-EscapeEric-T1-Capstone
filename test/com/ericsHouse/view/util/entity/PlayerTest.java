@@ -1,5 +1,6 @@
-package com.ericsHouse.view.entity;
+package com.ericsHouse.view.util.entity;
 
+import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.garage.OBJ_Dresser;
 import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.util.KeyHandler;

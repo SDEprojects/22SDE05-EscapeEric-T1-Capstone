@@ -22,7 +22,6 @@ public class UI {
 
     public UI(GamePanel gp) {
         this.gp = gp;
-//        ariel = new Font("Arial", Font.PLAIN, 18);
         pixelFont = importFont();
     }
 
@@ -30,8 +29,7 @@ public class UI {
         InputStream is = UI.class.getResourceAsStream("/font_style/PressStart2P-Regular.ttf");
         try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-            Font sizedFont = font.deriveFont(9f);
-            return sizedFont;
+            return font.deriveFont(9f);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
@@ -42,61 +40,61 @@ public class UI {
         this.g2 = g2;
         g2.setFont(pixelFont);
         g2.setColor(Color.white);
-        if (gp.gameState == gp.playState) {
+        if (GamePanel.gameState == GamePanel.playState) {
             //Do nothing
         }
-        if(gp.gameState == gp.introState){
-            drawIntroScreen(0, 0, gp.screenWidth, gp.screenHeight);
+        if(GamePanel.gameState == GamePanel.introState){
+            drawIntroScreen(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
         }
-        if (gp.gameState == gp.pauseState) {
+        if (GamePanel.gameState == gp.pauseState) {
             pauseScreen();
         }
-        if (gp.gameState == gp.dialogueState) {
+        if (GamePanel.gameState == GamePanel.dialogueState) {
             drawDialogueScreen();
         }
-        if (gp.gameState == gp.riddleState) {
+        if (GamePanel.gameState == gp.riddleState) {
             drawRiddleScreen(gp.subState);
         }
-        if (gp.gameState == gp.riddleCorrect) {
+        if (GamePanel.gameState == gp.riddleCorrect) {
             drawDialogueScreen();
         }
-        if (gp.gameState == gp.riddleIncorrect) {
+        if (GamePanel.gameState == gp.riddleIncorrect) {
             drawDialogueScreen();
         }
-        if (gp.gameState == gp.deathState) {
-            drawDeathScreen(0, 0, gp.screenWidth, gp.screenHeight, gp.subState);
+        if (GamePanel.gameState == GamePanel.deathState) {
+            drawDeathScreen(0, 0, GamePanel.screenWidth, GamePanel.screenHeight, gp.subState);
         }
-        if (gp.gameState == gp.rockPaperScissors) {
+        if (GamePanel.gameState == gp.rockPaperScissors) {
             rockPaperScissorsDisplay(gp.subState);
         }
-        if (gp.gameState == gp.wordOrder) {
+        if (GamePanel.gameState == GamePanel.wordOrder) {
             drawWordOrderScreen();
         }
-        if(gp.gameState == gp.winState){
-            drawWinScreen(0, 0, gp.screenWidth, gp.screenHeight);
+        if(GamePanel.gameState == GamePanel.winState){
+            drawWinScreen(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
         }
-        if(gp.gameState == gp.Shaq){
+        if(GamePanel.gameState == gp.Shaq){
             drawShaq();
         }
-        if(gp.gameState == gp.craftState){
+        if(GamePanel.gameState == GamePanel.craftState){
             drawDialogueScreen();
         }
     }
 
 
     private void drawDialogueScreen() {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 7;
+        int x = GamePanel.tileSize * 2;
+        int y = GamePanel.tileSize / 2;
+        int width = GamePanel.screenWidth - (GamePanel.tileSize * 4);
+        int height = GamePanel.tileSize * 7;
         drawSubWindow(x, y, width, height);
-        x += gp.tileSize;
-        y += gp.tileSize;
+        x += GamePanel.tileSize;
+        y += GamePanel.tileSize;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 40;
         }
-        if(gp.gameState == gp.craftState){
+        if(GamePanel.gameState == GamePanel.craftState){
             g2.drawString("Press 'E' When you are done", width - 160, height);
         }else{
             g2.drawString("Press 'E' To Continue", width - 125, height);
@@ -104,13 +102,13 @@ public class UI {
     }
 
     private void drawRiddleScreen(int subState) {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 10;
+        int x = GamePanel.tileSize * 2;
+        int y = GamePanel.tileSize / 2;
+        int width = GamePanel.screenWidth - (GamePanel.tileSize * 4);
+        int height = GamePanel.tileSize * 10;
         drawSubWindow(x, y, width, height);
-        x += gp.tileSize;
-        y += gp.tileSize;
+        x += GamePanel.tileSize;
+        y += GamePanel.tileSize;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 40;
@@ -123,21 +121,21 @@ public class UI {
         String riddleThree = subState == gp.optionThree ? ">  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "three", gp) :
                 "  " + JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "three", gp);
 
-        g2.drawString(riddleOne, x, y + gp.tileSize);
-        g2.drawString(riddleTwo, x, y + gp.tileSize * 2);
-        g2.drawString(riddleThree, x, y + gp.tileSize * 3);
+        g2.drawString(riddleOne, x, y + GamePanel.tileSize);
+        g2.drawString(riddleTwo, x, y + GamePanel.tileSize * 2);
+        g2.drawString(riddleThree, x, y + GamePanel.tileSize * 3);
 
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
 
     private void drawWordOrderScreen() {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 7;
+        int x = GamePanel.tileSize * 2;
+        int y = GamePanel.tileSize / 2;
+        int width = GamePanel.screenWidth - (GamePanel.tileSize * 4);
+        int height = GamePanel.tileSize * 7;
         drawSubWindow(x, y, width, height);
-        x += gp.tileSize;
-        y += gp.tileSize;
+        x += GamePanel.tileSize;
+        y += GamePanel.tileSize;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 40;
@@ -147,20 +145,20 @@ public class UI {
     }
 
     public void rockPaperScissorsDisplay(int subState) {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 10;
+        int x = GamePanel.tileSize * 2;
+        int y = GamePanel.tileSize / 2;
+        int width = GamePanel.screenWidth - (GamePanel.tileSize * 4);
+        int height = GamePanel.tileSize * 10;
         drawSubWindow(x, y, width, height);
-        x += gp.tileSize;
-        y += gp.tileSize;
+        x += GamePanel.tileSize;
+        y += GamePanel.tileSize;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 40;
         }
-        g2.drawString(subState == gp.optionOne ? ">   Rock" : "   Rock", x, y + gp.tileSize);
-        g2.drawString(subState == gp.optionTwo ? ">   Paper" : "   Paper", x, y + gp.tileSize * 2);
-        g2.drawString(subState == gp.optionThree ? ">   Scissors" : "   Scissors", x, y + gp.tileSize * 3);
+        g2.drawString(subState == gp.optionOne ? ">   Rock" : "   Rock", x, y + GamePanel.tileSize);
+        g2.drawString(subState == gp.optionTwo ? ">   Paper" : "   Paper", x, y + GamePanel.tileSize * 2);
+        g2.drawString(subState == gp.optionThree ? ">   Scissors" : "   Scissors", x, y + GamePanel.tileSize * 3);
         g2.drawString("Press 'E' To Submit Your Answer", width - 250, height);
     }
 
@@ -187,8 +185,8 @@ public class UI {
     public void pauseScreen() {
         String text = "Pause";
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = gp.screenWidth / 2 - length / 2;
-        int y = gp.screenHeight / 2;
+        int x = GamePanel.screenWidth / 2 - length / 2;
+        int y = GamePanel.screenHeight / 2;
         g2.drawString(text, x, y);
     }
 
@@ -200,14 +198,14 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        x += gp.tileSize ;
-        y += gp.tileSize * 7;
+        x += GamePanel.tileSize;
+        y += GamePanel.tileSize * 7;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 20;
         }
-        g2.drawString(subState == gp.optionOne ? ">   Restart" : "   Restart", x, y + gp.tileSize );
-        g2.drawString(subState == gp.optionTwo ? ">   End Game" : "   End Game", x, y + gp.tileSize * 2);
+        g2.drawString(subState == gp.optionOne ? ">   Restart" : "   Restart", x, y + GamePanel.tileSize);
+        g2.drawString(subState == gp.optionTwo ? ">   End Game" : "   End Game", x, y + GamePanel.tileSize * 2);
         g2.drawString("Press 'E' To Submit Your Answer", x, height - 50);
     }
     public static void playAgain(int subState) throws IOException{
@@ -239,10 +237,10 @@ public class UI {
     }
 
     private void drawShaq() {
-        int shaqx = gp.tileSize * 5;
-        int shaqy = gp.tileSize - 20;
-        int shaqwidth = gp.tileSize * 5;
-        int shaqheight = gp.tileSize * 4;
+        int shaqx = GamePanel.tileSize * 5;
+        int shaqy = GamePanel.tileSize - 20;
+        int shaqwidth = GamePanel.tileSize * 5;
+        int shaqheight = GamePanel.tileSize * 4;
         BufferedImage image = null;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/rooms/garage/garage_OBJ/ask-shaq.png"));
@@ -250,14 +248,14 @@ public class UI {
             e.printStackTrace();
         }
 
-        int x = gp.tileSize * 2 -20;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 11;
+        int x = GamePanel.tileSize * 2 -20;
+        int y = GamePanel.tileSize / 2;
+        int width = GamePanel.screenWidth - (GamePanel.tileSize * 4);
+        int height = GamePanel.tileSize * 11;
 
         drawSubWindow(x, y, width, height);
-        x += gp.tileSize;
-        y += gp.tileSize *5;
+        x += GamePanel.tileSize;
+        y += GamePanel.tileSize *5;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 40;

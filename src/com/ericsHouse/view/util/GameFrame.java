@@ -17,6 +17,8 @@ import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import static com.ericsHouse.view.panels.GamePanel.gameState;
+
 public class GameFrame extends JFrame implements ActionListener {
     public static JFrame window;
     public static SidePanel sidePanel;
@@ -65,23 +67,20 @@ public class GameFrame extends JFrame implements ActionListener {
             }
         });
         sidePanel.setFocusable(false);
-        //TODO - Put intro screen before game panel is started
-        gamePanel.setUpGame();
-        //sidePanel.inventoryDisplay();
+        GamePanel.setUpGame();
         gamePanel.startGameThread();
-        gamePanel.gameState = gamePanel.introState;
-        //gameTimer.start();
-        //gameTimer.stop();
+        gameState = GamePanel.introState;
+
     }
 
     public static void reset() throws IOException {
         //timer
         Time.resetUpTimer(sidePanel.time());
         Time.gameTimer.start();
-        //inv
+        //inv panel
         sidePanel.inventorySetUp(new GamePanel());
         sidePanel.resetItems();
-        //
+        //main panel
         Player.setDefaultValues();
         RoomMap.resetMap(gamePanel);
         GamePanel.setUpGame();
@@ -89,19 +88,19 @@ public class GameFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println(gameState);
         if (e.getSource() == sidePanel.askShaqButton) {
-
-            if (GamePanel.gameState != GamePanel.deathState) {
-                gamePanel.ui.currentDialogue = JsonParser.getPrompt("askShaq", gamePanel);
-                gamePanel.gameState = gamePanel.Shaq;
+            if (gameState != GamePanel.deathState) {
+                UI.currentDialogue = JsonParser.getPrompt("askShaq");
                 gamePanel.setFocusable(true);
+                gameState = gamePanel.Shaq;
             }
         }
         if (e.getSource() == sidePanel.helpButton) {
-            if (GamePanel.gameState != GamePanel.deathState) {
-                gamePanel.ui.currentDialogue = JsonParser.getPrompt("help", gamePanel);
+            if (gameState != GamePanel.deathState) {
+                UI.currentDialogue = JsonParser.getPrompt("help");
                 gamePanel.setFocusable(true);
-                gamePanel.gameState = gamePanel.dialogueState;
+                gameState = GamePanel.dialogueState;
             }
         }
     }
