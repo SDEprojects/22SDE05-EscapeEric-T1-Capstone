@@ -1,13 +1,16 @@
 package com.ericsHouse.view.object.bathroom;
 
 import com.ericsHouse.jsonParser.JsonParser;
-import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.view.util.UI;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+
+import static com.ericsHouse.view.panels.GamePanel.currentRoom;
 
 public class OBJ_Bathroom extends SuperObject {
     public int width;
@@ -32,21 +35,21 @@ public class OBJ_Bathroom extends SuperObject {
     }
 
     @Override
-    public void interact(int objIndex, GamePanel gp) {
-        if (Objects.equals(gp.obj[objIndex].name, "david-mirror") && !win) {
-            gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = JsonParser.RockPaperScissors(gp);
-            gp.gameState = gp.rockPaperScissors;
+    public void interact(String objIndex, GamePanel gp) {
+        if (Objects.equals(currentRoom.mapObjects.get(objIndex).name, "david-mirror") && !win) {
+            GamePanel.gameState = GamePanel.dialogueState;
+            UI.currentDialogue = JsonParser.RockPaperScissors();
+            GamePanel.gameState = gp.rockPaperScissors;
         } else if (win) {
-            gp.ui.currentDialogue = "You've already beat your mirror reflection.";
-            gp.gameState = gp.dialogueState;
+            UI.currentDialogue = "You've already beat your mirror reflection.";
+            GamePanel.gameState = GamePanel.dialogueState;
         } else {
             try{
-                gp.ui.currentDialogue = JsonParser.getPrompt(gp.obj[objIndex].name, gp);
-                gp.gameState = gp.dialogueState;
+                UI.currentDialogue = JsonParser.getPrompt(currentRoom.mapObjects.get(objIndex).name);
+                GamePanel.gameState = GamePanel.dialogueState;
             }
             catch (NullPointerException ex){
-                System.out.println("No descriptions");
+                ex.printStackTrace();
             }
         }
     }

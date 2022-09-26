@@ -10,19 +10,23 @@ import com.ericsHouse.view.tile.TileManager;
 import com.ericsHouse.view.tile.garage.GarageTileManager;
 import com.ericsHouse.view.util.CollisionChecker;
 import com.ericsHouse.view.util.KeyHandler;
-import com.ericsHouse.view.util.Time;
 import com.ericsHouse.view.util.UI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+import static javax.swing.SwingUtilities.invokeLater;
+
+/**
+ * GamePanel is the main object
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     public static int objIndex;
     //CurrentGamePanelThread
     public boolean gpRun = true;
-    public Room currentRoom;
+    public static Room currentRoom;
     //SCREEN SETTINGS
     static final int originalTileSize = 16; // 16 x 16 tile
     static final int scale = 3;
@@ -39,8 +43,6 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetSetter assetSetter = new GarageAssetSetter(this);
 
     public Player player = new Player(this, keyH);
-
-    public static SuperObject[] obj = new SuperObject[10];
     Thread gameThread;
     public RoomMap allRooms = new RoomMap(this);
     public CollisionChecker cChecker = new CollisionChecker(this, tileM, assetSetter, player);
@@ -48,33 +50,33 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     //GAME STATES
     public static int gameState;
-    public final int playState = 1;
+    public static final int introState = 0;
+    public static final int playState = 1;
     public final int pauseState = 2;
     public static final int dialogueState = 3;
-    public final int deathState = 4;
+    public static final int deathState = 4;
     public final int riddleState = 5;
     public final int riddleCorrect = 6;
     public final int riddleIncorrect = 7;
     public final int rockPaperScissors = 8;
     public static final int wordOrder = 9;
+    public final int Shaq = 10;
+    public static final int winState = 11;
+    public static final int craftState = 12;
 
     //SUB STATES
-    public int subState = 0;
+    public int subState = 1;
     public final int optionOne = 1;
     public final int optionTwo = 2;
     public final int optionThree = 3;
-    public final int correctOption = 4;
 
-    public void setUpGame() {
-
-        //TODO make sure the player is starting in the garage
-        currentRoom = allRooms.roomMap.get("garage");
+    public static void setUpGame() {
+        currentRoom = RoomMap.roomMap.get("garage");
         currentRoom.setRoomItems("Eric's Garage");
-        gameState = playState;
+        gameState = GamePanel.playState;
     }
-
     public void setCurrentRoom(String roomName) {
-        currentRoom = allRooms.roomMap.get(roomName);
+        currentRoom = RoomMap.roomMap.get(roomName);
     }
 
     public GamePanel() throws IOException {
@@ -94,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable {
     //GAME ENGINE DELTA TIME
     //calculates the time difference between the previous frame that was drawn and the current frame
     public void run() {
-        double drawInterval = 1000000000 / FPS;
+        double drawInterval = 16666666;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -114,7 +116,8 @@ public class GamePanel extends JPanel implements Runnable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                repaint();
+                invokeLater(this::repaint);
+//                repaint();
 
                 delta--;
                 drawCount++;
@@ -131,10 +134,6 @@ public class GamePanel extends JPanel implements Runnable {
             player.update();
         }
         if (gameState == pauseState) {
-
-        }
-        if(!Time.gameTimer.isRunning()){
-            gameState = deathState;
         }
     }
 
@@ -148,10 +147,8 @@ public class GamePanel extends JPanel implements Runnable {
         tileM.draw(g2);
 
         //OBJECTS
-        for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null) {
-                obj[i].draw(g2, this);
-            }
+        for (SuperObject object : currentRoom.mapObjects.values()) {
+            object.draw(g2, this);
         }
         //PLAYER
         player.draw(g2);

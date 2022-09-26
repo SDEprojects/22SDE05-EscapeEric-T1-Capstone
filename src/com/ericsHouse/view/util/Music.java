@@ -9,17 +9,17 @@ public class Music {
     public static Clip clip;
     public static FloatControl gainControl;
     public static ClassLoader classLoader;
-
+    //creates a thread for the music.
     public static void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         classLoader = Thread.currentThread().getContextClassLoader();
         InputStream musicStream = classLoader.getResourceAsStream("sounds/8-Bit-Bop.wav");
         InputStream bufferedMusic = new BufferedInputStream(musicStream);
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedMusic);
         try {
-            if(clip.isActive()){
+            if (clip.isActive()) {
                 clip.stop();
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             //Do nothing if no clip exists, proceed as usual
         }
         clip = AudioSystem.getClip();
@@ -29,6 +29,7 @@ public class Music {
         clip.start();
         clip.loop(clip.LOOP_CONTINUOUSLY);
     }
+    //Stops the music
     public static void stop() {
         //stops the current clip
         clip.stop();

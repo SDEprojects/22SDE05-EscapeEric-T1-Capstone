@@ -1,27 +1,28 @@
 {
   "garage": {
     "gameStart": "You awaken to find yourself in a strange room...\nYou have no idea where you are or how you got here.\nYou rub your eyes and look around to see the room only has one door.\nOn the left side of the room is a small table with what seems to be a note sitting on it.",
-    "note": "Welcome to Eric's house!\n\tFind your way through the rooms to escape. Each room has a locked door\n\tthat will take you to the next room. It can be unlocked by solving the\n\tchallenge of that room.\n\tOh, I almost forgot.\n\tEric is also here and he’s looking for you.\n\tIt would be in your best interest to not let him find you.\n\tThe more attempts it takes to solve a challenge the more likely it is\n\the stumbles into the same room.\n\tGOOD LUCK!",
-    "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\n too bad he's trying to catch you.",
+    "note": "Welcome to Eric's house!\nLook for items that will help you get out\nand solve the puzzle of each room to escape.\nEric is also here and he’s looking for you.\nIt would be in your best interest to not let him find you.\nHead to the kitchen and get started.\nOH and Don't let your time run out. Good luck!!",
+    "poster": "What a cool collection of posters.\nLooks like you and Eric have the same taste in movies,\ntoo bad he's trying to catch you.",
     "car": "This is a pretty cool ride\nLooks like Eric's family Station Wagon.\nYou try the handle but the car is locked.\n",
     "dresser": "I like this dresser, such a great use of storage!\nOh and look A FROGGIE IS ON TOP OF ONE OF THEM!\n",
     "door": "You better read that note before you head forward\nProbably has some nifty tips\n",
     "glasses": "You found your glasses!!\nHow'd they end up here?",
-    "askShaq": "What's up, I'm Shaq!\nI'm here to help guide you out of Eric's house.\nTo get started, why don't you try inspecting that table \nto your left and reading that note.",
+    "askShaq": "What's up, I'm Shaq, your friendly business ghost!\nI'm here to help guide you out of Eric's house.\nTo move around use WASD\nTo interact with objects, walk close and press E.\nTo get started, why don't you try inspecting that table \nto your left and reading that note.",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n",
+    "workbench": "Looks like Eric likes to do crafting\nOnce you have a hammer and some useful items,\ncome back here to build cool wearables.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list."
   },
   "kitchen": {
-    "enterRoom": "Welcome to Room 1 - Knife Room:\nTo your left you see a bookshelf.\nTo your right you see a table.\nStraight ahead is the locked door to the next room.",
-    "hutch": "A storage chest.",
-    "radio": "Let's play some tunes",
+    "enterRoom": "Welcome to Room 1 - Knife Room:\nOn the counters are many cool things.\nTo your right you see a table.\nAlso looks like there's a locked door to the left.",
+    "hutch": "What nice plates Eric has\nWish he was throwing me a party\ninstead of chasing me.",
+    "radio": "Let's play some tunes!",
     "fridge": "Always knock on the fridge before opening.\nJust in case there is a salad dressing",
     "cabinet": "As my wife opened the cabinet,\na coffee cup crashed on her head\nIt's awful to see someone you love mugged.",
     "oven": "Tried to follow a recipe,\nit said for a bigger portion just double everything,\nbut my oven doesn’t go up to 600 degrees.",
     "sink": "It's sink or swim.",
-    "pears": "#TheBestFruit!\nThese are going to be helpful later on.",
-    "oranges": "Doing all this dev work..\nNeed that vitamin C.",
-    "knife": "This is a nice shiny knife\nShould only be used for veggies and doors.",
+    "pears": "PEARS: #TheBestFruit!\nThese are going to be helpful later on.",
+    "oranges": "ORANGES: Doing all this dev work..\nNeed that vitamin C.",
+    "knife": "KNIFE:This is a nice shiny knife\nShould only be used for veggies and doors.",
     "door": {
       "locked": "There's a note on the door.\n'The door sticks sometimes...\nI've been using a knife to jimmy it open'",
       "unlocked": "You use the knife to jimmy open the lock.\nThe door opens and you proceed to the next room..."
@@ -33,13 +34,13 @@
     "flowers": "Smells lovely!",
     "frog": "froggo",
     "house-plant": "I promise I won't let you die this time.",
-    "askShaq": "To figure out what the room challenge is,\ntry to open the locked door.\nMake sure you look for helpfuld items in every room.\nMaybe the note on that table can offer up a clue.",
+    "askShaq": "To figure out what the room challenge is,\ntry to open the locked door.\nMake sure you look for helpfuld items in every room.\nMaybe the note on that door can offer up a clue.",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "living-room": {
-    "emerald-earrings": "",
-    "enterRoom": "Welcome to Room 2 - Word Order Room:\nTo your left you see a table.\nTo your right you see a desk.\nYou also see something shiny on the floor in front of you.\nStraight ahead is the locked door to the next room.",
+    "emerald-earrings": "These are some beautiful emerald earrings.\nIt's not stealing if you intend to give it back right?",
+    "enterRoom": "Welcome to Room 2 - Word Order Room:\nThere are some sleepy animals in here.\nOne of them seems to be blocking your way.\nAnd is that.... a self portrait...of Eric.\nGotta work with that sleepy dog to get out.",
     "askShaq": "Those are some random objects in this room.\nPerhaps the order of the objects doesn't have \nanything to do with the items themselves...",
     "invalidCommand": "That command is invalid! Please choose a proper command from the list.",
     "ericClosingIn": "Eric is getting closer...",
@@ -51,10 +52,11 @@
     "coffee-table": "I hate it when a murder chases me and\nthen I stub my toe on a table.",
     "couch": "I shouldn't sit at a time like this!",
     "cushion-cat": "He sure does love his animals!",
-    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
+    "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n",
+    "sleeping-dog": "The dog grumbles.\nYou see a note next to the dog\n'To get him to move you have to give him items\nHe likes to spell, so spell him a word.\nUsing the first letter of the objects in your inventory,\nspell an exit word.'"
   },
   "bedroom": {
-    "enterRoom": "You made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles in order to advance to the next room, good luck",
+    "enterRoom": "You made it Room 3 - The Riddle Room:\nIn this room you will need to solve 3 riddles\n in order to advance to the next room.\nThe riddles can be found by talking to these creepy toys\nGood luck",
     "car-toy": {
       "riddle": "You inspect the car and find a note.\nWhat gets wetter the more it dries?",
       "answers": {
@@ -101,9 +103,14 @@
     "play-chair": "It would be nice to rest, but you don't have time\nERIC IS COMING!",
     "football": "Footballs alright\nBut you would rather be exploring caves.",
     "car-mat" : "This brings back old memories..",
+    "aluminum": "This is a great sheet of aluminum\nI bet with the right tools you could craft a sweet hat.",
     "heart-rug" : "<3",
     "star-plushie" : "Wow that's a lot of plushies for a murderer.",
     "blocks": "The blocks spell out.\nI.M.C.O.M.I.N.G.F.O.R.Y.O.U\nYou wonder what 'I, M.C. Omingfo ryou' means\nM.C Oming seems like a nice guy",
+    "playDesk" : "This desk is perfect for coloring.\nMaybe later.",
+    "cloud-plush" : "Soft as a cloud?",
+    "rocket-plush" : "Up up and AWAAAAYYYyyyyy....",
+    "stack-toy" : "Stacks on stacks on stacks!",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"
   },
   "bathroom": {
@@ -119,7 +126,8 @@
     "seat" : "Looks like some fancy candles",
     "shelves" : "He must love to decorate sheeesh",
     "bathroom-sink" : "At least he cleans his hands after!",
-    "enterRoom": "Welcome to Room 4 - Game Room:\nAn anvil sits in the middle of the room\nTo your right is a big storage shelf full of odds and ends\nTo your left you see an old dresser\nStraight ahead is the locked door to the next room.",
+    "enterRoom": "Welcome to Room 4 - Game Room:\nIt's a large bathroom with lots of cool stuff.\nOne item seems utterly out of place here.\nAhead of you is a large mirror with an odd reflection.",
+    "hammer": "What a cool hammer!!\nYou can probably use it for crafting.\nRemember that workbench in the garage?",
     "openDoorUnlocked": "YOU WIN! The door opens and you feel the cool breeze of fresh air on your face.\nYou step outside the house and realize you have escaped.You have escaped Eric!",
     "askShaq": "That is no ordinary mirror on the door... \nI think its somehow reading your mind!\nIf you can find a way to keep it out of your head \nI bet you can beat it!",
     "help": "E: interacts with the game.\nWASD:helps you move.\nMusic on:M \nMusic off:N\n\n"

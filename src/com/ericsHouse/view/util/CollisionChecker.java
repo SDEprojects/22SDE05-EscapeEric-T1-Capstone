@@ -1,12 +1,17 @@
 package com.ericsHouse.view.util;
 
-import com.ericsHouse.view.panels.GamePanel;
+import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.rooms.RoomMap;
 import com.ericsHouse.view.entity.Entity;
 import com.ericsHouse.view.entity.Player;
 import com.ericsHouse.view.object.AssetSetter;
+import com.ericsHouse.view.object.SuperObject;
+import com.ericsHouse.view.panels.GamePanel;
 import com.ericsHouse.view.tile.TileManager;
 
-import java.io.IOException;
+import java.util.Map;
+
+import static com.ericsHouse.view.panels.GamePanel.*;
 
 public class CollisionChecker {
 
@@ -22,23 +27,23 @@ public class CollisionChecker {
         this.player = player;
     }
 
-    public void checkTile(Entity entity) throws IOException {
-        int entityLeftScreenX = entity.playerX + entity.solidArea.x;
-        int entityRightScreenX = entity.playerX + entity.solidArea.x + entity.solidArea.width;
-        int entityTopScreenY = entity.playerY + entity.solidArea.y;
-        int entityBottomScreenY = entity.playerY + entity.solidArea.y + entity.solidArea.height;
+    public void checkTile(Entity entity) {
+        int entityLeftScreenX = Entity.playerX + entity.solidArea.x;
+        int entityRightScreenX = Entity.playerX + entity.solidArea.x + entity.solidArea.width;
+        int entityTopScreenY = Entity.playerY + entity.solidArea.y;
+        int entityBottomScreenY = Entity.playerY + entity.solidArea.y + entity.solidArea.height;
 
-        int entityLeftCol = entityLeftScreenX / gp.tileSize;
-        int entityRightCol = entityRightScreenX / gp.tileSize;
-        int entityTopRow = entityTopScreenY / gp.tileSize;
-        int entityBottomRow = entityBottomScreenY / gp.tileSize;
+        int entityLeftCol = entityLeftScreenX / tileSize;
+        int entityRightCol = entityRightScreenX / tileSize;
+        int entityTopRow = entityTopScreenY / tileSize;
+        int entityBottomRow = entityBottomScreenY / tileSize;
 
         int tileNum1, tileNum2;
         try {
-            switch (entity.direction) {
+            switch (Entity.direction) {
                 case "up":
                     //predicting where the player will be while they are moving up
-                    entityTopRow = (entityTopScreenY - entity.speed) / gp.tileSize;
+                    entityTopRow = (entityTopScreenY - Entity.speed) / tileSize;
                     tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                     tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                     if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
@@ -46,7 +51,7 @@ public class CollisionChecker {
                     }
                     break;
                 case "down":
-                    entityBottomRow = (entityBottomScreenY + entity.speed) / gp.tileSize;
+                    entityBottomRow = (entityBottomScreenY + Entity.speed) / tileSize;
                     tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                     tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                     if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
@@ -54,7 +59,7 @@ public class CollisionChecker {
                     }
                     break;
                 case "left":
-                    entityLeftCol = (entityLeftScreenX - entity.speed) / gp.tileSize;
+                    entityLeftCol = (entityLeftScreenX - Entity.speed) / tileSize;
                     tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                     tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                     if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
@@ -62,7 +67,7 @@ public class CollisionChecker {
                     }
                     break;
                 case "right":
-                    entityRightCol = (entityRightScreenX + entity.speed) / gp.tileSize;
+                    entityRightCol = (entityRightScreenX + Entity.speed) / tileSize;
                     tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                     tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                     if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
@@ -78,148 +83,152 @@ public class CollisionChecker {
 
     }
 
-    public int checkObject(Entity entity, boolean player) {
-        int index = 999;
-        for (int i = 0; i < gp.obj.length; i++) {
-            if (gp.obj[i] != null) {
-                entity.solidArea.x = entity.playerX + entity.solidArea.x;
-                entity.solidArea.y = entity.playerY + entity.solidArea.y;
+    // Return was int before changes
+    public String checkObject(Entity entity, boolean player) {
+        String index = "";
+        for (Map.Entry<String, SuperObject> entry : currentRoom.mapObjects.entrySet()) {
+            entity.solidArea.x = Entity.playerX + entity.solidArea.x;
+            entity.solidArea.y = Entity.playerY + entity.solidArea.y;
 
-                gp.obj[i].solidArea.x = gp.obj[i].screenX + gp.obj[i].solidArea.x;
-                gp.obj[i].solidArea.y = gp.obj[i].screenY + gp.obj[i].solidArea.y;
+            entry.getValue().solidArea.x = entry.getValue().screenX + entry.getValue().solidArea.x;
+            entry.getValue().solidArea.y = entry.getValue().screenY + entry.getValue().solidArea.y;
 
-                switch (entity.direction) {
-                    case "up":
-                        entity.solidArea.y -= entity.speed;
+            switch (Entity.direction) {
+                case "up":
+                    entity.solidArea.y -= Entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
                         }
-                        break;
-                    case "down":
-                        entity.solidArea.y += entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
                         }
-                        break;
-                    case "left":
-                        entity.solidArea.x -= entity.speed;
+                    }
+                    break;
+                case "down":
+                    entity.solidArea.y += Entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
                         }
-                        break;
-                    case "right":
-                        entity.solidArea.x += entity.speed;
-                        //Determine if exit Intersect
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
+                        }
+                    }
+                    break;
+                case "left":
+                    entity.solidArea.x -= Entity.speed;
 
-                        if (entity.solidArea.intersects(gp.obj[i].solidArea)) {
-                            if (gp.obj[i].collision == true) {
-                                entity.collisionOn = true;
-                            }
-                            if (player == true) {
-                                //Returns the index of the object (allows for picking up
-                                index = i;
-                            }
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
                         }
-                        break;
-                }
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
+                        }
+                    }
+                    break;
+                case "right":
+                    entity.solidArea.x += Entity.speed;
+                    //Determine if exit Intersect
+
+                    if (entity.solidArea.intersects(entry.getValue().solidArea)) {
+                        if (entry.getValue().collision) {
+                            entity.collisionOn = true;
+                        }
+                        if (player) {
+                            //Returns the index of the object (allows for picking up
+                            index = entry.getKey();
+                        }
+                    }
+                    break;
             }
+//            }
             entity.solidArea.x = entity.solidAreaDefaultX;
             entity.solidArea.y = entity.solidAreaDefaultY;
             try {
-                gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
-                gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
-            } catch (NullPointerException e) {
+                entry.getValue().solidArea.x = entry.getValue().solidAreaDefaultX;
+                entry.getValue().solidArea.y = entry.getValue().solidAreaDefaultY;
+            } catch (NullPointerException ignored) {
 
             }
-
-
         }
-
         return index;
     }
 
     public void checkExit(Entity entity) {
+        entity.solidArea.x = Entity.playerX + entity.solidArea.x;
+        entity.solidArea.y = Entity.playerY + entity.solidArea.y;
 
-        entity.solidArea.x = entity.playerX + entity.solidArea.x;
-        entity.solidArea.y = entity.playerY + entity.solidArea.y;
-
-        switch (entity.direction) {
+        switch (Entity.direction) {
             case "up":
-                entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y - 75;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y - 75;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x;
+                entity.solidArea.x += Entity.speed;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    Entity.playerY = currentRoom.exitIntersect.y - 75;
+                    Entity.playerX = currentRoom.exitIntersect.x;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    Entity.playerY = currentRoom.entranceIntersect.y - 75;
+                    Entity.playerX = currentRoom.entranceIntersect.x;
+                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                    gameState = dialogueState;
                 }
                 break;
             case "down":
-                entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y + 75;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y + 75;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x;
+                entity.solidArea.x += Entity.speed;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    Entity.playerY = currentRoom.exitIntersect.y + 75;
+                    Entity.playerX = currentRoom.exitIntersect.x;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    Entity.playerY = currentRoom.entranceIntersect.y + 75;
+                    Entity.playerX = currentRoom.entranceIntersect.x;
+                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                    gameState = dialogueState;
                 }
                 break;
             case "left":
-                entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x - 75;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x - 75;
+                entity.solidArea.x += Entity.speed;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    Entity.playerY = currentRoom.exitIntersect.y;
+                    Entity.playerX = currentRoom.exitIntersect.x - 75;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    Entity.playerY = currentRoom.entranceIntersect.y;
+                    Entity.playerX = currentRoom.entranceIntersect.x - 75;
+                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                    gameState = dialogueState;
                 }
                 break;
             case "right":
-                entity.solidArea.x += entity.speed;
-                if (entity.solidArea.intersects(gp.currentRoom.entranceIntersect)) {
-                    gp.allRooms.roomMap.get(gp.currentRoom.entrance).setRoomItems(gp.currentRoom.entrance);
-                    gp.setCurrentRoom(gp.currentRoom.entrance);
-                    gp.player.playerY = gp.currentRoom.exitIntersect.y;
-                    gp.player.playerX = gp.currentRoom.exitIntersect.x + 75;
-                }else if(entity.solidArea.intersects(gp.currentRoom.exitIntersect)){
-                    gp.allRooms.roomMap.get(gp.currentRoom.exit).setRoomItems(gp.currentRoom.exit);
-                    gp.setCurrentRoom(gp.currentRoom.exit);
-                    gp.player.playerY = gp.currentRoom.entranceIntersect.y;
-                    gp.player.playerX = gp.currentRoom.entranceIntersect.x + 75;
+                entity.solidArea.x += Entity.speed;
+                if (entity.solidArea.intersects(currentRoom.entranceIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.entrance).setRoomItems(currentRoom.entrance);
+                    gp.setCurrentRoom(currentRoom.entrance);
+                    Entity.playerY = currentRoom.exitIntersect.y;
+                    Entity.playerX = currentRoom.exitIntersect.x + 75;
+                } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
+                    RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    gp.setCurrentRoom(currentRoom.exit);
+                    Entity.playerY = currentRoom.entranceIntersect.y;
+                    Entity.playerX = currentRoom.entranceIntersect.x + 75;
+                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                    gameState = dialogueState;
                 }
                 break;
         }
