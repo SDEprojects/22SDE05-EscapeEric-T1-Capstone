@@ -21,6 +21,6 @@ public class OBJ_Frog extends SuperObject {
     @Override
     public void draw(Graphics2D g2, GamePanel gp) {
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, GamePanel.tileSize, GamePanel.tileSize, null);
     }
 }
