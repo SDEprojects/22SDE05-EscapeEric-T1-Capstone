@@ -18,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import static com.ericsHouse.view.panels.GamePanel.gameState;
+import static com.ericsHouse.view.panels.GamePanel.introState;
 
 public class GameFrame extends JFrame implements ActionListener {
     public static JFrame window;
@@ -90,14 +91,14 @@ public class GameFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println(gameState);
         if (e.getSource() == sidePanel.askShaqButton) {
-            if (gameState != GamePanel.deathState) {
+            if (gameState != GamePanel.deathState && gameState != introState) {
                 UI.currentDialogue = JsonParser.getPrompt("askShaq");
                 gamePanel.setFocusable(true);
                 gameState = gamePanel.Shaq;
             }
         }
         if (e.getSource() == sidePanel.helpButton) {
-            if (gameState != GamePanel.deathState) {
+            if (gameState != GamePanel.deathState && gameState!=introState) {
                 UI.currentDialogue = JsonParser.getPrompt("help");
                 gamePanel.setFocusable(true);
                 gameState = GamePanel.dialogueState;

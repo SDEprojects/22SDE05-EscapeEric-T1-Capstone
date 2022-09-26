@@ -3,13 +3,23 @@ package com.ericsHouse.view.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.ericsHouse.view.util.WordOrder.clickedObJ;
-import static com.ericsHouse.view.util.WordOrder.compareList;
+import java.util.ArrayList;
+
+import static com.ericsHouse.view.util.WordOrder.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WordOrderTest {
 
     @Test
     void generateCompareListTest() {
+        ArrayList<String> testList = new ArrayList<>();
+        testList.add("oranges");
+        testList.add("pears");
+        testList.add("emerald-earrings");
+        testList.add("note");
+
+        generateCompareList();
+        assertEquals(testList,compareList);
     }
 
     @Test
@@ -23,6 +33,6 @@ class WordOrderTest {
         clickedObJ.add("pears");
         clickedObJ.add("emerald-earrings");
         clickedObJ.add("note");
-        Assertions.assertEquals(compareList, clickedObJ);
+        assertEquals(compareList, clickedObJ);
     }
 }
