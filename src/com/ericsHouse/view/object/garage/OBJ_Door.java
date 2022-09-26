@@ -43,10 +43,10 @@ public class OBJ_Door extends SuperObject {
         if (hasItems) {
             gp.ui.currentDialogue = "You open the door and get ready to solve some puzzles!!\nLet's escape Eric's house";
             currentRoom.mapObjects.remove(objIndex);
-            gp.gameState = gp.dialogueState;
         } else {
+            System.out.println(gp.player.getBackpack());
             gp.ui.currentDialogue = "You hear Shaq's voice...\n'HEY get that note first.\nIt's important you know what's going on.'\n";
-            gp.gameState = gp.dialogueState;
         }
+        GamePanel.gameState = GamePanel.dialogueState;
     }
 }

@@ -49,7 +49,6 @@ public class OBJ_Glasses extends SuperObject {
             else {
                 GamePanel.gameState = GamePanel.dialogueState;
                 UI.currentDialogue = "You look at the note and it's a blur...\nNeed to find your glasses first.\nTry looking at all the objects in here.";
-                //System.out.println("Even if you got the note, you couldn't read it\nNeed to find your glasses first.");
             }
     }
 }
