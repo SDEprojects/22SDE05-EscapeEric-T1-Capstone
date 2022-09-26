@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WordOrderTest {
 
     @Test
-    void generateCompareList() {
+    void generateCompareListTest() {
     }
 
     @Test
