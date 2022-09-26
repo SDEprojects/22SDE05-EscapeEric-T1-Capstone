@@ -71,8 +71,9 @@ public class GameFrame extends JFrame implements ActionListener {
         gamePanel.startGameThread();
         gamePanel.gameState = gamePanel.introState;
         //gameTimer.start();
-       //gameTimer.stop();
+        //gameTimer.stop();
     }
+
     public static void reset() throws IOException {
         //timer
         Time.resetUpTimer(sidePanel.time());
@@ -89,14 +90,19 @@ public class GameFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sidePanel.askShaqButton) {
-            gamePanel.setFocusable(true);
-            gamePanel.ui.currentDialogue = JsonParser.getPrompt("askShaq", gamePanel);
-            gamePanel.gameState = gamePanel.Shaq;
+
+            if (GamePanel.gameState != GamePanel.deathState) {
+                gamePanel.ui.currentDialogue = JsonParser.getPrompt("askShaq", gamePanel);
+                gamePanel.gameState = gamePanel.Shaq;
+                gamePanel.setFocusable(true);
+            }
         }
         if (e.getSource() == sidePanel.helpButton) {
-            gamePanel.ui.currentDialogue = JsonParser.getPrompt("help", gamePanel);
-            gamePanel.setFocusable(true);
-            gamePanel.gameState = gamePanel.dialogueState;
+            if (GamePanel.gameState != GamePanel.deathState) {
+                gamePanel.ui.currentDialogue = JsonParser.getPrompt("help", gamePanel);
+                gamePanel.setFocusable(true);
+                gamePanel.gameState = gamePanel.dialogueState;
+            }
         }
     }
 }
