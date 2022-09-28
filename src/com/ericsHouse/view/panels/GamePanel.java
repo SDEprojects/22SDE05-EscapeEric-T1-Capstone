@@ -71,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int optionThree = 3;
 
     public static void setUpGame() {
-        currentRoom = RoomMap.roomMap.get("garage");
+        currentRoom = RoomMap.roomMap.get("bathroom");
         currentRoom.setRoomItems("Eric's Garage");
         gameState = GamePanel.playState;
     }
