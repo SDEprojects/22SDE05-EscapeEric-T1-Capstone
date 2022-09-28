@@ -1,6 +1,7 @@
 package com.ericsHouse.view.util;
 
 import com.ericsHouse.jsonParser.JsonParser;
+import com.ericsHouse.rooms.Room;
 import com.ericsHouse.rooms.RoomMap;
 import com.ericsHouse.view.entity.Entity;
 import com.ericsHouse.view.entity.Player;
@@ -176,11 +177,14 @@ public class CollisionChecker {
                     Entity.playerX = currentRoom.exitIntersect.x;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    RoomMap.roomMap.get(currentRoom.name).setRoomComplete(true);
                     gp.setCurrentRoom(currentRoom.exit);
                     Entity.playerY = currentRoom.entranceIntersect.y - 75;
                     Entity.playerX = currentRoom.entranceIntersect.x;
-                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
+                    if(!RoomMap.roomMap.get(currentRoom.name).isRoomComplete()){
+                        UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                        gameState = dialogueState;
+                    }
                 }
                 break;
             case "down":
@@ -192,11 +196,14 @@ public class CollisionChecker {
                     Entity.playerX = currentRoom.exitIntersect.x;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    RoomMap.roomMap.get(currentRoom.name).setRoomComplete(true);
                     gp.setCurrentRoom(currentRoom.exit);
                     Entity.playerY = currentRoom.entranceIntersect.y + 75;
                     Entity.playerX = currentRoom.entranceIntersect.x;
-                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
+                    if(!RoomMap.roomMap.get(currentRoom.name).isRoomComplete()){
+                        UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                        gameState = dialogueState;
+                    }
                 }
                 break;
             case "left":
@@ -208,11 +215,14 @@ public class CollisionChecker {
                     Entity.playerX = currentRoom.exitIntersect.x - 75;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    RoomMap.roomMap.get(currentRoom.name).setRoomComplete(true);
                     gp.setCurrentRoom(currentRoom.exit);
                     Entity.playerY = currentRoom.entranceIntersect.y;
                     Entity.playerX = currentRoom.entranceIntersect.x - 75;
-                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
+                    if(!RoomMap.roomMap.get(currentRoom.name).isRoomComplete()){
+                        UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                        gameState = dialogueState;
+                    }
                 }
                 break;
             case "right":
@@ -224,11 +234,14 @@ public class CollisionChecker {
                     Entity.playerX = currentRoom.exitIntersect.x + 75;
                 } else if (entity.solidArea.intersects(currentRoom.exitIntersect)) {
                     RoomMap.roomMap.get(currentRoom.exit).setRoomItems(currentRoom.exit);
+                    RoomMap.roomMap.get(currentRoom.name).setRoomComplete(true);
                     gp.setCurrentRoom(currentRoom.exit);
                     Entity.playerY = currentRoom.entranceIntersect.y;
                     Entity.playerX = currentRoom.entranceIntersect.x + 75;
-                    UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
-                    gameState = dialogueState;
+                    if(!RoomMap.roomMap.get(currentRoom.name).isRoomComplete()){
+                        UI.currentDialogue = JsonParser.roomIntro(currentRoom.name);
+                        gameState = dialogueState;
+                    }
                 }
                 break;
         }

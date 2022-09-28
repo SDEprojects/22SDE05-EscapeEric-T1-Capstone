@@ -23,6 +23,7 @@ public class Room {
     public String exit;
     public Rectangle entranceIntersect;
     public Rectangle exitIntersect;
+    public boolean roomComplete;
 
     /**
      * Room constructor that takes in parameters listed below.
@@ -46,6 +47,7 @@ public class Room {
         this.entrance = entrance;
         this.exit = exit;
         this.mapObjects = new LinkedHashMap<>();
+        this.roomComplete = false;
     }
 
     /**
@@ -57,6 +59,14 @@ public class Room {
         gp.assetSetter = assetSetter;
 //        gp.assetSetter.setObject();
         window.setTitle(title);
+    }
+
+    public void setRoomComplete(boolean roomComplete) {
+        this.roomComplete = roomComplete;
+    }
+
+    public boolean isRoomComplete() {
+        return roomComplete;
     }
 
     /**
