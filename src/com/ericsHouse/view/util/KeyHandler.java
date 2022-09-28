@@ -183,12 +183,14 @@ public class KeyHandler implements KeyListener {
                     UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
                 } else {
                     //TODO this needs to be refactored
-                    Time.second = Time.second - 60;
-                    if (Time.minute <= 0 && Time.second <= 0) {
+                    if (Time.minute > 0) {
+                        Time.minute--;
+                        gameState = gp.riddleIncorrect;
+                        UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
+                    } else {
+                        gameState = deathState;
                         gameTimer.stop();
                     }
-                    gameState = gp.riddleIncorrect;
-                    UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
                 }
             }
         } else if (gameState == craftState || gameState == gp.riddleCorrect || gameState == gp.riddleIncorrect || gameState == wordOrder || GamePanel.gameState == gp.Shaq) {
