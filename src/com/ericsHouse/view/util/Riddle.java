@@ -24,7 +24,7 @@ public class Riddle {
                 currentRoom.mapObjects.get("door").collision = false;
                 try {
                     currentRoom.mapObjects.get("door").image = ImageIO.read(Riddle.class.getResourceAsStream("/rooms/bedroom/bedroom_OBJ/door-open.png"));
-
+                    riddleCount = 0;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
