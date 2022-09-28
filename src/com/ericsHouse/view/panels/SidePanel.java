@@ -30,8 +30,6 @@ public class SidePanel extends JPanel {
     public static Map<String, JButton> items = new HashMap<>();
     final int screenWidth = 216;
     final int screenHeight = GamePanel.screenHeight;
-    GridBagConstraints c = new GridBagConstraints();
-    GridBagConstraints d = new GridBagConstraints();
     GamePanel gp;
 
     private Image image;
@@ -89,7 +87,6 @@ public class SidePanel extends JPanel {
      * @param gp Current Game Panel state, with its appropriate fields are used
      */
     public void inventorySetUp(GamePanel gp) {
-//        Player.addItem(new OBJ_Bedroom("side-table-girl", "/rooms/bedroom/bedroom_OBJ/side-table-girl.png", 14, 21));
         for (SuperObject item : gp.player.getBackpack()) {
             ImageIcon image = new ImageIcon(item.image);
             items.put(item.name, new JButton());
@@ -99,14 +96,6 @@ public class SidePanel extends JPanel {
         inventory.setOpaque(false);
         inventory.revalidate();
         inventory.repaint();
-
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.weighty = 1.0;
-        c.ipady = 454;
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 3;
         this.add(inventory, BorderLayout.CENTER, 1);
     }
 
@@ -154,14 +143,6 @@ public class SidePanel extends JPanel {
         inventory.revalidate();
         inventory.repaint();
         inventory.add(button);
-
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.5;
-        c.weighty = 1.0;
-        c.ipady = 454;
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 3;
         this.add(inventory, BorderLayout.CENTER, 1);
     }
 
@@ -209,9 +190,7 @@ public class SidePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         g.drawImage(this.image, 0, 0, null); // image full size
-        //g.drawImage(background, 0, 0, getWidth(), getHeight(), null); // image scaled
     }
 
     /**
