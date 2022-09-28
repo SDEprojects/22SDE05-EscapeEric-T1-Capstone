@@ -101,7 +101,7 @@ public class GameFrame extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == sidePanel.helpButton) {
-            if (gameState != GamePanel.deathState && gameState!=introState) {
+            if (gameState != GamePanel.deathState && gameState != introState) {
                 UI.currentDialogue = JsonParser.getPrompt("help");
                 gamePanel.setFocusable(true);
                 gameState = GamePanel.dialogueState;

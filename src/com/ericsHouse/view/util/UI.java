@@ -41,7 +41,7 @@ public class UI {
 
     /**
      * @param g2 Used to display the color for the dialogue boxes.
-     * Whenever the game state changes then it calls a function within.
+     *           Whenever the game state changes then it calls a function within.
      */
     public void draw(Graphics2D g2) {
         this.g2 = g2;
@@ -50,7 +50,7 @@ public class UI {
         if (GamePanel.gameState == GamePanel.playState) {
             //Do nothing
         }
-        if(GamePanel.gameState == GamePanel.introState){
+        if (GamePanel.gameState == GamePanel.introState) {
             drawIntroScreen(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
         }
         if (GamePanel.gameState == gp.pauseState) {
@@ -77,13 +77,13 @@ public class UI {
         if (GamePanel.gameState == GamePanel.wordOrder) {
             drawWordOrderScreen();
         }
-        if(GamePanel.gameState == GamePanel.winState){
+        if (GamePanel.gameState == GamePanel.winState) {
             drawWinScreen(0, 0, GamePanel.screenWidth, GamePanel.screenHeight);
         }
-        if(GamePanel.gameState == gp.Shaq){
+        if (GamePanel.gameState == gp.Shaq) {
             drawShaq();
         }
-        if(GamePanel.gameState == GamePanel.craftState){
+        if (GamePanel.gameState == GamePanel.craftState) {
             drawDialogueScreen();
         }
     }
@@ -104,9 +104,9 @@ public class UI {
             g2.drawString(escape, x, y);
             y += 40;
         }
-        if(GamePanel.gameState == GamePanel.craftState){
+        if (GamePanel.gameState == GamePanel.craftState) {
             g2.drawString("Press 'E' When you are done", width - 160, height);
-        }else{
+        } else {
             g2.drawString("Press 'E' To Continue", width - 125, height);
         }
     }
@@ -189,12 +189,11 @@ public class UI {
     /**
      * @param selection takes in the selection.
      * @return returns a true false if you won.
-     *
      */
     public static boolean checkWin(int selection) {
-        if(Player.hatEquipped){
+        if (Player.hatEquipped) {
             return true;
-        }else{
+        } else {
             int rps = (int) (Math.random() * 3) + 1;
             return rps == selection;
         }
@@ -236,12 +235,12 @@ public class UI {
         g2.drawString(subState == gp.optionTwo ? ">   End Game" : "   End Game", x, y + GamePanel.tileSize * 2);
         g2.drawString("Press 'E' To Submit Your Answer", x, height - 50);
     }
-    public static void playAgain(int subState) throws IOException{
-        if(subState == 1){
+
+    public static void playAgain(int subState) throws IOException {
+        if (subState == 1) {
             GameFrame.reset();
-            GamePanel.gameState= 1;
-        }
-        else if(subState == 2){
+            GamePanel.gameState = 1;
+        } else if (subState == 2) {
             System.exit(0);
         }
     }
@@ -276,20 +275,19 @@ public class UI {
             e.printStackTrace();
         }
 
-        int x = GamePanel.tileSize * 2 -20;
+        int x = GamePanel.tileSize * 2 - 20;
         int y = GamePanel.tileSize / 2;
         int width = GamePanel.screenWidth - (GamePanel.tileSize * 4);
         int height = GamePanel.tileSize * 11;
 
         drawSubWindow(x, y, width, height);
         x += GamePanel.tileSize;
-        y += GamePanel.tileSize *5;
+        y += GamePanel.tileSize * 5;
         for (String escape : currentDialogue.split("\n")) {
             g2.drawString(escape, x, y);
             y += 40;
         }
         g2.drawString("Press 'E' To Continue", width - 125, height);
-        g2.drawImage(image,shaqx,shaqy,shaqwidth,shaqheight,null);
-
+        g2.drawImage(image, shaqx, shaqy, shaqwidth, shaqheight, null);
     }
 }

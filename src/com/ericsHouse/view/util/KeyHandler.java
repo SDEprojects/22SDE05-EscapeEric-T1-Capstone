@@ -119,11 +119,8 @@ public class KeyHandler implements KeyListener {
                         if (UI.checkWin(this.gp.subState)) {
                             wins++;
                         }
-                        UI.currentDialogue = "number of wins: " + wins;
                         games++;
-                    } else {
-                        UI.currentDialogue = "You Lost, final score :" + (games - wins) + wins;
-                        gameState = dialogueState;
+                        UI.currentDialogue = "number of wins: " + wins +" games : " + games;
                     }
                     if (wins >= 2) {
                         SuperObject.win = true;
@@ -140,10 +137,15 @@ public class KeyHandler implements KeyListener {
                         wins = 0;
                         UI.currentDialogue = "Sorry you lost, try again";
                         gameState = dialogueState;
+                        if (Time.minute > 0) {
+                            Time.minute--;
+                        } else {
+                            gameState = deathState;
+                            gameTimer.stop();
+                        }
                     }
                 }
             }
-
         } else if (gameState == deathState) {
             if (code == KeyEvent.VK_E) {
                 try {
@@ -182,13 +184,14 @@ public class KeyHandler implements KeyListener {
                     Riddle.riddleCorrect = false;
                     UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "correctOut", gp);
                 } else {
-                    //TODO this needs to be refactored
-                    Time.second = Time.second - 60;
-                    if (Time.minute <= 0 && Time.second <= 0) {
+                    if (Time.minute > 0) {
+                        Time.minute--;
+                        gameState = gp.riddleIncorrect;
+                        UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
+                    } else {
+                        gameState = deathState;
                         gameTimer.stop();
                     }
-                    gameState = gp.riddleIncorrect;
-                    UI.currentDialogue = JsonParser.riddleAnswerParser(currentRoom.mapObjects.get(objIndex).name, "falseOut", gp);
                 }
             }
         } else if (gameState == craftState || gameState == gp.riddleCorrect || gameState == gp.riddleIncorrect || gameState == wordOrder || GamePanel.gameState == gp.Shaq) {
